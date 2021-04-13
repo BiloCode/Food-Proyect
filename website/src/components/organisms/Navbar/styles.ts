@@ -7,7 +7,7 @@ export const ContainerNav = styled.nav`
   position: sticky;
   top: 0;
   background-color: ${colors.dark_blue};
-  padding: 0 3em;
+  padding: 0 3.5em;
   box-sizing: border-box;
   display: flex;
   align-items: center;
