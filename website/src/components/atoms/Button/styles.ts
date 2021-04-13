@@ -5,12 +5,12 @@ import { colors } from "config/colors";
 export const Button = styled.button`
   width: 100%;
   color: #fff;
-  height: 48px;
+  height: 40px;
   border: none;
   outline: none;
   user-select: none;
   cursor: pointer;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 900;
   border-radius: 10px;
   font-family: var(--font);
@@ -20,5 +20,9 @@ export const Button = styled.button`
   &.yellow {
     color: ${colors.dark_blue};
     background-color: ${colors.normal_yellow};
+  }
+
+  &:active {
+    transform: scale(0.95);
   }
 `;
