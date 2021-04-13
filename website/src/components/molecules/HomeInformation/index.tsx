@@ -1,26 +1,34 @@
-import * as S from "./styles";
-
-import Image from "components/atoms/Image";
+import classNames from "classnames";
 import HomeTittle from "components/atoms/HomeTittle";
 import HomeTittleDescription from "components/atoms/HomeTittleDescription";
 
-import image from "assets/images/Image_1.jpg";
+import * as S from "./styles";
 
-const HomeInformation = () => {
+type colorType = "white" | "black";
+type orientationType = "right" | "left" | "center";
+
+type HomeInformationType = {
+  color: colorType;
+  orientation: orientationType;
+  textTittle: string;
+  textDescription: string;
+};
+
+const HomeInformation = (props: HomeInformationType) => {
   return (
-    <S.HomeInformation>
-      <div>
-        <HomeTittle>TENEMOS LA MEJOR COMIDA DEL PAIS</HomeTittle>
-        <HomeTittleDescription>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s
-        </HomeTittleDescription>
-      </div>
-      <S.ContainerImage>
-        <Image src={image} />
-      </S.ContainerImage>
-    </S.HomeInformation>
+    <S.MainContainer
+      className={classNames({
+        black: props.color === "black",
+        white: props.color === "white",
+        right: props.orientation === "right",
+        center: props.orientation === "center",
+      })}
+    >
+      <S.TitleContainer>
+        <HomeTittle>{props.textTittle}</HomeTittle>
+      </S.TitleContainer>
+      <HomeTittleDescription>{props.textDescription}</HomeTittleDescription>
+    </S.MainContainer>
   );
 };
 

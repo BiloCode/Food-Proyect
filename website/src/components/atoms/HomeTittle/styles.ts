@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const HomeTittle = styled.p`
   font-size: 35px;
   font-weight: bold;
-  color: ${colors.light_black};
+  color: #000;
   margin: 0;
-  width: 70%;
+  text-transform: uppercase;
 `;
