@@ -6,10 +6,14 @@ type ButtonColorType = "yellow" | "normal";
 type ButtonType = {
   text: string;
   color?: ButtonColorType;
+  onClick?(): void;
 };
 
-const Button: FC<ButtonType> = ({ text, color }) => (
-  <S.Button className={classnames({ yellow: color === "yellow" })}>
+const Button: FC<ButtonType> = ({ text, color, onClick }) => (
+  <S.Button
+    onClick={onClick}
+    className={classnames({ yellow: color === "yellow" })}
+  >
     {text}
   </S.Button>
 );

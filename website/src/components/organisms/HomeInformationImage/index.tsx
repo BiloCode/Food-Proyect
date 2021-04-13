@@ -6,15 +6,17 @@ import imageSource from "assets/images/Image_1.jpg";
 
 const HomeInformationImageContainer = () => {
   return (
-    <S.HomeInformationImageContainer>
-      <Image src={imageSource} />
+    <S.MainContainer>
+      <S.ImageContainer>
+        <Image src={imageSource} />
+      </S.ImageContainer>
       <HomeInformation
         textTittle="Tenemos la mejor comida del pais"
         textDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
         color="black"
         orientation="right"
       />
-    </S.HomeInformationImageContainer>
+    </S.MainContainer>
   );
 };
 

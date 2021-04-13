@@ -1,14 +1,7 @@
 import styled from "styled-components";
 
-export const HomeInformation = styled.div`
-  /* width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
- */
+export const MainContainer = styled.div`
   display: grid;
-
   row-gap: 20px;
 
   &.center {
@@ -19,10 +12,9 @@ export const HomeInformation = styled.div`
   &.right {
     text-align: right;
     justify-items: right;
-    /* align-items: flex-end; */
   }
 `;
 
-export const HomeInformationTittle = styled.div`
+export const TitleContainer = styled.div`
   width: 70%;
 `;
