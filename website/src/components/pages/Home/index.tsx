@@ -2,12 +2,12 @@ import { FC } from "react";
 import { RouteComponentProps } from "@reach/router";
 import * as S from "./styles";
 
-import { HomeInformation } from "components/molecules/HomeInformation/styles";
+import HomeInformationImageContainer from "components/organisms/HomeInformationImage";
 
 const Home: FC<RouteComponentProps> = () => {
   return (
     <S.HomeContainer>
-      <HomeInformation />
+      <HomeInformationImageContainer />
     </S.HomeContainer>
   );
 };
