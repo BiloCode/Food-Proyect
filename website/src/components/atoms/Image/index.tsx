@@ -1,9 +1,8 @@
 import * as S from "./styles";
+import { ImageType } from "./types";
 
-import image from "assets/images/Image_1.jpg";
-
-const Image = () => {
-  return <S.Image src={image} />;
+const Image = (props: ImageType) => {
+  return <S.Image src={props.src} />;
 };
 
 export default Image;

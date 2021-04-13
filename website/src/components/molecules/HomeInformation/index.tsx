@@ -4,6 +4,8 @@ import Image from "components/atoms/Image";
 import HomeTittle from "components/atoms/HomeTittle";
 import HomeTittleDescription from "components/atoms/HomeTittleDescription";
 
+import image from "assets/images/Image_1.jpg";
+
 const HomeInformation = () => {
   return (
     <S.HomeInformation>
@@ -16,7 +18,7 @@ const HomeInformation = () => {
         </HomeTittleDescription>
       </div>
       <S.ContainerImage>
-        <Image />
+        <Image src={image} />
       </S.ContainerImage>
     </S.HomeInformation>
   );
