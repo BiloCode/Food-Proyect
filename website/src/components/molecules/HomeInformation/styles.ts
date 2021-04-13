@@ -1,13 +1,6 @@
-import { colors } from "config/colors";
 import styled from "styled-components";
 
 export const HomeInformation = styled.div`
-  /* width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
- */
   display: grid;
 
   row-gap: 20px;

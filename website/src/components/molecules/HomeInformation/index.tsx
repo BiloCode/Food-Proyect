@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import HomeTittle from "components/atoms/HomeTittle";
 import HomeTittleDescription from "components/atoms/HomeTittleDescription";
-import { FC } from "react";
 
 import * as S from "./styles";
 
