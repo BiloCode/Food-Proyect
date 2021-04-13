@@ -1,12 +1,15 @@
 import { FC } from "react";
 import { RouteComponentProps } from "@reach/router";
-import Button from "components/atoms/Button";
+import * as S from "./styles";
 
-const Home: FC<RouteComponentProps> = () => (
-  <div>
-    <h1>Homepage</h1>
-    <Button text="Iniciar sesion" />
-  </div>
-);
+import { HomeInformation } from "components/molecules/HomeInformation/styles";
+
+const Home: FC<RouteComponentProps> = () => {
+  return (
+    <S.HomeContainer>
+      <HomeInformation />
+    </S.HomeContainer>
+  );
+};
 
 export default Home;
