@@ -1,7 +1,7 @@
-import Image from "components/atoms/Image";
-import HomeInformation from "components/molecules/HomeInformation";
 import * as S from "./styles";
 
+import Image from "components/atoms/Image";
+import TitleWithDescription from "components/molecules/TitleWithDescription";
 import imageSource from "assets/images/Image_1.jpg";
 
 const HomeAboutUs = () => {
@@ -10,7 +10,7 @@ const HomeAboutUs = () => {
       <S.ImageContainer>
         <Image src={imageSource} />
       </S.ImageContainer>
-      <HomeInformation
+      <TitleWithDescription
         textTittle="Tenemos la mejor comida del pais"
         textDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
         color="black"

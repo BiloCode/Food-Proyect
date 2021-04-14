@@ -7,14 +7,14 @@ import Description from "components/atoms/Description";
 type colorType = "white" | "black";
 type orientationType = "right" | "left" | "center";
 
-type HomeInformationType = {
+type TitleWithDescriptionType = {
   color: colorType;
   orientation: orientationType;
   textTittle: string;
   textDescription: string;
 };
 
-const HomeInformation = (props: HomeInformationType) => {
+const TitleWithDescription = (props: TitleWithDescriptionType) => {
   return (
     <S.MainContainer
       className={classNames({
@@ -30,4 +30,4 @@ const HomeInformation = (props: HomeInformationType) => {
   );
 };
 
-export default HomeInformation;
+export default TitleWithDescription;

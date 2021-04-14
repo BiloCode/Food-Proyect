@@ -6,6 +6,7 @@ export const ContainerNav = styled.nav`
   height: 90px;
   position: sticky;
   top: 0;
+  z-index: 1;
   background-color: ${colors.dark_blue};
   padding: 0 3.5em;
   box-sizing: border-box;
