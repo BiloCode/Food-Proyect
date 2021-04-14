@@ -5,4 +5,8 @@ export const HomeTittleDescription = styled.p`
   font-size: 20px;
   color: ${colors.light_black};
   margin: 0;
+
+  &.white {
+    color: #fff;
+  }
 `;

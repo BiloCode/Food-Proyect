@@ -18,16 +18,16 @@ const HomeInformation = (props: HomeInformationType) => {
   return (
     <S.MainContainer
       className={classNames({
-        black: props.color === "black",
-        white: props.color === "white",
         right: props.orientation === "right",
         center: props.orientation === "center",
       })}
     >
       <S.TitleContainer>
-        <HomeTittle>{props.textTittle}</HomeTittle>
+        <HomeTittle color={props.color}>{props.textTittle}</HomeTittle>
       </S.TitleContainer>
-      <HomeTittleDescription>{props.textDescription}</HomeTittleDescription>
+      <HomeTittleDescription color={props.color}>
+        {props.textDescription}
+      </HomeTittleDescription>
     </S.MainContainer>
   );
 };

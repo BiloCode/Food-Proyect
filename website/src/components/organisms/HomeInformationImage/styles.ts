@@ -12,7 +12,7 @@ export const MainContainer = styled.div`
   width: 75%;
   display: grid;
   grid-template-columns: 360px 1fr;
-  align-items: flex-start; /*** Faltaba indicarle esta linea  */
+  align-items: center;
   padding-top: 70px;
   padding-bottom: 70px;
 `;
