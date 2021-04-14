@@ -6,4 +6,8 @@ export const HomeTittle = styled.p`
   color: #000;
   margin: 0;
   text-transform: uppercase;
+
+  &.white {
+    color: #fff;
+  }
 `;
