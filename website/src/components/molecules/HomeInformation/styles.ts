@@ -6,7 +6,7 @@ export const MainContainer = styled.div`
 
   &.center {
     text-align: center;
-    align-items: center;
+    justify-items: center;
   }
 
   &.right {
