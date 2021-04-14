@@ -1,14 +1,9 @@
 import classNames from "classnames";
 import { FC } from "react";
 import * as S from "./styles";
+import { DescriptionType } from "./types";
 
-type colorType = "white" | "black";
-
-type HomeTittleType = {
-  color: colorType;
-};
-
-const Description: FC<HomeTittleType> = ({ children, color }) => {
+const Description: FC<DescriptionType> = ({ children, color }) => {
   return (
     <S.Container
       className={classNames({

@@ -3,16 +3,7 @@ import * as S from "./styles";
 
 import Title from "components/atoms/Title";
 import Description from "components/atoms/Description";
-
-type colorType = "white" | "black";
-type orientationType = "right" | "left" | "center";
-
-type TitleWithDescriptionType = {
-  color: colorType;
-  orientation: orientationType;
-  textTittle: string;
-  textDescription: string;
-};
+import { TitleWithDescriptionType } from "./types";
 
 const TitleWithDescription = (props: TitleWithDescriptionType) => {
   return (
@@ -23,9 +14,13 @@ const TitleWithDescription = (props: TitleWithDescriptionType) => {
       })}
     >
       <S.TitleContainer>
-        <Title color={props.color}>{props.textTittle}</Title>
+        <Title color={props.tittle.color} size={props.tittle.size}>
+          {props.textTittle}
+        </Title>
       </S.TitleContainer>
-      <Description color={props.color}>{props.textDescription}</Description>
+      <Description color={props.description.color}>
+        {props.textDescription}
+      </Description>
     </S.MainContainer>
   );
 };

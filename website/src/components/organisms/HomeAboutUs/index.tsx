@@ -13,7 +13,8 @@ const HomeAboutUs = () => {
       <TitleWithDescription
         textTittle="Tenemos la mejor comida del pais"
         textDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-        color="black"
+        tittle={{ color: "black", size: "large" }}
+        description={{ color: "black" }}
         orientation="right"
       />
     </S.MainContainer>
