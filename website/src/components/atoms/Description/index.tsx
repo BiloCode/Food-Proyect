@@ -8,16 +8,16 @@ type HomeTittleType = {
   color: colorType;
 };
 
-const HomeTittle: FC<HomeTittleType> = ({ children, color }) => {
+const Description: FC<HomeTittleType> = ({ children, color }) => {
   return (
-    <S.HomeTittle
+    <S.Container
       className={classNames({
         white: color === "white",
       })}
     >
       {children}
-    </S.HomeTittle>
+    </S.Container>
   );
 };
 
-export default HomeTittle;
+export default Description;

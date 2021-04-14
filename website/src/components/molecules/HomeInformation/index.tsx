@@ -1,8 +1,8 @@
 import classNames from "classnames";
-import HomeTittle from "components/atoms/HomeTittle";
-import HomeTittleDescription from "components/atoms/HomeTittleDescription";
-
 import * as S from "./styles";
+
+import Title from "components/atoms/Title";
+import Description from "components/atoms/Description";
 
 type colorType = "white" | "black";
 type orientationType = "right" | "left" | "center";
@@ -23,11 +23,9 @@ const HomeInformation = (props: HomeInformationType) => {
       })}
     >
       <S.TitleContainer>
-        <HomeTittle color={props.color}>{props.textTittle}</HomeTittle>
+        <Title color={props.color}>{props.textTittle}</Title>
       </S.TitleContainer>
-      <HomeTittleDescription color={props.color}>
-        {props.textDescription}
-      </HomeTittleDescription>
+      <Description color={props.color}>{props.textDescription}</Description>
     </S.MainContainer>
   );
 };

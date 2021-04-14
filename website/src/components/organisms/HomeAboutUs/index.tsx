@@ -4,7 +4,7 @@ import * as S from "./styles";
 
 import imageSource from "assets/images/Image_1.jpg";
 
-const HomeInformationImageContainer = () => {
+const HomeAboutUs = () => {
   return (
     <S.MainContainer>
       <S.ImageContainer>
@@ -20,4 +20,4 @@ const HomeInformationImageContainer = () => {
   );
 };
 
-export default HomeInformationImageContainer;
+export default HomeAboutUs;

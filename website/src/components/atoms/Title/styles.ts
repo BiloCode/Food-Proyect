@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const HomeTittle = styled.p`
+export const Title = styled.p`
   font-size: 35px;
   font-weight: bold;
   color: #000;

@@ -3,21 +3,20 @@ import { FC } from "react";
 import * as S from "./styles";
 
 type colorType = "white" | "black";
-
-type HomeTittleType = {
+type TitleType = {
   color: colorType;
 };
 
-const HomeTittleDescription: FC<HomeTittleType> = ({ children, color }) => {
+const Title: FC<TitleType> = ({ children, color }) => {
   return (
-    <S.HomeTittleDescription
+    <S.Title
       className={classNames({
         white: color === "white",
       })}
     >
       {children}
-    </S.HomeTittleDescription>
+    </S.Title>
   );
 };
 
-export default HomeTittleDescription;
+export default Title;
