@@ -10,6 +10,10 @@ const GlobalStyles = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 `;
 

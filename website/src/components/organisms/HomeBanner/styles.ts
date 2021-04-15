@@ -6,19 +6,20 @@ export const MainContainer = styled.div`
   position: relative;
 `;
 
-export const ImageContainer = styled.div`
+type ImageContainerProps = {
+  backgroundUrl: string;
+};
+
+export const ImageContainer = styled.div<ImageContainerProps>`
   width: 100%;
   height: 70vh;
-
-  &::after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
+  background-image: url(${({ backgroundUrl }) => backgroundUrl});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: darken;
 `;
 
 export const FloatContent = styled.div`
@@ -37,4 +38,13 @@ export const BannerFloatContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+
+export const FormLoginContainer = styled.div`
+  width: 400px;
+  border-radius: 20px;
+  padding: 3.5em 2.5em;
+  box-sizing: border-box;
+  background-color: #fff;
+  flex: none;
 `;

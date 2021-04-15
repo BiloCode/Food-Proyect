@@ -1,18 +1,14 @@
 import styled from "styled-components";
 
 export const FormContent = styled.form`
-  width: 400px;
-  border-radius: 20px;
-  padding: 3.5em 2.5em;
+  width: 100%;
   display: grid;
   row-gap: 3.5em;
-  box-sizing: border-box;
-  background-color: #fff;
 `;
 
 export const ControlsContainer = styled.div`
   display: grid;
-  row-gap: 1em;
+  row-gap: 1.2em;
 `;
 
 export const ButtonContainer = styled.div`

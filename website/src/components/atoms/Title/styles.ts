@@ -3,15 +3,22 @@ import styled from "styled-components";
 
 export const Title = styled.span`
   margin: 0;
-  font-size: 2em;
+  font-size: 2.1em;
   font-weight: 900;
-  word-spacing: 12px;
   font-family: var(--font);
   text-transform: uppercase;
-  color: ${colors.light_black};
+  color: #000;
 
   &.white {
     color: #fff;
+  }
+
+  &.light_black {
+    color: ${colors.light_black};
+  }
+
+  &.letter_spacing {
+    letter-spacing: 4px;
   }
 
   &.small {

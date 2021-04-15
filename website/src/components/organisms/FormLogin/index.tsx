@@ -5,7 +5,11 @@ import FormControl from "components/molecules/FormControl";
 
 import { BsFillPersonFill, BsLockFill } from "react-icons/bs";
 
-const FloatLoginHome = () => (
+type FloatLoginHomeProps = {
+  buttonBig?: boolean;
+};
+
+const FloatLoginHome = ({ buttonBig }: FloatLoginHomeProps) => (
   <S.FormContent>
     <S.ControlsContainer>
       <FormControl
@@ -16,8 +20,12 @@ const FloatLoginHome = () => (
       <FormControl type="password" icon={BsLockFill} labelText="Contraseña" />
     </S.ControlsContainer>
     <S.ButtonContainer>
-      <Button text="Iniciar Sesión" />
-      <Button color="yellow" text="Registrate gratis" />
+      <Button size={buttonBig ? "big" : "normal"} text="Iniciar Sesión" />
+      <Button
+        color="yellow"
+        text="Registrate gratis"
+        size={buttonBig ? "big" : "normal"}
+      />
     </S.ButtonContainer>
   </S.FormContent>
 );

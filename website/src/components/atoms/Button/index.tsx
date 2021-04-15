@@ -4,26 +4,29 @@ import classnames from "classnames";
 
 type ButtonType = "button" | "submit";
 type ButtonColorType = "yellow" | "normal";
+type ButtonSizeType = "normal" | "big";
 type ButtonTypeProps = {
   text: string;
   onClick?(): void;
   type?: ButtonType;
+  size?: ButtonSizeType;
   color?: ButtonColorType;
 };
 
-const Button: FC<ButtonTypeProps> = ({ text, color, onClick, type }) => (
+const Button: FC<ButtonTypeProps> = ({ text, color, onClick, type, size }) => (
   <S.Button
     type={type}
     onClick={onClick}
-    className={classnames({ yellow: color === "yellow" })}
+    className={classnames({ yellow: color === "yellow", big: size === "big" })}
   >
     {text}
   </S.Button>
 );
 
 Button.defaultProps = {
-  color: "normal",
+  size: "normal",
   type: "button",
+  color: "normal",
 };
 
 export default Button;

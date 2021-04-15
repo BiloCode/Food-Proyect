@@ -5,13 +5,17 @@ import { IconType } from "react-icons";
 import CustomIcon from "components/atoms/Icon";
 import Title from "components/atoms/Title";
 
-type NavbarOptionProps = {
+type NavigationBarOptionProps = {
   text: string;
   Icon: IconType;
   onClick?(): void;
 };
 
-const NavbarOption: FC<NavbarOptionProps> = ({ Icon, text, onClick }) => (
+const NavigationBarOption: FC<NavigationBarOptionProps> = ({
+  Icon,
+  text,
+  onClick,
+}) => (
   <S.Container onClick={onClick}>
     <CustomIcon Type={Icon} color="white" />
     <Title color="white" size="small">
@@ -20,4 +24,4 @@ const NavbarOption: FC<NavbarOptionProps> = ({ Icon, text, onClick }) => (
   </S.Container>
 );
 
-export default NavbarOption;
+export default NavigationBarOption;

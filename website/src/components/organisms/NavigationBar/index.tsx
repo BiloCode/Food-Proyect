@@ -1,3 +1,4 @@
+import { useNavigate } from "@reach/router";
 import { AiFillHome } from "react-icons/ai";
 import { GiFoodTruck } from "react-icons/gi";
 import * as S from "./styles";
@@ -7,13 +8,13 @@ import Logo from "assets/images/Logo.svg";
 import Image from "components/atoms/Image";
 import Button from "components/atoms/Button";
 import NavbarOption from "components/molecules/NavbarOption";
-import { useNavigate } from "@reach/router";
 
-const Navbar = () => {
+const NavigationBar = () => {
   const navigation = useNavigate();
-  const onClickButtonLogin = () => {
-    navigation("/login");
-  };
+
+  const onClickButtonHome = () => navigation("/");
+  const onClickButtonLogin = () => navigation("/login");
+  const onClickButtonBranchOffices = () => navigation("/branch-office");
 
   return (
     <S.ContainerNav>
@@ -22,8 +23,16 @@ const Navbar = () => {
       </div>
       <S.ContainerOptions>
         <S.ListOption>
-          <NavbarOption Icon={AiFillHome} text="Inicio" />
-          <NavbarOption Icon={GiFoodTruck} text="Sucursales" />
+          <NavbarOption
+            Icon={AiFillHome}
+            text="Inicio"
+            onClick={onClickButtonHome}
+          />
+          <NavbarOption
+            Icon={GiFoodTruck}
+            text="Sucursales"
+            onClick={onClickButtonBranchOffices}
+          />
         </S.ListOption>
         <Button
           color="yellow"
@@ -35,4 +44,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavigationBar;

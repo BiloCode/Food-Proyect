@@ -1,5 +1,5 @@
-type colorType = "white" | "black";
+import { TextColorType } from "application/types/TextColorType";
 
 export type DescriptionType = {
-  color: colorType;
+  color?: TextColorType;
 };

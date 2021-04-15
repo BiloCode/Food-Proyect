@@ -6,6 +6,7 @@ export const Container = styled.p`
   font-size: 1.1em;
   font-weight: 400;
   font-family: var(--font);
+  line-height: 1.4em;
   color: ${colors.light_black};
 
   &.white {

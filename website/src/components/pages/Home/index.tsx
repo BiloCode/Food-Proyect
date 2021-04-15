@@ -2,17 +2,17 @@ import { FC } from "react";
 import { RouteComponentProps } from "@reach/router";
 import * as S from "./styles";
 
-import Navbar from "components/organisms/Navbar";
-import HomeAboutUs from "components/organisms/HomeAboutUs";
-import HomeBanner from "components/organisms/HomeBanner";
+import NavigationBar from "components/organisms/NavigationBar";
 import Footer from "components/organisms/Footer";
-import HomeCharacterist from "components/organisms/HomeCharacterist";
 import HomeSearch from "components/organisms/HomeSearch";
+import HomeBanner from "components/organisms/HomeBanner";
+import HomeAboutUs from "components/organisms/HomeAboutUs";
+import HomeCharacterist from "components/organisms/HomeCharacteristList";
 
 const Home: FC<RouteComponentProps> = () => {
   return (
     <S.HomeContainer>
-      <Navbar />
+      <NavigationBar />
       <HomeBanner />
       <HomeAboutUs />
       <HomeCharacterist />
