@@ -4,13 +4,13 @@ import * as S from "./styles";
 const HomeCharacterist = () => {
   return (
     <S.HomeCharacteristContainer>
-      <S.HomeCharacterist>
+      <S.CharacteristList>
         <Characterist>Characterist</Characterist>
         <Characterist>Characterist</Characterist>
         <Characterist>Characterist</Characterist>
         <Characterist>Characterist</Characterist>
         <Characterist>Characterist</Characterist>
-      </S.HomeCharacterist>
+      </S.CharacteristList>
     </S.HomeCharacteristContainer>
   );
 };

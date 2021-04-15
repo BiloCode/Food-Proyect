@@ -1,3 +1,4 @@
+import { HomeContentLimiter } from "config/constans";
 import styled from "styled-components";
 
 export const MainContainer = styled.div`
@@ -7,7 +8,7 @@ export const MainContainer = styled.div`
 
 export const ImageContainer = styled.div`
   width: 100%;
-  height: 60vh;
+  height: 70vh;
 
   &::after {
     content: "";
@@ -18,4 +19,22 @@ export const ImageContainer = styled.div`
     top: 0;
     left: 0;
   }
+`;
+
+export const FloatContent = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const BannerFloatContainer = styled.div`
+  width: ${HomeContentLimiter};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;

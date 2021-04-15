@@ -1,14 +1,8 @@
 import { colors } from "config/colors";
 import styled from "styled-components";
 
-export const Container = styled.p`
-  margin: 0;
-  font-size: 1.1em;
-  font-weight: 400;
+export const CustomLabel = styled.label`
   font-family: var(--font);
+  font-weight: 600;
   color: ${colors.light_black};
-
-  &.white {
-    color: #fff;
-  }
 `;

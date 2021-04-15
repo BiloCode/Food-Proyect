@@ -2,15 +2,18 @@ import { FC } from "react";
 import * as S from "./styles";
 import classnames from "classnames";
 
+type ButtonType = "button" | "submit";
 type ButtonColorType = "yellow" | "normal";
-type ButtonType = {
+type ButtonTypeProps = {
   text: string;
-  color?: ButtonColorType;
   onClick?(): void;
+  type?: ButtonType;
+  color?: ButtonColorType;
 };
 
-const Button: FC<ButtonType> = ({ text, color, onClick }) => (
+const Button: FC<ButtonTypeProps> = ({ text, color, onClick, type }) => (
   <S.Button
+    type={type}
     onClick={onClick}
     className={classnames({ yellow: color === "yellow" })}
   >
@@ -20,6 +23,7 @@ const Button: FC<ButtonType> = ({ text, color, onClick }) => (
 
 Button.defaultProps = {
   color: "normal",
+  type: "button",
 };
 
 export default Button;

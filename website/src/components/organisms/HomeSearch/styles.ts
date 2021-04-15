@@ -1,12 +1,12 @@
 import styled from "styled-components";
+import { HomeContentLimiter } from "config/constans";
 
 export const HomeSearch = styled.div`
-  width: 80%;
+  width: ${HomeContentLimiter};
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin: 8em 0;
 `;
 
 export const HomeSearchButtons = styled.div`

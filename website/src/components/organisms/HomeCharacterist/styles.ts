@@ -6,12 +6,13 @@ export const HomeCharacteristContainer = styled.div`
   display: flex;
   justify-content: center;
   background-color: ${colors.super_light_black};
-  padding-top: 70px;
-  padding-bottom: 70px;
+  padding: 5em 0;
 `;
 
-export const HomeCharacterist = styled.div`
+export const CharacteristList = styled.div`
   width: 80%;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(5, max-content);
+  column-gap: 4em;
 `;

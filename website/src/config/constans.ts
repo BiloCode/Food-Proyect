@@ -5,3 +5,5 @@ export const FirebaseCollectionNames = {
   branchOffice: "branch_offices",
   administrator: "administrator",
 };
+
+export const HomeContentLimiter = "75%";

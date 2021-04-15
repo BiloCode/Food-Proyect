@@ -10,7 +10,7 @@ export const Button = styled.button`
   outline: none;
   user-select: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1em;
   font-weight: 900;
   border-radius: 10px;
   font-family: var(--font);

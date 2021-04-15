@@ -28,5 +28,5 @@ export const ListOption = styled.ul`
   list-style: none;
   display: grid;
   grid-template-columns: max-content max-content;
-  column-gap: 2em;
+  column-gap: 3em;
 `;

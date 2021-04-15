@@ -11,15 +11,13 @@ export const TextProvisional = styled.span`
 
 export const Container = styled.li`
   display: grid;
-  grid-template-columns: max-content max-content;
-  column-gap: 6px;
+  grid-template-columns: repeat(2, max-content);
+  column-gap: 8px;
   align-items: flex-end;
   cursor: pointer;
   user-select: none;
 
   &:hover {
-    ${TextProvisional}, svg {
-      color: ${colors.normal_yellow};
-    }
+    transform: scale(1.1);
   }
 `;

@@ -8,8 +8,8 @@ export const Characterist = styled.div`
 `;
 
 export const CharacteristIcon = styled.div`
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
   font-size: 50px;
   color: #fff;
   background-color: ${colors.dark_blue};
