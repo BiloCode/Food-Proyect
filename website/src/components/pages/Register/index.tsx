@@ -3,7 +3,6 @@ import * as S from "./styles";
 import { RouteComponentProps } from "@reach/router";
 
 import Title from "components/atoms/Title";
-import FormLogin from "components/organisms/FormLogin";
 import NavigationBar from "components/organisms/NavigationBar";
 import FloatRegistorHome from "components/organisms/FormRegister";
 

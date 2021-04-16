@@ -1,16 +1,17 @@
 import Title from "components/atoms/Title";
 import { FC } from "react";
 import * as S from "./styles";
-import { IoMdMailOpen } from "react-icons/io";
+import { CharacteristType } from "./type";
+import Icon from "components/atoms/Icon";
 
-const Characterist: FC = ({ children }) => {
+const Characterist: FC<CharacteristType> = ({ text, icon }) => {
   return (
     <S.Characterist>
       <S.CharacteristIcon>
-        <IoMdMailOpen />
+        <Icon Type={icon} color="white" size="medium" />
       </S.CharacteristIcon>
       <Title color="black" size="small">
-        {children}
+        {text}
       </Title>
     </S.Characterist>
   );

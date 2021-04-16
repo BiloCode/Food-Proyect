@@ -13,4 +13,8 @@ export const Container = styled.span`
   &.black {
     color: ${colors.light_black};
   }
+
+  &.medium {
+    font-size: 50px;
+  }
 `;
