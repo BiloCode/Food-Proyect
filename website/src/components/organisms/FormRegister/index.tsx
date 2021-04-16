@@ -3,17 +3,21 @@ import * as S from "./styles";
 import Button from "components/atoms/Button";
 import FormControl from "components/molecules/FormControl";
 
-import { BsFillPersonFill, BsLockFill } from "react-icons/bs";
+import {
+  BsFillPersonFill,
+  BsLockFill,
+  BsFillEnvelopeFill,
+} from "react-icons/bs";
 import { useNavigate } from "@reach/router";
 
 type FloatLoginHomeProps = {
   buttonBig?: boolean;
 };
 
-const FloatLoginHome = ({ buttonBig }: FloatLoginHomeProps) => {
+const FloatRegistorHome = ({ buttonBig }: FloatLoginHomeProps) => {
   const navigation = useNavigate();
 
-  const onClickButtonRegister = () => navigation("/register");
+  const onClickButtonLogin = () => navigation("/login");
 
   return (
     <S.FormContent>
@@ -23,19 +27,24 @@ const FloatLoginHome = ({ buttonBig }: FloatLoginHomeProps) => {
           icon={BsFillPersonFill}
           labelText="Nombre de usuario"
         />
+        <FormControl
+          type="email"
+          icon={BsFillEnvelopeFill}
+          labelText="Correo Electrónico"
+        />
 
         <FormControl type="password" icon={BsLockFill} labelText="Contraseña" />
       </S.ControlsContainer>
       <S.ButtonContainer>
-        <Button size={buttonBig ? "big" : "normal"} text="Iniciar Sesión" />
+        <Button size={buttonBig ? "big" : "normal"} text="Terminar registro" />
         <Button
           color="yellow"
-          text="Registrate gratis"
+          text="Regresar al Login"
           size={buttonBig ? "big" : "normal"}
-          onClick={onClickButtonRegister}
+          onClick={onClickButtonLogin}
         />
       </S.ButtonContainer>
     </S.FormContent>
   );
 };
-export default FloatLoginHome;
+export default FloatRegistorHome;
