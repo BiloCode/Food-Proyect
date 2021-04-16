@@ -17,6 +17,10 @@ export const Button = styled.button`
   text-transform: uppercase;
   background-color: ${colors.dark_blue};
 
+  &:not(&.yellow):hover {
+    background-color: ${colors.light_blue};
+  }
+
   &.big {
     height: 50px;
   }
@@ -24,6 +28,10 @@ export const Button = styled.button`
   &.yellow {
     color: ${colors.dark_blue};
     background-color: ${colors.normal_yellow};
+
+    &:hover {
+      background-color: ${colors.light_yellow};
+    }
   }
 
   &:active {

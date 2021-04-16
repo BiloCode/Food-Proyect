@@ -5,6 +5,9 @@ import { useAuthContext } from "context/AuthContext/context";
 const HomeLazy = lazy(() => import("components/pages/Home"));
 const LoginLazy = lazy(() => import("components/pages/Login"));
 const RegisterLazy = lazy(() => import("components/pages/Register"));
+const BranchOfficeLazy = lazy(
+  () => import("components/pages/BranchOfficeList")
+);
 
 const RouterApplication = () => {
   const { user } = useAuthContext();
@@ -12,6 +15,7 @@ const RouterApplication = () => {
   return (
     <Router>
       <HomeLazy path="/" />
+      <BranchOfficeLazy path="/branch-office" />
       {!user && (
         <>
           <LoginLazy path="/login" />

@@ -4,7 +4,7 @@ import { RouteComponentProps } from "@reach/router";
 
 import Title from "components/atoms/Title";
 import NavigationBar from "components/organisms/NavigationBar";
-import FloatRegistorHome from "components/organisms/FormRegister";
+import FormRegister from "components/organisms/FormRegister";
 
 const Login: FC<RouteComponentProps> = () => (
   <div>
@@ -16,7 +16,7 @@ const Login: FC<RouteComponentProps> = () => (
         </Title>
       </S.TitleContainer>
       <S.FormContainer>
-        <FloatRegistorHome buttonBig />
+        <FormRegister />
       </S.FormContainer>
     </S.ContainerBody>
   </div>
