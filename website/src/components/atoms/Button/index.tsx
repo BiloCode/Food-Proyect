@@ -14,13 +14,13 @@ type ButtonTypeProps = {
 };
 
 const Button: FC<ButtonTypeProps> = ({ text, color, onClick, type, size }) => (
-  <S.Button
+  <S.ButtonContainer
     type={type}
     onClick={onClick}
     className={classnames({ yellow: color === "yellow", big: size === "big" })}
   >
     {text}
-  </S.Button>
+  </S.ButtonContainer>
 );
 
 Button.defaultProps = {

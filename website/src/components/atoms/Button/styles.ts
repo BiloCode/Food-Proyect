@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { colors } from "config/colors";
 
-export const Button = styled.button`
+export const ButtonContainer = styled.button`
   width: 100%;
   color: #fff;
   height: 40px;

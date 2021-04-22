@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { HomeContentLimiter } from "config/constans";
+import { homeContentLimiter } from "config/constans";
 
 export const MainContainer = styled.div`
-  width: ${HomeContentLimiter};
+  width: ${homeContentLimiter};
   display: grid;
   grid-template-columns: 380px 1fr;
   column-gap: 40px;
