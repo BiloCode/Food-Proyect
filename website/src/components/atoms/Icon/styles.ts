@@ -14,6 +14,14 @@ export const Container = styled.span`
     color: ${colors.light_black};
   }
 
+  &.blue {
+    color: ${colors.dark_blue};
+  }
+
+  &.small {
+    font-size: 17px;
+  }
+
   &.medium {
     font-size: 50px;
   }

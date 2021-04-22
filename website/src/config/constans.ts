@@ -9,4 +9,4 @@ export const FirebaseCollectionNames = {
 export const homeContentLimiter = "75%";
 export const profileImageSizeSmall = 0;
 export const profileImageSizeBig = 260;
-export const profileLeftColumnSize = profileImageSizeBig;
+export const profileLeftColumnSize = 300;

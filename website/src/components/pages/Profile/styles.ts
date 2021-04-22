@@ -7,4 +7,5 @@ export const ColumnContainer = styled.div`
   margin: 2em auto;
   display: grid;
   grid-template-columns: ${profileLeftColumnSize}px 1fr;
+  column-gap: 4.5em;
 `;

@@ -21,6 +21,10 @@ export const Title = styled.span`
     letter-spacing: 4px;
   }
 
+  &.lowercase {
+    text-transform: none;
+  }
+
   &.small {
     font-size: 0.95em;
   }

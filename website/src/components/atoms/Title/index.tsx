@@ -8,14 +8,22 @@ type sizeType = "small" | "medium" | "large";
 
 export type TitleType = {
   size?: sizeType;
+  lowercase?: boolean;
   color?: TextColorType;
   letterSpacing?: boolean;
 };
 
-const Title: FC<TitleType> = ({ children, color, size, letterSpacing }) => {
+const Title: FC<TitleType> = ({
+  size,
+  color,
+  children,
+  lowercase,
+  letterSpacing,
+}) => {
   return (
     <S.Title
       className={classNames({
+        lowercase,
         large: size === "large",
         small: size === "small",
         medium: size === "medium",

@@ -8,15 +8,16 @@ type UploadIconProps = {
 };
 
 const UploadIcon: FC<UploadIconProps> = ({ Icon, onChange }) => (
-  <S.LabelContainer htmlFor="img_input">
+  <S.LabelContainer htmlFor="upload-image">
     <S.IconContainer>
       <Icon />
     </S.IconContainer>
     <S.InputCustom
       type="file"
-      id="img_input"
       accept="image/*"
+      id="upload-image"
       onChange={onChange}
+      data-testid="file-input"
     />
   </S.LabelContainer>
 );
