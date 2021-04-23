@@ -1,54 +1,44 @@
+import Button from "components/atoms/Button";
 import Description from "components/atoms/Description";
-import Icon from "components/atoms/Icon";
+import Image from "components/atoms/Image";
 import Title from "components/atoms/Title";
-import { IoIosStarOutline, IoIosStar } from "react-icons/io";
+import useStarsRecibed from "hooks/useStarsRecibed";
 import * as S from "./styles";
 
 type StarsType = 0 | 1 | 2 | 3 | 4 | 5;
 
 type SucursalInformationProps = {
-  TextTittle: string;
-  TextDescription: string;
-  Stars: StarsType;
+  textTittle: string;
+  textDescription: string;
+  stars: StarsType;
+  image: string;
 };
 
 const SucursalInformation = ({
-  TextTittle,
-  TextDescription,
-  Stars,
+  textTittle,
+  textDescription,
+  stars,
+  image,
 }: SucursalInformationProps) => {
-  const StarsArray = [1, 2, 3, 4, 5];
-
-  console.log(
-    StarsArray.map((v, i) => {
-      if (v > Stars) {
-        return <Icon key={i} color="yellow" Type={IoIosStarOutline} />;
-      }
-    })
-  );
+  const GetStart = useStarsRecibed(stars);
 
   return (
     <S.SucursalInformationContainer>
-      <Title color="black" size="extra_small">
-        {TextTittle}
-      </Title>
-      <S.SucursalDescriptionContainer>
-        <Description color="black" size="small">
-          {TextDescription}
-        </Description>
-      </S.SucursalDescriptionContainer>
+      <Image src={image} />
       <div>
-        {StarsArray.map((v, i) => {
-          if (v <= Stars) {
-            return <Icon key={i} color="yellow" Type={IoIosStar} />;
-          }
-        })}
-        {StarsArray.map((v, i) => {
-          if (v > Stars) {
-            return <Icon key={i} color="yellow" Type={IoIosStarOutline} />;
-          }
-        })}
+        <S.SucursalTittleContainer>
+          <Title color="black" size="extra_small">
+            {textTittle}
+          </Title>
+        </S.SucursalTittleContainer>
+        <S.SucursalDescriptionContainer>
+          <Description color="black" size="small">
+            {textDescription}
+          </Description>
+        </S.SucursalDescriptionContainer>
+        <div>{GetStart().map((v) => v)}</div>
       </div>
+      <Button type="button" size="small" text="Ver Detalles" color="yellow" />
     </S.SucursalInformationContainer>
   );
 };
