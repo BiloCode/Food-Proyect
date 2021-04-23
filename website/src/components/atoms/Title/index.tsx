@@ -4,7 +4,7 @@ import * as S from "./styles";
 
 import { TextColorType } from "application/types/TextColorType";
 
-type sizeType = "small" | "medium" | "large";
+type sizeType = "extra_small" | "small" | "medium" | "large";
 
 export type TitleType = {
   size?: sizeType;
@@ -24,9 +24,10 @@ const Title: FC<TitleType> = ({
     <S.Title
       className={classNames({
         lowercase,
-        large: size === "large",
+        extra_small: size === "extra_small",
         small: size === "small",
         medium: size === "medium",
+        large: size === "large",
         white: color === "white",
         letter_spacing: letterSpacing,
         light_black: color === "light-black",

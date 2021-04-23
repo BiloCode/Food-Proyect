@@ -12,4 +12,20 @@ export const Container = styled.p`
   &.white {
     color: #fff;
   }
+
+  &.extra_small {
+    font-size: 0.7em;
+  }
+
+  &.small {
+    font-size: 0.95em;
+  }
+
+  &.medium {
+    font-size: 1.1em;
+  }
+
+  &.large {
+    font-size: 1.5em;
+  }
 `;

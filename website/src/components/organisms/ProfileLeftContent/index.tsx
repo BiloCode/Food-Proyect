@@ -16,7 +16,7 @@ const ProfileLeftContent = () => (
         <Title size="medium" color="black">
           # Billy Alexander Paredes Aycho
         </Title>
-        <Description>{faker.lorem.words(15)}</Description>
+        <Description size="medium">{faker.lorem.words(15)}</Description>
       </S.UserAreaTextContainer>
       <S.UserAreaDateContainer>
         <Icon color="blue" size="small" Type={AiFillCalendar} />

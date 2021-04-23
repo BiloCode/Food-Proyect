@@ -25,6 +25,10 @@ export const Title = styled.span`
     text-transform: none;
   }
 
+  &.extra_small {
+    font-size: 0.7em;
+  }
+
   &.small {
     font-size: 0.95em;
   }

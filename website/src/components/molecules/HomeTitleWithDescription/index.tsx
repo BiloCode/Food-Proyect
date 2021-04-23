@@ -33,7 +33,9 @@ const HomeTitleWithDescription = ({
         </Title>
       </S.TitleContainer>
       <S.DescriptionContainer>
-        <Description color={color}>{description}</Description>
+        <Description color={color} size="medium">
+          {description}
+        </Description>
       </S.DescriptionContainer>
     </S.MainContainer>
   );
