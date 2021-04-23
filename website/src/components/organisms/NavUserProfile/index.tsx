@@ -1,7 +1,7 @@
 import firebase from "firebase";
-import { FC, useState } from "react";
+import { FC } from "react";
 import { FiChevronDown } from "react-icons/fi";
-import { useLocation, useNavigate } from "@reach/router";
+import { useNavigate } from "@reach/router";
 import * as S from "./styles";
 
 import { BiUser, BiDoorOpen } from "react-icons/bi";
@@ -18,16 +18,12 @@ type NavUserProfileProps = {
 
 const NavUserProfile: FC<NavUserProfileProps> = ({ _id, profileImage }) => {
   const navigate = useNavigate();
-  const location = useLocation();
+
   const { active, toggleActive } = useActive();
 
   const logOut = () => firebase.auth().signOut();
   const navigateToProfile = () => {
-    if (location.pathname.split("/").includes("user")) {
-      toggleActive();
-      return;
-    }
-
+    toggleActive();
     navigate(`/user/${_id}`);
   };
 

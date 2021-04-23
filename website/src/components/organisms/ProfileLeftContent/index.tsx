@@ -1,6 +1,10 @@
+import { FC } from "react";
 import * as S from "./styles";
-import { AiFillCalendar } from "react-icons/ai";
 import faker from "faker";
+
+import { useParams } from "@reach/router";
+
+import { AiFillCalendar } from "react-icons/ai";
 
 import Title from "components/atoms/Title";
 import Button from "components/atoms/Button";
@@ -8,13 +12,23 @@ import Description from "components/atoms/Description";
 import ImageProfileArea from "components/molecules/ImageProfileArea";
 import Icon from "components/atoms/Icon";
 
-const ProfileLeftContent = () => (
+type ProfileLeftContentProps = {
+  isUserProfile: boolean;
+  fullName: string;
+  profileImage: string;
+};
+
+const ProfileLeftContent: FC<ProfileLeftContentProps> = ({
+  isUserProfile,
+  fullName,
+  profileImage,
+}) => (
   <S.MainContainer>
     <S.UserAreaContainer>
-      <ImageProfileArea image={faker.image.people()} />
+      <ImageProfileArea isUserProfile={isUserProfile} image={profileImage} />
       <S.UserAreaTextContainer>
         <Title size="medium" color="black">
-          # Billy Alexander Paredes Aycho
+          # {fullName}
         </Title>
         <Description size="medium">{faker.lorem.words(15)}</Description>
       </S.UserAreaTextContainer>

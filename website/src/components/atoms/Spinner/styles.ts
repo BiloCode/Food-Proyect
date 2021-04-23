@@ -6,10 +6,10 @@ const animationRotate = keyframes`
 `;
 
 export const SpinnerElement = styled.div`
-  width: 32px;
-  height: 32px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  border: 4px solid ${colors.dark_blue};
+  border: 5px solid ${colors.dark_blue};
   border-bottom-color: ${colors.super_light_black};
-  animation: ${animationRotate} 0.6s infinite linear;
+  animation: ${animationRotate} 0.4s infinite linear;
 `;

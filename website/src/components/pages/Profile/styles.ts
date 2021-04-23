@@ -9,3 +9,11 @@ export const ColumnContainer = styled.div`
   grid-template-columns: ${profileLeftColumnSize}px 1fr;
   column-gap: 4.5em;
 `;
+
+export const SpinnerContainer = styled.div`
+  width: 100%;
+  margin: 4em 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
