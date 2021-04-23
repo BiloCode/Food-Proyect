@@ -22,6 +22,10 @@ export const Container = styled.span`
     color: ${colors.normal_yellow};
   }
 
+  &.gray {
+    color: ${colors.gray};
+  }
+
   &.small {
     font-size: 17px;
   }

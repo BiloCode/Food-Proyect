@@ -2,59 +2,71 @@ import SucursalInformationContainer from "components/molecules/SucursalInformati
 import faker from "faker";
 import * as S from "./styles";
 
+import image from "assets/images/BranchOfficeBembos.jpg";
+
 const SucursalContent = () => {
   return (
     <S.SucursalContentContainer>
       <SucursalInformationContainer
-        TextTittle="Sucursal Megaplaza - av. 145"
-        TextDescription={faker.lorem.words(20)}
-        Stars={4}
+        image={image}
+        textTittle="Sucursal Megaplaza - av. 145"
+        textDescription={faker.lorem.words(20)}
+        stars={1}
       />
       <SucursalInformationContainer
-        TextTittle="Sucursal Megaplaza - av. 145"
-        TextDescription={faker.lorem.words(20)}
-        Stars={3}
+        image={image}
+        textTittle="Sucursal Megaplaza - av. 145"
+        textDescription={faker.lorem.words(20)}
+        stars={3}
       />
       <SucursalInformationContainer
-        TextTittle="Sucursal Megaplaza - av. 145"
-        TextDescription={faker.lorem.words(20)}
-        Stars={5}
+        image={image}
+        textTittle="Sucursal Megaplaza - av. 145"
+        textDescription={faker.lorem.words(20)}
+        stars={5}
       />
       <SucursalInformationContainer
-        TextTittle="Sucursal Megaplaza - av. 145"
-        TextDescription={faker.lorem.words(20)}
-        Stars={1}
+        image={image}
+        textTittle="Sucursal Megaplaza - av. 145"
+        textDescription={faker.lorem.words(20)}
+        stars={1}
       />
       <SucursalInformationContainer
-        TextTittle="Sucursal Megaplaza - av. 145"
-        TextDescription={faker.lorem.words(20)}
-        Stars={2}
+        image={image}
+        textTittle="Sucursal Megaplaza - av. 145"
+        textDescription={faker.lorem.words(20)}
+        stars={2}
       />
       <SucursalInformationContainer
-        TextTittle="Sucursal Megaplaza - av. 145"
-        TextDescription={faker.lorem.words(20)}
-        Stars={3}
+        image={image}
+        textTittle="Sucursal Megaplaza - av. 145"
+        textDescription={faker.lorem.words(20)}
+        stars={3}
       />
       <SucursalInformationContainer
-        TextTittle="Sucursal Megaplaza - av. 145"
-        TextDescription={faker.lorem.words(20)}
-        Stars={4}
+        image={image}
+        textTittle="Sucursal Megaplaza - av. 145"
+        textDescription={faker.lorem.words(20)}
+        stars={4}
       />
       <SucursalInformationContainer
-        TextTittle="Sucursal Megaplaza - av. 145"
-        TextDescription={faker.lorem.words(20)}
-        Stars={2}
+        image={image}
+        textTittle="Sucursal Megaplaza - av. 145"
+        textDescription={faker.lorem.words(20)}
+        stars={2}
       />
       <SucursalInformationContainer
-        TextTittle="Sucursal Megaplaza - av. 145"
-        TextDescription={faker.lorem.words(20)}
-        Stars={1}
+        image={image}
+        textTittle="Sucursal Megaplaza - av. 145"
+        textDescription={faker.lorem.words(20)}
+        stars={1}
       />
 
       <SucursalInformationContainer
-        TextTittle="Sucursal Megaplaza - av. 145"
-        TextDescription={faker.lorem.words(20)}
-        Stars={0}
+        image={image}
+        textTittle="Sucursal Megaplaza - av. 145"
+        textDescription={faker.lorem.words(20)}
+        stars={0}
       />
     </S.SucursalContentContainer>
   );

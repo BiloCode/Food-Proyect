@@ -31,6 +31,7 @@ const Title: FC<TitleType> = ({
         white: color === "white",
         letter_spacing: letterSpacing,
         light_black: color === "light-black",
+        blue: color === "blue",
       })}
     >
       {children}

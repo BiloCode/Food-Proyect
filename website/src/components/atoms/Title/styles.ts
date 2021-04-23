@@ -17,6 +17,10 @@ export const Title = styled.span`
     color: ${colors.light_black};
   }
 
+  &.blue {
+    color: ${colors.dark_blue};
+  }
+
   &.letter_spacing {
     letter-spacing: 4px;
   }

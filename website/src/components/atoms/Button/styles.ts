@@ -21,6 +21,11 @@ export const ButtonContainer = styled.button`
     background-color: ${colors.light_blue};
   }
 
+  &.small {
+    font-size: 0.8em;
+    height: 32px;
+  }
+
   &.big {
     height: 50px;
   }
