@@ -1,9 +1,11 @@
-import { colors } from "config/colors";
 import styled from "styled-components";
+
+import { colors } from "config/colors";
+import { navBarHeight } from "config/constans";
 
 export const ContainerNav = styled.nav`
   width: 100%;
-  height: 90px;
+  height: ${navBarHeight}px;
   position: sticky;
   top: 0;
   z-index: 1;
@@ -15,11 +17,16 @@ export const ContainerNav = styled.nav`
   justify-content: space-between;
 `;
 
-export const ContainerOptions = styled.div`
+type ContainerOptionsType = {
+  gridFluid?: boolean;
+};
+
+export const ContainerOptions = styled.div<ContainerOptionsType>`
   display: grid;
   align-items: center;
-  grid-template-columns: 1fr 250px;
-  column-gap: 4em;
+  grid-template-columns: 1fr ${({ gridFluid }) =>
+      gridFluid ? "max-content" : "250px"};
+  column-gap: ${({ gridFluid }) => (gridFluid ? "6em" : "4em")};
 `;
 
 export const ListOption = styled.ul`

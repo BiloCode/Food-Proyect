@@ -6,6 +6,7 @@ export const FirebaseCollectionNames = {
   administrator: "administrator",
 };
 
+export const navBarHeight = 90;
 export const homeContentLimiter = "75%";
 export const profileImageSizeSmall = 0;
 export const profileImageSizeBig = 260;

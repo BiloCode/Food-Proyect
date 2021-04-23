@@ -7,6 +7,7 @@ import Logo from "assets/images/Logo.svg";
 
 import Image from "components/atoms/Image";
 import Button from "components/atoms/Button";
+import NavUserProfile from "../NavUserProfile";
 import NavbarOption from "components/molecules/NavbarOption";
 
 import { useAuthContext } from "context/AuthContext/context";
@@ -24,7 +25,7 @@ const NavigationBar = () => {
       <div>
         <Image src={Logo} />
       </div>
-      <S.ContainerOptions>
+      <S.ContainerOptions gridFluid={user != null}>
         <S.ListOption>
           <NavbarOption
             Icon={AiFillHome}
@@ -37,12 +38,14 @@ const NavigationBar = () => {
             onClick={onClickButtonBranchOffices}
           />
         </S.ListOption>
-        {!user && (
+        {!user ? (
           <Button
             color="yellow"
             text="Iniciar Sesión"
             onClick={onClickButtonLogin}
           />
+        ) : (
+          <NavUserProfile _id={user._id} profileImage={user.profileImage.url} />
         )}
       </S.ContainerOptions>
     </S.ContainerNav>

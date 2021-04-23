@@ -20,7 +20,7 @@ const RouterApplication = () => {
     <Router>
       <HomeLazy path="/" />
       <BranchOfficeLazy path="/branch-office" />
-      <ProfileLazy path="/profile/:id" />
+      <ProfileLazy path="/user/:id" />
       {!user && (
         <>
           <LoginLazy path="/login" />

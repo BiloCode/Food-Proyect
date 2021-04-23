@@ -1,13 +1,14 @@
+import { ChangeEvent } from "react";
 import * as S from "./styles";
 
 export type InputType = "text" | "password" | "email";
 export type InputProps = {
   type?: InputType;
-  onChange?(): void;
+  onChange?(ev: ChangeEvent<HTMLInputElement>): void;
 };
 
 const Input = ({ type, onChange }: InputProps) => (
-  <S.CustomInput onChange={onChange} type={type} />
+  <S.CustomInput onChange={onChange} required type={type} />
 );
 
 Input.defaultProps = {

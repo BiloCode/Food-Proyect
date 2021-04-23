@@ -8,7 +8,6 @@ export const MainContainer = styled.div`
   width: var(--size);
   height: var(--size);
   border-radius: 50%;
-  overflow: hidden;
   background-color: rgb(235, 235, 235);
 
   &.big {

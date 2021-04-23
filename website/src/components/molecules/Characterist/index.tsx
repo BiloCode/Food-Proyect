@@ -10,9 +10,7 @@ const Characterist: FC<CharacteristType> = ({ text, icon }) => {
       <S.CharacteristIcon>
         <Icon Type={icon} color="white" size="medium" />
       </S.CharacteristIcon>
-      <Title color="black" size="medium">
-        {text}
-      </Title>
+      <Title size="small">{text}</Title>
     </S.Characterist>
   );
 };

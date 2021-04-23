@@ -1,19 +1,22 @@
-import firebase from "firebase";
 import { FC, useEffect, useState } from "react";
+import firebase from "firebase";
 
-import { AuthContext, UserAuthContextType } from "./context";
+import GetUserById from "application/core/GetUserById";
+import { ClientModelType } from "application/types/ClientModelType";
+import { AuthContext } from "./context";
 
 const AuthProvider: FC = ({ children }) => {
-  const [user, setUser] = useState<UserAuthContextType>(null);
+  const [user, setUser] = useState<ClientModelType>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth().onAuthStateChanged(async (user) => {
       if (user) {
+        const getUserService = new GetUserById();
+        const userData = await getUserService.__invoke(user.uid);
+
+        setUser(() => userData);
         setIsLoading(() => false);
-        setUser(() => ({
-          _id: user.uid,
-        }));
         return;
       }
 

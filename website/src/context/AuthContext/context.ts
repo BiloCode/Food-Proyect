@@ -1,11 +1,8 @@
+import { ClientModelType } from "application/types/ClientModelType";
 import { createContext, useContext } from "react";
 
-export type UserAuthContextType = {
-  _id: string;
-};
-
 type AuthContextType = {
-  user?: UserAuthContextType;
+  user?: ClientModelType;
   isLoading: boolean;
 };
 
