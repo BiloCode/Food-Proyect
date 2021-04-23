@@ -1,13 +1,17 @@
 import { createContext, useContext } from "react";
 
+export type UserAuthContextType = {
+  _id: string;
+};
+
 type AuthContextType = {
-  user: null;
+  user?: UserAuthContextType;
   isLoading: boolean;
 };
 
 export const AuthContext = createContext<AuthContextType>({
   user: null,
-  isLoading: false,
+  isLoading: true,
 });
 
 export const useAuthContext = () => useContext(AuthContext);

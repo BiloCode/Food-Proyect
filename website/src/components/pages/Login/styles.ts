@@ -17,16 +17,3 @@ export const TitleContainer = styled.div`
 export const FormContainer = styled.div`
   width: 100%;
 `;
-
-export const BottomMessage = styled.p`
-  width: 100%;
-  user-select: none;
-  text-align: center;
-  font-family: var(--font);
-
-  span {
-    font-weight: bold;
-    cursor: pointer;
-    color: ${colors.dark_blue};
-  }
-`;

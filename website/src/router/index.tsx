@@ -1,6 +1,7 @@
 import { lazy } from "react";
 import { Router } from "@reach/router";
 import { useAuthContext } from "context/AuthContext/context";
+import RedirectToHome from "components/pages/RedirectToHome";
 
 const HomeLazy = lazy(() => import("components/pages/Home"));
 const LoginLazy = lazy(() => import("components/pages/Login"));
@@ -11,7 +12,9 @@ const BranchOfficeLazy = lazy(
 );
 
 const RouterApplication = () => {
-  const { user } = useAuthContext();
+  const { user, isLoading } = useAuthContext();
+
+  if (isLoading) return null;
 
   return (
     <Router>
@@ -24,6 +27,7 @@ const RouterApplication = () => {
           <RegisterLazy path="/register" />
         </>
       )}
+      <RedirectToHome path="*" />
     </Router>
   );
 };

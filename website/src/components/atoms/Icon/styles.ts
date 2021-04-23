@@ -18,6 +18,10 @@ export const Container = styled.span`
     color: ${colors.dark_blue};
   }
 
+  &.yellow {
+    color: ${colors.normal_yellow};
+  }
+
   &.small {
     font-size: 17px;
   }

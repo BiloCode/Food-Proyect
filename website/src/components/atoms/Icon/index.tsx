@@ -3,7 +3,7 @@ import classnames from "classnames";
 import { IconType } from "react-icons";
 import * as S from "./styles";
 
-type IconColorType = "white" | "black" | "blue";
+type IconColorType = "white" | "black" | "blue" | "yellow";
 type IconSizeType = "small" | "medium" | "large";
 type IconProps = {
   Type: IconType;
@@ -19,6 +19,7 @@ const Icon: FC<IconProps> = ({ Type, color, size }) => (
       blue: color === "blue",
       small: size === "small",
       medium: size === "medium",
+      yellow: color === "yellow",
     })}
   >
     {<Type />}

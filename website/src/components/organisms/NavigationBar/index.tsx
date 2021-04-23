@@ -9,7 +9,10 @@ import Image from "components/atoms/Image";
 import Button from "components/atoms/Button";
 import NavbarOption from "components/molecules/NavbarOption";
 
+import { useAuthContext } from "context/AuthContext/context";
+
 const NavigationBar = () => {
+  const { user } = useAuthContext();
   const navigation = useNavigate();
 
   const onClickButtonHome = () => navigation("/");
@@ -34,11 +37,13 @@ const NavigationBar = () => {
             onClick={onClickButtonBranchOffices}
           />
         </S.ListOption>
-        <Button
-          color="yellow"
-          text="Iniciar Sesión"
-          onClick={onClickButtonLogin}
-        />
+        {!user && (
+          <Button
+            color="yellow"
+            text="Iniciar Sesión"
+            onClick={onClickButtonLogin}
+          />
+        )}
       </S.ContainerOptions>
     </S.ContainerNav>
   );

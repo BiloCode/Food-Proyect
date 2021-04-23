@@ -1,7 +1,39 @@
-// Example
+import firebase from "firebase";
+
+import { FirebaseCollectionNames } from "config/constans";
+import { AuthenticationType } from "application/types/AuthtenticationType";
+import { FirebaseImageType } from "application/types/FirebaseImageType";
+
+type CreateUserParams = {
+  _id: string;
+  type: AuthenticationType;
+  data: {
+    email: string;
+    fullName: string;
+    profileImage: FirebaseImageType;
+  };
+};
 
 class CreateNewUser {
-  public __invoke() {}
+  public async __invoke(params: CreateUserParams) {
+    const firestore = firebase.firestore();
+
+    try {
+      await firestore
+        .collection(FirebaseCollectionNames.client)
+        .doc(params._id)
+        .set({
+          ...params.data,
+          createdAt: firebase.firestore.Timestamp.now(),
+          authenticationType: params.type,
+        });
+
+      return true;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
 }
 
 export default CreateNewUser;
