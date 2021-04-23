@@ -9,8 +9,14 @@ const SucursalSlider = () => {
   return (
     <S.SucursalSliderContainer>
       <Image src={Image01} />
-      <Icon color="white" size="medium" Type={IoIosArrowBack} />
-      <Icon color="white" size="medium" Type={IoIosArrowForward} />
+      <S.SucursalSliderArrows>
+        <S.SucursalArrow>
+          <Icon color="white" size="medium" Type={IoIosArrowBack} />
+        </S.SucursalArrow>
+        <S.SucursalArrow>
+          <Icon color="white" size="medium" Type={IoIosArrowForward} />
+        </S.SucursalArrow>
+      </S.SucursalSliderArrows>
     </S.SucursalSliderContainer>
   );
 };
