@@ -1,5 +1,27 @@
+import classnames from "classnames";
+import { FC } from "react";
 import * as S from "./styles";
 
-const Spinner = () => <S.SpinnerElement></S.SpinnerElement>;
+type SpinnerSizeType = "small" | "big";
+type SpinnerColorType = "white" | "blue";
+type SpinnerProps = {
+  size?: SpinnerSizeType;
+  color?: SpinnerColorType;
+};
+
+const Spinner: FC<SpinnerProps> = ({ size, color }) => (
+  <S.SpinnerElement
+    className={classnames({
+      blue: color === "blue",
+      white: color === "white",
+      big: size === "big",
+      small: size === "small",
+    })}
+  ></S.SpinnerElement>
+);
+
+Spinner.defaultProps = {
+  color: "blue",
+};
 
 export default Spinner;

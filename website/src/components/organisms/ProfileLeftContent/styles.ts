@@ -29,6 +29,5 @@ export const UserAreaDateContainer = styled.div`
 export const UserAreaDateText = styled.div`
   font-family: var(--font);
   font-weight: 400;
-  font-size: 0.9em;
   color: ${colors.dark_blue};
 `;

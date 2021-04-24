@@ -2,35 +2,54 @@ import { FC } from "react";
 import * as S from "./styles";
 import classnames from "classnames";
 
+import Spinner from "../Spinner";
+
 type ButtonType = "button" | "submit";
 type ButtonColorType = "yellow" | "normal";
 type ButtonSizeType = "small" | "normal" | "big";
 type ButtonTypeProps = {
   text: string;
   onClick?(): void;
+  isLoading?: boolean;
   type?: ButtonType;
-  size?: ButtonSizeType;
-  color?: ButtonColorType;
+  styles?: {
+    size?: ButtonSizeType;
+    color?: ButtonColorType;
+  };
 };
 
-const Button: FC<ButtonTypeProps> = ({ text, color, onClick, type, size }) => (
+const Button: FC<ButtonTypeProps> = ({
+  text,
+  type,
+  styles,
+  onClick,
+  isLoading,
+}) => (
   <S.ButtonContainer
     type={type}
     onClick={onClick}
     className={classnames({
-      yellow: color === "yellow",
-      small: size === "small",
-      big: size === "big",
+      big: styles.size === "big",
+      small: styles.size === "small",
+      yellow: styles.color === "yellow",
     })}
   >
-    {text}
+    {!isLoading ? (
+      text
+    ) : (
+      <S.ButtonContainerSpinner>
+        <Spinner size="small" color="white" />
+      </S.ButtonContainerSpinner>
+    )}
   </S.ButtonContainer>
 );
 
 Button.defaultProps = {
-  size: "normal",
   type: "button",
-  color: "normal",
+  styles: {
+    size: "normal",
+    color: "normal",
+  },
 };
 
 export default Button;

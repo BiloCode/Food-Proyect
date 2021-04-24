@@ -42,12 +42,11 @@ const FloatLoginHome = ({ buttonBig }: FloatLoginHomeProps) => {
         <Button
           type="submit"
           text="Iniciar Sesión"
-          size={buttonBig ? "big" : "normal"}
+          styles={{ size: buttonBig ? "big" : "normal" }}
         />
         <Button
-          color="yellow"
+          styles={{ size: buttonBig ? "big" : "normal", color: "yellow" }}
           text="Registrate gratis"
-          size={buttonBig ? "big" : "normal"}
           onClick={onClickButtonRegister}
         />
       </S.ButtonContainer>

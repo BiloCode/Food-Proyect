@@ -13,19 +13,22 @@ import ImageProfileArea from "components/molecules/ImageProfileArea";
 import Icon from "components/atoms/Icon";
 
 type ProfileLeftContentProps = {
-  isUserProfile: boolean;
+  isCurrentUserProfile: boolean;
   fullName: string;
   profileImage: string;
 };
 
 const ProfileLeftContent: FC<ProfileLeftContentProps> = ({
-  isUserProfile,
+  isCurrentUserProfile,
   fullName,
   profileImage,
 }) => (
   <S.MainContainer>
     <S.UserAreaContainer>
-      <ImageProfileArea isUserProfile={isUserProfile} image={profileImage} />
+      <ImageProfileArea
+        isCurrentUserProfile={isCurrentUserProfile}
+        image={profileImage}
+      />
       <S.UserAreaTextContainer>
         <Title size="medium" color="black">
           # {fullName}

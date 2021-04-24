@@ -38,7 +38,13 @@ const SucursalInformation = ({
         </S.SucursalDescriptionContainer>
         <div>{GetStart().map((v) => v)}</div>
       </div>
-      <Button type="button" size="small" text="Ver Detalles" color="yellow" />
+      <Button
+        text="Ver Detalles"
+        styles={{
+          size: "small",
+          color: "yellow",
+        }}
+      />
     </S.SucursalInformationContainer>
   );
 };

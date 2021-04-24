@@ -27,10 +27,9 @@ const FormRegister = () => {
         <FormControl type="password" icon={BsLockFill} labelText="Contraseña" />
       </S.ControlsContainer>
       <S.ButtonContainer>
-        <Button size="big" text="Terminar registro" />
+        <Button styles={{ size: "big" }} text="Terminar registro" />
         <Button
-          size="big"
-          color="yellow"
+          styles={{ size: "big", color: "yellow" }}
           text="Regresar al Login"
           onClick={onClickButtonLogin}
         />

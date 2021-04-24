@@ -27,7 +27,7 @@ export const Container = styled.span`
   }
 
   &.small {
-    font-size: 17px;
+    font-size: 18px;
   }
 
   &.medium {

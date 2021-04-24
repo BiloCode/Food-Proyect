@@ -40,8 +40,8 @@ const NavigationBar = () => {
         </S.ListOption>
         {!user ? (
           <Button
-            color="yellow"
             text="Iniciar Sesión"
+            styles={{ color: "yellow" }}
             onClick={onClickButtonLogin}
           />
         ) : (

@@ -11,12 +11,12 @@ import FilesCheckingIsImage from "application/core/FileCheckingIsImage";
 
 type ImageProfileAreaProps = {
   image: string;
-  isUserProfile: boolean;
+  isCurrentUserProfile?: boolean;
 };
 
 const ImageProfileArea: FC<ImageProfileAreaProps> = ({
   image,
-  isUserProfile,
+  isCurrentUserProfile,
 }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [profileImageLocal, setProfileImageLocal] = useState<string>(image);
@@ -44,7 +44,7 @@ const ImageProfileArea: FC<ImageProfileAreaProps> = ({
           <span>Loading...</span>
         </S.SpinnerContainer>
       )}
-      {isUserProfile && (
+      {isCurrentUserProfile && (
         <S.UploadIconContainer>
           {!isLoading && (
             <UploadIcon onChange={onChange} Icon={GoCloudUpload} />

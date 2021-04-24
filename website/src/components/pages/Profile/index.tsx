@@ -50,12 +50,12 @@ const Profile: FC<RouteComponentProps> = () => {
       <NavigationBar />
       {isLoading ? (
         <S.SpinnerContainer>
-          <Spinner />
+          <Spinner size="big" />
         </S.SpinnerContainer>
       ) : (
         <S.ColumnContainer>
           <ProfileLeftContent
-            isUserProfile={currentClientInView._id === user?._id}
+            isCurrentUserProfile={currentClientInView._id === user?._id}
             fullName={currentClientInView.fullName}
             profileImage={currentClientInView.profileImage.url}
           />

@@ -43,3 +43,11 @@ export const ButtonContainer = styled.button`
     transform: scale(0.95);
   }
 `;
+
+export const ButtonContainerSpinner = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

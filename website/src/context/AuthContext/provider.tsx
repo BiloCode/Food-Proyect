@@ -10,7 +10,7 @@ const AuthProvider: FC = ({ children }) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(async (user) => {
+    const authStateChanged = async (user) => {
       if (user) {
         const getUserService = new GetUserById();
         const userData = await getUserService.__invoke(user.uid);
@@ -22,7 +22,9 @@ const AuthProvider: FC = ({ children }) => {
 
       setUser(() => null);
       setIsLoading(() => false);
-    });
+    };
+
+    firebase.auth().onAuthStateChanged(authStateChanged);
   }, []);
 
   return (
