@@ -2,7 +2,7 @@ import Button from "components/atoms/Button";
 import Description from "components/atoms/Description";
 import Image from "components/atoms/Image";
 import Title from "components/atoms/Title";
-import Stars from "../Stars";
+import StarListPuntuaction from "../StarListPuntuaction";
 import * as S from "./styles";
 
 type StarsType = 0 | 1 | 2 | 3 | 4 | 5;
@@ -14,27 +14,27 @@ type SucursalInformationProps = {
   image: string;
 };
 
-const SucursalInformation = ({
+const BranchOfficeInformation = ({
   textTittle,
   textDescription,
   stars,
   image,
 }: SucursalInformationProps) => {
   return (
-    <S.SucursalInformationContainer>
+    <S.Container>
       <Image src={image} />
       <div>
-        <S.SucursalTittleContainer>
+        <S.TittleContainer>
           <Title color="black" size="extra_small">
             {textTittle}
           </Title>
-        </S.SucursalTittleContainer>
-        <S.SucursalDescriptionContainer>
+        </S.TittleContainer>
+        <S.DescriptionContainer>
           <Description color="black" size="small">
             {textDescription}
           </Description>
-        </S.SucursalDescriptionContainer>
-        <Stars stars={stars} />
+        </S.DescriptionContainer>
+        <StarListPuntuaction stars={stars} />
       </div>
       <Button
         text="Ver Detalles"
@@ -43,8 +43,8 @@ const SucursalInformation = ({
           color: "yellow",
         }}
       />
-    </S.SucursalInformationContainer>
+    </S.Container>
   );
 };
 
-export default SucursalInformation;
+export default BranchOfficeInformation;

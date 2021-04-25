@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SucursalFilterContainer = styled.div`
+export const Container = styled.div`
   display: grid;
   grid-template-rows: max-content max-content;
 `;

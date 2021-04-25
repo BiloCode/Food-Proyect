@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SucursalContentContainer = styled.div`
+export const Container = styled.div`
   width: 85%;
   margin-bottom: 5em;
   display: grid;

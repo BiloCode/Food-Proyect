@@ -7,7 +7,7 @@ import Image02 from "assets/images/Hamburguesa_02.jpg";
 import Icon from "components/atoms/Icon";
 import { LegacyRef, useRef } from "react";
 
-const SucursalSlider = () => {
+const Slider = () => {
   const images = [Image01, Image02];
 
   const ImagesRef: LegacyRef<HTMLDivElement> = useRef(null);
@@ -21,24 +21,24 @@ const SucursalSlider = () => {
   };
 
   return (
-    <S.SucursalSliderContainer>
-      <S.SucursalSliderImages ref={ImagesRef}>
+    <S.Container>
+      <S.SliderImages ref={ImagesRef}>
         {images.map((v, i) => (
           <S.Image key={i}>
             <Image src={v} />
           </S.Image>
         ))}
-      </S.SucursalSliderImages>
-      <S.SucursalSliderArrows>
-        <S.SucursalArrow onClick={onClickPrevius}>
+      </S.SliderImages>
+      <S.ArrowsContainer>
+        <S.Arrow onClick={onClickPrevius}>
           <Icon color="white" size="medium" Type={IoIosArrowBack} />
-        </S.SucursalArrow>
-        <S.SucursalArrow onClick={onClickNext}>
+        </S.Arrow>
+        <S.Arrow onClick={onClickNext}>
           <Icon color="white" size="medium" Type={IoIosArrowForward} />
-        </S.SucursalArrow>
-      </S.SucursalSliderArrows>
-    </S.SucursalSliderContainer>
+        </S.Arrow>
+      </S.ArrowsContainer>
+    </S.Container>
   );
 };
 
-export default SucursalSlider;
+export default Slider;

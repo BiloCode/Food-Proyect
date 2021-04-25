@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SucursalFilterContainer = styled.div`
+export const Container = styled.div`
   width: 80%;
   display: flex;
   justify-content: space-between;

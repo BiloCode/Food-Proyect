@@ -1,75 +1,75 @@
-import SucursalInformationContainer from "components/molecules/SucursalInformation";
+import BranchOfficeInformation from "components/molecules/BranchOfficeInformation";
 import faker from "faker";
 import * as S from "./styles";
 
 import image from "assets/images/BranchOfficeBembos.jpg";
 
-const SucursalContent = () => {
+const BranchOfficeContent = () => {
   return (
-    <S.SucursalContentContainer>
-      <SucursalInformationContainer
+    <S.Container>
+      <BranchOfficeInformation
         image={image}
         textTittle="Sucursal Megaplaza - av. 145"
         textDescription={faker.lorem.words(20)}
         stars={1}
       />
-      <SucursalInformationContainer
+      <BranchOfficeInformation
         image={image}
         textTittle="Sucursal Megaplaza - av. 145"
         textDescription={faker.lorem.words(20)}
         stars={3}
       />
-      <SucursalInformationContainer
+      <BranchOfficeInformation
         image={image}
         textTittle="Sucursal Megaplaza - av. 145"
         textDescription={faker.lorem.words(20)}
         stars={5}
       />
-      <SucursalInformationContainer
+      <BranchOfficeInformation
         image={image}
         textTittle="Sucursal Megaplaza - av. 145"
         textDescription={faker.lorem.words(20)}
         stars={1}
       />
-      <SucursalInformationContainer
+      <BranchOfficeInformation
         image={image}
         textTittle="Sucursal Megaplaza - av. 145"
         textDescription={faker.lorem.words(20)}
         stars={2}
       />
-      <SucursalInformationContainer
+      <BranchOfficeInformation
         image={image}
         textTittle="Sucursal Megaplaza - av. 145"
         textDescription={faker.lorem.words(20)}
         stars={3}
       />
-      <SucursalInformationContainer
+      <BranchOfficeInformation
         image={image}
         textTittle="Sucursal Megaplaza - av. 145"
         textDescription={faker.lorem.words(20)}
         stars={4}
       />
-      <SucursalInformationContainer
+      <BranchOfficeInformation
         image={image}
         textTittle="Sucursal Megaplaza - av. 145"
         textDescription={faker.lorem.words(20)}
         stars={2}
       />
-      <SucursalInformationContainer
+      <BranchOfficeInformation
         image={image}
         textTittle="Sucursal Megaplaza - av. 145"
         textDescription={faker.lorem.words(20)}
         stars={1}
       />
 
-      <SucursalInformationContainer
+      <BranchOfficeInformation
         image={image}
         textTittle="Sucursal Megaplaza - av. 145"
         textDescription={faker.lorem.words(20)}
         stars={0}
       />
-    </S.SucursalContentContainer>
+    </S.Container>
   );
 };
 
-export default SucursalContent;
+export default BranchOfficeContent;

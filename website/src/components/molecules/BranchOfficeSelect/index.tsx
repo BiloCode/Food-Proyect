@@ -3,24 +3,24 @@ import { IoIosArrowDown } from "react-icons/io";
 import Icon from "components/atoms/Icon";
 import { useState } from "react";
 
-const SucursalSelect = () => {
+const BranchOfficeSelect = () => {
   const [active, setActive] = useState<Boolean>(false);
 
   const toggleActive = () => setActive((value) => !value);
 
   return (
-    <S.SucursalSelectContainer onClick={toggleActive}>
+    <S.Container onClick={toggleActive}>
       <span>Ver Todos</span>
       <Icon size="small" color="gray" Type={IoIosArrowDown} />
       {active && (
-        <S.SucursalOptionsContainer>
-          <S.SucursalOption>Ver Todos</S.SucursalOption>
-          <S.SucursalOption>Carnico</S.SucursalOption>
-          <S.SucursalOption>Vegetariano</S.SucursalOption>
-        </S.SucursalOptionsContainer>
+        <S.OptionsContainer>
+          <S.Option>Ver Todos</S.Option>
+          <S.Option>Carnico</S.Option>
+          <S.Option>Vegetariano</S.Option>
+        </S.OptionsContainer>
       )}
-    </S.SucursalSelectContainer>
+    </S.Container>
   );
 };
 
-export default SucursalSelect;
+export default BranchOfficeSelect;

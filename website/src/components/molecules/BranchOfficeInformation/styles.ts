@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SucursalInformationContainer = styled.div`
+export const Container = styled.div`
   width: 100%;
   padding: 1.8em 1em;
   box-sizing: border-box;
@@ -10,7 +10,7 @@ export const SucursalInformationContainer = styled.div`
   row-gap: 1em;
 `;
 
-export const SucursalDescriptionContainer = styled.div`
+export const DescriptionContainer = styled.div`
   width: 100%;
   height: 2.5em;
   margin-bottom: 0.5em;
@@ -18,7 +18,7 @@ export const SucursalDescriptionContainer = styled.div`
   overflow: hidden;
 `;
 
-export const SucursalTittleContainer = styled.div`
+export const TittleContainer = styled.div`
   width: 100%;
   margin-bottom: 0.2em;
 `;

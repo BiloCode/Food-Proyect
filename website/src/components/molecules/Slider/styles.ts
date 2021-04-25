@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-export const SucursalSliderContainer = styled.div`
+export const Container = styled.div`
   width: 100%;
   height: 370px;
   overflow: hidden;
   position: relative;
 `;
 
-export const SucursalSliderImages = styled.div`
+export const SliderImages = styled.div`
   width: 100%;
   display: flex;
   transition-duration: 1s;
@@ -18,7 +18,7 @@ export const Image = styled.div`
   flex: none;
 `;
 
-export const SucursalSliderArrows = styled.div`
+export const ArrowsContainer = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
@@ -30,6 +30,6 @@ export const SucursalSliderArrows = styled.div`
   box-sizing: border-box;
 `;
 
-export const SucursalArrow = styled.div`
+export const Arrow = styled.div`
   cursor: pointer;
 `;

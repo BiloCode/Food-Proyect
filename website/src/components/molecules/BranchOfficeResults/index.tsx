@@ -2,22 +2,22 @@ import Description from "components/atoms/Description";
 import Title from "components/atoms/Title";
 import * as S from "./styles";
 
-type SucursalFilterProps = {
+type BranchOfficeFilterProps = {
   tittle: string;
   results: number;
 };
 
-const SucursalResults = ({ tittle, results }: SucursalFilterProps) => {
+const BranchOfficeResults = ({ tittle, results }: BranchOfficeFilterProps) => {
   return (
-    <S.SucursalFilterContainer>
+    <S.Container>
       <Title color="blue" size="medium" lowercase>
         {tittle}
       </Title>
       <Description color="light-black" size="small">
         {results} resultados
       </Description>
-    </S.SucursalFilterContainer>
+    </S.Container>
   );
 };
 
-export default SucursalResults;
+export default BranchOfficeResults;

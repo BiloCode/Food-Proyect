@@ -1,7 +1,7 @@
 import { colors } from "config/colors";
 import styled from "styled-components";
 
-export const SucursalSelectContainer = styled.div`
+export const Container = styled.div`
   margin: 50px 0;
   display: flex;
   padding: 0 2em;
@@ -20,7 +20,7 @@ export const SucursalSelectContainer = styled.div`
   color: ${colors.gray};
 `;
 
-export const SucursalOptionsContainer = styled.ul`
+export const OptionsContainer = styled.ul`
   position: absolute;
   top: 38px;
   left: 0;
@@ -33,7 +33,7 @@ export const SucursalOptionsContainer = styled.ul`
   overflow: hidden;
 `;
 
-export const SucursalOption = styled.li`
+export const Option = styled.li`
   height: 38px;
   width: 100%;
   padding: 0 2em;
