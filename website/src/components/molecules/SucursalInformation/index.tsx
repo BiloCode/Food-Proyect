@@ -2,7 +2,7 @@ import Button from "components/atoms/Button";
 import Description from "components/atoms/Description";
 import Image from "components/atoms/Image";
 import Title from "components/atoms/Title";
-import useStarsRecibed from "hooks/useStarsRecibed";
+import Stars from "../Stars";
 import * as S from "./styles";
 
 type StarsType = 0 | 1 | 2 | 3 | 4 | 5;
@@ -20,8 +20,6 @@ const SucursalInformation = ({
   stars,
   image,
 }: SucursalInformationProps) => {
-  const GetStart = useStarsRecibed(stars);
-
   return (
     <S.SucursalInformationContainer>
       <Image src={image} />
@@ -36,7 +34,7 @@ const SucursalInformation = ({
             {textDescription}
           </Description>
         </S.SucursalDescriptionContainer>
-        <div>{GetStart().map((v) => v)}</div>
+        <Stars stars={stars} />
       </div>
       <Button
         text="Ver Detalles"
