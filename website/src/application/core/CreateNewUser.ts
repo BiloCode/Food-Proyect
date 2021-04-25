@@ -24,8 +24,10 @@ class CreateNewUser {
         .doc(params._id)
         .set({
           ...params.data,
-          createdAt: firebase.firestore.Timestamp.now(),
+          description: "",
+          puntuactions: [],
           authenticationType: params.type,
+          createdAt: firebase.firestore.Timestamp.now(),
         });
 
       return true;

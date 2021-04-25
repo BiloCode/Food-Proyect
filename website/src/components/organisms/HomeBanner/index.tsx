@@ -3,9 +3,8 @@ import * as S from "./styles";
 import FormLogin from "../FormLogin";
 import ImageMainBanner from "assets/images/Main_Banner.jpg";
 import HomeTitleWithDescription from "components/molecules/HomeTitleWithDescription";
-import { useAuthContext } from "context/AuthContext/context";
 
-/*** IN PROCESS... */
+import { useAuthContext } from "context/AuthContext/context";
 
 const HomeBanner = () => {
   const { user } = useAuthContext();

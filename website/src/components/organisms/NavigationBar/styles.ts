@@ -34,6 +34,6 @@ export const ListOption = styled.ul`
   margin: 0;
   list-style: none;
   display: grid;
-  grid-template-columns: max-content max-content;
+  grid-template-columns: repeat(3, max-content);
   column-gap: 3em;
 `;

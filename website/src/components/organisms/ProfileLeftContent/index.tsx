@@ -1,8 +1,5 @@
 import { FC } from "react";
 import * as S from "./styles";
-import faker from "faker";
-
-import { useParams } from "@reach/router";
 
 import { AiFillCalendar } from "react-icons/ai";
 
@@ -13,33 +10,39 @@ import ImageProfileArea from "components/molecules/ImageProfileArea";
 import Icon from "components/atoms/Icon";
 
 type ProfileLeftContentProps = {
-  isCurrentUserProfile: boolean;
   fullName: string;
+  createdAt: string;
+  description: string;
   profileImage: string;
+  isCurrentUserProfile: boolean;
 };
 
 const ProfileLeftContent: FC<ProfileLeftContentProps> = ({
-  isCurrentUserProfile,
   fullName,
+  createdAt,
+  description,
   profileImage,
+  isCurrentUserProfile,
 }) => (
   <S.MainContainer>
     <S.UserAreaContainer>
       <ImageProfileArea
-        isCurrentUserProfile={isCurrentUserProfile}
         image={profileImage}
+        isCurrentUserProfile={isCurrentUserProfile}
       />
       <S.UserAreaTextContainer>
         <Title size="medium" color="black">
           # {fullName}
         </Title>
-        <Description size="medium">{faker.lorem.words(15)}</Description>
+        <S.TextLimiter>
+          <Description size="medium">
+            {description ? description : "Sin descripcion disponible..."}
+          </Description>
+        </S.TextLimiter>
       </S.UserAreaTextContainer>
       <S.UserAreaDateContainer>
         <Icon color="blue" size="small" Type={AiFillCalendar} />
-        <S.UserAreaDateText>
-          Se unio el 24 de Febrero del 2000
-        </S.UserAreaDateText>
+        <S.UserAreaDateText>Se unio el {createdAt}</S.UserAreaDateText>
       </S.UserAreaDateContainer>
     </S.UserAreaContainer>
     <Button text="Actualizar Informacion" />

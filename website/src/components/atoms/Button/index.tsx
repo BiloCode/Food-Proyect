@@ -28,6 +28,7 @@ const Button: FC<ButtonTypeProps> = ({
   <S.ButtonContainer
     type={type}
     onClick={onClick}
+    disabled={isLoading}
     className={classnames({
       big: styles.size === "big",
       small: styles.size === "small",

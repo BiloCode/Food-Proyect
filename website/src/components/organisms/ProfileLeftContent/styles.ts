@@ -14,6 +14,7 @@ export const UserAreaContainer = styled.div`
 `;
 
 export const UserAreaTextContainer = styled.div`
+  width: 100%;
   display: grid;
   row-gap: 0.5em;
 `;
@@ -30,4 +31,11 @@ export const UserAreaDateText = styled.div`
   font-family: var(--font);
   font-weight: 400;
   color: ${colors.dark_blue};
+`;
+
+export const TextLimiter = styled.div`
+  width: 100%;
+  max-height: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;

@@ -2,18 +2,21 @@ import { FC, useEffect } from "react";
 import * as S from "./styles";
 import { RouteComponentProps, useNavigate, useParams } from "@reach/router";
 
+import Spinner from "components/atoms/Spinner";
 import NavigationBar from "components/organisms/NavigationBar";
 import ProfileLeftContent from "components/organisms/ProfileLeftContent";
 import ProfileRightContent from "components/organisms/ProfileRightContent";
-import { useProfileContext } from "context/ProfileContext/context";
-import Spinner from "components/atoms/Spinner";
-import { useAuthContext } from "context/AuthContext/context";
+
 import GetUserById from "application/core/GetUserById";
+import DateFormatting from "application/core/DateFormatting";
+
+import { useAuthContext } from "context/AuthContext/context";
+import { useProfileContext } from "context/ProfileContext/context";
 
 const Profile: FC<RouteComponentProps> = () => {
-  const { id } = useParams();
   const navigate = useNavigate();
   const { user } = useAuthContext();
+  const { id: pageUserId } = useParams();
   const {
     isLoading,
     currentClientInView,
@@ -22,28 +25,28 @@ const Profile: FC<RouteComponentProps> = () => {
   } = useProfileContext();
 
   useEffect(() => {
-    if (user?._id !== id) {
-      const userFetchingData = async () => {
-        const getUserService = new GetUserById();
-        const userData = await getUserService.__invoke(id);
-
-        if (!userData) {
-          navigate("/", { replace: true });
-          return;
-        }
-
-        setCurrentProfile(userData);
-        setLoading(false);
-      };
-
-      userFetchingData();
-
+    // setLoading(true);
+    if (user?._id === pageUserId) {
+      setCurrentProfile(user);
+      setLoading(false);
       return;
     }
 
-    setCurrentProfile(user);
-    setLoading(false);
-  }, [id]);
+    const userFetchingData = async () => {
+      const getUserService = new GetUserById();
+      const userData = await getUserService.__invoke(pageUserId);
+
+      if (!userData) {
+        navigate("/", { replace: true });
+        return;
+      }
+
+      setCurrentProfile(userData);
+      setLoading(false);
+    };
+
+    userFetchingData();
+  }, [pageUserId]);
 
   return (
     <div>
@@ -55,11 +58,17 @@ const Profile: FC<RouteComponentProps> = () => {
       ) : (
         <S.ColumnContainer>
           <ProfileLeftContent
-            isCurrentUserProfile={currentClientInView._id === user?._id}
             fullName={currentClientInView.fullName}
+            description={currentClientInView.description}
             profileImage={currentClientInView.profileImage.url}
+            isCurrentUserProfile={currentClientInView._id === user?._id}
+            createdAt={DateFormatting.applyFormat(
+              currentClientInView.createdAt.toDate()
+            )}
           />
-          <ProfileRightContent />
+          <ProfileRightContent
+            puntuactions={currentClientInView.puntuactions}
+          />
         </S.ColumnContainer>
       )}
     </div>

@@ -1,6 +1,8 @@
 import { useNavigate } from "@reach/router";
 import { AiFillHome } from "react-icons/ai";
 import { GiFoodTruck } from "react-icons/gi";
+import { BsMap } from "react-icons/bs";
+
 import * as S from "./styles";
 
 import Logo from "assets/images/Logo.svg";
@@ -18,6 +20,7 @@ const NavigationBar = () => {
 
   const onClickButtonHome = () => navigation("/");
   const onClickButtonLogin = () => navigation("/login");
+  const onClickButtonMap = () => navigation("/map");
   const onClickButtonBranchOffices = () => navigation("/branch-office");
 
   return (
@@ -37,6 +40,7 @@ const NavigationBar = () => {
             text="Sucursales"
             onClick={onClickButtonBranchOffices}
           />
+          <NavbarOption text="Mapa" Icon={BsMap} onClick={onClickButtonMap} />
         </S.ListOption>
         {!user ? (
           <Button

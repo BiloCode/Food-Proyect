@@ -13,6 +13,7 @@ type FloatLoginHomeProps = {
 
 const FloatLoginHome = ({ buttonBig }: FloatLoginHomeProps) => {
   const {
+    isLoading,
     changePassword,
     changeUsername,
     onSubmitLoginForm,
@@ -42,6 +43,7 @@ const FloatLoginHome = ({ buttonBig }: FloatLoginHomeProps) => {
         <Button
           type="submit"
           text="Iniciar Sesión"
+          isLoading={isLoading}
           styles={{ size: buttonBig ? "big" : "normal" }}
         />
         <Button

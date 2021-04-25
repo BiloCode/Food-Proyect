@@ -1,10 +1,10 @@
-import { ChangeEvent, FC } from "react";
+import { FC } from "react";
 import { IconType } from "react-icons";
 import * as S from "./styles";
 
-import Input, { InputProps } from "components/atoms/Input";
 import Label from "components/atoms/Label";
 import Icon from "components/atoms/Icon";
+import Input, { InputProps } from "components/atoms/Input";
 
 type FormControlProps = InputProps & {
   icon: IconType;

@@ -9,7 +9,6 @@ export const ButtonContainer = styled.button`
   border: none;
   outline: none;
   user-select: none;
-  cursor: pointer;
   font-size: 1em;
   font-weight: 900;
   border-radius: 6px;
@@ -39,7 +38,11 @@ export const ButtonContainer = styled.button`
     }
   }
 
-  &:active {
+  &:not(&:disabled) {
+    cursor: pointer;
+  }
+
+  &:not(&:disabled):active {
     transform: scale(0.95);
   }
 `;

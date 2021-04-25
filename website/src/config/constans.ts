@@ -10,4 +10,4 @@ export const navBarHeight = 90;
 export const homeContentLimiter = "75%";
 export const profileImageSizeSmall = 0;
 export const profileImageSizeBig = 260;
-export const profileLeftColumnSize = 300;
+export const profileLeftColumnSize = 320;
