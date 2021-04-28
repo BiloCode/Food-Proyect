@@ -4,21 +4,30 @@ import * as S from "./styles";
 
 import Image01 from "assets/images/Hamburguesa.jpg";
 import Image02 from "assets/images/Hamburguesa_02.jpg";
+import Image03 from "assets/images/Hamburguesa_03.jpg";
 import Icon from "components/atoms/Icon";
-import { LegacyRef, useRef } from "react";
+import { LegacyRef, useRef, useState } from "react";
 
 const Slider = () => {
-  const images = [Image01, Image02];
+  const images = [Image01, Image03, Image02];
+  const [position, setPosition] = useState<number>(0);
 
   const ImagesRef: LegacyRef<HTMLDivElement> = useRef(null);
 
   const onClickPrevius = () => {
-    ImagesRef!.current.style.transform = "translateX(0)";
+    if (position === 0) return;
+    setPosition(position - 1);
+    SliderPosition(position - 1);
   };
 
   const onClickNext = () => {
-    ImagesRef!.current.style.transform = "translateX(-100%)";
+    if (position === images.length - 1) return;
+    setPosition(position + 1);
+    SliderPosition(position + 1);
   };
+
+  const SliderPosition = (position: number) =>
+    (ImagesRef!.current.style.transform = `translateX(${position * -100}%)`);
 
   return (
     <S.Container>
