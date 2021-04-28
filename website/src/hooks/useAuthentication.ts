@@ -1,24 +1,17 @@
 import firebase from "firebase";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 
 const useAuthentication = () => {
-  const [username, setUsername] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const usernameRef = useRef<HTMLInputElement>();
+  const passwordRef = useRef<HTMLInputElement>();
+
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  const changeUsername = (ev: ChangeEvent<HTMLInputElement>) => {
-    setUsername(() => ev.target.value);
-  };
-
-  const changePassword = (ev: ChangeEvent<HTMLInputElement>) => {
-    setPassword(() => ev.target.value);
-  };
 
   const onSubmitLoginForm = async (ev: FormEvent) => {
     ev.preventDefault();
 
-    const usernameFormatted = username.trim();
-    const passwordFormatted = password.trim();
+    const usernameFormatted = usernameRef.current.value.trim();
+    const passwordFormatted = passwordRef.current.value.trim();
 
     if (!usernameFormatted || !passwordFormatted) return;
 
@@ -37,9 +30,9 @@ const useAuthentication = () => {
 
   return {
     isLoading,
-    changePassword,
-    changeUsername,
     onSubmitLoginForm,
+    usernameRef,
+    passwordRef,
   };
 };
 

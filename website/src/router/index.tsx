@@ -1,17 +1,23 @@
 import { lazy } from "react";
 import { Router } from "@reach/router";
 import { useAuthContext } from "context/AuthContext/context";
+
 import RedirectToHome from "components/pages/RedirectToHome";
 
 const HomeLazy = lazy(() => import("components/pages/Home"));
 const LoginLazy = lazy(() => import("components/pages/Login"));
 const RegisterLazy = lazy(() => import("components/pages/Register"));
 const ProfileLazy = lazy(() => import("components/pages/Profile"));
-const BranchOfficeLazy = lazy(
+
+const BranchOfficeListLazy = lazy(
   () => import("components/pages/BranchOfficeList")
 );
 const BranchOfficeMapsLazy = lazy(
   () => import("components/pages/BranchOfficeMaps")
+);
+
+const BranchOfficeDetailLazy = lazy(
+  () => import("components/pages/BranchOfficeDetail")
 );
 
 const RouterApplication = () => {
@@ -22,8 +28,9 @@ const RouterApplication = () => {
   return (
     <Router>
       <HomeLazy path="/" />
-      <BranchOfficeLazy path="/branch-office" />
-      <ProfileLazy path="/user/:id" />
+      <BranchOfficeListLazy path="/branch-office" />
+      <BranchOfficeDetailLazy path="/branch-office/:branchOfficeId" />
+      <ProfileLazy path="/user/:userPageId" />
       {!user && (
         <>
           <LoginLazy path="/login" />
