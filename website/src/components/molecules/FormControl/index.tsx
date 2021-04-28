@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { forwardRef } from "react";
 import { IconType } from "react-icons";
 import * as S from "./styles";
 
@@ -11,19 +11,16 @@ type FormControlProps = InputProps & {
   labelText: string;
 };
 
-const FormControl: FC<FormControlProps> = ({
-  type,
-  icon,
-  onChange,
-  labelText,
-}) => (
-  <S.MainContainer>
-    <S.LabelWithIcon>
-      <Icon Type={icon} />
-      <Label>{labelText}</Label>
-    </S.LabelWithIcon>
-    <Input type={type} onChange={onChange} />
-  </S.MainContainer>
+const FormControl = forwardRef<HTMLInputElement, FormControlProps>(
+  ({ type, icon, labelText, defaultValue }, ref) => (
+    <S.MainContainer>
+      <S.LabelWithIcon>
+        <Icon Type={icon} />
+        <Label>{labelText}</Label>
+      </S.LabelWithIcon>
+      <Input ref={ref} type={type} defaultValue={defaultValue} />
+    </S.MainContainer>
+  )
 );
 
 export default FormControl;

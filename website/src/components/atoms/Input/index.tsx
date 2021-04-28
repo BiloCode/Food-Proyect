@@ -1,14 +1,16 @@
-import { ChangeEvent } from "react";
+import { forwardRef } from "react";
 import * as S from "./styles";
 
 export type InputType = "text" | "password" | "email";
 export type InputProps = {
   type?: InputType;
-  onChange?(ev: ChangeEvent<HTMLInputElement>): void;
+  defaultValue?: string;
 };
 
-const Input = ({ type, onChange }: InputProps) => (
-  <S.CustomInput onChange={onChange} required type={type} />
+const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ type, defaultValue }, ref) => (
+    <S.CustomInput ref={ref} required type={type} defaultValue={defaultValue} />
+  )
 );
 
 Input.defaultProps = {

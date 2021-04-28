@@ -5,13 +5,14 @@ import ImageMainBanner from "assets/images/Main_Banner.jpg";
 import HomeTitleWithDescription from "components/molecules/HomeTitleWithDescription";
 
 import { useAuthContext } from "context/AuthContext/context";
+import ParallaxImage from "components/atoms/ParallaxImage";
 
 const HomeBanner = () => {
   const { user } = useAuthContext();
 
   return (
     <S.MainContainer>
-      <S.ImageContainer backgroundUrl={ImageMainBanner} />
+      <ParallaxImage src={ImageMainBanner} />
       <S.FloatContent>
         <S.BannerFloatContainer>
           <HomeTitleWithDescription

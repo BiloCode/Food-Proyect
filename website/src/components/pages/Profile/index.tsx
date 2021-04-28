@@ -16,25 +16,25 @@ import { useProfileContext } from "context/ProfileContext/context";
 const Profile: FC<RouteComponentProps> = () => {
   const navigate = useNavigate();
   const { user } = useAuthContext();
-  const { id: pageUserId } = useParams();
+  const { userPageId } = useParams();
   const {
     isLoading,
-    currentClientInView,
     setLoading,
     setCurrentProfile,
+    currentClientInView,
   } = useProfileContext();
 
   useEffect(() => {
     // setLoading(true);
-    if (user?._id === pageUserId) {
+    if (user?._id === userPageId) {
       setCurrentProfile(user);
       setLoading(false);
       return;
     }
 
-    const userFetchingData = async () => {
+    (async () => {
       const getUserService = new GetUserById();
-      const userData = await getUserService.__invoke(pageUserId);
+      const userData = await getUserService.__invoke(userPageId);
 
       if (!userData) {
         navigate("/", { replace: true });
@@ -43,10 +43,8 @@ const Profile: FC<RouteComponentProps> = () => {
 
       setCurrentProfile(userData);
       setLoading(false);
-    };
-
-    userFetchingData();
-  }, [pageUserId]);
+    })();
+  }, [userPageId]);
 
   return (
     <div>

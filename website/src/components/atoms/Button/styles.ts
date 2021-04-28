@@ -16,7 +16,7 @@ export const ButtonContainer = styled.button`
   text-transform: uppercase;
   background-color: ${colors.dark_blue};
 
-  &:not(&.yellow):hover {
+  &:not(&.yellow):not(&.red):hover {
     background-color: ${colors.light_blue};
   }
 
@@ -35,6 +35,14 @@ export const ButtonContainer = styled.button`
 
     &:hover {
       background-color: ${colors.light_yellow};
+    }
+  }
+
+  &.red {
+    background-color: ${colors.red};
+
+    &:hover {
+      background-color: ${colors.light_red};
     }
   }
 

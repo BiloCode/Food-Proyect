@@ -14,8 +14,8 @@ type FloatLoginHomeProps = {
 const FloatLoginHome = ({ buttonBig }: FloatLoginHomeProps) => {
   const {
     isLoading,
-    changePassword,
-    changeUsername,
+    passwordRef,
+    usernameRef,
     onSubmitLoginForm,
   } = useAuthentication();
 
@@ -28,15 +28,15 @@ const FloatLoginHome = ({ buttonBig }: FloatLoginHomeProps) => {
       <S.ControlsContainer>
         <FormControl
           type="email"
+          ref={usernameRef}
           icon={BsFillPersonFill}
           labelText="Nombre de usuario"
-          onChange={changeUsername}
         />
         <FormControl
           type="password"
           icon={BsLockFill}
+          ref={passwordRef}
           labelText="Contraseña"
-          onChange={changePassword}
         />
       </S.ControlsContainer>
       <S.ButtonContainer>
