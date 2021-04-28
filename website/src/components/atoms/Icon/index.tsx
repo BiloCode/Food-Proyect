@@ -4,7 +4,7 @@ import { IconType } from "react-icons";
 import * as S from "./styles";
 
 type IconColorType = "white" | "black" | "blue" | "yellow" | "gray";
-type IconSizeType = "small" | "medium" | "large";
+type IconSizeType = "small" | "small-medium" | "medium" | "large";
 type IconProps = {
   Type: IconType;
   color?: IconColorType;
@@ -19,6 +19,7 @@ const Icon: FC<IconProps> = ({ Type, color, size }) => (
       blue: color === "blue",
       gray: color === "gray",
       small: size === "small",
+      small_medium: size === "small-medium",
       medium: size === "medium",
       yellow: color === "yellow",
     })}

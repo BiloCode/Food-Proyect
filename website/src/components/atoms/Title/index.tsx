@@ -21,7 +21,7 @@ const Title: FC<TitleType> = ({
   letterSpacing,
 }) => {
   return (
-    <S.Title
+    <S.Container
       className={classNames({
         lowercase,
         extra_small: size === "extra_small",
@@ -35,7 +35,7 @@ const Title: FC<TitleType> = ({
       })}
     >
       {children}
-    </S.Title>
+    </S.Container>
   );
 };
 

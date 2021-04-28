@@ -8,4 +8,5 @@ export const colors = {
   super_light_black: "#EBEBEB",
   gray: "#8D8D8D",
   light_gray: "#F5F5F5",
+  super_light_gray: "#FBFAFA",
 };

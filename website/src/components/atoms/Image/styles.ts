@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Image = styled.img`
+export const Container = styled.img`
   width: inherit;
   height: inherit;
   object-fit: cover;

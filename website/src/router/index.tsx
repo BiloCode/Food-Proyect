@@ -10,6 +10,9 @@ const ProfileLazy = lazy(() => import("components/pages/Profile"));
 const BranchOfficeLazy = lazy(
   () => import("components/pages/BranchOfficeList")
 );
+const BranchOfficeMapsLazy = lazy(
+  () => import("components/pages/BranchOfficeMaps")
+);
 
 const RouterApplication = () => {
   const { user, isLoading } = useAuthContext();
@@ -27,6 +30,7 @@ const RouterApplication = () => {
           <RegisterLazy path="/register" />
         </>
       )}
+      <BranchOfficeMapsLazy path="/map" />
       <RedirectToHome path="*" />
     </Router>
   );

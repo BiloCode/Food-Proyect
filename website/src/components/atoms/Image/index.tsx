@@ -6,7 +6,7 @@ export type ImageType = {
 };
 
 const Image = (props: ImageType) => {
-  return <S.Image src={props.src} />;
+  return <S.Container src={props.src} />;
 };
 
 export default Image;

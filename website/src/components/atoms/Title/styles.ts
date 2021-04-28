@@ -1,7 +1,7 @@
 import { colors } from "config/colors";
 import styled from "styled-components";
 
-export const Title = styled.span`
+export const Container = styled.span`
   margin: 0;
   font-size: 2.1em;
   font-weight: 900;
