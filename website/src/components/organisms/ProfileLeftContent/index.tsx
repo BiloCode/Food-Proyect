@@ -41,11 +41,13 @@ const ProfileLeftContent: FC<ProfileLeftContentProps> = ({
           <Title size="medium" color="black">
             # {fullName}
           </Title>
-          <S.TextLimiter>
-            <Description size="medium">
-              {description ? description : "Sin descripcion disponible..."}
-            </Description>
-          </S.TextLimiter>
+          <Description size="medium">
+            <div
+              dangerouslySetInnerHTML={{
+                __html: description || "Sin descripcion disponible...",
+              }}
+            />
+          </Description>
         </S.UserAreaTextContainer>
         <S.UserAreaDateContainer>
           <Icon color="blue" size="small" Type={AiFillCalendar} />

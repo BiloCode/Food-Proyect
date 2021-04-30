@@ -1,11 +1,18 @@
 import { FC } from "react";
 import { BsFillPersonFill } from "react-icons/bs";
-import { BiComment } from "react-icons/bi";
+import { MdDescription } from "react-icons/md";
 import * as S from "./styles";
 
+import Button from "components/atoms/Button";
 import DarkScreen from "components/atoms/DarkScreen";
 import FormControl from "components/molecules/FormControl";
-import Button from "components/atoms/Button";
+import FormControlTextarea from "components/molecules/FormControlTextarea";
+
+import useProfileUpdateInformation from "hooks/useProfileUpdateInformation";
+import {
+  clientDescriptionMaxLength,
+  clientFullNameMaxLength,
+} from "config/constans";
 
 type ProfileUpdateModalProps = {
   fullName: string;
@@ -18,20 +25,28 @@ const ProfileUpdateModal: FC<ProfileUpdateModalProps> = ({
   fullName,
   description,
 }) => {
+  const { descriptionRef, fullnameRef, onSubmit } = useProfileUpdateInformation(
+    onClose
+  );
+
   return (
     <DarkScreen>
       <S.ContainerModal>
-        <S.FormContainer>
+        <S.FormContainer onSubmit={onSubmit}>
           <S.InputContainer>
             <FormControl
+              ref={fullnameRef}
               icon={BsFillPersonFill}
               defaultValue={fullName}
               labelText="Nombre de usuario"
+              maxLength={clientFullNameMaxLength}
             />
-            <FormControl
-              icon={BiComment}
-              defaultValue={description}
+            <FormControlTextarea
+              ref={descriptionRef}
+              icon={MdDescription}
               labelText="Descripción"
+              defaultValue={description}
+              maxLength={clientDescriptionMaxLength}
             />
           </S.InputContainer>
           <S.ButtonContainer>

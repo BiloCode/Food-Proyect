@@ -1,13 +1,13 @@
-import { ChangeEvent, FC, memo, useState } from "react";
+import { FC, memo } from "react";
 import * as S from "./styles";
 
 import { GoCloudUpload } from "react-icons/go";
 
-// import useUploadProfileImage from "hooks/useUploadProfileImage";
-
+import Spinner from "components/atoms/Spinner";
 import UploadIcon from "components/atoms/UploadIcon";
 import CircularImage from "components/atoms/CircularImage";
-import FilesCheckingIsImage from "application/core/FileCheckingIsImage";
+
+import useProfileImageUpdate from "hooks/useProfileImageUpdate";
 
 type ImageProfileAreaProps = {
   image: string;
@@ -18,36 +18,22 @@ const ImageProfileArea: FC<ImageProfileAreaProps> = ({
   image,
   isCurrentUserProfile,
 }) => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [profileImageLocal, setProfileImageLocal] = useState<string>(image);
-
-  const onChange = (ev: ChangeEvent<HTMLInputElement>) => {
-    const files = ev.target.files;
-
-    if (!files) return;
-
-    const fileChecker = new FilesCheckingIsImage();
-    const imagesUploaded = fileChecker.__invoke(files);
-
-    if (!imagesUploaded.length) return;
-
-    setIsLoading(() => true);
-  };
+  const { isUploading, onChangeImage } = useProfileImageUpdate();
 
   return (
     <S.ImageContainer>
       <S.ImageBorder>
-        <CircularImage src={profileImageLocal} type="extra-big" />
+        <CircularImage src={image} type="extra-big" />
       </S.ImageBorder>
-      {isLoading && (
+      {isUploading && (
         <S.SpinnerContainer>
-          <span>Loading...</span>
+          <Spinner color="white" size="big" />
         </S.SpinnerContainer>
       )}
       {isCurrentUserProfile && (
         <S.UploadIconContainer>
-          {!isLoading && (
-            <UploadIcon onChange={onChange} Icon={GoCloudUpload} />
+          {!isUploading && (
+            <UploadIcon onChange={onChangeImage} Icon={GoCloudUpload} />
           )}
         </S.UploadIconContainer>
       )}

@@ -1,5 +1,5 @@
 class FilesCheckingIsImage {
-  public __invoke(files: FileList) {
+  public static check(files: FileList) {
     const iterableFiles = Array.from(files);
     const imagesFilesUpload = [];
 

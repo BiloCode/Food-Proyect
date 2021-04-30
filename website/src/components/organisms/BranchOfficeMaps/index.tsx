@@ -27,14 +27,8 @@ const BranchOfficeMaps = () => {
     stars: 0,
   });
 
-  const onClickBranchOffice = ({
-    latitude,
-    length,
-    tittle,
-    text,
-    stars,
-  }: BranchOfficeTypes) => {
-    setMapCoords({ latitude, length, tittle, text, stars });
+  const onClickBranchOffice = (params: BranchOfficeTypes) => {
+    setMapCoords({ ...params });
   };
 
   return (

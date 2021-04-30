@@ -9,6 +9,8 @@ const AuthProvider: FC = ({ children }) => {
   const [user, setUser] = useState<ClientModelType>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
+  const changeUserAuthData = (user: ClientModelType) => setUser(() => user);
+
   useEffect(() => {
     const authStateChanged = async (user) => {
       if (user) {
@@ -28,7 +30,7 @@ const AuthProvider: FC = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, isLoading }}>
+    <AuthContext.Provider value={{ user, isLoading, changeUserAuthData }}>
       {children}
     </AuthContext.Provider>
   );

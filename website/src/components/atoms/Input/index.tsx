@@ -5,18 +5,18 @@ export type InputType = "text" | "password" | "email";
 
 export type InputProps = {
   type?: InputType;
-  onChange?(ev: ChangeEvent<HTMLInputElement>): void;
   placeholder?: string;
+  maxLength?: number;
   defaultValue?: string;
 };
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ type, defaultValue, onChange, placeholder }, ref) => (
+  ({ type, defaultValue, placeholder, maxLength }, ref) => (
     <S.CustomInput
       ref={ref}
       required
-      onChange={onChange}
       type={type}
+      maxLength={maxLength}
       placeholder={placeholder}
       defaultValue={defaultValue}
     />
