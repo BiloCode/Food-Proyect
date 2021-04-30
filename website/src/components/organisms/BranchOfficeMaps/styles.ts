@@ -54,5 +54,12 @@ export const MapContainer = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: min-content 1fr;
+  grid-template-rows: 1fr;
+  position: relative;
+`;
+
+export const BranchOfficeSelected = styled.div`
+  position: absolute;
+  width: 100%;
+  z-index: 100;
 `;
