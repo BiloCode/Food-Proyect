@@ -4,24 +4,38 @@ import InputPlaceholderIcon from "components/molecules/InputPlaceholderIcon";
 import Title from "components/atoms/Title";
 import BranchOfficeMapItem from "components/molecules/BranchOfficeMapItem";
 import image from "assets/images/BranchOfficeBembos.jpg";
-import faker from "faker";
-import Map from "components/molecules/Map";
-import { credentials } from "config/googleMapsCredentials";
-import Spinner from "components/atoms/Spinner";
 import BranchOfficeMapSelected from "components/molecules/BranchOfficeMapSelect";
 import { useState } from "react";
+import MapCredentials from "components/molecules/Map";
+
+type startType = 0 | 1 | 2 | 3 | 4 | 5;
+
+type BranchOfficeTypes = {
+  latitude: number;
+  length: number;
+  tittle: string;
+  text: string;
+  stars: startType;
+};
 
 const BranchOfficeMaps = () => {
-  const [latitude, setLatitude] = useState(0);
-  const [lenght, setLenght] = useState(0);
+  const [mapCoords, setMapCoords] = useState<BranchOfficeTypes>({
+    latitude: 0,
+    length: 0,
+    text: "",
+    tittle: "",
+    stars: 0,
+  });
 
-  const onClickBranchOffice = (lat: number, leng: number) => {
-    setLatitude(lat);
-    setLenght(leng);
+  const onClickBranchOffice = ({
+    latitude,
+    length,
+    tittle,
+    text,
+    stars,
+  }: BranchOfficeTypes) => {
+    setMapCoords({ latitude, length, tittle, text, stars });
   };
-
-  console.log(latitude);
-  console.log(lenght);
 
   return (
     <S.Container>
@@ -38,56 +52,65 @@ const BranchOfficeMaps = () => {
         </S.TittleContainer>
         <S.MapListContainer>
           <S.ListBranchOffice>
-            <div
+            <BranchOfficeMapItem
+              tittle="Sucursal Huaycan"
+              text="Sucursal Huaycan lorem imptusm lorem imptusm lorem imptusm"
+              image={image}
               onClick={() =>
-                onClickBranchOffice(-12.008734979054598, -76.82457079149549)
+                onClickBranchOffice({
+                  latitude: -12.008734979054598,
+                  length: -76.82457079149549,
+                  tittle: "Sucursal Huaycan",
+                  text:
+                    "Sucursal Huaycan lorem imptusm lorem imptusm lorem imptusm",
+                  stars: 2,
+                })
               }
-            >
-              <BranchOfficeMapItem
-                tittle="Sucursal Mega Plaza"
-                text="Sucursal 1"
-                image={image}
-              />
-            </div>
-            <div
+            />
+            <BranchOfficeMapItem
+              tittle="Sucursal Mega Plaza"
+              text="Sucursal 2"
+              image={image}
               onClick={() =>
-                onClickBranchOffice(-11.008734979054598, -75.82457079149549)
+                onClickBranchOffice({
+                  latitude: -11.992700403536038,
+                  length: -77.05174180025324,
+                  tittle: "Sucursal Mega Plaza",
+                  text:
+                    "Sucursal Mega Plaza lorem imptusm lorem imptusm lorem imptusm",
+                  stars: 3,
+                })
               }
-            >
-              <BranchOfficeMapItem
-                tittle="Sucursal Mega Plaza"
-                text="Sucursal 2"
-                image={image}
-              />
-            </div>
-            <div
+            />
+            <BranchOfficeMapItem
+              tittle="Sucursal Plaza Norte"
+              text="Sucursal 3"
+              image={image}
               onClick={() =>
-                onClickBranchOffice(-13.008734979054598, -72.82457079149549)
+                onClickBranchOffice({
+                  latitude: -12.00687445636363,
+                  length: -77.05816660531731,
+                  tittle: "Sucursal Plaza Norte",
+                  text:
+                    "Sucursal Plaza Norte lorem imptusm lorem imptusm lorem imptusm",
+                  stars: 4,
+                })
               }
-            >
-              <BranchOfficeMapItem
-                tittle="Sucursal Mega Plaza"
-                text="Sucursal 3"
-                image={image}
-              />
-            </div>
+            />
           </S.ListBranchOffice>
           <S.MapContainer>
-            <BranchOfficeMapSelected
-              stars={4}
-              tittle="Sucursal Randmon"
-              text={faker.lorem.words(50)}
-            />
-            <Map
-              latitude={latitude}
-              length={lenght}
-              googleMapURL={
-                "https://maps.googleapis.com/maps/api/js?v=3.exp" +
-                credentials.mapsKey
-              }
-              containerElement={<div style={{ height: "100%" }} />}
-              mapElement={<div style={{ height: "100%" }} />}
-              loadingElement={<Spinner size="big" color="blue" />}
+            {(mapCoords.latitude !== 0 || mapCoords.length !== 0) && (
+              <S.BranchOfficeSelected>
+                <BranchOfficeMapSelected
+                  stars={mapCoords.stars}
+                  tittle={mapCoords.tittle}
+                  text={mapCoords.text}
+                />
+              </S.BranchOfficeSelected>
+            )}
+            <MapCredentials
+              latitude={mapCoords.latitude}
+              length={mapCoords.length}
             />
           </S.MapContainer>
         </S.MapListContainer>

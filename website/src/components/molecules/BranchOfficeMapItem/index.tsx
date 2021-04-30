@@ -9,15 +9,17 @@ type BranchOfficeMapItemProps = {
   text: string;
   tittle: string;
   image: string;
+  onClick(): void;
 };
 
 const BranchOfficeMapItem = ({
   image,
   text,
   tittle,
+  onClick,
 }: BranchOfficeMapItemProps) => {
   return (
-    <S.Container>
+    <S.Container onClick={onClick}>
       <S.ImageContainer>
         <Image src={image} />
       </S.ImageContainer>
