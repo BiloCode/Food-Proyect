@@ -7,7 +7,7 @@ import Icon from "components/atoms/Icon";
 import Title from "components/atoms/Title";
 import Button from "components/atoms/Button";
 import Portals from "components/atoms/Portals";
-import ProfileUpdateModal from "../ProfileUpdateModal";
+import ProfileUpdateModal from "../../organisms/ProfileUpdateModal";
 import Description from "components/atoms/Description";
 import ImageProfileArea from "components/molecules/ImageProfileArea";
 

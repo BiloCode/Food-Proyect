@@ -3,7 +3,13 @@ import { describe, it } from "@jest/globals";
 
 import ImageProfileArea from "components/molecules/ImageProfileArea";
 
+//END TO END
+
 describe("Componente Avatar del perfil del usuario", () => {
+  beforeEach(async () => {
+    await import("config/firebaseInit");
+  });
+
   it("Cambiar la foto de perfil", async () => {
     render(<ImageProfileArea image="" isCurrentUserProfile />);
 
@@ -14,6 +20,6 @@ describe("Componente Avatar del perfil del usuario", () => {
 
     fireEvent.change(input, { target: { files: [file] } });
 
-    await waitFor(() => expect(screen.getByText("Loading...")).toBeDefined());
+    await waitFor(() => expect(screen.getByTestId("spinner")).toBeDefined());
   });
 });

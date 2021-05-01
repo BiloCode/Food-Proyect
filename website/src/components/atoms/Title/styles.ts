@@ -37,6 +37,10 @@ export const Container = styled.span`
     font-size: 0.95em;
   }
 
+  &.small_medium {
+    font-size: 1.1em;
+  }
+
   &.medium {
     font-size: 1.5em;
   }

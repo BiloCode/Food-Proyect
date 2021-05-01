@@ -4,8 +4,8 @@ import { RouteComponentProps, useNavigate, useParams } from "@reach/router";
 
 import Spinner from "components/atoms/Spinner";
 import NavigationBar from "components/organisms/NavigationBar";
-import ProfileLeftContent from "components/organisms/ProfileLeftContent";
-import ProfileRightContent from "components/organisms/ProfileRightContent";
+import ProfileLeftContent from "components/templates/ProfileLeftContent";
+import ProfileRightContent from "components/templates/ProfileRightContent";
 
 import GetUserById from "application/core/GetUserById";
 import DateFormatting from "application/core/DateFormatting";

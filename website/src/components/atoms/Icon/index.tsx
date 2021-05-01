@@ -3,9 +3,9 @@ import classnames from "classnames";
 import { IconType } from "react-icons";
 import * as S from "./styles";
 
-type IconColorType = "white" | "black" | "blue" | "yellow" | "gray";
-type IconSizeType = "small" | "small-medium" | "medium" | "large";
-type IconProps = {
+export type IconColorType = "white" | "black" | "blue" | "yellow" | "gray";
+export type IconSizeType = "small" | "small-medium" | "medium" | "large";
+export type IconProps = {
   Type: IconType;
   color?: IconColorType;
   size?: IconSizeType;
