@@ -9,25 +9,49 @@ import {
   BsLockFill,
   BsFillEnvelopeFill,
 } from "react-icons/bs";
+import useCreatUserWithEmail from "hooks/useCreatUserWithEmail";
 
 const FormRegister = () => {
   const navigation = useNavigate();
 
   const onClickButtonLogin = () => navigation("/login");
 
+  const {
+    isLoading,
+    onSubmitFormRegister,
+    usernameRef,
+    emailRef,
+    passwordRef,
+  } = useCreatUserWithEmail();
+
   return (
-    <S.FormContent>
+    <S.FormContent onSubmit={onSubmitFormRegister}>
       <S.ControlsContainer>
-        <FormControl icon={BsFillPersonFill} labelText="Nombre de usuario" />
+        <FormControl
+          icon={BsFillPersonFill}
+          labelText="Nombre de usuario"
+          ref={usernameRef}
+        />
         <FormControl
           type="email"
           icon={BsFillEnvelopeFill}
           labelText="Correo Electrónico"
+          ref={emailRef}
         />
-        <FormControl type="password" icon={BsLockFill} labelText="Contraseña" />
+        <FormControl
+          type="password"
+          icon={BsLockFill}
+          labelText="Contraseña"
+          ref={passwordRef}
+        />
       </S.ControlsContainer>
       <S.ButtonContainer>
-        <Button styles={{ size: "big" }} text="Terminar registro" />
+        <Button
+          type="submit"
+          styles={{ size: "big" }}
+          text="Terminar registro"
+          isLoading={isLoading}
+        />
         <Button
           styles={{ size: "big", color: "yellow" }}
           text="Regresar al Login"
