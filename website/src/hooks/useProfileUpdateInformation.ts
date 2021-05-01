@@ -1,4 +1,4 @@
-import { FormEvent, useRef } from "react";
+import { FormEvent, useRef, useState } from "react";
 
 import { useAuthContext } from "context/AuthContext/context";
 import { useProfileContext } from "context/ProfileContext/context";
@@ -6,6 +6,8 @@ import { useProfileContext } from "context/ProfileContext/context";
 import UpdateUserInformation from "application/core/UpdateUserInformation";
 
 const useProfileUpdateInformation = (onClose) => {
+  const [isSendData, setIsSendData] = useState<boolean>(false);
+
   const fullnameRef = useRef<HTMLInputElement>();
   const descriptionRef = useRef<HTMLTextAreaElement>();
 
@@ -27,6 +29,8 @@ const useProfileUpdateInformation = (onClose) => {
       return;
     }
 
+    setIsSendData(() => true);
+
     const updateService = new UpdateUserInformation();
     const isUpdated = await updateService.__invoke({
       _id: user._id,
@@ -47,6 +51,7 @@ const useProfileUpdateInformation = (onClose) => {
     onSubmit,
     fullnameRef,
     descriptionRef,
+    isSendData,
   };
 };
 

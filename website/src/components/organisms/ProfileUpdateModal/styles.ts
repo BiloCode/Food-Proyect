@@ -11,6 +11,7 @@ export const ContainerModal = styled.div`
 export const FormContainer = styled.form`
   width: 450px;
   padding: 3em;
+  position: relative;
   border-radius: 10px;
   background-color: #fff;
   display: grid;
@@ -26,4 +27,17 @@ export const InputContainer = styled.div`
 export const ButtonContainer = styled.div`
   display: grid;
   row-gap: 6px;
+`;
+
+export const SpinnerContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

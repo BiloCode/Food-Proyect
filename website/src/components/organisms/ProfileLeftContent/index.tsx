@@ -54,7 +54,9 @@ const ProfileLeftContent: FC<ProfileLeftContentProps> = ({
           <S.UserAreaDateText>Se unio el {createdAt}</S.UserAreaDateText>
         </S.UserAreaDateContainer>
       </S.UserAreaContainer>
-      <Button text="Actualizar Informacion" onClick={toggleActive} />
+      {isCurrentUserProfile && (
+        <Button text="Actualizar Informacion" onClick={toggleActive} />
+      )}
       {active && (
         <Portals>
           <ProfileUpdateModal

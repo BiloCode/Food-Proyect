@@ -20,18 +20,13 @@ const ProfileRightContent: FC<ProfileRightContentProps> = ({
         Mis Reseñas
       </Title>
       <S.CommentsListContainer>
-        {/* {puntuactions.map((v) => (
-          <div key={v.puntuactionId}></div>
-        ))} */}
-        <ProfilePuntuactionCard
-          branchOfficeId="123"
-          description={faker.lorem.words(20)}
-        />
-        <ProfilePuntuactionCard branchOfficeId="123" description="" />
-        <ProfilePuntuactionCard
-          branchOfficeId="123"
-          description={faker.lorem.words(25)}
-        />
+        {puntuactions.map((v) => (
+          <ProfilePuntuactionCard
+            key={v.puntuactionId}
+            branchOfficeId={v.puntuactionId}
+            description={v.description}
+          />
+        ))}
       </S.CommentsListContainer>
     </div>
   );

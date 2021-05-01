@@ -13,6 +13,7 @@ import {
   clientDescriptionMaxLength,
   clientFullNameMaxLength,
 } from "config/constans";
+import Spinner from "components/atoms/Spinner";
 
 type ProfileUpdateModalProps = {
   fullName: string;
@@ -25,9 +26,12 @@ const ProfileUpdateModal: FC<ProfileUpdateModalProps> = ({
   fullName,
   description,
 }) => {
-  const { descriptionRef, fullnameRef, onSubmit } = useProfileUpdateInformation(
-    onClose
-  );
+  const {
+    onSubmit,
+    isSendData,
+    fullnameRef,
+    descriptionRef,
+  } = useProfileUpdateInformation(onClose);
 
   return (
     <DarkScreen>
@@ -61,6 +65,11 @@ const ProfileUpdateModal: FC<ProfileUpdateModalProps> = ({
               styles={{ size: "big", color: "red" }}
             />
           </S.ButtonContainer>
+          {isSendData && (
+            <S.SpinnerContainer>
+              <Spinner color="blue" size="big" />
+            </S.SpinnerContainer>
+          )}
         </S.FormContainer>
       </S.ContainerModal>
     </DarkScreen>
