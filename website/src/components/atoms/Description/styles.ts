@@ -7,10 +7,13 @@ export const Container = styled.p`
   font-weight: 400;
   font-family: var(--font);
   line-height: 1.4em;
-  color: ${colors.light_black};
 
   &.white {
     color: #fff;
+  }
+
+  &.light-black {
+    color: #3d3d3d;
   }
 
   &.extra_small {

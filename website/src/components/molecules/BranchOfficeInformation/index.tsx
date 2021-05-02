@@ -25,12 +25,12 @@ const BranchOfficeInformation = ({
       <Image src={image} />
       <div>
         <S.TittleContainer>
-          <Title color="black" size="extra_small">
+          <Title color="light-black" lowercase size="small">
             {textTittle}
           </Title>
         </S.TittleContainer>
         <S.DescriptionContainer>
-          <Description color="black" size="small">
+          <Description color="light-black" size="small">
             {textDescription}
           </Description>
         </S.DescriptionContainer>

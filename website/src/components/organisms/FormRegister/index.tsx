@@ -9,7 +9,7 @@ import {
   BsLockFill,
   BsFillEnvelopeFill,
 } from "react-icons/bs";
-import useCreatUserWithEmail from "hooks/useCreatUserWithEmail";
+import useCreateUserWithEmail from "hooks/useCreateUserWithEmail";
 
 const FormRegister = () => {
   const navigation = useNavigate();
@@ -22,7 +22,7 @@ const FormRegister = () => {
     usernameRef,
     emailRef,
     passwordRef,
-  } = useCreatUserWithEmail();
+  } = useCreateUserWithEmail();
 
   return (
     <S.FormContent onSubmit={onSubmitFormRegister}>
