@@ -11,6 +11,7 @@ type SpinnerProps = {
 
 const Spinner: FC<SpinnerProps> = ({ size, color }) => (
   <S.SpinnerElement
+    data-testid="spinner"
     className={classnames({
       blue: color === "blue",
       white: color === "white",

@@ -51,7 +51,7 @@ export const ButtonContainer = styled.button`
   }
 
   &:not(&:disabled):active {
-    transform: scale(0.95);
+    transform: scale(0.98);
   }
 `;
 

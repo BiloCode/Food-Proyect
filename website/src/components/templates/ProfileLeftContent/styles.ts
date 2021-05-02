@@ -1,10 +1,13 @@
 import { colors } from "config/colors";
+import { navBarHeight, profileMarginContent } from "config/constans";
 import styled from "styled-components";
 
 export const MainContainer = styled.div`
   width: 100%;
   display: grid;
   row-gap: 3em;
+  position: sticky;
+  top: calc(${navBarHeight}px + ${profileMarginContent});
 `;
 
 export const UserAreaContainer = styled.div`

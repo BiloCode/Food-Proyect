@@ -17,7 +17,7 @@ const CircularImage: FC<CircularImageProps> = ({ src, alt, type }) => (
       extra_big: type === "extra-big",
     })}
   >
-    {src && <Image src={src} alt={alt} />}
+    {src && <Image src={src} alt={alt} imageCover />}
   </S.MainContainer>
 );
 

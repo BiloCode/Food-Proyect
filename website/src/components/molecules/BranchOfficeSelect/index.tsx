@@ -1,12 +1,12 @@
 import * as S from "./styles";
 import { IoIosArrowDown } from "react-icons/io";
+
 import Icon from "components/atoms/Icon";
-import { useState } from "react";
+
+import useActive from "hooks/useActive";
 
 const BranchOfficeSelect = () => {
-  const [active, setActive] = useState<Boolean>(false);
-
-  const toggleActive = () => setActive((value) => !value);
+  const { active, toggleActive } = useActive();
 
   return (
     <S.Container onClick={toggleActive}>
