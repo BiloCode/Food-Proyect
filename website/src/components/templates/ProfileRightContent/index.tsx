@@ -6,19 +6,29 @@ import Title from "components/atoms/Title";
 import { ClientPuntuactionsType } from "application/types/ClientModelType";
 import ProfilePuntuactionCard from "../../organisms/ProfilePuntuactionCard";
 import ReactionListEmpty from "components/molecules/ReactionListEmpty";
+import Description from "components/atoms/Description";
 
 type ProfileRightContentProps = {
   puntuactions: ClientPuntuactionsType[];
+  isCurrentUserProfile: boolean;
 };
 
 const ProfileRightContent: FC<ProfileRightContentProps> = ({
   puntuactions,
+  isCurrentUserProfile,
 }) => {
   return (
     <S.MainContainer>
-      <Title color="black" lowercase>
-        Mis Reseñas
-      </Title>
+      <S.TitleContainer>
+        <Title color="black" lowercase>
+          {isCurrentUserProfile ? "Mis Reseñas" : "Reseñas Realizadas"}
+        </Title>
+        <Description size="medium">
+          {isCurrentUserProfile
+            ? "Visualiza todas tus reseñas de nuestras sucursales."
+            : "Visualiza todas las reseñas hechas por este usuario."}
+        </Description>
+      </S.TitleContainer>
       {puntuactions.length ? (
         <S.CommentsListContainer>
           {puntuactions.map((v) => (
@@ -31,7 +41,7 @@ const ProfileRightContent: FC<ProfileRightContentProps> = ({
         </S.CommentsListContainer>
       ) : (
         <S.CommentsEmptyContent>
-          <ReactionListEmpty />
+          <ReactionListEmpty isCurrentUserProfile={isCurrentUserProfile} />
         </S.CommentsEmptyContent>
       )}
     </S.MainContainer>

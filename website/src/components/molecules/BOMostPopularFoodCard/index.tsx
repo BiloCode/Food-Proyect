@@ -1,3 +1,4 @@
+import { memo } from "react";
 import faker from "faker";
 import * as S from "./styles";
 
@@ -5,7 +6,6 @@ import Image from "components/atoms/Image";
 import Title from "components/atoms/Title";
 import Description from "components/atoms/Description";
 import Button from "components/atoms/Button";
-import { memo } from "react";
 
 const BOMostPopularFoodCard = () => (
   <S.MainContainer>

@@ -8,7 +8,7 @@ export const FirebaseCollectionNames = {
 
 export const navBarHeight = 90;
 export const homeContentLimiter = "75%";
-export const profileMarginContent = "2em";
+export const profileMarginContent = "3em";
 export const profileImageSizeSmall = 0;
 export const profileImageSizeBig = 260;
 export const profileLeftColumnSize = 320;

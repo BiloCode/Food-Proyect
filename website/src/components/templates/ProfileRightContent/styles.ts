@@ -6,6 +6,11 @@ export const MainContainer = styled.div`
   row-gap: 1.5em;
 `;
 
+export const TitleContainer = styled.div`
+  display: grid;
+  row-gap: 5px;
+`;
+
 export const CommentsListContainer = styled.div`
   width: 100%;
   display: grid;

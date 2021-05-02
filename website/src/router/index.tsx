@@ -1,3 +1,5 @@
+import "./eventListener";
+
 import { lazy } from "react";
 import { Router } from "@reach/router";
 import { useAuthContext } from "context/AuthContext/context";

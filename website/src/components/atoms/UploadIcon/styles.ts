@@ -13,6 +13,10 @@ export const LabelContainer = styled.label`
   cursor: pointer;
   outline: none;
   background-color: ${colors.dark_blue};
+
+  &:hover {
+    background-color: ${colors.light_blue};
+  }
 `;
 
 export const IconContainer = styled.span`

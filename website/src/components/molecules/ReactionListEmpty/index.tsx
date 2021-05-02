@@ -6,8 +6,13 @@ import EmptyImage from "assets/images/icon-empty.svg";
 import Title from "components/atoms/Title";
 import Description from "components/atoms/Description";
 import Button from "components/atoms/Button";
+import { memo } from "react";
 
-const ReactionListEmpty = () => {
+type ReactionListEmpty = {
+  isCurrentUserProfile: boolean;
+};
+
+const ReactionListEmpty = ({ isCurrentUserProfile }: ReactionListEmpty) => {
   const navigate = useNavigate();
 
   const onClickButton = () => navigate("/map");
@@ -17,19 +22,23 @@ const ReactionListEmpty = () => {
       <img src={EmptyImage} alt="svg-icon-empty" />
       <S.TextContainer>
         <Title lowercase color="black" letterSpacing size="medium">
-          Sin reseñas disponibles
+          Sin reseñas
         </Title>
         <Description size="small">
-          Deja alguna reseña en nuestras distintas sucursales de la aplicacion
+          {isCurrentUserProfile
+            ? "Deja alguna reseña en nuestras distintas sucursales de la aplicacion"
+            : "Este usuario aun no ha realizado reseñas de nuestras sucursales."}
         </Description>
       </S.TextContainer>
-      <Button
-        onClick={onClickButton}
-        text="Buscar Sucursales"
-        styles={{ color: "yellow" }}
-      />
+      {isCurrentUserProfile && (
+        <Button
+          onClick={onClickButton}
+          text="Buscar Sucursales"
+          styles={{ color: "yellow" }}
+        />
+      )}
     </S.EmptyDesign>
   );
 };
 
-export default ReactionListEmpty;
+export default memo(ReactionListEmpty);
