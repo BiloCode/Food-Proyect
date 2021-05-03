@@ -21,4 +21,12 @@ export const MainContainer = styled.div`
   &.extra_big {
     --size: ${PROFILE_IMAGE_SIZE_BIG}px;
   }
+
+  &.hoverable > img {
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+      filter: brightness(50%);
+    }
+  }
 `;

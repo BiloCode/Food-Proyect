@@ -22,8 +22,6 @@ const useProfileImageUpdate = () => {
 
     setIsUploading(() => true);
 
-    if (!user) return;
-
     const newImage = imagesUploaded[0];
     const uploadService = new UploadProfileImage();
     const imageUploaded = await uploadService.__invoke(user?._id, newImage);

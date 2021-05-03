@@ -2,7 +2,7 @@ import { IconType } from "react-icons/lib";
 import { IoIosStarOutline, IoIosStar } from "react-icons/io";
 import * as S from "./styles";
 
-import Icon, { IconSizeType } from "components/atoms/Icon";
+import Icon, { IconSizeType, IconColorType } from "components/atoms/Icon";
 
 import useStarIconFormat from "hooks/useStarIconFormat";
 
@@ -10,9 +10,14 @@ type StarsType = 0 | 1 | 2 | 3 | 4 | 5;
 type StarListPuntuactionProps = {
   stars: StarsType;
   iconSize?: IconSizeType;
+  iconColor?: IconColorType;
 };
 
-const StarListPuntuaction = ({ stars, iconSize }: StarListPuntuactionProps) => {
+const StarListPuntuaction = ({
+  stars,
+  iconSize,
+  iconColor,
+}: StarListPuntuactionProps) => {
   const starList = useStarIconFormat(stars);
 
   return (
@@ -23,7 +28,9 @@ const StarListPuntuaction = ({ stars, iconSize }: StarListPuntuactionProps) => {
         if (v === "fill") iconType = IoIosStar;
         else if (v === "empty") iconType = IoIosStarOutline;
 
-        return <Icon key={i} color="yellow" Type={iconType} size={iconSize} />;
+        return (
+          <Icon key={i} color={iconColor} Type={iconType} size={iconSize} />
+        );
       })}
     </S.Container>
   );
@@ -31,6 +38,7 @@ const StarListPuntuaction = ({ stars, iconSize }: StarListPuntuactionProps) => {
 
 StarListPuntuaction.defaultProps = {
   iconSize: "small",
+  iconColor: "yellow",
 };
 
 export default StarListPuntuaction;
