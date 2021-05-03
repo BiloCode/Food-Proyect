@@ -3,11 +3,11 @@ import * as S from "./styles";
 import { IconType } from "react-icons/lib";
 
 type UploadIconProps = {
-  Icon: IconType;
+  icon: IconType;
   onChange?(ev: ChangeEvent<HTMLInputElement>): void;
 };
 
-const UploadIcon: FC<UploadIconProps> = ({ Icon, onChange }) => (
+const UploadIcon: FC<UploadIconProps> = ({ icon: Icon, onChange }) => (
   <S.LabelContainer htmlFor="upload-image">
     <S.IconContainer>
       <Icon />

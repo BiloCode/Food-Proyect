@@ -8,22 +8,24 @@ import UploadIcon from "components/atoms/UploadIcon";
 import CircularImage from "components/atoms/CircularImage";
 
 import useProfileImageUpdate from "hooks/useProfileImageUpdate";
+import useDefaultProfileImage from "hooks/useDefaultProfileImage";
 
-type ImageProfileAreaProps = {
+type ProfileImageAreaProps = {
   image: string;
   isCurrentUserProfile?: boolean;
 };
 
-const ImageProfileArea: FC<ImageProfileAreaProps> = ({
+const ProfileImageArea: FC<ProfileImageAreaProps> = ({
   image,
   isCurrentUserProfile,
 }) => {
+  const { defaultImage } = useDefaultProfileImage();
   const { isUploading, onChangeImage } = useProfileImageUpdate();
 
   return (
     <S.ImageContainer>
       <S.ImageBorder>
-        <CircularImage src={image} type="extra-big" />
+        <CircularImage src={image || defaultImage} type="extra-big" />
       </S.ImageBorder>
       {isUploading && (
         <S.SpinnerContainer>
@@ -33,7 +35,7 @@ const ImageProfileArea: FC<ImageProfileAreaProps> = ({
       {isCurrentUserProfile && (
         <S.UploadIconContainer>
           {!isUploading && (
-            <UploadIcon onChange={onChangeImage} Icon={GoCloudUpload} />
+            <UploadIcon onChange={onChangeImage} icon={GoCloudUpload} />
           )}
         </S.UploadIconContainer>
       )}
@@ -41,4 +43,4 @@ const ImageProfileArea: FC<ImageProfileAreaProps> = ({
   );
 };
 
-export default memo(ImageProfileArea);
+export default memo(ProfileImageArea);

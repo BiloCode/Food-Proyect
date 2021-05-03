@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 import { colors } from "config/colors";
-import { navBarHeight } from "config/constans";
+import { NAVBAR_HEIGHT } from "config/constans";
 
 export const ContainerNav = styled.nav`
   width: 100%;
-  height: ${navBarHeight}px;
+  height: ${NAVBAR_HEIGHT}px;
   position: sticky;
   top: 0;
   z-index: 1;

@@ -1,4 +1,4 @@
-import "./eventListener";
+import "./routerEventListener";
 
 import { lazy } from "react";
 import { Router } from "@reach/router";

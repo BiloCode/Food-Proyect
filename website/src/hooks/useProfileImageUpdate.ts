@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, memo, useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 import DeleteImage from "application/core/DeleteImage";
 import FilesCheckingIsImage from "application/core/FileCheckingIsImage";
@@ -22,8 +22,12 @@ const useProfileImageUpdate = () => {
 
     setIsUploading(() => true);
 
+    if (!user) return;
+
+    const newImage = imagesUploaded[0];
     const uploadService = new UploadProfileImage();
-    const imageUploaded = await uploadService.__invoke(imagesUploaded[0]);
+    const imageUploaded = await uploadService.__invoke(user?._id, newImage);
+
     if (!imageUploaded) {
       setIsUploading(() => false);
       return;
@@ -31,11 +35,14 @@ const useProfileImageUpdate = () => {
 
     if (user.profileImage.name) {
       const removeOldImage = new DeleteImage();
-      await removeOldImage.__invoke(user.profileImage.name);
+      await removeOldImage.__invoke(user?.profileImage.name);
     }
 
     const updateUserProfile = new UpdateUserProfileImage();
-    const isUpdated = await updateUserProfile.__invoke(user._id, imageUploaded);
+    const isUpdated = await updateUserProfile.__invoke(
+      user?._id,
+      imageUploaded
+    );
 
     if (!isUpdated) return;
 

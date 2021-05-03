@@ -7,9 +7,9 @@ import Icon from "components/atoms/Icon";
 import Title from "components/atoms/Title";
 import Button from "components/atoms/Button";
 import Portals from "components/atoms/Portals";
-import ProfileUpdateModal from "../../organisms/ProfileUpdateModal";
 import Description from "components/atoms/Description";
-import ImageProfileArea from "components/molecules/ImageProfileArea";
+import ProfileUpdateModal from "../../organisms/ProfileUpdateModal";
+import ProfileImageArea from "components/molecules/ProfileImageArea";
 
 import useActive from "hooks/useActive";
 
@@ -33,7 +33,7 @@ const ProfileLeftContent: FC<ProfileLeftContentProps> = ({
   return (
     <S.MainContainer>
       <S.UserAreaContainer>
-        <ImageProfileArea
+        <ProfileImageArea
           image={profileImage}
           isCurrentUserProfile={isCurrentUserProfile}
         />

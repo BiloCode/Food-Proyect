@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
-import { profileLeftColumnSize, profileMarginContent } from "config/constans";
+import {
+  PROFILE_LEFT_COLUMN_SIZE,
+  PROFILE_MARGIN_CONTENT,
+} from "config/constans";
 
 export const ColumnContainer = styled.div`
   width: 80%;
-  margin: ${profileMarginContent} auto;
+  margin: ${PROFILE_MARGIN_CONTENT} auto;
   display: grid;
-  grid-template-columns: ${profileLeftColumnSize}px 1fr;
+  grid-template-columns: ${PROFILE_LEFT_COLUMN_SIZE}px 1fr;
   align-items: flex-start;
   column-gap: 4.5em;
 `;

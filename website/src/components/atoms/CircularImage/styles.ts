@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { profileImageSizeBig } from "config/constans";
+import { PROFILE_IMAGE_SIZE_BIG } from "config/constans";
 
 export const MainContainer = styled.div`
   --size: 48px;
@@ -19,6 +19,6 @@ export const MainContainer = styled.div`
   }
 
   &.extra_big {
-    --size: ${profileImageSizeBig}px;
+    --size: ${PROFILE_IMAGE_SIZE_BIG}px;
   }
 `;
