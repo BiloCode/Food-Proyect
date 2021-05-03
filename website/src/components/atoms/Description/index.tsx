@@ -15,6 +15,7 @@ const Description: FC<DescriptionType> = ({ children, color, size }) => {
     <S.Container
       className={classNames({
         white: color === "white",
+        light_black: color === "light-black",
         extra_small: size === "extra_small",
         small: size === "small",
         medium: size === "medium",

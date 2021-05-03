@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  padding: 1.8em 1em;
+  padding: 1.8em 1.5em;
   box-sizing: border-box;
   box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
+  border-radius: 10px;
   display: grid;
-  row-gap: 1em;
+  row-gap: 1.25em;
 `;
 
 export const DescriptionContainer = styled.div`
