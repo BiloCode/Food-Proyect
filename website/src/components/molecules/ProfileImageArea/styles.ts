@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { profileImageSizeBig } from "config/constans";
+import { PROFILE_IMAGE_SIZE_BIG } from "config/constans";
 
 export const ImageContainer = styled.div`
   width: max-content;
@@ -8,8 +8,8 @@ export const ImageContainer = styled.div`
 `;
 
 export const ImageBorder = styled.div`
-  width: ${profileImageSizeBig + 15}px;
-  height: ${profileImageSizeBig + 15}px;
+  width: ${PROFILE_IMAGE_SIZE_BIG + 15}px;
+  height: ${PROFILE_IMAGE_SIZE_BIG + 15}px;
   border-radius: 50%;
   border: 4px solid rgb(230, 230, 230);
   display: flex;

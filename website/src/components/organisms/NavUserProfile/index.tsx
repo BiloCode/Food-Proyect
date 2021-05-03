@@ -10,6 +10,7 @@ import Icon from "components/atoms/Icon";
 import CircularImage from "components/atoms/CircularImage";
 import NavDropdownItem from "components/molecules/NavDropdownItem";
 import useActive from "hooks/useActive";
+import useDefaultProfileImage from "hooks/useDefaultProfileImage";
 
 type NavUserProfileProps = {
   _id: string;
@@ -19,9 +20,10 @@ type NavUserProfileProps = {
 const NavUserProfile: FC<NavUserProfileProps> = ({ _id, profileImage }) => {
   const navigate = useNavigate();
 
+  const { defaultImage } = useDefaultProfileImage();
   const { active, toggleActive } = useActive();
 
-  const logOut = () => firebase.auth().signOut();
+  const closeSession = () => firebase.auth().signOut();
   const navigateToProfile = () => {
     toggleActive();
     navigate(`/user/${_id}`);
@@ -30,7 +32,7 @@ const NavUserProfile: FC<NavUserProfileProps> = ({ _id, profileImage }) => {
   return (
     <S.MainContainer>
       <S.ImageContainer onClick={toggleActive}>
-        <CircularImage src={profileImage} />
+        <CircularImage src={profileImage || defaultImage} />
         <Icon color="white" Type={FiChevronDown} />
       </S.ImageContainer>
       {active && (
@@ -41,7 +43,7 @@ const NavUserProfile: FC<NavUserProfileProps> = ({ _id, profileImage }) => {
             onClick={navigateToProfile}
           />
           <NavDropdownItem
-            onClick={logOut}
+            onClick={closeSession}
             text="Cerrar Sesión"
             IconItem={BiDoorOpen}
           />

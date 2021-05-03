@@ -6,14 +6,22 @@ import Image, { ImageType } from "../Image";
 type CircularImageSizeType = "small" | "extra-big" | "big";
 
 type CircularImageProps = ImageType & {
+  hoverable?: boolean;
+  onClickImage?(): void;
   type?: CircularImageSizeType;
 };
 
-const CircularImage: FC<CircularImageProps> = ({ src, alt, type }) => (
+const CircularImage: FC<CircularImageProps> = ({
+  src,
+  hoverable,
+  alt,
+  type,
+}) => (
   <S.MainContainer
     className={classnames({
-      small: type === "small",
+      hoverable,
       big: type === "big",
+      small: type === "small",
       extra_big: type === "extra-big",
     })}
   >

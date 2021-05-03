@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { homeContentLimiter } from "config/constans";
+import { HOME_CONTAINER_SIZE } from "config/constans";
 
 export const HomeSearch = styled.div`
-  width: ${homeContentLimiter};
+  width: ${HOME_CONTAINER_SIZE};
   display: flex;
   flex-direction: column;
   align-items: center;

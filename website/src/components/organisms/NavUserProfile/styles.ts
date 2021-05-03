@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { navBarHeight } from "config/constans";
+import { NAVBAR_HEIGHT } from "config/constans";
 
 export const MainContainer = styled.div`
   position: relative;
@@ -26,7 +26,7 @@ export const DropdownList = styled.ul`
   list-style: none;
   position: absolute;
   right: 0;
-  top: ${navBarHeight}px;
+  top: ${NAVBAR_HEIGHT}px;
   background-color: #fff;
   border-radius: 10px;
   overflow: hidden;

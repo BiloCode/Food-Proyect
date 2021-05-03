@@ -1,5 +1,5 @@
 import { colors } from "config/colors";
-import { homeContentLimiter } from "config/constans";
+import { HOME_CONTAINER_SIZE } from "config/constans";
 import styled from "styled-components";
 
 export const HomeCharacteristContainer = styled.div`
@@ -11,7 +11,7 @@ export const HomeCharacteristContainer = styled.div`
 `;
 
 export const CharacteristList = styled.div`
-  width: ${homeContentLimiter};
+  width: ${HOME_CONTAINER_SIZE};
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(5, max-content);

@@ -1,4 +1,4 @@
-import { homeContentLimiter } from "config/constans";
+import { HOME_CONTAINER_SIZE } from "config/constans";
 import styled from "styled-components";
 
 export const MainContainer = styled.div`
@@ -18,7 +18,7 @@ export const FloatContent = styled.div`
 `;
 
 export const BannerFloatContainer = styled.div`
-  width: ${homeContentLimiter};
+  width: ${HOME_CONTAINER_SIZE};
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -1,7 +1,8 @@
 import { render, fireEvent, screen, waitFor } from "@testing-library/react";
 import { describe, it } from "@jest/globals";
 
-import ImageProfileArea from "components/molecules/ImageProfileArea";
+import TestImage from "assets/images/Image_1.jpg";
+import ProfileImageArea from "components/molecules/ProfileImageArea";
 
 //END TO END
 
@@ -11,10 +12,10 @@ describe("Componente Avatar del perfil del usuario", () => {
   });
 
   it("Cambiar la foto de perfil", async () => {
-    render(<ImageProfileArea image="" isCurrentUserProfile />);
+    render(<ProfileImageArea image="" isCurrentUserProfile />);
 
     const input = screen.getByTestId("file-input");
-    const file = new File([], "assets/images/Image_1.jpg", {
+    const file = new File([], TestImage, {
       type: "image/jpg",
     });
 

@@ -1,6 +1,6 @@
 import firebase from "firebase";
 
-import { clientProfileImageRepository } from "config/constans";
+import { PROFILE_IMAGE_REPOSITORY } from "config/constans";
 import { FirebaseImageType } from "application/types/FirebaseImageType";
 
 type UploadTask = firebase.storage.UploadTask;
@@ -17,9 +17,11 @@ class UploadProfileImage {
     });
   }
 
-  public async __invoke(image: File): Promise<FirebaseImageType> {
+  public async __invoke(userId: string, image: File) {
+    const fileStorageRef = `${PROFILE_IMAGE_REPOSITORY}/${userId}_${image.name}`;
+
     const storage = firebase.storage();
-    const storeRef = storage.ref(clientProfileImageRepository + image.name);
+    const storeRef = storage.ref(fileStorageRef);
     const upload = storeRef.put(image);
 
     try {
@@ -27,11 +29,12 @@ class UploadProfileImage {
 
       const imageURL = await upload.snapshot.ref.getDownloadURL();
       const reference = upload.snapshot.ref.storage.refFromURL(imageURL);
-
-      return {
+      const imageData: FirebaseImageType = {
         url: imageURL,
         name: reference.name,
       };
+
+      return imageData;
     } catch (error) {
       console.log(error);
       return null;
