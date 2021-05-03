@@ -12,6 +12,8 @@ type SucursalInformationProps = {
   textDescription: string;
   stars: StarsType;
   image: string;
+  onCLick?(id: string): void;
+  id: string;
 };
 
 const BranchOfficeInformation = ({
@@ -19,6 +21,8 @@ const BranchOfficeInformation = ({
   textDescription,
   stars,
   image,
+  onCLick,
+  id,
 }: SucursalInformationProps) => {
   return (
     <S.Container>
@@ -37,6 +41,7 @@ const BranchOfficeInformation = ({
         <StarListPuntuaction stars={stars} />
       </div>
       <Button
+        onClick={() => onCLick(id)}
         text="Ver Detalles"
         styles={{
           size: "small",
