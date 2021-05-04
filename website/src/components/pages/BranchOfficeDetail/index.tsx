@@ -6,7 +6,7 @@ import Footer from "components/organisms/Footer";
 import ParallaxImage from "components/atoms/ParallaxImage";
 import BODetailText from "components/organisms/BODetailText";
 import NavigationBar from "components/organisms/NavigationBar";
-import BODetailReactionList from "components/organisms/BODetailReactionList";
+import BODetailReactionList from "components/templates/BODetailReactionList";
 import BOMostPopularFoodCard from "components/molecules/BOMostPopularFoodCard";
 
 const BranchOfficeDetail: FC<RouteComponentProps> = () => (

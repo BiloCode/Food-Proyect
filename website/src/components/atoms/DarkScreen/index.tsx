@@ -1,7 +1,9 @@
 import { FC } from "react";
 import * as S from "./styles";
 
-const DarkScreen: FC = ({ children }) => (
+type DarkScreenProps = {};
+
+const DarkScreen: FC<DarkScreenProps> = ({ children }) => (
   <S.DarkScreenContainer>{children}</S.DarkScreenContainer>
 );
 
