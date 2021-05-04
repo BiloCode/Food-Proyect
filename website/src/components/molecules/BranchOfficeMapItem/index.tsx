@@ -2,6 +2,7 @@ import Description from "components/atoms/Description";
 import Icon from "components/atoms/Icon";
 import Image from "components/atoms/Image";
 import Title from "components/atoms/Title";
+import React from "react";
 import { FiChevronRight } from "react-icons/fi";
 import * as S from "./styles";
 

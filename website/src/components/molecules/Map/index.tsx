@@ -1,5 +1,7 @@
 import Spinner from "components/atoms/Spinner";
 import { credentials } from "config/googleMapsCredentials";
+import { useMapContext } from "context/MapContext/context";
+import React from "react";
 import { GoogleMap, withGoogleMap, withScriptjs } from "react-google-maps";
 
 type MapProps = {
@@ -31,11 +33,13 @@ const Map = ({ latitude, length }: MapProps) => {
 
 const MapWhitScripts = withScriptjs(withGoogleMap(Map));
 
-const MapCredentials = ({ latitude, length }: MapProps) => {
+const MapCredentials = () => {
+  const { mapCoords } = useMapContext();
+
   return (
     <MapWhitScripts
-      latitude={latitude}
-      length={length}
+      latitude={mapCoords.latitude}
+      length={mapCoords.length}
       googleMapURL={
         "https://maps.googleapis.com/maps/api/js?v=3.exp" + credentials.mapsKey
       }

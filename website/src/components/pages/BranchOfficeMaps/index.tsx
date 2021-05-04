@@ -6,8 +6,6 @@ import BranchOfficeMaps from "components/organisms/BranchOfficeMaps";
 
 const BranchOfficeList: FC<RouteComponentProps> = () => (
   <S.MainContainer>
-    <NavigationBar />
-
     <BranchOfficeMaps />
   </S.MainContainer>
 );
