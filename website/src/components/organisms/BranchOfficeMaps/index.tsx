@@ -1,33 +1,52 @@
 import * as S from "./styles";
 import { IoMdSearch } from "react-icons/io";
 import InputPlaceholderIcon from "components/molecules/InputPlaceholderIcon";
-import Title from "components/atoms/Title";
 import BranchOfficeMapList from "components/molecules/BranchOfficeMapList";
-import useMapListSelected from "hooks/useMapListSelected";
 import BranchOfficeGoogleMaps from "components/molecules/BranchOfficeGoogleMaps";
+import Logo from "assets/images/Logo.svg";
+import Image from "components/atoms/Image";
+import { IoIosArrowBack } from "react-icons/io";
+import Icon from "components/atoms/Icon";
+import Description from "components/atoms/Description";
+import { useNavigate } from "@reach/router";
+import React from "react";
 
 const BranchOfficeMaps = () => {
-  const { mapCoords, onClickBranchOffice } = useMapListSelected();
+  const navigate = useNavigate();
+
+  const onClickHome = () => navigate("/home");
 
   return (
     <S.Container>
-      <S.SearchContainer>
-        <InputPlaceholderIcon icon={IoMdSearch} text="Escribe un nombre..." />
-      </S.SearchContainer>
-
-      <S.MapContainer>
-        <Title color="blue" size="medium" lowercase>
-          Lugares más cercanos (15)
-        </Title>
-
-        <BranchOfficeMapList onClickBranchOffice={onClickBranchOffice} />
-
-        <S.GoogleMap>
-          <BranchOfficeGoogleMaps mapCoords={mapCoords} />
-        </S.GoogleMap>
-      </S.MapContainer>
+      <div>
+        <S.Image>
+          <Image src={Logo} />
+        </S.Image>
+        <S.InformationContainer>
+          <S.SearchContainer>
+            <InputPlaceholderIcon
+              icon={IoMdSearch}
+              text="Escribe un nombre..."
+            />
+          </S.SearchContainer>
+          <BranchOfficeMapList />
+          <S.ReturnMenuContainer>
+            <S.ReturnMenu onClick={onClickHome}>
+              <S.IconContainer>
+                <Icon color="white" size="small-medium" Type={IoIosArrowBack} />
+              </S.IconContainer>
+              <div>
+                <Description color="black" size="medium">
+                  Regresar al menú principal
+                </Description>
+              </div>
+            </S.ReturnMenu>
+          </S.ReturnMenuContainer>
+        </S.InformationContainer>
+      </div>
+      <BranchOfficeGoogleMaps />
     </S.Container>
   );
 };
 
-export default BranchOfficeMaps;
+export default React.memo(BranchOfficeMaps);

@@ -1,24 +1,12 @@
 import BranchOfficeMapItem from "../BranchOfficeMapItem";
 import * as S from "./styles";
 import image from "assets/images/BranchOfficeBembos.jpg";
+import React, { useMemo } from "react";
+import { useMapContext } from "context/MapContext/context";
 
-type startType = 0 | 1 | 2 | 3 | 4 | 5;
+const BranchOfficeMapList = () => {
+  const { setMapCoords } = useMapContext();
 
-type BranchOfficeTypes = {
-  latitude: number;
-  length: number;
-  tittle: string;
-  text: string;
-  stars: startType;
-};
-
-type BranchOfficeMapListProps = {
-  onClickBranchOffice({}: BranchOfficeTypes): void;
-};
-
-const BranchOfficeMapList = ({
-  onClickBranchOffice,
-}: BranchOfficeMapListProps) => {
   return (
     <S.Container>
       <BranchOfficeMapItem
@@ -26,7 +14,7 @@ const BranchOfficeMapList = ({
         text="Sucursal Huaycan lorem imptusm lorem imptusm lorem imptusm"
         image={image}
         onClick={() =>
-          onClickBranchOffice({
+          setMapCoords({
             latitude: -12.008734979054598,
             length: -76.82457079149549,
             tittle: "Sucursal Huaycan",
@@ -40,7 +28,7 @@ const BranchOfficeMapList = ({
         text="Sucursal 2"
         image={image}
         onClick={() =>
-          onClickBranchOffice({
+          setMapCoords({
             latitude: -11.992700403536038,
             length: -77.05174180025324,
             tittle: "Sucursal Mega Plaza",
@@ -55,7 +43,7 @@ const BranchOfficeMapList = ({
         text="Sucursal 3"
         image={image}
         onClick={() =>
-          onClickBranchOffice({
+          setMapCoords({
             latitude: -12.00687445636363,
             length: -77.05816660531731,
             tittle: "Sucursal Plaza Norte",
@@ -70,7 +58,7 @@ const BranchOfficeMapList = ({
         text="Sucursal 3"
         image={image}
         onClick={() =>
-          onClickBranchOffice({
+          setMapCoords({
             latitude: -12.00687445636363,
             length: -77.05816660531731,
             tittle: "Sucursal Plaza Norte",
@@ -85,7 +73,7 @@ const BranchOfficeMapList = ({
         text="Sucursal 3"
         image={image}
         onClick={() =>
-          onClickBranchOffice({
+          setMapCoords({
             latitude: -12.00687445636363,
             length: -77.05816660531731,
             tittle: "Sucursal Plaza Norte",
@@ -100,7 +88,7 @@ const BranchOfficeMapList = ({
         text="Sucursal 3"
         image={image}
         onClick={() =>
-          onClickBranchOffice({
+          setMapCoords({
             latitude: -12.00687445636363,
             length: -77.05816660531731,
             tittle: "Sucursal Plaza Norte",
@@ -115,7 +103,7 @@ const BranchOfficeMapList = ({
         text="Sucursal 3"
         image={image}
         onClick={() =>
-          onClickBranchOffice({
+          setMapCoords({
             latitude: -12.00687445636363,
             length: -77.05816660531731,
             tittle: "Sucursal Plaza Norte",
@@ -130,7 +118,7 @@ const BranchOfficeMapList = ({
         text="Sucursal 3"
         image={image}
         onClick={() =>
-          onClickBranchOffice({
+          setMapCoords({
             latitude: -12.00687445636363,
             length: -77.05816660531731,
             tittle: "Sucursal Plaza Norte",
@@ -145,7 +133,7 @@ const BranchOfficeMapList = ({
         text="Sucursal 3"
         image={image}
         onClick={() =>
-          onClickBranchOffice({
+          setMapCoords({
             latitude: -12.00687445636363,
             length: -77.05816660531731,
             tittle: "Sucursal Plaza Norte",
@@ -160,7 +148,7 @@ const BranchOfficeMapList = ({
         text="Sucursal 3"
         image={image}
         onClick={() =>
-          onClickBranchOffice({
+          setMapCoords({
             latitude: -12.00687445636363,
             length: -77.05816660531731,
             tittle: "Sucursal Plaza Norte",
@@ -175,7 +163,7 @@ const BranchOfficeMapList = ({
         text="Sucursal 3"
         image={image}
         onClick={() =>
-          onClickBranchOffice({
+          setMapCoords({
             latitude: -12.00687445636363,
             length: -77.05816660531731,
             tittle: "Sucursal Plaza Norte",
@@ -190,7 +178,7 @@ const BranchOfficeMapList = ({
         text="Sucursal 3"
         image={image}
         onClick={() =>
-          onClickBranchOffice({
+          setMapCoords({
             latitude: -12.00687445636363,
             length: -77.05816660531731,
             tittle: "Sucursal Plaza Norte",
@@ -205,7 +193,7 @@ const BranchOfficeMapList = ({
         text="Sucursal 3"
         image={image}
         onClick={() =>
-          onClickBranchOffice({
+          setMapCoords({
             latitude: -12.00687445636363,
             length: -77.05816660531731,
             tittle: "Sucursal Plaza Norte",
@@ -220,7 +208,7 @@ const BranchOfficeMapList = ({
         text="Sucursal 3"
         image={image}
         onClick={() =>
-          onClickBranchOffice({
+          setMapCoords({
             latitude: -12.00687445636363,
             length: -77.05816660531731,
             tittle: "Sucursal Plaza Norte",
@@ -235,7 +223,7 @@ const BranchOfficeMapList = ({
         text="Sucursal 3"
         image={image}
         onClick={() =>
-          onClickBranchOffice({
+          setMapCoords({
             latitude: -12.00687445636363,
             length: -77.05816660531731,
             tittle: "Sucursal Plaza Norte",
@@ -250,7 +238,7 @@ const BranchOfficeMapList = ({
         text="Sucursal 3"
         image={image}
         onClick={() =>
-          onClickBranchOffice({
+          setMapCoords({
             latitude: -12.00687445636363,
             length: -77.05816660531731,
             tittle: "Sucursal Plaza Norte",
@@ -265,7 +253,7 @@ const BranchOfficeMapList = ({
         text="Sucursal 3"
         image={image}
         onClick={() =>
-          onClickBranchOffice({
+          setMapCoords({
             latitude: -12.00687445636363,
             length: -77.05816660531731,
             tittle: "Sucursal Plaza Norte",
@@ -280,7 +268,7 @@ const BranchOfficeMapList = ({
         text="Sucursal 3"
         image={image}
         onClick={() =>
-          onClickBranchOffice({
+          setMapCoords({
             latitude: -12.00687445636363,
             length: -77.05816660531731,
             tittle: "Sucursal Plaza Norte",
