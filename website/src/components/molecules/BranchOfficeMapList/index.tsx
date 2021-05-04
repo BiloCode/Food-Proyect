@@ -1,283 +1,36 @@
-import BranchOfficeMapItem from "../BranchOfficeMapItem";
 import * as S from "./styles";
-import image from "assets/images/BranchOfficeBembos.jpg";
-import React, { useMemo } from "react";
+
 import { useMapContext } from "context/MapContext/context";
+
+import TestImage from "assets/images/BranchOfficeBembos.jpg";
+import BranchOfficeMapItem from "../BranchOfficeMapItem";
+
+const testArr = new Array(10).fill("");
 
 const BranchOfficeMapList = () => {
   const { setMapCoords } = useMapContext();
 
+  const onClick = () => {
+    setMapCoords({
+      latitude: -12.008734979054598,
+      length: -76.82457079149549,
+      tittle: "Sucursal Huaycan",
+      text: "Sucursal Huaycan lorem imptusm lorem imptusm lorem imptusm",
+      stars: 2,
+    });
+  };
+
   return (
     <S.Container>
-      <BranchOfficeMapItem
-        tittle="Sucursal Huaycan"
-        text="Sucursal Huaycan lorem imptusm lorem imptusm lorem imptusm"
-        image={image}
-        onClick={() =>
-          setMapCoords({
-            latitude: -12.008734979054598,
-            length: -76.82457079149549,
-            tittle: "Sucursal Huaycan",
-            text: "Sucursal Huaycan lorem imptusm lorem imptusm lorem imptusm",
-            stars: 2,
-          })
-        }
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Mega Plaza"
-        text="Sucursal 2"
-        image={image}
-        onClick={() =>
-          setMapCoords({
-            latitude: -11.992700403536038,
-            length: -77.05174180025324,
-            tittle: "Sucursal Mega Plaza",
-            text:
-              "Sucursal Mega Plaza lorem imptusm lorem imptusm lorem imptusm",
-            stars: 3,
-          })
-        }
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        onClick={() =>
-          setMapCoords({
-            latitude: -12.00687445636363,
-            length: -77.05816660531731,
-            tittle: "Sucursal Plaza Norte",
-            text:
-              "Sucursal Plaza Norte lorem imptusm lorem imptusm lorem imptusm",
-            stars: 4,
-          })
-        }
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        onClick={() =>
-          setMapCoords({
-            latitude: -12.00687445636363,
-            length: -77.05816660531731,
-            tittle: "Sucursal Plaza Norte",
-            text:
-              "Sucursal Plaza Norte lorem imptusm lorem imptusm lorem imptusm",
-            stars: 4,
-          })
-        }
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        onClick={() =>
-          setMapCoords({
-            latitude: -12.00687445636363,
-            length: -77.05816660531731,
-            tittle: "Sucursal Plaza Norte",
-            text:
-              "Sucursal Plaza Norte lorem imptusm lorem imptusm lorem imptusm",
-            stars: 4,
-          })
-        }
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        onClick={() =>
-          setMapCoords({
-            latitude: -12.00687445636363,
-            length: -77.05816660531731,
-            tittle: "Sucursal Plaza Norte",
-            text:
-              "Sucursal Plaza Norte lorem imptusm lorem imptusm lorem imptusm",
-            stars: 4,
-          })
-        }
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        onClick={() =>
-          setMapCoords({
-            latitude: -12.00687445636363,
-            length: -77.05816660531731,
-            tittle: "Sucursal Plaza Norte",
-            text:
-              "Sucursal Plaza Norte lorem imptusm lorem imptusm lorem imptusm",
-            stars: 4,
-          })
-        }
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        onClick={() =>
-          setMapCoords({
-            latitude: -12.00687445636363,
-            length: -77.05816660531731,
-            tittle: "Sucursal Plaza Norte",
-            text:
-              "Sucursal Plaza Norte lorem imptusm lorem imptusm lorem imptusm",
-            stars: 4,
-          })
-        }
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        onClick={() =>
-          setMapCoords({
-            latitude: -12.00687445636363,
-            length: -77.05816660531731,
-            tittle: "Sucursal Plaza Norte",
-            text:
-              "Sucursal Plaza Norte lorem imptusm lorem imptusm lorem imptusm",
-            stars: 4,
-          })
-        }
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        onClick={() =>
-          setMapCoords({
-            latitude: -12.00687445636363,
-            length: -77.05816660531731,
-            tittle: "Sucursal Plaza Norte",
-            text:
-              "Sucursal Plaza Norte lorem imptusm lorem imptusm lorem imptusm",
-            stars: 4,
-          })
-        }
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        onClick={() =>
-          setMapCoords({
-            latitude: -12.00687445636363,
-            length: -77.05816660531731,
-            tittle: "Sucursal Plaza Norte",
-            text:
-              "Sucursal Plaza Norte lorem imptusm lorem imptusm lorem imptusm",
-            stars: 4,
-          })
-        }
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        onClick={() =>
-          setMapCoords({
-            latitude: -12.00687445636363,
-            length: -77.05816660531731,
-            tittle: "Sucursal Plaza Norte",
-            text:
-              "Sucursal Plaza Norte lorem imptusm lorem imptusm lorem imptusm",
-            stars: 4,
-          })
-        }
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        onClick={() =>
-          setMapCoords({
-            latitude: -12.00687445636363,
-            length: -77.05816660531731,
-            tittle: "Sucursal Plaza Norte",
-            text:
-              "Sucursal Plaza Norte lorem imptusm lorem imptusm lorem imptusm",
-            stars: 4,
-          })
-        }
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        onClick={() =>
-          setMapCoords({
-            latitude: -12.00687445636363,
-            length: -77.05816660531731,
-            tittle: "Sucursal Plaza Norte",
-            text:
-              "Sucursal Plaza Norte lorem imptusm lorem imptusm lorem imptusm",
-            stars: 4,
-          })
-        }
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        onClick={() =>
-          setMapCoords({
-            latitude: -12.00687445636363,
-            length: -77.05816660531731,
-            tittle: "Sucursal Plaza Norte",
-            text:
-              "Sucursal Plaza Norte lorem imptusm lorem imptusm lorem imptusm",
-            stars: 4,
-          })
-        }
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        onClick={() =>
-          setMapCoords({
-            latitude: -12.00687445636363,
-            length: -77.05816660531731,
-            tittle: "Sucursal Plaza Norte",
-            text:
-              "Sucursal Plaza Norte lorem imptusm lorem imptusm lorem imptusm",
-            stars: 4,
-          })
-        }
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        onClick={() =>
-          setMapCoords({
-            latitude: -12.00687445636363,
-            length: -77.05816660531731,
-            tittle: "Sucursal Plaza Norte",
-            text:
-              "Sucursal Plaza Norte lorem imptusm lorem imptusm lorem imptusm",
-            stars: 4,
-          })
-        }
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        onClick={() =>
-          setMapCoords({
-            latitude: -12.00687445636363,
-            length: -77.05816660531731,
-            tittle: "Sucursal Plaza Norte",
-            text:
-              "Sucursal Plaza Norte lorem imptusm lorem imptusm lorem imptusm",
-            stars: 4,
-          })
-        }
-      />
+      {testArr.map((_, i) => (
+        <BranchOfficeMapItem
+          key={i}
+          tittle="Sucursal Huaycan"
+          text="Sucursal Huaycan lorem imptusm lorem imptusm lorem imptusm"
+          image={TestImage}
+          onClick={onClick}
+        />
+      ))}
     </S.Container>
   );
 };

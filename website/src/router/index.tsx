@@ -22,6 +22,10 @@ const BranchOfficeDetailLazy = lazy(
   () => import("components/pages/BranchOfficeDetail")
 );
 
+const BranchOfficeDetailMenuLazy = lazy(
+  () => import("components/pages/BranchOfficeDetailMenu")
+);
+
 const RouterApplication = () => {
   const { user, isLoading } = useAuthContext();
 
@@ -31,7 +35,9 @@ const RouterApplication = () => {
     <Router>
       <HomeLazy path="/" />
       <BranchOfficeListLazy path="/branch-office" />
-      <BranchOfficeDetailLazy path="/branch-office/:branchOfficeId" />
+      <BranchOfficeDetailLazy path="/branch-office/:branchOfficeId">
+        <BranchOfficeDetailMenuLazy path="/menu" />
+      </BranchOfficeDetailLazy>
       <ProfileLazy path="/user/:userPageId" />
       {!user && (
         <>

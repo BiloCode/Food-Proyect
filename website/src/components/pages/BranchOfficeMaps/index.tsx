@@ -1,12 +1,15 @@
 import { RouteComponentProps } from "@reach/router";
-import NavigationBar from "components/organisms/NavigationBar";
 import { FC } from "react";
 import * as S from "./styles";
+
+import MapProvider from "context/MapContext/provider";
 import BranchOfficeMaps from "components/organisms/BranchOfficeMaps";
 
 const BranchOfficeList: FC<RouteComponentProps> = () => (
   <S.MainContainer>
-    <BranchOfficeMaps />
+    <MapProvider>
+      <BranchOfficeMaps />
+    </MapProvider>
   </S.MainContainer>
 );
 

@@ -1,4 +1,5 @@
-import { FC, useMemo, useState } from "react";
+import { FC, useState } from "react";
+
 import { MapContext } from "./context";
 
 type startType = 0 | 1 | 2 | 3 | 4 | 5;

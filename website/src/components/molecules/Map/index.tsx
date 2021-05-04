@@ -1,7 +1,6 @@
 import Spinner from "components/atoms/Spinner";
 import { credentials } from "config/googleMapsCredentials";
 import { useMapContext } from "context/MapContext/context";
-import React from "react";
 import { GoogleMap, withGoogleMap, withScriptjs } from "react-google-maps";
 
 type MapProps = {

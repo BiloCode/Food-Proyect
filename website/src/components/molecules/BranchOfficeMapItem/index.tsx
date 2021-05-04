@@ -2,7 +2,7 @@ import Description from "components/atoms/Description";
 import Icon from "components/atoms/Icon";
 import Image from "components/atoms/Image";
 import Title from "components/atoms/Title";
-import React from "react";
+import React, { memo } from "react";
 import { FiChevronRight } from "react-icons/fi";
 import * as S from "./styles";
 
@@ -10,7 +10,7 @@ type BranchOfficeMapItemProps = {
   text: string;
   tittle: string;
   image: string;
-  onClick(): void;
+  onClick?(): void;
 };
 
 const BranchOfficeMapItem = ({
@@ -40,4 +40,4 @@ const BranchOfficeMapItem = ({
   );
 };
 
-export default BranchOfficeMapItem;
+export default memo(BranchOfficeMapItem);
