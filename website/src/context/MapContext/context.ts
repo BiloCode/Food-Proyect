@@ -1,4 +1,3 @@
-import { ClientModelType } from "application/types/ClientModelType";
 import { createContext, useContext } from "react";
 
 type startType = 0 | 1 | 2 | 3 | 4 | 5;

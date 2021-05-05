@@ -5,7 +5,6 @@ import { Suspense } from "react";
 import GlobalStyles from "./styles";
 import RouterApplication from "router";
 import AuthProvider from "context/AuthContext/provider";
-
 import { ProfileProvider } from "context/ProfileContext/provider";
 
 function App() {

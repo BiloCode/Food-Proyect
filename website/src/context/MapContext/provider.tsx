@@ -4,7 +4,7 @@ import { MapContext } from "./context";
 
 type startType = 0 | 1 | 2 | 3 | 4 | 5;
 
-type BranchOfficeTypes = {
+type MapCoordsContext = {
   latitude: number;
   length: number;
   tittle: string;
@@ -13,7 +13,7 @@ type BranchOfficeTypes = {
 };
 
 const MapProvider: FC = ({ children }) => {
-  const [mapCoords, setMapCoords] = useState<BranchOfficeTypes>({
+  const [mapCoords, setMapCoords] = useState<MapCoordsContext>({
     latitude: 0,
     length: 0,
     text: "",
