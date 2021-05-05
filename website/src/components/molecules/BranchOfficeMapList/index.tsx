@@ -1,154 +1,24 @@
-import BranchOfficeMapItem from "../BranchOfficeMapItem";
+import faker from "faker";
 import * as S from "./styles";
-import image from "assets/images/BranchOfficeBembos.jpg";
+
+import BranchOfficeMapItem from "../BranchOfficeMapItem";
 
 const BranchOfficeMapList = () => {
+  const fakeMap = new Array(10).fill("");
+
   return (
     <S.Container>
-      <BranchOfficeMapItem
-        tittle="Sucursal Huaycan"
-        text="Sucursal Huaycan lorem imptusm lorem imptusm lorem imptusm"
-        image={image}
-        latitude={-12.008734979054598}
-        length={-76.82457079149549}
-        stars={3}
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Mega Plaza"
-        text="Sucursal 2"
-        image={image}
-        latitude={-12.008734979054598}
-        length={-76.82457079149549}
-        stars={3}
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        latitude={-12.008734979054598}
-        length={-76.82457079149549}
-        stars={3}
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        latitude={-12.008734979054598}
-        length={-76.82457079149549}
-        stars={3}
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        latitude={-12.008734979054598}
-        length={-76.82457079149549}
-        stars={3}
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        latitude={-12.008734979054598}
-        length={-76.82457079149549}
-        stars={3}
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        latitude={-12.008734979054598}
-        length={-76.82457079149549}
-        stars={3}
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        latitude={-12.008734979054598}
-        length={-76.82457079149549}
-        stars={3}
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        latitude={-12.008734979054598}
-        length={-76.82457079149549}
-        stars={3}
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        latitude={-12.008734979054598}
-        length={-76.82457079149549}
-        stars={3}
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        latitude={-12.008734979054598}
-        length={-76.82457079149549}
-        stars={3}
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        latitude={-12.008734979054598}
-        length={-76.82457079149549}
-        stars={3}
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        latitude={-12.008734979054598}
-        length={-76.82457079149549}
-        stars={3}
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        latitude={-12.008734979054598}
-        length={-76.82457079149549}
-        stars={3}
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        latitude={-12.008734979054598}
-        length={-76.82457079149549}
-        stars={3}
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        latitude={-12.008734979054598}
-        length={-76.82457079149549}
-        stars={3}
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        latitude={-12.008734979054598}
-        length={-76.82457079149549}
-        stars={3}
-      />
-      <BranchOfficeMapItem
-        tittle="Sucursal Plaza Norte"
-        text="Sucursal 3"
-        image={image}
-        latitude={-12.008734979054598}
-        length={-76.82457079149549}
-        stars={3}
-      />
+      {fakeMap.map((_, i) => (
+        <BranchOfficeMapItem
+          key={i}
+          tittle={faker.random.words(2)}
+          text={faker.lorem.words(10)}
+          image={faker.random.image()}
+          latitude={-12.008734979054598}
+          length={-76.82457079149549}
+          stars={3}
+        />
+      ))}
     </S.Container>
   );
 };
