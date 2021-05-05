@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { FC, memo } from "react";
 import faker from "faker";
 import * as S from "./styles";
 
@@ -7,7 +7,11 @@ import Title from "components/atoms/Title";
 import Description from "components/atoms/Description";
 import Button from "components/atoms/Button";
 
-const BOMostPopularFoodCard = () => (
+type MostPopularCardProps = {
+  onClick?(): void;
+};
+
+const BOMostPopularFoodCard: FC<MostPopularCardProps> = ({ onClick }) => (
   <S.MainContainer>
     <Title color="blue" size="small-medium">
       Combo Vegano para dos
@@ -24,7 +28,11 @@ const BOMostPopularFoodCard = () => (
         S/ 16.00
       </Title>
     </S.MoneyContainer>
-    <Button text="Ver menu Completo" styles={{ color: "yellow" }} />
+    <Button
+      onClick={onClick}
+      text="Ver menu Completo"
+      styles={{ color: "yellow" }}
+    />
   </S.MainContainer>
 );
 
