@@ -9,11 +9,9 @@ import { IoIosArrowBack } from "react-icons/io";
 import Icon from "components/atoms/Icon";
 import Description from "components/atoms/Description";
 import { useNavigate } from "@reach/router";
-import React from "react";
 
 const BranchOfficeMaps = () => {
   const navigate = useNavigate();
-
   const onClickHome = () => navigate("/home");
 
   return (
@@ -49,4 +47,4 @@ const BranchOfficeMaps = () => {
   );
 };
 
-export default React.memo(BranchOfficeMaps);
+export default BranchOfficeMaps;

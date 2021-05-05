@@ -1,4 +1,4 @@
-import { ChangeEvent, forwardRef } from "react";
+import { forwardRef } from "react";
 import * as S from "./styles";
 
 export type InputType = "text" | "password" | "email";

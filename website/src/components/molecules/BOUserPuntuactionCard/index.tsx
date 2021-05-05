@@ -5,6 +5,7 @@ import * as S from "./styles";
 import Description from "components/atoms/Description";
 import StarListPuntuaction from "../StarListPuntuaction";
 import CircularImage from "components/atoms/CircularImage";
+import { memo } from "react";
 
 const BOUserPuntuactionCard = () => {
   const navigate = useNavigate();
@@ -25,4 +26,4 @@ const BOUserPuntuactionCard = () => {
   );
 };
 
-export default BOUserPuntuactionCard;
+export default memo(BOUserPuntuactionCard);

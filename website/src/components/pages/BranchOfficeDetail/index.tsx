@@ -6,27 +6,30 @@ import Footer from "components/organisms/Footer";
 import ParallaxImage from "components/atoms/ParallaxImage";
 import BODetailText from "components/organisms/BODetailText";
 import NavigationBar from "components/organisms/NavigationBar";
-import BODetailReactionList from "components/organisms/BODetailReactionList";
+import BODetailReactionList from "components/templates/BODetailReactionList";
 import BOMostPopularFoodCard from "components/molecules/BOMostPopularFoodCard";
 
-const BranchOfficeDetail: FC<RouteComponentProps> = () => (
-  <div>
-    <NavigationBar />
-    <ParallaxImage
-      styles={{ size: "small" }}
-      src="https://s3.amazonaws.com/semanaeconomica.bucket/semanaeconomica2/articles/banner/2817_1571497931_banner.jpg"
-    />
-    <S.ContainerContent>
-      <S.ContainerBranchData>
-        <BODetailText />
-        <BODetailReactionList />
-      </S.ContainerBranchData>
-      <div>
-        <BOMostPopularFoodCard />
-      </div>
-    </S.ContainerContent>
-    <Footer />
-  </div>
+const BranchOfficeDetail: FC<RouteComponentProps> = (props) => (
+  <>
+    <div>
+      <NavigationBar />
+      <ParallaxImage
+        styles={{ size: "small" }}
+        src="https://s3.amazonaws.com/semanaeconomica.bucket/semanaeconomica2/articles/banner/2817_1571497931_banner.jpg"
+      />
+      <S.ContainerContent>
+        <S.ContainerBranchData>
+          <BODetailText />
+          <BODetailReactionList />
+        </S.ContainerBranchData>
+        <div>
+          <BOMostPopularFoodCard />
+        </div>
+      </S.ContainerContent>
+      <Footer />
+    </div>
+    {props.children}
+  </>
 );
 
 export default BranchOfficeDetail;
