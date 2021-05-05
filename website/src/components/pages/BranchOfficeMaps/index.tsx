@@ -9,9 +9,9 @@ import Icon from "components/atoms/Icon";
 import Description from "components/atoms/Description";
 import { IoMdSearch } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
-import BranchOfficeGoogleMaps from "components/molecules/BranchOfficeGoogleMaps";
 import Logo from "assets/images/Logo.svg";
 import MapProvider from "context/MapContext/provider";
+import MapCredentials from "components/molecules/Map";
 
 const BranchOfficeMap: FC<RouteComponentProps> = () => {
   const navigate = useNavigate();
@@ -19,8 +19,8 @@ const BranchOfficeMap: FC<RouteComponentProps> = () => {
   const onClickHome = () => navigate("/home");
 
   return (
-    <MapProvider>
-      <S.MainContainer>
+    <S.MainContainer>
+      <MapProvider>
         <div>
           <S.Image>
             <Image src={Logo} />
@@ -51,9 +51,9 @@ const BranchOfficeMap: FC<RouteComponentProps> = () => {
             </S.ReturnMenuContainer>
           </S.InformationContainer>
         </div>
-        <BranchOfficeGoogleMaps />
-      </S.MainContainer>
-    </MapProvider>
+        <MapCredentials />
+      </MapProvider>
+    </S.MainContainer>
   );
 };
 
