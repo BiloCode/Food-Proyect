@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import classNames from "classnames";
 import { useNavigate } from "@reach/router";
 
@@ -18,10 +18,10 @@ import NavbarOption from "components/molecules/NavbarOption";
 import { useAuthContext } from "context/AuthContext/context";
 
 type NavigationBarProps = {
-  staticPosition?:boolean;
-}
+  staticPosition?: boolean;
+};
 
-const NavigationBar:FC<NavigationBarProps> = ({staticPosition}) => {
+const NavigationBar: FC<NavigationBarProps> = ({ staticPosition }) => {
   const { user } = useAuthContext();
   const navigation = useNavigate();
 
@@ -31,7 +31,7 @@ const NavigationBar:FC<NavigationBarProps> = ({staticPosition}) => {
   const onClickButtonBranchOffices = () => navigation("/branch-office");
 
   return (
-    <S.ContainerNav className={classNames({static:staticPosition})}>
+    <S.ContainerNav className={classNames({ static: staticPosition })}>
       <div>
         <Image src={Logo} />
       </div>
@@ -63,4 +63,4 @@ const NavigationBar:FC<NavigationBarProps> = ({staticPosition}) => {
   );
 };
 
-export default NavigationBar;
+export default memo(NavigationBar);

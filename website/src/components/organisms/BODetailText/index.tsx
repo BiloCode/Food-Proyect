@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import * as S from "./styles";
 
 import Title from "components/atoms/Title";
@@ -42,4 +42,4 @@ const BODetailText: FC<BODetailTextProps> = ({
   </S.MainContainer>
 );
 
-export default BODetailText;
+export default memo(BODetailText);

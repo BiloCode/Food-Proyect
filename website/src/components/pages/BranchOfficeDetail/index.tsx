@@ -16,24 +16,20 @@ import {
 
 import { useAuthContext } from "context/AuthContext/context";
 import { useBranchOfficeContext } from "context/BranchOfficeContext/context";
+import BranchOfficeDetailMenu from "components/organisms/BranchOfficeDetailMenu";
+import useActive from "hooks/useActive";
 
-const BranchOfficeDetail: FC<RouteComponentProps> = ({
-  children,
-  navigate,
-}) => {
+const BranchOfficeDetail: FC<RouteComponentProps> = ({}) => {
   const { user } = useAuthContext();
   const { branchOfficeId } = useParams();
   const { branchOffices } = useBranchOfficeContext();
+  const { active, toggleActive } = useActive();
 
   const [currentData, setCurrentData] = useState<BranchOfficeModelType>();
   const [
     userAuthPuntuaction,
     setUserAuthPuntuaction,
   ] = useState<PuntuactionType>();
-
-  const NavigateToMenu = () => {
-    navigate(`/branch-office/${branchOfficeId}/menu`);
-  };
 
   useEffect(() => {
     const currentBranch = branchOffices.find((v) => v._id === branchOfficeId);
@@ -69,14 +65,14 @@ const BranchOfficeDetail: FC<RouteComponentProps> = ({
                 />
               </S.ContainerBranchData>
               <div>
-                <BOMostPopularFoodCard onClick={NavigateToMenu} />
+                <BOMostPopularFoodCard onClick={toggleActive} />
               </div>
             </S.ContainerContent>
             <Footer />
           </>
         )}
       </div>
-      {children}
+      {active && <BranchOfficeDetailMenu />}
     </>
   );
 };

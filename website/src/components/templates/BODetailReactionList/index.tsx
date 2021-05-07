@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import * as S from "./styles";
 
 import Title from "components/atoms/Title";
@@ -38,4 +38,4 @@ const BODetailReactionList: FC<BODetailReactionProps> = ({
   );
 };
 
-export default BODetailReactionList;
+export default memo(BODetailReactionList);
