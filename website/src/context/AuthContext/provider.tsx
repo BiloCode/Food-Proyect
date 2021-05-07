@@ -5,7 +5,7 @@ import GetUserById from "application/core/GetUserById";
 import { ClientModelType } from "application/types/ClientModelType";
 import { AuthContext } from "./context";
 
-const AuthProvider: FC = ({ children }) => {
+export const AuthProvider: FC = ({ children }) => {
   const [user, setUser] = useState<ClientModelType>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -35,5 +35,3 @@ const AuthProvider: FC = ({ children }) => {
     </AuthContext.Provider>
   );
 };
-
-export default AuthProvider;
