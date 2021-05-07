@@ -1,5 +1,5 @@
 import { RouteComponentProps, useNavigate } from "@reach/router";
-import { FC } from "react";
+import { ChangeEvent, ChangeEventHandler, FC, useState } from "react";
 import * as S from "./styles";
 
 import Image from "components/atoms/Image";
@@ -15,8 +15,13 @@ import MapCredentials from "components/molecules/Map";
 
 const BranchOfficeMap: FC<RouteComponentProps> = () => {
   const navigate = useNavigate();
+  const [branchOfficeName, setBranchOfficeName] = useState("");
 
   const onClickHome = () => navigate("/home");
+
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setBranchOfficeName(e.target.value);
+  };
 
   return (
     <S.MainContainer>
@@ -30,9 +35,10 @@ const BranchOfficeMap: FC<RouteComponentProps> = () => {
               <InputPlaceholderIcon
                 icon={IoMdSearch}
                 text="Escribe un nombre..."
+                onChange={onChange}
               />
             </S.SearchContainer>
-            <BranchOfficeMapList />
+            <BranchOfficeMapList branchOfficeName={branchOfficeName} />
             <S.ReturnMenuContainer>
               <S.ReturnMenu onClick={onClickHome}>
                 <S.IconContainer>

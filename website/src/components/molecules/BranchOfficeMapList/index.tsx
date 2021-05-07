@@ -2,23 +2,46 @@ import faker from "faker";
 import * as S from "./styles";
 
 import BranchOfficeMapItem from "../BranchOfficeMapItem";
+import { useBranchOfficeContext } from "context/BranchOfficeContext/context";
 
-const BranchOfficeMapList = () => {
+type BranchOfficeMapListProps = {
+  branchOfficeName: string;
+};
+
+const BranchOfficeMapList = ({
+  branchOfficeName,
+}: BranchOfficeMapListProps) => {
   const fakeMap = new Array(10).fill("");
+
+  const context = useBranchOfficeContext();
+
+  let branchOfficeFilter = [];
+
+  context.branchOffices.map((v) => {
+    let name = v.name.toLowerCase();
+    if (name.includes(branchOfficeName)) {
+      branchOfficeFilter.push(v);
+    }
+  });
+
+  console.log(branchOfficeFilter);
+  console.log(branchOfficeFilter);
 
   return (
     <S.Container>
-      {fakeMap.map((_, i) => (
-        <BranchOfficeMapItem
-          key={i}
-          tittle={faker.random.words(2)}
-          text={faker.lorem.words(10)}
-          image={faker.random.image()}
-          latitude={-12.008734979054598}
-          length={-76.82457079149549}
-          stars={3}
-        />
-      ))}
+      {branchOfficeFilter.map((v, i) => {
+        return (
+          <BranchOfficeMapItem
+            key={i}
+            tittle={v.name}
+            text={"Descripcion de prueba"}
+            image={v.bannerImage.url}
+            latitude={v.location.latitude}
+            length={v.location.longitude}
+            stars={3}
+          />
+        );
+      })}
     </S.Container>
   );
 };

@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { ChangeEvent, forwardRef } from "react";
 import * as S from "./styles";
 
 export type InputType = "text" | "password" | "email";
@@ -8,10 +8,11 @@ export type InputProps = {
   placeholder?: string;
   maxLength?: number;
   defaultValue?: string;
+  onChange?(e: ChangeEvent<HTMLInputElement>): void;
 };
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ type, defaultValue, placeholder, maxLength }, ref) => (
+  ({ type, defaultValue, placeholder, maxLength, onChange }, ref) => (
     <S.CustomInput
       ref={ref}
       required
@@ -19,6 +20,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       maxLength={maxLength}
       placeholder={placeholder}
       defaultValue={defaultValue}
+      onChange={onChange}
     />
   )
 );

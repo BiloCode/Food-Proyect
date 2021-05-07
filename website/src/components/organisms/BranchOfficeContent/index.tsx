@@ -4,9 +4,12 @@ import * as S from "./styles";
 
 import image from "assets/images/BranchOfficeBembos.jpg";
 import { useNavigate } from "@reach/router";
+import { useBranchOfficeContext } from "context/BranchOfficeContext/context";
 
 const BranchOfficeContent = () => {
   const navigate = useNavigate();
+
+  const context = useBranchOfficeContext();
 
   const onCLickBranchOffice = (id: "string") =>
     navigate(`/branch-office/${id}`);
@@ -15,6 +18,17 @@ const BranchOfficeContent = () => {
 
   return (
     <S.Container>
+      {context.branchOffices.map((v, i) => (
+        <BranchOfficeInformation
+          onCLick={onCLickBranchOffice}
+          id={v._id}
+          image={v.bannerImage.url}
+          textTittle={v.name}
+          textDescription={faker.lorem.words(20)}
+          stars={3}
+        />
+      ))}
+
       <BranchOfficeInformation
         onCLick={onCLickBranchOffice}
         id={"1"}
