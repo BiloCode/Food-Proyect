@@ -1,17 +1,26 @@
-import { memo, useState } from "react";
+import { FC, memo, useState } from "react";
 import * as S from "./styles";
 
+import { PuntuactionType } from "application/types/BranchOfficeModelType";
+
 import Button from "components/atoms/Button";
-import DarkScreen from "components/atoms/DarkScreen";
 import Portals from "components/atoms/Portals";
+import DarkScreen from "components/atoms/DarkScreen";
 import BOUserAuthPuntuaction from "components/molecules/BOUserAuthPuntuaction";
 
 import useActive from "hooks/useActive";
 
-const BOUserPuntuactionArea = () => {
-  const { active, toggleActive } = useActive();
+type BOUserPuntuactionProps = {
+  userAuthPuntuaction?: PuntuactionType;
+};
 
-  const [hasUserPuntuaction, setHasUserPuntuaction] = useState<boolean>(true);
+const BOUserPuntuactionArea: FC<BOUserPuntuactionProps> = ({
+  userAuthPuntuaction,
+}) => {
+  const { active, toggleActive } = useActive();
+  const [hasUserPuntuaction, setHasUserPuntuaction] = useState<boolean>(
+    userAuthPuntuaction !== null
+  );
 
   const onChangeValoration = () => {
     //...
@@ -23,7 +32,7 @@ const BOUserPuntuactionArea = () => {
 
   return (
     <>
-      {!hasUserPuntuaction ? (
+      {hasUserPuntuaction ? (
         <Button
           onClick={toggleActive}
           styles={{ size: "big" }}
@@ -31,7 +40,10 @@ const BOUserPuntuactionArea = () => {
         />
       ) : (
         <S.MainContainer>
-          <BOUserAuthPuntuaction />
+          <BOUserAuthPuntuaction
+            description={userAuthPuntuaction.description}
+            stars={userAuthPuntuaction.stars}
+          />
           <S.ButtonContainer>
             <Button text="Cambiar Valoracion" onClick={onChangeValoration} />
             <Button

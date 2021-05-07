@@ -9,13 +9,14 @@ export const Container = styled.div`
 
 export const SliderImages = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   transition-duration: 1s;
-`;
 
-export const Image = styled.div`
-  width: 100%;
-  flex: none;
+  > * {
+    width: 100%;
+    flex: none;
+  }
 `;
 
 export const ArrowsContainer = styled.div`

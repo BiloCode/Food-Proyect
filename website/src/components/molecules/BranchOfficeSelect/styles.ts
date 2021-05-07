@@ -2,7 +2,6 @@ import { colors } from "config/colors";
 import styled from "styled-components";
 
 export const Container = styled.div`
-  margin: 50px 0;
   display: flex;
   padding: 0 2em;
   justify-content: space-between;

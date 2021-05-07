@@ -18,3 +18,7 @@ export const TitleContainer = styled.div`
     flex: none;
   }
 `;
+
+export const DescriptionContainer = styled.div`
+  min-height: 70px;
+`;

@@ -1,5 +1,6 @@
 import firebase from "firebase";
 
+import { StarsType } from "./StarsType";
 import { FoodType } from "application/types/FoodType";
 import { FirebaseImageType } from "application/types/FirebaseImageType";
 
@@ -9,9 +10,9 @@ type LocationType = {
   address: string;
 };
 
-type ReactionType = {
+export type PuntuactionType = {
   _id: string;
-  stars: number;
+  stars: StarsType;
   description: string;
   createdAt: firebase.firestore.Timestamp;
   client: {
@@ -24,10 +25,11 @@ export type BranchOfficeModelType = {
   _id: string;
   menu: [];
   name: string;
+  description: string;
   phoneNumber: string;
   bannerImage: FirebaseImageType;
-  foodTypeSell: FoodType;
+  foodType: FoodType;
   location: LocationType;
-  reactions: ReactionType;
+  puntuactions: PuntuactionType[];
   permisions: [];
 };

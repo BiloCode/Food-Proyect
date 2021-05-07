@@ -12,5 +12,7 @@ export const TitleContainer = styled.div`
 
 export const PuntuactionList = styled.div`
   display: grid;
+  min-height: 280px;
   row-gap: 10px;
+  align-items: flex-start;
 `;

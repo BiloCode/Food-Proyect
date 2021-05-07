@@ -1,19 +1,29 @@
-import faker from "faker";
+import { FC } from "react";
 import * as S from "./styles";
 
+import { StarsType } from "application/types/StarsType";
+
+import Title from "components/atoms/Title";
 import Description from "components/atoms/Description";
 import StarListPuntuaction from "../StarListPuntuaction";
-import Title from "components/atoms/Title";
 
-const BOUserAuthPuntuaction = () => (
+type BOUserAuthPuntuactionProps = {
+  stars: StarsType;
+  description: string;
+};
+
+const BOUserAuthPuntuaction: FC<BOUserAuthPuntuactionProps> = ({
+  stars,
+  description,
+}) => (
   <S.MainContainer>
     <S.HeadContent>
-      <StarListPuntuaction stars={4} iconColor="blue" />
+      <StarListPuntuaction stars={stars} iconColor="blue" />
       <Title color="blue" size="small-medium">
         Mi valoracion
       </Title>
     </S.HeadContent>
-    <Description size="small">{faker.lorem.words(20)}</Description>
+    <Description size="small">{description}</Description>
   </S.MainContainer>
 );
 

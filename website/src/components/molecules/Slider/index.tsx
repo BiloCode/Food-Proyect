@@ -33,9 +33,7 @@ const Slider = () => {
     <S.Container>
       <S.SliderImages ref={ImagesRef}>
         {images.map((v, i) => (
-          <S.Image key={i}>
-            <Image src={v} />
-          </S.Image>
+          <Image key={i} src={v} imageCover />
         ))}
       </S.SliderImages>
       <S.ArrowsContainer>

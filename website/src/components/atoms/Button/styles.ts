@@ -25,6 +25,11 @@ export const ButtonContainer = styled.button`
     height: 32px;
   }
 
+  &.medium {
+    font-size: 0.9em;
+    height: 38px;
+  }
+
   &.big {
     height: 50px;
   }

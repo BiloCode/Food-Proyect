@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  width: 85%;
-  margin-bottom: 5em;
-  display: grid;
+export const MainContainer = styled.div`
+  width: 100%;
+  display: flex;
   justify-content: center;
-  grid-template-columns: repeat(4, 320px);
+`;
+
+export const Container = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 340px);
   gap: 2em;
 `;

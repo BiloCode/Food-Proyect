@@ -6,7 +6,7 @@ import Spinner from "../Spinner";
 
 type ButtonType = "button" | "submit";
 type ButtonColorType = "yellow" | "red" | "normal";
-type ButtonSizeType = "small" | "normal" | "big";
+type ButtonSizeType = "small" | "normal" | "big" | "medium";
 type ButtonTypeProps = {
   text: string;
   onClick?(): void;
@@ -32,6 +32,7 @@ const Button: FC<ButtonTypeProps> = ({
     className={classnames({
       big: styles.size === "big",
       small: styles.size === "small",
+      medium: styles.size === "medium",
       yellow: styles.color === "yellow",
       red: styles.color === "red",
     })}

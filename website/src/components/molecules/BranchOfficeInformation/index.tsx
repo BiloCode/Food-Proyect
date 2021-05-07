@@ -1,35 +1,42 @@
-import Button from "components/atoms/Button";
-import Description from "components/atoms/Description";
-import Image from "components/atoms/Image";
-import Title from "components/atoms/Title";
-import StarListPuntuaction from "../StarListPuntuaction";
+import { useNavigate } from "@reach/router";
 import * as S from "./styles";
 
-type StarsType = 0 | 1 | 2 | 3 | 4 | 5;
+import Button from "components/atoms/Button";
+import Image from "components/atoms/Image";
+import Title from "components/atoms/Title";
+import Description from "components/atoms/Description";
+import StarListPuntuaction from "../StarListPuntuaction";
+
+import { StarsType } from "application/types/StarsType";
 
 type SucursalInformationProps = {
   textTittle: string;
   textDescription: string;
   stars: StarsType;
   image: string;
-  onCLick?(id: string): void;
   id: string;
 };
 
 const BranchOfficeInformation = ({
-  textTittle,
-  textDescription,
+  id,
   stars,
   image,
-  onCLick,
-  id,
+  textTittle,
+  textDescription,
 }: SucursalInformationProps) => {
+  const navigate = useNavigate();
+  const onClick = () => {
+    navigate(`/branch-office/${id}`);
+  };
+
   return (
     <S.Container>
-      <Image src={image} />
+      <S.ImageContainer>
+        <Image src={image} />
+      </S.ImageContainer>
       <div>
         <S.TittleContainer>
-          <Title color="light-black" lowercase size="small">
+          <Title color="black" lowercase size="small">
             {textTittle}
           </Title>
         </S.TittleContainer>
@@ -41,10 +48,10 @@ const BranchOfficeInformation = ({
         <StarListPuntuaction stars={stars} />
       </div>
       <Button
-        onClick={() => onCLick(id)}
+        onClick={onClick}
         text="Ver Detalles"
         styles={{
-          size: "small",
+          size: "medium",
           color: "yellow",
         }}
       />

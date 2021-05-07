@@ -6,3 +6,10 @@ export const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
+export const ContainerElements = styled.div`
+  width: 80%;
+  margin: 5em auto;
+  display: grid;
+  row-gap: 2em;
+`;

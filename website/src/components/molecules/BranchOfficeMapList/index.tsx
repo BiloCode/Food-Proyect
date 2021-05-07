@@ -1,4 +1,3 @@
-import faker from "faker";
 import * as S from "./styles";
 
 import BranchOfficeMapItem from "../BranchOfficeMapItem";
@@ -11,8 +10,6 @@ type BranchOfficeMapListProps = {
 const BranchOfficeMapList = ({
   branchOfficeName,
 }: BranchOfficeMapListProps) => {
-  const fakeMap = new Array(10).fill("");
-
   const context = useBranchOfficeContext();
 
   let branchOfficeFilter = [];

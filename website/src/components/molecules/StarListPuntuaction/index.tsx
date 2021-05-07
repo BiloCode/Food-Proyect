@@ -3,10 +3,10 @@ import { IoIosStarOutline, IoIosStar } from "react-icons/io";
 import * as S from "./styles";
 
 import Icon, { IconSizeType, IconColorType } from "components/atoms/Icon";
+import { StarsType } from "application/types/StarsType";
 
 import useStarIconFormat from "hooks/useStarIconFormat";
 
-type StarsType = 0 | 1 | 2 | 3 | 4 | 5;
 type StarListPuntuactionProps = {
   stars: StarsType;
   iconSize?: IconSizeType;
