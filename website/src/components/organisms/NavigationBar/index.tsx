@@ -1,4 +1,7 @@
+import { FC } from "react";
+import classNames from "classnames";
 import { useNavigate } from "@reach/router";
+
 import { AiFillHome } from "react-icons/ai";
 import { GiFoodTruck } from "react-icons/gi";
 import { BsMap } from "react-icons/bs";
@@ -14,7 +17,11 @@ import NavbarOption from "components/molecules/NavbarOption";
 
 import { useAuthContext } from "context/AuthContext/context";
 
-const NavigationBar = () => {
+type NavigationBarProps = {
+  staticPosition?:boolean;
+}
+
+const NavigationBar:FC<NavigationBarProps> = ({staticPosition}) => {
   const { user } = useAuthContext();
   const navigation = useNavigate();
 
@@ -24,7 +31,7 @@ const NavigationBar = () => {
   const onClickButtonBranchOffices = () => navigation("/branch-office");
 
   return (
-    <S.ContainerNav>
+    <S.ContainerNav className={classNames({static:staticPosition})}>
       <div>
         <Image src={Logo} />
       </div>

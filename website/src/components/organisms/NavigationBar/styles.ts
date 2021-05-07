@@ -6,15 +6,18 @@ import { NAVBAR_HEIGHT } from "config/constans";
 export const ContainerNav = styled.nav`
   width: 100%;
   height: ${NAVBAR_HEIGHT}px;
-  position: sticky;
-  top: 0;
-  z-index: 1;
   background-color: ${colors.dark_blue};
   padding: 0 3.5em;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  &:not(&.static) {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
 `;
 
 type ContainerOptionsType = {

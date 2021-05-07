@@ -1,13 +1,14 @@
-import { colors } from "config/colors";
-import { NAVBAR_HEIGHT, PROFILE_MARGIN_CONTENT } from "config/constans";
 import styled from "styled-components";
+
+import { colors } from "config/colors";
+import { PROFILE_MARGIN_CONTENT } from "config/constans";
 
 export const MainContainer = styled.div`
   width: 100%;
   display: grid;
   row-gap: 3em;
   position: sticky;
-  top: calc(${NAVBAR_HEIGHT}px + ${PROFILE_MARGIN_CONTENT});
+  top: ${PROFILE_MARGIN_CONTENT};
 `;
 
 export const UserAreaContainer = styled.div`
