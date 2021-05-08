@@ -11,39 +11,40 @@ const useProfileInitialize = () => {
   const { user } = useAuthContext();
   const { userPageId } = useParams();
   const {
-    isLoading,
-    setLoading,
+    requestState,
+    changeRequestState,
     setCurrentProfile,
     currentClientInView,
   } = useProfileContext();
 
   useEffect(() => {
-    setLoading(true);
-
     if (user?._id === userPageId) {
       setCurrentProfile(user);
-      setLoading(false);
+      changeRequestState("complete");
       return;
     }
+
+    changeRequestState("loading");
 
     (async () => {
       const getUserService = new GetUserById();
       const userData = await getUserService.__invoke(userPageId);
 
       if (!userData) {
+        changeRequestState("not");
         navigate("/", { replace: true });
         return;
       }
 
       setCurrentProfile(userData);
-      setLoading(false);
+      changeRequestState("complete");
     })();
   }, [userPageId]);
 
   const isCurrentUserProfile = currentClientInView?._id === user?._id;
 
   return {
-    isLoading,
+    requestState,
     currentClientInView,
     isCurrentUserProfile,
   };

@@ -1,1 +1,1 @@
-export type RequestStateType = "loading" | "complete" | "error";
+export type RequestStateType = "not" | "loading" | "complete" | "error";

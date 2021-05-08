@@ -13,7 +13,7 @@ import useProfileInitialize from "hooks/useProfileInitialize";
 
 const Profile: FC<RouteComponentProps> = () => {
   const {
-    isLoading,
+    requestState,
     currentClientInView,
     isCurrentUserProfile,
   } = useProfileInitialize();
@@ -21,26 +21,28 @@ const Profile: FC<RouteComponentProps> = () => {
   return (
     <div>
       <NavigationBar staticPosition />
-      {isLoading ? (
+      {requestState === "loading" ? (
         <S.SpinnerContainer>
           <Spinner size="big" />
         </S.SpinnerContainer>
       ) : (
-        <S.ColumnContainer>
-          <ProfileLeftContent
-            fullName={currentClientInView.fullName}
-            description={currentClientInView.description}
-            profileImage={currentClientInView.profileImage.url}
-            isCurrentUserProfile={isCurrentUserProfile}
-            createdAt={DateFormatting.applyFormat(
-              currentClientInView.createdAt.toDate()
-            )}
-          />
-          <ProfileRightContent
-            puntuactions={currentClientInView.puntuactions}
-            isCurrentUserProfile={isCurrentUserProfile}
-          />
-        </S.ColumnContainer>
+        requestState === "complete" && (
+          <S.ColumnContainer>
+            <ProfileLeftContent
+              fullName={currentClientInView.fullName}
+              description={currentClientInView.description}
+              profileImage={currentClientInView.profileImage.url}
+              isCurrentUserProfile={isCurrentUserProfile}
+              createdAt={DateFormatting.applyFormat(
+                currentClientInView.createdAt.toDate()
+              )}
+            />
+            <ProfileRightContent
+              puntuactions={currentClientInView.puntuactions}
+              isCurrentUserProfile={isCurrentUserProfile}
+            />
+          </S.ColumnContainer>
+        )
       )}
     </div>
   );

@@ -1,19 +1,20 @@
 import { createContext, useContext } from "react";
 
 import { ClientModelType } from "application/types/ClientModelType";
+import { RequestStateType } from "application/types/RequestStateType";
 
 interface ProfileContextType {
-  isLoading: boolean;
+  requestState: RequestStateType;
   currentClientInView?: ClientModelType;
-  setLoading(state: boolean);
   setCurrentProfile(state: ClientModelType);
+  changeRequestState(state: RequestStateType);
 }
 
 export const ProfileContext = createContext<ProfileContextType>({
-  isLoading: true,
+  requestState: "not",
   currentClientInView: null,
-  setLoading() {},
   setCurrentProfile() {},
+  changeRequestState() {},
 });
 
 export const useProfileContext = () => useContext(ProfileContext);

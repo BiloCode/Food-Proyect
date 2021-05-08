@@ -5,6 +5,7 @@ import { Router } from "@reach/router";
 import { useAuthContext } from "context/AuthContext/context";
 
 import RedirectToHome from "components/pages/RedirectToHome";
+import FallbackLoading from "components/molecules/FallbackLoading";
 
 const HomeLazy = lazy(() => import("components/pages/Home"));
 const LoginLazy = lazy(() => import("components/pages/Login"));
@@ -25,7 +26,7 @@ const BranchOfficeDetailLazy = lazy(
 const RouterApplication = () => {
   const { user, isLoading } = useAuthContext();
 
-  if (isLoading) return null;
+  if (isLoading) return <FallbackLoading />;
 
   return (
     <Router>
