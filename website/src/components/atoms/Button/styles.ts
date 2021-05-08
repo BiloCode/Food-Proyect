@@ -10,9 +10,9 @@ export const ButtonContainer = styled.button`
   outline: none;
   user-select: none;
   font-size: 1em;
-  font-weight: 900;
+  font-weight: 800;
   border-radius: 6px;
-  font-family: var(--font);
+  font-family: var(--extra-font);
   text-transform: uppercase;
   background-color: ${colors.dark_blue};
 
@@ -26,7 +26,7 @@ export const ButtonContainer = styled.button`
   }
 
   &.medium {
-    font-size: 0.9em;
+    font-size: 0.95em;
     height: 38px;
   }
 
@@ -40,14 +40,6 @@ export const ButtonContainer = styled.button`
 
     &:hover {
       background-color: ${colors.light_yellow};
-    }
-  }
-
-  &.red {
-    background-color: ${colors.red};
-
-    &:hover {
-      background-color: ${colors.light_red};
     }
   }
 

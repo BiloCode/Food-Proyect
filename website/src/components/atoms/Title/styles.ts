@@ -4,8 +4,8 @@ import styled from "styled-components";
 export const Container = styled.span`
   margin: 0;
   font-size: 2.1em;
-  font-weight: 900;
-  font-family: var(--font);
+  font-weight: 800;
+  font-family: var(--extra-font);
   text-transform: uppercase;
   color: #000;
 

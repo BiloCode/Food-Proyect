@@ -62,7 +62,7 @@ const ProfileUpdateModal: FC<ProfileUpdateModalProps> = ({
             <Button
               onClick={onClose}
               text="Cerrar Modal"
-              styles={{ size: "big", color: "red" }}
+              styles={{ size: "big", color: "yellow" }}
             />
           </S.ButtonContainer>
           {isSendData && (

@@ -48,7 +48,7 @@ const BOUserPuntuactionArea: FC<BOUserPuntuactionProps> = ({
             <Button text="Cambiar Valoracion" onClick={onChangeValoration} />
             <Button
               text="Borrar Valoracion"
-              styles={{ color: "red" }}
+              styles={{ color: "yellow" }}
               onClick={onDeleteUserPuntuaction}
             />
           </S.ButtonContainer>
