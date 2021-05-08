@@ -14,3 +14,13 @@ export const ContainerBranchData = styled.div`
   align-items: flex-start;
   row-gap: 5em;
 `;
+
+export const MainContainer = styled.div`
+  display: grid;
+  row-gap: 3em;
+`;
+
+export const TitleContainer = styled.div`
+  display: grid;
+  row-gap: 1em;
+`;
