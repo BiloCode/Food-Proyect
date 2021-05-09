@@ -6,7 +6,6 @@ export const MainContainer = styled.div`
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  margin-top: 2em;
 `;
 
 type PagesButtonProps = {

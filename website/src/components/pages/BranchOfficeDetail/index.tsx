@@ -9,7 +9,7 @@ import BODetailText from "components/organisms/BODetailText";
 import NavigationBar from "components/organisms/NavigationBar";
 import UserPuntuactionArea from "components/templates/UserPuntuactionArea";
 import BOMostPopularFoodCard from "components/molecules/BOMostPopularFoodCard";
-import BranchOfficeDetailMenu from "components/organisms/BranchOfficeDetailMenu";
+import BranchOfficeDetailMenu from "components/organisms/BranchOfficeMenuModal";
 import BODetailPuntuactionList from "components/organisms/BODetailPuntuactionList";
 
 import useBODetailInitialize from "hooks/useBODetailInitialize";
@@ -65,7 +65,7 @@ const BranchOfficeDetail: FC<RouteComponentProps> = ({}) => {
           </>
         )}
       </div>
-      {menuActive && <BranchOfficeDetailMenu />}
+      {menuActive && <BranchOfficeDetailMenu onClose={toggleMenuActive} />}
     </>
   );
 };

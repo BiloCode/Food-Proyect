@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import classnames from "classnames";
 import * as S from "./styles";
 
@@ -17,4 +17,4 @@ const CircleNumber: FC<CircleNumberProps> = ({ value, isSelect, onClick }) => (
   </S.CircleContainer>
 );
 
-export default CircleNumber;
+export default memo(CircleNumber);

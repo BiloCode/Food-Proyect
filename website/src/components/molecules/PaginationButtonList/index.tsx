@@ -6,30 +6,27 @@ import CircleNumber from "components/atoms/CircleNumber";
 type PaginationButtonListProps = {
   pageSelect: number;
   pageNumber: number;
-  maxPagesRender: number;
-  onClickButton?(): void;
+  onClickButton(pageId: number);
 };
 
 const PaginationButtonList: FC<PaginationButtonListProps> = ({
   pageSelect,
   pageNumber,
   onClickButton,
-  maxPagesRender,
 }) => {
-  const pagesList = new Array(maxPagesRender).fill("");
+  const pagesList = new Array(pageNumber).fill("");
 
   return (
     <S.MainContainer>
-      <S.PagesButtonContainer gridCount={maxPagesRender + 1}>
+      <S.PagesButtonContainer gridCount={pageNumber + 1}>
         {pagesList.map((_, i) => (
           <CircleNumber
             key={i}
-            onClick={onClickButton}
-            isSelect={i === pageSelect}
             value={i + 1}
+            onClick={onClickButton(i)}
+            isSelect={i === pageSelect}
           />
         ))}
-        <CircleNumber value="..." />
       </S.PagesButtonContainer>
     </S.MainContainer>
   );
