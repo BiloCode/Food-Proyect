@@ -2,43 +2,35 @@ import * as S from "./styles";
 
 import BranchOfficeMapItem from "../BranchOfficeMapItem";
 import { useBranchOfficeContext } from "context/BranchOfficeContext/context";
+import NoSearchResults from "../NoSearchResults";
+import classNames from "classnames";
 
-type BranchOfficeMapListProps = {
-  branchOfficeName: string;
-};
-
-const BranchOfficeMapList = ({
-  branchOfficeName,
-}: BranchOfficeMapListProps) => {
+const BranchOfficeMapList = () => {
   const context = useBranchOfficeContext();
 
-  let branchOfficeFilter = [];
-
-  context.branchOffices.map((v) => {
-    let name = v.name.toLowerCase();
-    if (name.includes(branchOfficeName)) {
-      branchOfficeFilter.push(v);
-    }
-  });
-
-  console.log(branchOfficeFilter);
-  console.log(branchOfficeFilter);
-
   return (
-    <S.Container>
-      {branchOfficeFilter.map((v, i) => {
-        return (
-          <BranchOfficeMapItem
-            key={i}
-            tittle={v.name}
-            text={"Descripcion de prueba"}
-            image={v.bannerImage.url}
-            latitude={v.location.latitude}
-            length={v.location.longitude}
-            stars={3}
-          />
-        );
+    <S.Container
+      className={classNames({
+        noResults: context.branchOfficeFilter.length === 0,
       })}
+    >
+      {context.branchOfficeFilter.length === 0 ? (
+        <NoSearchResults />
+      ) : (
+        context.branchOfficeFilter.map((v, i) => {
+          return (
+            <BranchOfficeMapItem
+              key={i}
+              tittle={v.name}
+              text={"Descripcion de prueba"}
+              image={v.bannerImage.url}
+              latitude={v.location.latitude}
+              length={v.location.longitude}
+              stars={3}
+            />
+          );
+        })
+      )}
     </S.Container>
   );
 };

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "@reach/router";
-
 import { useAuthContext } from "context/AuthContext/context";
 import { useBranchOfficeContext } from "context/BranchOfficeContext/context";
 

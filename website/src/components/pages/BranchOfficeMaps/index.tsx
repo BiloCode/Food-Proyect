@@ -1,27 +1,19 @@
 import { RouteComponentProps, useNavigate } from "@reach/router";
-import { ChangeEvent, ChangeEventHandler, FC, useState } from "react";
+import { FC } from "react";
 import * as S from "./styles";
 
 import Image from "components/atoms/Image";
-import InputPlaceholderIcon from "components/molecules/InputPlaceholderIcon";
 import BranchOfficeMapList from "components/molecules/BranchOfficeMapList";
-import Icon from "components/atoms/Icon";
-import Description from "components/atoms/Description";
-import { IoMdSearch } from "react-icons/io";
-import { IoIosArrowBack } from "react-icons/io";
 import Logo from "assets/images/Logo.svg";
 import MapProvider from "context/MapContext/provider";
 import MapCredentials from "components/molecules/Map";
+import ReturnHomeButton from "components/molecules/ReturnHomeButton";
+import SearchBranchOffice from "components/organisms/SearchBranchOffice";
 
 const BranchOfficeMap: FC<RouteComponentProps> = () => {
   const navigate = useNavigate();
-  const [branchOfficeName, setBranchOfficeName] = useState("");
 
   const onClickHome = () => navigate("/home");
-
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setBranchOfficeName(e.target.value);
-  };
 
   return (
     <S.MainContainer>
@@ -31,30 +23,9 @@ const BranchOfficeMap: FC<RouteComponentProps> = () => {
             <Image src={Logo} />
           </S.Image>
           <S.InformationContainer>
-            <S.SearchContainer>
-              <InputPlaceholderIcon
-                icon={IoMdSearch}
-                text="Escribe un nombre..."
-                onChange={onChange}
-              />
-            </S.SearchContainer>
-            <BranchOfficeMapList branchOfficeName={branchOfficeName} />
-            <S.ReturnMenuContainer>
-              <S.ReturnMenu onClick={onClickHome}>
-                <S.IconContainer>
-                  <Icon
-                    color="white"
-                    size="small-medium"
-                    Type={IoIosArrowBack}
-                  />
-                </S.IconContainer>
-                <div>
-                  <Description color="black" size="medium">
-                    Regresar al menú principal
-                  </Description>
-                </div>
-              </S.ReturnMenu>
-            </S.ReturnMenuContainer>
+            <SearchBranchOffice />
+            <BranchOfficeMapList />
+            <ReturnHomeButton onClick={onClickHome} />
           </S.InformationContainer>
         </div>
         <MapCredentials />

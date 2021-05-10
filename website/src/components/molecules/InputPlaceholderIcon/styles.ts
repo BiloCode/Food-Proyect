@@ -11,7 +11,7 @@ export const Container = styled.div`
 `;
 
 export const IconContainer = styled.div`
-  background-color: ${colors.super_light_black};
+  background-color: ${colors.light_gray};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,5 +23,6 @@ export const InputContainer = styled.div`
   & input {
     padding-left: 0;
     border-radius: 0;
+    background-color: ${colors.light_gray};
   }
 `;
