@@ -9,6 +9,8 @@ import { RequestStateType } from "application/types/RequestStateType";
 type IContext = {
   branchOffices: BranchOfficeModelType[];
   requestState: RequestStateType;
+  changeSearch?(search: string): void;
+  branchOfficeFilter?: BranchOfficeModelType[];
   removeBranchOfficePuntuaction(branchOfficeId: string, puntuactionId: string);
   setBranchOfficePuntuaction(
     branchOfficeId: string,

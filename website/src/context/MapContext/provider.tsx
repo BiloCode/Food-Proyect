@@ -1,19 +1,9 @@
 import { FC, useState } from "react";
 
-import { MapContext } from "./context";
-
-type startType = 0 | 1 | 2 | 3 | 4 | 5;
-
-type MapCoordsContext = {
-  latitude: number;
-  length: number;
-  tittle: string;
-  text: string;
-  stars: startType;
-};
+import { MapContext, MapCoordsTypes } from "./context";
 
 const MapProvider: FC = ({ children }) => {
-  const [mapCoords, setMapCoords] = useState<MapCoordsContext>({
+  const [mapCoords, setMapCoords] = useState<MapCoordsTypes>({
     latitude: 0,
     length: 0,
     text: "",

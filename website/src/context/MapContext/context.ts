@@ -1,20 +1,18 @@
 import { createContext, useContext } from "react";
 
-type startType = 0 | 1 | 2 | 3 | 4 | 5;
-
-type MapCoordsTypes = {
-  latitude: number;
-  length: number;
-  tittle: string;
+export type MapCoordsTypes = {
   text: string;
-  stars: startType;
+  stars: number;
+  tittle: string;
+  length: number;
+  latitude: number;
 };
 
-type MapCoordsContext = {
+export type MapContextType = {
   mapCoords?: MapCoordsTypes;
   setMapCoords?(mapCoords: MapCoordsTypes): void;
 };
 
-export const MapContext = createContext<MapCoordsContext>({});
+export const MapContext = createContext<MapContextType>({});
 
 export const useMapContext = () => useContext(MapContext);

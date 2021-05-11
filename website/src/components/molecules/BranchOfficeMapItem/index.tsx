@@ -7,15 +7,13 @@ import { memo } from "react";
 import { FiChevronRight } from "react-icons/fi";
 import * as S from "./styles";
 
-type startType = 0 | 1 | 2 | 3 | 4 | 5;
-
 type BranchOfficeMapItemProps = {
   text: string;
-  tittle: string;
   image: string;
-  latitude: number;
+  stars: number;
+  tittle: string;
   length: number;
-  stars: startType;
+  latitude: number;
 };
 
 const BranchOfficeMapItem = ({
