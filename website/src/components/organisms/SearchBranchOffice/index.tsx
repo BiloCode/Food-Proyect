@@ -4,7 +4,7 @@ import { IoMdSearch } from "react-icons/io";
 import * as S from "./styles";
 
 type SearchBranchOfficeProps = {
-  onChange(e: ChangeEvent<HTMLInputElement>): void;
+  onChange(): void;
 };
 
 const SearchBranchOffice = ({ onChange }: SearchBranchOfficeProps) => {
