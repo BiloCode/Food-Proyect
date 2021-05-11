@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { RouteComponentProps } from "@reach/router";
 import * as S from "./styles";
 
@@ -8,16 +8,18 @@ import NavigationBar from "components/organisms/NavigationBar";
 import BranchOfficeContent from "components/organisms/BranchOfficeContent";
 import BranchOfficeFilter from "components/organisms/BranchOfficeFilter";
 
-const BranchOfficeList: FC<RouteComponentProps> = () => (
-  <S.MainContainer>
-    <NavigationBar />
-    <Slider />
-    <S.ContainerElements>
-      <BranchOfficeFilter />
-      <BranchOfficeContent />
-    </S.ContainerElements>
-    <Footer />
-  </S.MainContainer>
-);
+const BranchOfficeList: FC<RouteComponentProps> = () => {
+  return (
+    <S.MainContainer>
+      <NavigationBar />
+      <Slider />
+      <S.ContainerElements>
+        <BranchOfficeFilter />
+        <BranchOfficeContent />
+      </S.ContainerElements>
+      <Footer />
+    </S.MainContainer>
+  );
+};
 
 export default BranchOfficeList;

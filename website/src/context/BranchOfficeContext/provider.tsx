@@ -15,10 +15,6 @@ export const BranchOfficeProvider: FC = ({ children }) => {
     []
   );
 
-  const [branchOfficeFilter, setBranchOfficeFilter] = useState<
-    BranchOfficeModelType[]
-  >([]);
-
   useEffect(() => {
     (async () => {
       const branchOfficeList = await GetBranchOfficeList.exec();
@@ -29,7 +25,6 @@ export const BranchOfficeProvider: FC = ({ children }) => {
 
       setBranchOffices(() => branchOfficeList);
       setRequestState(() => "complete");
-      setBranchOfficeFilter(branchOfficeList);
     })();
   }, []);
 
@@ -71,18 +66,6 @@ export const BranchOfficeProvider: FC = ({ children }) => {
     setBranchOffices(() => branchListUpdated);
   };
 
-  const changeSearch = (search: string) => {
-    let newList: BranchOfficeModelType[] = [];
-    branchOffices.map((v) => {
-      let name = v.name.toLowerCase();
-      if (name.includes(search)) {
-        newList.push(v);
-      }
-    });
-
-    setBranchOfficeFilter(newList);
-  };
-
   return (
     <BranchOfficeContext.Provider
       value={{
@@ -90,8 +73,6 @@ export const BranchOfficeProvider: FC = ({ children }) => {
         requestState,
         setBranchOfficePuntuaction,
         removeBranchOfficePuntuaction,
-        changeSearch,
-        branchOfficeFilter,
       }}
     >
       {children}

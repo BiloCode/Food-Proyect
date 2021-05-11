@@ -1,22 +1,16 @@
 import InputPlaceholderIcon from "components/molecules/InputPlaceholderIcon";
-import { useBranchOfficeContext } from "context/BranchOfficeContext/context";
-import { ChangeEvent, useRef } from "react";
+import { ChangeEvent } from "react";
 import { IoMdSearch } from "react-icons/io";
 import * as S from "./styles";
 
-const SearchBranchOffice = () => {
-  const context = useBranchOfficeContext();
+type SearchBranchOfficeProps = {
+  onChange(e: ChangeEvent<HTMLInputElement>): void;
+};
 
-  const searchRef = useRef<HTMLInputElement>();
-
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    context.changeSearch(e.target.value);
-  };
-
+const SearchBranchOffice = ({ onChange }: SearchBranchOfficeProps) => {
   return (
     <S.SearchContainer>
       <InputPlaceholderIcon
-        ref={searchRef}
         icon={IoMdSearch}
         text="Escribe un nombre..."
         onChange={onChange}

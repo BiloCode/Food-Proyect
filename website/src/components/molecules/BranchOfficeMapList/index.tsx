@@ -1,23 +1,27 @@
 import * as S from "./styles";
 
 import BranchOfficeMapItem from "../BranchOfficeMapItem";
-import { useBranchOfficeContext } from "context/BranchOfficeContext/context";
 import NoSearchResults from "../NoSearchResults";
 import classNames from "classnames";
+import { BranchOfficeModelType } from "application/types/BranchOfficeModelType";
 
-const BranchOfficeMapList = () => {
-  const context = useBranchOfficeContext();
+type BranchOfficeMapListProps = {
+  branchOffices: BranchOfficeModelType[];
+};
+
+const BranchOfficeMapList = ({ branchOffices }: BranchOfficeMapListProps) => {
+  /*   const context = useBranchOfficeContext(); */
 
   return (
     <S.Container
       className={classNames({
-        noResults: context.branchOfficeFilter.length === 0,
+        noResults: branchOffices.length === 0,
       })}
     >
-      {context.branchOfficeFilter.length === 0 ? (
+      {branchOffices.length === 0 ? (
         <NoSearchResults />
       ) : (
-        context.branchOfficeFilter.map((v, i) => {
+        branchOffices.map((v, i) => {
           return (
             <BranchOfficeMapItem
               key={i}
