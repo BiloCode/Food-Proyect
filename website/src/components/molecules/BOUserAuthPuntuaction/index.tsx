@@ -1,14 +1,12 @@
 import { FC } from "react";
 import * as S from "./styles";
 
-import { StarsType } from "application/types/StarsType";
-
 import Title from "components/atoms/Title";
 import Description from "components/atoms/Description";
 import StarListPuntuaction from "../StarListPuntuaction";
 
 type BOUserAuthPuntuactionProps = {
-  stars: StarsType;
+  stars: number;
   description: string;
 };
 

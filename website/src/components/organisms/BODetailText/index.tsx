@@ -7,11 +7,10 @@ import Description from "components/atoms/Description";
 import StarListPuntuaction from "components/molecules/StarListPuntuaction";
 
 import { FoodType } from "application/types/FoodType";
-import { StarsType } from "application/types/StarsType";
 
 type BODetailTextProps = {
-  stars: StarsType;
   name: string;
+  stars: number;
   description: string;
   foodType: FoodType;
 };

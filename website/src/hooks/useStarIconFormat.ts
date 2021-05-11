@@ -2,18 +2,18 @@ type StarType = "fill" | "empty";
 
 const useStarIconFormat = (starNumber: number) => {
   return () => {
-    let starsType: StarType[] = [];
+    let number: StarType[] = [];
 
     for (let i = 0; i < 5; i++) {
       if (i < starNumber) {
-        starsType.push("fill");
+        number.push("fill");
         continue;
       }
 
-      starsType.push("empty");
+      number.push("empty");
     }
 
-    return starsType;
+    return number;
   };
 };
 

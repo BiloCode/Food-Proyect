@@ -7,12 +7,10 @@ import Title from "components/atoms/Title";
 import Description from "components/atoms/Description";
 import StarListPuntuaction from "../StarListPuntuaction";
 
-import { StarsType } from "application/types/StarsType";
-
 type SucursalInformationProps = {
   textTittle: string;
   textDescription: string;
-  stars: StarsType;
+  stars: number;
   image: string;
   id: string;
 };

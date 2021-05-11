@@ -1,5 +1,5 @@
-import { RouteComponentProps, useNavigate } from "@reach/router";
-import { ChangeEvent, ChangeEventHandler, FC, useState } from "react";
+import { RouteComponentProps } from "@reach/router";
+import { ChangeEvent, FC, useState } from "react";
 import * as S from "./styles";
 
 import Image from "components/atoms/Image";
@@ -13,8 +13,7 @@ import Logo from "assets/images/Logo.svg";
 import MapProvider from "context/MapContext/provider";
 import MapCredentials from "components/molecules/Map";
 
-const BranchOfficeMap: FC<RouteComponentProps> = () => {
-  const navigate = useNavigate();
+const BranchOfficeMap: FC<RouteComponentProps> = ({ navigate }) => {
   const [branchOfficeName, setBranchOfficeName] = useState("");
 
   const onClickHome = () => navigate("/home");

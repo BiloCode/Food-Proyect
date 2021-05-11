@@ -1,27 +1,40 @@
+import { FC, memo } from "react";
 import { useNavigate } from "@reach/router";
-import faker from "faker";
 import * as S from "./styles";
 
 import Description from "components/atoms/Description";
 import StarListPuntuaction from "../StarListPuntuaction";
 import CircularImage from "components/atoms/CircularImage";
-import { memo } from "react";
 
-const BOUserPuntuactionCard = () => {
+type PuntuactionCardProps = {
+  userId: string;
+  userName: string;
+  userImage: string;
+  stars: number;
+  description: string;
+};
+
+const BOUserPuntuactionCard: FC<PuntuactionCardProps> = ({
+  stars,
+  userId,
+  userName,
+  userImage,
+  description,
+}) => {
   const navigate = useNavigate();
-  const NavigateToUserProfile = () => navigate("/user/");
+  const NavigateToUserProfile = () => navigate("/user/" + userId);
 
   return (
     <S.MainContainer>
       <S.UserInfoDivider>
-        <CircularImage src={faker.random.image()} hoverable />
+        <CircularImage src={userImage} hoverable />
         <S.ContainerUserText>
-          <S.Username>Billy Paredes Aycho</S.Username>
-          <StarListPuntuaction stars={3} iconColor="blue" />
+          <S.Username onClick={NavigateToUserProfile}>{userName}</S.Username>
+          <StarListPuntuaction stars={stars} iconColor="blue" />
         </S.ContainerUserText>
         <S.Date>26/10/2000</S.Date>
       </S.UserInfoDivider>
-      <Description size="small">{faker.lorem.words(20)}</Description>
+      {description && <Description size="small">{description}</Description>}
     </S.MainContainer>
   );
 };

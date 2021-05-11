@@ -2,7 +2,10 @@ import { FC, useEffect, useState } from "react";
 
 import { BranchOfficeContext } from "./context";
 import { RequestStateType } from "application/types/RequestStateType";
-import { BranchOfficeModelType } from "application/types/BranchOfficeModelType";
+import {
+  BranchOfficeModelType,
+  PuntuactionType,
+} from "application/types/BranchOfficeModelType";
 
 import GetBranchOfficeList from "application/core/GetBranchOfficeList";
 
@@ -25,8 +28,53 @@ export const BranchOfficeProvider: FC = ({ children }) => {
     })();
   }, []);
 
+  const setBranchOfficePuntuaction = (
+    branchOfficeId: string,
+    puntuactions: PuntuactionType[]
+  ) => {
+    const branchListUpdated = [...branchOffices].map((v) => {
+      if (v._id === branchOfficeId) {
+        return {
+          ...v,
+          puntuactions,
+        };
+      }
+
+      return v;
+    });
+
+    setBranchOffices(() => branchListUpdated);
+  };
+
+  const removeBranchOfficePuntuaction = (
+    branchOfficeId: string,
+    puntuactionId: string
+  ) => {
+    const branchListUpdated = [...branchOffices].map((v) => {
+      if (v._id === branchOfficeId) {
+        return {
+          ...v,
+          puntuactions: v.puntuactions.filter(
+            (v) => v.userId !== puntuactionId
+          ),
+        };
+      }
+
+      return v;
+    });
+
+    setBranchOffices(() => branchListUpdated);
+  };
+
   return (
-    <BranchOfficeContext.Provider value={{ branchOffices, requestState }}>
+    <BranchOfficeContext.Provider
+      value={{
+        branchOffices,
+        requestState,
+        setBranchOfficePuntuaction,
+        removeBranchOfficePuntuaction,
+      }}
+    >
       {children}
     </BranchOfficeContext.Provider>
   );

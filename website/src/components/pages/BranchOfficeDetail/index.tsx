@@ -12,61 +12,54 @@ import BOMostPopularFoodCard from "components/molecules/BOMostPopularFoodCard";
 import BranchOfficeDetailMenu from "components/organisms/BranchOfficeMenuModal";
 import BODetailPuntuactionList from "components/organisms/BODetailPuntuactionList";
 
-import useBODetailInitialize from "hooks/useBODetailInitialize";
+import useActive from "hooks/useActive";
+import useGetBranchOfficeDetail from "hooks/useGetBranchOfficeDetail";
 
 const BranchOfficeDetail: FC<RouteComponentProps> = ({}) => {
+  const { active: menuActive, toggleActive: menuToggleActive } = useActive();
   const {
-    user,
-    menuActive,
-    currentData,
-    uAuthPuntuaction,
-    toggleMenuActive,
-  } = useBODetailInitialize();
+    userAuth,
+    branchOffice: { data, uAuthPuntuaction },
+  } = useGetBranchOfficeDetail();
 
   return (
-    <>
-      <div>
-        <NavigationBar />
-        {currentData && (
-          <>
-            <ParallaxImage
-              styles={{ size: "small" }}
-              src={currentData.bannerImage.url}
-            />
-            <S.ContainerContent>
-              <S.ContainerBranchData>
-                <BODetailText
-                  stars={3}
-                  name={currentData.name}
-                  foodType={currentData.foodType}
-                  description={currentData.description}
-                />
-                <S.MainContainer>
-                  <S.TitleContainer>
-                    <Title color="black" size="medium">
-                      Valoraciones del lugar
-                    </Title>
-                    {user && (
-                      <UserPuntuactionArea
-                        uAuthPuntuaction={uAuthPuntuaction}
-                      />
-                    )}
-                  </S.TitleContainer>
-                  <BODetailPuntuactionList
-                    cardList={currentData.puntuactions}
-                  />
-                </S.MainContainer>
-              </S.ContainerBranchData>
-              <div>
-                <BOMostPopularFoodCard onClick={toggleMenuActive} />
-              </div>
-            </S.ContainerContent>
-            <Footer />
-          </>
-        )}
-      </div>
-      {menuActive && <BranchOfficeDetailMenu onClose={toggleMenuActive} />}
-    </>
+    <div>
+      <NavigationBar />
+      {data && (
+        <>
+          <ParallaxImage
+            styles={{ size: "small" }}
+            src={data.bannerImage.url}
+          />
+          <S.ContainerContent>
+            <S.ContainerBranchData>
+              <BODetailText
+                name={data.name}
+                stars={data.stars}
+                foodType={data.foodType}
+                description={data.description}
+              />
+              <S.MainContainer>
+                <S.TitleContainer>
+                  <Title color="black" size="medium">
+                    Valoraciones del lugar
+                  </Title>
+                  {userAuth && (
+                    <UserPuntuactionArea uAuthPuntuaction={uAuthPuntuaction} />
+                  )}
+                </S.TitleContainer>
+                <BODetailPuntuactionList cardList={data.puntuactions} />
+              </S.MainContainer>
+            </S.ContainerBranchData>
+            <div>
+              <BOMostPopularFoodCard onClick={menuToggleActive} />
+            </div>
+          </S.ContainerContent>
+          <Footer />
+        </>
+      )}
+      {menuActive && <BranchOfficeDetailMenu onClose={menuToggleActive} />}
+    </div>
   );
 };
 

@@ -4,19 +4,15 @@ import * as S from "./styles";
 import { IoIosStarOutline, IoIosStar } from "react-icons/io";
 
 import Icon from "components/atoms/Icon";
-import { StarsType } from "application/types/StarsType";
-
-const fakeList = new Array(5).fill("");
 
 type StarsProps = {
-  starsSelected: StarsType;
+  clientStars: number;
   onClickStar(starNumber);
 };
 
-const StarPuntuactionInteractive: FC<StarsProps> = ({
-  onClickStar,
-  starsSelected,
-}) => (
+const fakeList = new Array(5).fill("");
+
+const StarsInteractive: FC<StarsProps> = ({ onClickStar, clientStars }) => (
   <S.MainContainer>
     <S.CenterContent>
       <div>
@@ -26,16 +22,16 @@ const StarPuntuactionInteractive: FC<StarsProps> = ({
               key={i}
               size="medium"
               color="yellow"
-              Type={i < starsSelected ? IoIosStar : IoIosStarOutline}
+              Type={i < clientStars ? IoIosStar : IoIosStarOutline}
             />
           </S.StarIconContainer>
         ))}
       </div>
       <S.MessageIndicator>
-        Tu puntuacion es {starsSelected}/{fakeList.length}
+        Tu puntuacion es {clientStars}/{fakeList.length}
       </S.MessageIndicator>
     </S.CenterContent>
   </S.MainContainer>
 );
 
-export default StarPuntuactionInteractive;
+export default StarsInteractive;

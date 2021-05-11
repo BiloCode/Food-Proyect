@@ -3,12 +3,10 @@ import Title from "components/atoms/Title";
 import StarListPuntuaction from "../StarListPuntuaction";
 import * as S from "./styles";
 
-type StarsType = 0 | 1 | 2 | 3 | 4 | 5;
-
 type BranchOfficeMapItemProps = {
   text: string;
   tittle: string;
-  stars: StarsType;
+  stars: number;
 };
 
 const BranchOfficeMapSelected = ({

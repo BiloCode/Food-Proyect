@@ -12,7 +12,14 @@ type PuntuactionListProps = {
 const BODetailPuntuactionList: FC<PuntuactionListProps> = ({ cardList }) => (
   <S.PuntuactionList>
     {cardList.map((v) => (
-      <BOUserPuntuactionCard key={v._id} />
+      <BOUserPuntuactionCard
+        key={v.userId}
+        stars={v.stars}
+        userId={v.userId}
+        description={v.description}
+        userName={v.client.fullName}
+        userImage={v.client.profileImage}
+      />
     ))}
   </S.PuntuactionList>
 );

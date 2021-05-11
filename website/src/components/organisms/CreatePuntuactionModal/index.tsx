@@ -1,54 +1,67 @@
-import { FC, useState } from "react";
+import { FC } from "react";
+import { useParams } from "@reach/router";
 import * as S from "./styles";
 
 import { BiCommentDetail } from "react-icons/bi";
 
 import Title from "components/atoms/Title";
 import Button from "components/atoms/Button";
-import Portals from "components/atoms/Portals";
 import DarkScreen from "components/atoms/DarkScreen";
 import FormControlTextarea from "components/molecules/FormControlTextarea";
-import StarPuntuactionInteractive from "components/molecules/StarPuntuactionInteractive";
-import { StarsType } from "application/types/StarsType";
+import StarsInteractive from "components/molecules/StarsInteractive";
+
+import useCreatePuntuaction from "hooks/useCreatePuntuaction";
 
 type ModalProps = {
   onClose(): void;
+  defaultStars?: number;
+  defaultDescription?: string;
 };
 
-const CreatePuntuactionModal: FC<ModalProps> = ({ onClose }) => {
-  const [stars, setStars] = useState<StarsType>(0);
-
-  const changeStars = (starNumber) => () => setStars(() => starNumber);
+const CreatePuntuactionModal: FC<ModalProps> = ({
+  onClose,
+  defaultStars,
+  defaultDescription,
+}) => {
+  const { branchOfficeId } = useParams();
+  const {
+    stars,
+    isSendData,
+    descriptionRef,
+    changeStarValue,
+    onSendPuntuaction,
+  } = useCreatePuntuaction(branchOfficeId, defaultStars, onClose);
 
   return (
-    <Portals>
-      <DarkScreen>
-        <S.MainContainer>
-          <S.ElementsContainer>
-            <Title color="black" size="small-medium">
-              Deja una valoracion
-            </Title>
-            <StarPuntuactionInteractive
-              starsSelected={stars}
-              onClickStar={changeStars}
+    <DarkScreen>
+      <S.MainContainer>
+        <S.ElementsContainer>
+          <Title color="black" size="small-medium">
+            Deja una valoracion
+          </Title>
+          <StarsInteractive clientStars={stars} onClickStar={changeStarValue} />
+          <FormControlTextarea
+            size="small"
+            ref={descriptionRef}
+            icon={BiCommentDetail}
+            labelText="Descripción (Opcional)"
+            defaultValue={defaultDescription}
+          />
+          <S.ButtonsContainer>
+            <Button
+              text="Realizar Puntuacion"
+              isLoading={isSendData}
+              onClick={onSendPuntuaction}
             />
-            <FormControlTextarea
-              icon={BiCommentDetail}
-              labelText="Descripción (Opcional)"
-              size="small"
+            <Button
+              onClick={onClose}
+              text="Cancelar y Cerrar"
+              styles={{ color: "yellow" }}
             />
-            <S.ButtonsContainer>
-              <Button text="Realizar Puntuacion" />
-              <Button
-                onClick={onClose}
-                text="Cancelar y Cerrar"
-                styles={{ color: "yellow" }}
-              />
-            </S.ButtonsContainer>
-          </S.ElementsContainer>
-        </S.MainContainer>
-      </DarkScreen>
-    </Portals>
+          </S.ButtonsContainer>
+        </S.ElementsContainer>
+      </S.MainContainer>
+    </DarkScreen>
   );
 };
 

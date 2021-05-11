@@ -25,8 +25,8 @@ export const ContainerUserText = styled.div`
 `;
 
 export const Username = styled.span`
-  font-family: var(--font);
-  font-weight: 500;
+  font-family: var(--extra-font);
+  font-weight: 700;
 
   &:hover {
     text-decoration: underline;
