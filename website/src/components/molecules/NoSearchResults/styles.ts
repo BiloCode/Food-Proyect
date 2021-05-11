@@ -6,7 +6,8 @@ export const Container = styled.div`
   height: 100%;
   margin: 0 auto;
   display: grid;
-  row-gap: 1em;
+  grid-template-rows: min-content;
+  row-gap: 0.5em;
   justify-items: center;
   text-align: center;
 `;
