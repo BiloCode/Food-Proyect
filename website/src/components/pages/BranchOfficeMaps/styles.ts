@@ -32,3 +32,8 @@ export const InformationContainer = styled.div`
   display: grid;
   grid-template-rows: 135px 1fr 200px;
 `;
+
+export const MapContainer = styled.div`
+  width: 100%;
+  height: 100%;
+`;

@@ -1,3 +1,11 @@
+import Spinner from "components/atoms/Spinner";
 import styled from "styled-components";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  height: 100%;
+`;
+
+export const SpinnerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;

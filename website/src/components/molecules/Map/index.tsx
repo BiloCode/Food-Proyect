@@ -1,4 +1,7 @@
+import * as S from "./styles";
+
 import Spinner from "components/atoms/Spinner";
+
 import { credentials } from "config/googleMapsCredentials";
 import { useMapContext } from "context/MapContext/context";
 import { GoogleMap, withGoogleMap, withScriptjs } from "react-google-maps";
@@ -42,9 +45,13 @@ const MapCredentials = () => {
       googleMapURL={
         "https://maps.googleapis.com/maps/api/js?v=3.exp" + credentials.mapsKey
       }
-      containerElement={<div style={{ height: "100%" }} />}
-      mapElement={<div style={{ height: "100%" }} />}
-      loadingElement={<Spinner size="big" color="blue" />}
+      containerElement={<S.Container />}
+      mapElement={<S.Container />}
+      loadingElement={
+        <S.SpinnerContainer>
+          <Spinner size="big" color="blue" />
+        </S.SpinnerContainer>
+      }
     />
   );
 };

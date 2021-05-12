@@ -44,6 +44,7 @@ const BranchOfficeMap: FC<RouteComponentProps> = ({ navigate }) => {
             <ReturnHomeButton onClick={onClickHome} />
           </S.InformationContainer>
         </div>
+
         <MapCredentials />
       </MapProvider>
     </S.MainContainer>
