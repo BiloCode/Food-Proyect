@@ -45,7 +45,10 @@ const BranchOfficeDetail: FC<RouteComponentProps> = ({}) => {
                     Valoraciones del lugar
                   </Title>
                   {userAuth && (
-                    <UserPuntuactionArea uAuthPuntuaction={uAuthPuntuaction} />
+                    <UserPuntuactionArea
+                      branchOfficeName={data.name}
+                      uAuthPuntuaction={uAuthPuntuaction}
+                    />
                   )}
                 </S.TitleContainer>
                 <BODetailPuntuactionList cardList={data.puntuactions} />

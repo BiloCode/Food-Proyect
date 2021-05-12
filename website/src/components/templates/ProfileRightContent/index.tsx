@@ -33,9 +33,12 @@ const ProfileRightContent: FC<ProfileRightContentProps> = ({
         <S.CommentsListContainer>
           {puntuactions.map((v) => (
             <ProfilePuntuactionCard
-              key={v.puntuactionId}
-              branchOfficeId={v.puntuactionId}
+              stars={v.stars}
+              key={v.branchOfficeId}
+              createdAt={v.createdAt}
               description={v.description}
+              branchOfficeId={v.branchOfficeId}
+              branchOfficeName={v.branchOfficeName}
             />
           ))}
         </S.CommentsListContainer>
