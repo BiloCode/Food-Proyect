@@ -16,6 +16,7 @@ const BODetailPuntuactionList: FC<PuntuactionListProps> = ({ cardList }) => (
         key={v.userId}
         stars={v.stars}
         userId={v.userId}
+        createdAt={v.createdAt}
         description={v.description}
         userName={v.client.fullName}
         userImage={v.client.profileImage}

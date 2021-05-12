@@ -1,35 +1,35 @@
-import { RouteComponentProps } from "@reach/router";
 import { ChangeEvent, FC, useState } from "react";
+import { RouteComponentProps } from "@reach/router";
 import * as S from "./styles";
 
-import Image from "components/atoms/Image";
-import BranchOfficeMapList from "components/molecules/BranchOfficeMapList";
 import Logo from "assets/images/Logo.svg";
+import Image from "components/atoms/Image";
 import MapProvider from "context/MapContext/provider";
 import MapCredentials from "components/molecules/Map";
 import ReturnHomeButton from "components/molecules/ReturnHomeButton";
 import SearchBranchOffice from "components/organisms/SearchBranchOffice";
-import { BranchOfficeModelType } from "application/types/BranchOfficeModelType";
+import BranchOfficeMapList from "components/molecules/BranchOfficeMapList";
+
 import { useBranchOfficeContext } from "context/BranchOfficeContext/context";
 
-const BranchOfficeMap: FC<RouteComponentProps> = ({ navigate }) => {
-  const onClickHome = () => navigate("/home");
-  const context = useBranchOfficeContext();
+import DebounceTime from "application/core/DebounceTime";
+import { BranchOfficeModelType } from "application/types/BranchOfficeModelType";
 
-  const [branchOfficeFilter, setBranchOfficeFilter] = useState<
-    BranchOfficeModelType[]
-  >(context.branchOffices);
+const BranchOfficeMap: FC<RouteComponentProps> = () => {
+  const { branchOffices, requestState } = useBranchOfficeContext();
 
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    let newList: BranchOfficeModelType[] = [];
-    context.branchOffices.map((v) => {
-      let name = v.name.toLowerCase();
-      if (name.includes(e.target.value)) {
-        newList.push(v);
-      }
+  const [branchOfficeFilter, setBranchOfficeFilter] =
+    useState<BranchOfficeModelType[]>(branchOffices);
+
+  const onChange = DebounceTime((ev: ChangeEvent<HTMLInputElement>) => {
+    const inputValue = ev.target.value;
+    const filteredList = [...branchOffices].filter((v) => {
+      const branchOfficeName = v.name.toLocaleLowerCase();
+      return branchOfficeName.includes(inputValue);
     });
-    setBranchOfficeFilter(newList);
-  };
+
+    setBranchOfficeFilter(() => filteredList);
+  });
 
   return (
     <S.MainContainer>
@@ -40,8 +40,10 @@ const BranchOfficeMap: FC<RouteComponentProps> = ({ navigate }) => {
           </S.Image>
           <S.InformationContainer>
             <SearchBranchOffice onChange={onChange} />
-            <BranchOfficeMapList branchOffices={branchOfficeFilter} />
-            <ReturnHomeButton onClick={onClickHome} />
+            {requestState === "complete" && (
+              <BranchOfficeMapList branchOffices={branchOfficeFilter} />
+            )}
+            <ReturnHomeButton />
           </S.InformationContainer>
         </div>
 

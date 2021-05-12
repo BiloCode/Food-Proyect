@@ -4,15 +4,16 @@ import * as S from "./styles";
 
 import Description from "components/atoms/Description";
 import { useNavigate } from "@reach/router";
+import StarListPuntuaction from "components/molecules/StarListPuntuaction";
 
-type ProfilePuntuactionProps = {
-  description: string;
-  branchOfficeId: string;
-};
+import { ClientPuntuactionsType } from "application/types/ClientModelType";
 
-const ProfilePuntuactionCard: FC<ProfilePuntuactionProps> = ({
+const ProfilePuntuactionCard: FC<ClientPuntuactionsType> = ({
+  stars,
   description,
+  createdAt,
   branchOfficeId,
+  branchOfficeName,
 }) => {
   const navigate = useNavigate();
 
@@ -26,12 +27,14 @@ const ProfilePuntuactionCard: FC<ProfilePuntuactionProps> = ({
     >
       <S.HeadContent>
         <S.TitleText onClick={onClickBranchOfficeName}>
-          Sucursal del norte - Mega Plaza
+          {branchOfficeName}
         </S.TitleText>
-        <S.DateText>16/10/20</S.DateText>
+        <S.DateText>
+          {Intl.DateTimeFormat().format(createdAt.toDate())}
+        </S.DateText>
       </S.HeadContent>
       {description && <Description size="small">{description}</Description>}
-      <div>{/** Stars Molecule */}</div>
+      <StarListPuntuaction stars={stars} />
     </S.MainContainer>
   );
 };

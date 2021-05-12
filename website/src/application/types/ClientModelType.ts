@@ -5,11 +5,10 @@ import { AuthenticationType } from "./AuthtenticationType";
 
 export type ClientPuntuactionsType = {
   stars: number;
-  createdAt: string;
   description?: string;
-  puntuactionId: string;
   branchOfficeId: string;
   branchOfficeName: string;
+  createdAt: firebase.firestore.Timestamp;
 };
 
 export type ClientModelType = {

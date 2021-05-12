@@ -4,15 +4,17 @@ import CreatePuntuaction from "application/core/CreatePuntuaction";
 
 import { useAuthContext } from "context/AuthContext/context";
 import { useBranchOfficeContext } from "context/BranchOfficeContext/context";
+import UpdateUserPuntuactions from "application/core/UpdateUserPuntuactions";
 
 const useCreatePuntuaction = (
   branchOfficeId: string,
+  branchOfficeName: string,
   defaultStars: number,
   closeModal: CallableFunction
 ) => {
   const descriptionRef = useRef<HTMLTextAreaElement>();
 
-  const { user } = useAuthContext();
+  const { user, changeUserAuthData } = useAuthContext();
   const { setBranchOfficePuntuaction } = useBranchOfficeContext();
 
   const [isSendData, setIsSendData] = useState(false);
@@ -25,20 +27,35 @@ const useCreatePuntuaction = (
 
     setIsSendData(() => true);
 
-    const puntuactions = await CreatePuntuaction.exec(branchOfficeId, {
+    const descriptionValue = descriptionRef.current.value.trim();
+
+    const uploadData = await CreatePuntuaction.exec(branchOfficeId, {
       stars,
       userId: user._id,
-      description: descriptionRef.current.value.trim(),
+      description: descriptionValue,
       client: {
         fullName: user.fullName,
         profileImage: user.profileImage.url,
       },
     });
 
-    if (!puntuactions) return;
+    if (!uploadData) return;
 
-    setBranchOfficePuntuaction(branchOfficeId, puntuactions);
-    setIsSendData(() => false);
+    const puntuactionsUser = await UpdateUserPuntuactions.exec(user._id, {
+      stars,
+      branchOfficeId,
+      branchOfficeName,
+      description: descriptionValue,
+    });
+
+    if (!puntuactionsUser) return;
+
+    setBranchOfficePuntuaction(branchOfficeId, uploadData);
+    changeUserAuthData({
+      ...user,
+      puntuactions: puntuactionsUser,
+    });
+
     closeModal();
   };
 

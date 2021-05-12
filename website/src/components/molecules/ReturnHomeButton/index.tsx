@@ -1,16 +1,19 @@
+import { memo } from "react";
+import { useNavigate } from "@reach/router";
 import * as S from "./styles";
+
 import { IoIosArrowBack } from "react-icons/io";
-import Description from "components/atoms/Description";
+
 import Icon from "components/atoms/Icon";
+import Description from "components/atoms/Description";
 
-type ReturnHomeButtonProps = {
-  onClick(): void;
-};
+const ReturnHomeButton = () => {
+  const navigate = useNavigate();
+  const onClickHome = () => navigate("/home");
 
-const ReturnHomeButton = ({ onClick }: ReturnHomeButtonProps) => {
   return (
     <S.ReturnMenuContainer>
-      <S.ReturnMenu onClick={onClick}>
+      <S.ReturnMenu onClick={onClickHome}>
         <S.IconContainer>
           <Icon color="white" size="small-medium" Type={IoIosArrowBack} />
         </S.IconContainer>
@@ -24,4 +27,4 @@ const ReturnHomeButton = ({ onClick }: ReturnHomeButtonProps) => {
   );
 };
 
-export default ReturnHomeButton;
+export default memo(ReturnHomeButton);

@@ -1,4 +1,5 @@
 import { FC, memo } from "react";
+import firebase from "firebase";
 import { useNavigate } from "@reach/router";
 import * as S from "./styles";
 
@@ -12,6 +13,7 @@ type PuntuactionCardProps = {
   userImage: string;
   stars: number;
   description: string;
+  createdAt: firebase.firestore.Timestamp;
 };
 
 const BOUserPuntuactionCard: FC<PuntuactionCardProps> = ({
@@ -20,6 +22,7 @@ const BOUserPuntuactionCard: FC<PuntuactionCardProps> = ({
   userName,
   userImage,
   description,
+  createdAt,
 }) => {
   const navigate = useNavigate();
   const NavigateToUserProfile = () => navigate("/user/" + userId);
@@ -32,7 +35,7 @@ const BOUserPuntuactionCard: FC<PuntuactionCardProps> = ({
           <S.Username onClick={NavigateToUserProfile}>{userName}</S.Username>
           <StarListPuntuaction stars={stars} iconColor="blue" />
         </S.ContainerUserText>
-        <S.Date>26/10/2000</S.Date>
+        <S.Date>{Intl.DateTimeFormat().format(createdAt.toDate())}</S.Date>
       </S.UserInfoDivider>
       {description && <Description size="small">{description}</Description>}
     </S.MainContainer>

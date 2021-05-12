@@ -49,7 +49,8 @@ export const TitleText = styled.span`
 `;
 
 export const DateText = styled.span`
-  font-weight: 400;
+  font-weight: 700;
+  font-size: 0.9em;
   font-family: var(--font);
   color: ${colors.dark_blue};
 `;

@@ -17,9 +17,8 @@ const StarsInteractive: FC<StarsProps> = ({ onClickStar, clientStars }) => (
     <S.CenterContent>
       <div>
         {fakeList.map((_, i) => (
-          <S.StarIconContainer onClick={onClickStar(i + 1)}>
+          <S.StarIconContainer key={i} onClick={onClickStar(i + 1)}>
             <Icon
-              key={i}
               size="medium"
               color="yellow"
               Type={i < clientStars ? IoIosStar : IoIosStarOutline}

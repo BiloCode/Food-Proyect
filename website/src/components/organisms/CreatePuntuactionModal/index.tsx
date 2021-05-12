@@ -15,22 +15,30 @@ import useCreatePuntuaction from "hooks/useCreatePuntuaction";
 type ModalProps = {
   onClose(): void;
   defaultStars?: number;
+  branchOfficeName: string;
   defaultDescription?: string;
 };
 
 const CreatePuntuactionModal: FC<ModalProps> = ({
   onClose,
   defaultStars,
+  branchOfficeName,
   defaultDescription,
 }) => {
   const { branchOfficeId } = useParams();
+
   const {
     stars,
     isSendData,
     descriptionRef,
     changeStarValue,
     onSendPuntuaction,
-  } = useCreatePuntuaction(branchOfficeId, defaultStars, onClose);
+  } = useCreatePuntuaction(
+    branchOfficeId,
+    branchOfficeName,
+    defaultStars,
+    onClose
+  );
 
   return (
     <DarkScreen>
