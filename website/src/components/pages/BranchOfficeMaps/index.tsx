@@ -16,7 +16,7 @@ import DebounceTime from "application/core/DebounceTime";
 import { BranchOfficeModelType } from "application/types/BranchOfficeModelType";
 
 const BranchOfficeMap: FC<RouteComponentProps> = () => {
-  const { branchOffices } = useBranchOfficeContext();
+  const { branchOffices, requestState } = useBranchOfficeContext();
 
   const [branchOfficeFilter, setBranchOfficeFilter] =
     useState<BranchOfficeModelType[]>(branchOffices);
@@ -40,7 +40,9 @@ const BranchOfficeMap: FC<RouteComponentProps> = () => {
           </S.Image>
           <S.InformationContainer>
             <SearchBranchOffice onChange={onChange} />
-            <BranchOfficeMapList branchOffices={branchOfficeFilter} />
+            {requestState === "complete" && (
+              <BranchOfficeMapList branchOffices={branchOfficeFilter} />
+            )}
             <ReturnHomeButton />
           </S.InformationContainer>
         </div>
