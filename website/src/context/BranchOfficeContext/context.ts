@@ -6,13 +6,18 @@ import {
 
 import { RequestStateType } from "application/types/RequestStateType";
 
+export type UploadBranchData = {
+  stars: number;
+  puntuactions: PuntuactionType[];
+};
+
 type IContext = {
   branchOffices: BranchOfficeModelType[];
   requestState: RequestStateType;
   removeBranchOfficePuntuaction(branchOfficeId: string, puntuactionId: string);
   setBranchOfficePuntuaction(
     branchOfficeId: string,
-    puntuactions: PuntuactionType[]
+    uploadData: UploadBranchData
   );
 };
 

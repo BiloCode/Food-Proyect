@@ -25,7 +25,7 @@ const useCreatePuntuaction = (
 
     setIsSendData(() => true);
 
-    const puntuactions = await CreatePuntuaction.exec(branchOfficeId, {
+    const uploadData = await CreatePuntuaction.exec(branchOfficeId, {
       stars,
       userId: user._id,
       description: descriptionRef.current.value.trim(),
@@ -35,9 +35,9 @@ const useCreatePuntuaction = (
       },
     });
 
-    if (!puntuactions) return;
+    if (!uploadData) return;
 
-    setBranchOfficePuntuaction(branchOfficeId, puntuactions);
+    setBranchOfficePuntuaction(branchOfficeId, uploadData);
     setIsSendData(() => false);
     closeModal();
   };

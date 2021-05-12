@@ -1,6 +1,7 @@
 import firebase from "firebase";
 
 import { FirebaseCollectionNames } from "config/constans";
+import StarsAverage from "./StarsAvegare";
 
 type PuntuactionType = {
   userId: string;
@@ -23,7 +24,7 @@ class CreatePuntuaction {
       .doc(branchOfficeId);
 
     try {
-      const puntuactions = await db.runTransaction((transaction) => {
+      const uploadData = await db.runTransaction((transaction) => {
         return transaction.get(docRef).then((sfDoc) => {
           if (!sfDoc.exists) throw "Document Not Exists";
 
@@ -58,22 +59,21 @@ class CreatePuntuaction {
             ];
           }
 
-          //Provisonal...
-          let branchOfficeStars = 0;
-          for (let puntuaction of newPuntuactions) {
-            branchOfficeStars += puntuaction.stars;
-          }
+          const stars = StarsAverage.exec(newPuntuactions);
 
           transaction.update(docRef, {
+            stars,
             puntuactions: newPuntuactions,
-            stars: Math.floor(branchOfficeStars / newPuntuactions.length),
           });
 
-          return newPuntuactions;
+          return {
+            stars,
+            puntuactions: newPuntuactions,
+          };
         });
       });
 
-      return puntuactions;
+      return uploadData;
     } catch (error) {
       console.log(error);
       return null;

@@ -1,11 +1,8 @@
 import { FC, useEffect, useState } from "react";
 
-import { BranchOfficeContext } from "./context";
+import { BranchOfficeContext, UploadBranchData } from "./context";
 import { RequestStateType } from "application/types/RequestStateType";
-import {
-  BranchOfficeModelType,
-  PuntuactionType,
-} from "application/types/BranchOfficeModelType";
+import { BranchOfficeModelType } from "application/types/BranchOfficeModelType";
 
 import GetBranchOfficeList from "application/core/GetBranchOfficeList";
 
@@ -30,12 +27,15 @@ export const BranchOfficeProvider: FC = ({ children }) => {
 
   const setBranchOfficePuntuaction = (
     branchOfficeId: string,
-    puntuactions: PuntuactionType[]
+    uploadData: UploadBranchData
   ) => {
+    const { puntuactions, stars } = uploadData;
+
     const branchListUpdated = [...branchOffices].map((v) => {
       if (v._id === branchOfficeId) {
         return {
           ...v,
+          stars,
           puntuactions,
         };
       }
