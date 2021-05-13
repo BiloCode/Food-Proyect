@@ -4,18 +4,26 @@ import * as S from "./styles";
 import { useBranchOfficeContext } from "context/BranchOfficeContext/context";
 
 import BranchOfficeInformation from "components/molecules/BranchOfficeInformation";
+import { BranchOfficeModelType } from "application/types/BranchOfficeModelType";
+import { useState } from "react";
 
-const BranchOfficeContent = () => {
+type BranchOfficeContentProps = {
+  branchOfficeFilter: BranchOfficeModelType[];
+};
+
+const BranchOfficeContent = ({
+  branchOfficeFilter,
+}: BranchOfficeContentProps) => {
   const context = useBranchOfficeContext();
 
-  // Eso de abajo sera un map, esta de pruebita no mas v:
+  /*   // Eso de abajo sera un map, esta de pruebita no mas v:
 
-  console.log(context.branchOffices);
+  console.log(context.branchOffices); */
 
   return (
     <S.MainContainer>
       <S.Container>
-        {context.branchOffices.map((v, i) => (
+        {branchOfficeFilter.map((v, i) => (
           <BranchOfficeInformation
             key={i}
             id={v._id}

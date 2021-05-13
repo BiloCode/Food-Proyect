@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useState } from "react";
+import { ChangeEvent, FC, useEffect, useState } from "react";
 import { RouteComponentProps } from "@reach/router";
 import * as S from "./styles";
 
@@ -21,6 +21,11 @@ const BranchOfficeMap: FC<RouteComponentProps> = () => {
   const [branchOfficeFilter, setBranchOfficeFilter] =
     useState<BranchOfficeModelType[]>(branchOffices);
 
+  useEffect(() => {
+    if (requestState !== "complete") return;
+    setBranchOfficeFilter(branchOffices);
+  }, [requestState]);
+
   const onChange = DebounceTime((ev: ChangeEvent<HTMLInputElement>) => {
     const inputValue = ev.target.value;
     const filteredList = [...branchOffices].filter((v) => {
@@ -40,9 +45,7 @@ const BranchOfficeMap: FC<RouteComponentProps> = () => {
           </S.Image>
           <S.InformationContainer>
             <SearchBranchOffice onChange={onChange} />
-            {requestState === "complete" && (
-              <BranchOfficeMapList branchOffices={branchOfficeFilter} />
-            )}
+            <BranchOfficeMapList branchOffices={branchOfficeFilter} />
             <ReturnHomeButton />
           </S.InformationContainer>
         </div>

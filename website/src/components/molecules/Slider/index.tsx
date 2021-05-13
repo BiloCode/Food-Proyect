@@ -6,7 +6,7 @@ import Image01 from "assets/images/Hamburguesa.jpg";
 import Image02 from "assets/images/Hamburguesa_02.jpg";
 import Image03 from "assets/images/Hamburguesa_03.jpg";
 import Icon from "components/atoms/Icon";
-import { LegacyRef, useRef, useState } from "react";
+import { LegacyRef, memo, useRef, useState } from "react";
 
 const Slider = () => {
   const images = [Image01, Image03, Image02];
@@ -48,4 +48,4 @@ const Slider = () => {
   );
 };
 
-export default Slider;
+export default memo(Slider);

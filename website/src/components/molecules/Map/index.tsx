@@ -46,7 +46,7 @@ const MapCredentials = () => {
         "https://maps.googleapis.com/maps/api/js?v=3.exp" + credentials.mapsKey
       }
       containerElement={<S.Container />}
-      mapElement={<S.Container />}
+      mapElement={<S.ContainerMap />}
       loadingElement={
         <S.SpinnerContainer>
           <Spinner size="big" color="blue" />

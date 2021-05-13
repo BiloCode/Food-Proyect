@@ -1,9 +1,17 @@
-import BranchOfficeResults from "components/molecules/BranchOfficeResults";
-import BranchOfficeSelect from "components/molecules/BranchOfficeSelect";
-import { useBranchOfficeContext } from "context/BranchOfficeContext/context";
 import * as S from "./styles";
 
-const BranchOfficeFilter = () => {
+import { useBranchOfficeContext } from "context/BranchOfficeContext/context";
+
+import BranchOfficeResults from "components/molecules/BranchOfficeResults";
+import BranchOfficeSelect from "components/molecules/BranchOfficeSelect";
+
+type optionType = "All" | "vegetarian" | "carnivorous" | "mix";
+
+type BranchOfficeFilterProps = {
+  onClickOption(option: optionType): void;
+};
+
+const BranchOfficeFilter = ({ onClickOption }: BranchOfficeFilterProps) => {
   const { branchOffices } = useBranchOfficeContext();
 
   return (
@@ -12,7 +20,7 @@ const BranchOfficeFilter = () => {
         tittle="Todas las sucursales"
         results={branchOffices.length}
       />
-      <BranchOfficeSelect />
+      <BranchOfficeSelect onClickOption={onClickOption} />
     </S.Container>
   );
 };
