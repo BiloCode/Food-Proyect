@@ -21,7 +21,9 @@ const BOUserAuthPuntuaction: FC<BOUserAuthPuntuactionProps> = ({
         Mi valoracion
       </Title>
     </S.HeadContent>
-    <Description size="small">{description}</Description>
+    <Description size="small">
+      {description ? description : "Sin Descripción."}
+    </Description>
   </S.MainContainer>
 );
 

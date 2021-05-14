@@ -1,12 +1,13 @@
 import { ChangeEvent, useState } from "react";
 
 import DeleteImage from "application/core/DeleteImage";
-import FilesCheckingIsImage from "application/core/FileCheckingIsImage";
+import FilesCheckingIsImage from "application/utils/FileCheckingIsImage";
 import UploadProfileImage from "application/core/UploadProfileImage";
 import UpdateUserProfileImage from "application/core/UpdateUserProfileImage";
 
 import { useAuthContext } from "context/AuthContext/context";
 import { useProfileContext } from "context/ProfileContext/context";
+import UpdateUserDataInPuntuactions from "application/core/UpdateUserDataInPuntuactions";
 
 const useProfileImageUpdate = () => {
   const [isUploading, setIsUploading] = useState<boolean>(false);
@@ -43,6 +44,12 @@ const useProfileImageUpdate = () => {
     );
 
     if (!isUpdated) return;
+
+    await UpdateUserDataInPuntuactions.exec({
+      _id: user._id,
+      fullName: user.fullName,
+      profileImageUrl: imageUploaded.url,
+    });
 
     setIsUploading(() => false);
     changeUserAuthData({ ...user, profileImage: imageUploaded });

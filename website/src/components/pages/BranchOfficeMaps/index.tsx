@@ -12,7 +12,7 @@ import BranchOfficeMapList from "components/molecules/BranchOfficeMapList";
 
 import { useBranchOfficeContext } from "context/BranchOfficeContext/context";
 
-import DebounceTime from "application/core/DebounceTime";
+import DebounceTime from "application/utils/DebounceTime";
 import { BranchOfficeModelType } from "application/types/BranchOfficeModelType";
 
 const BranchOfficeMap: FC<RouteComponentProps> = () => {

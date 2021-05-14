@@ -31,6 +31,7 @@ export type BranchOfficeModelType = {
   bannerImage: FirebaseImageType;
   foodType: FoodType;
   location: LocationType;
+  userPuntuactionsId: string[];
   puntuactions: PuntuactionType[];
   permisions: [];
 };

@@ -4,6 +4,7 @@ import { useAuthContext } from "context/AuthContext/context";
 import { useProfileContext } from "context/ProfileContext/context";
 
 import UpdateUserInformation from "application/core/UpdateUserInformation";
+import UpdateUserDataInPuntuactions from "application/core/UpdateUserDataInPuntuactions";
 
 const useProfileUpdateInformation = (onClose) => {
   const [isSendData, setIsSendData] = useState<boolean>(false);
@@ -41,6 +42,12 @@ const useProfileUpdateInformation = (onClose) => {
     if (!isUpdated) {
       return;
     }
+
+    await UpdateUserDataInPuntuactions.exec({
+      _id: user._id,
+      fullName,
+      profileImageUrl: user.profileImage.url,
+    });
 
     changeUserAuthData({ ...user, fullName, description });
     setCurrentProfile({ ...currentClientInView, fullName, description });

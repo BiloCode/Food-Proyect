@@ -3,6 +3,7 @@ import firebase from "firebase";
 import { FirebaseCollectionNames } from "config/constans";
 import { AuthenticationType } from "application/types/AuthtenticationType";
 import { FirebaseImageType } from "application/types/FirebaseImageType";
+import { ClientPuntuactionData } from "application/types/ClientModelType";
 
 type CreateUserParams = {
   _id: string;
@@ -19,13 +20,18 @@ class CreateNewUser {
     const firestore = firebase.firestore();
 
     try {
+      const puntuaction: ClientPuntuactionData = {
+        branchOfficeIds: [],
+        store: [],
+      };
+
       await firestore
         .collection(FirebaseCollectionNames.client)
         .doc(params._id)
         .set({
           ...params.data,
+          puntuaction,
           description: "",
-          puntuactions: [],
           authenticationType: params.type,
           createdAt: firebase.firestore.Timestamp.now(),
         });

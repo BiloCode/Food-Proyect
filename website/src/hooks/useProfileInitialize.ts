@@ -39,6 +39,11 @@ const useProfileInitialize = () => {
       setCurrentProfile(userData);
       changeRequestState("complete");
     })();
+
+    return () => {
+      setCurrentProfile(null);
+      changeRequestState("not");
+    };
   }, [userPageId]);
 
   const isCurrentUserProfile = currentClientInView?._id === user?._id;

@@ -11,6 +11,11 @@ export type ClientPuntuactionsType = {
   createdAt: firebase.firestore.Timestamp;
 };
 
+export type ClientPuntuactionData = {
+  branchOfficeIds: string[];
+  store: ClientPuntuactionsType[];
+};
+
 export type ClientModelType = {
   _id: string;
   email: string;
@@ -19,5 +24,5 @@ export type ClientModelType = {
   profileImage: FirebaseImageType;
   authenticationType: AuthenticationType;
   createdAt: firebase.firestore.Timestamp;
-  puntuactions: ClientPuntuactionsType[];
+  puntuaction: ClientPuntuactionData;
 };

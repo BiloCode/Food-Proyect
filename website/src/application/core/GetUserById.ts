@@ -18,7 +18,7 @@ class GetUserById {
       fullName: data.fullName,
       createdAt: data.createdAt,
       description: data.description,
-      puntuactions: data.puntuactions,
+      puntuaction: data.puntuaction,
       profileImage: data.profileImage,
       authenticationType: data.authenticationType,
     };

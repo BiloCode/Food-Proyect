@@ -1,6 +1,6 @@
 import { PuntuactionType } from "application/types/BranchOfficeModelType";
 
-class StarsAverage {
+class StarAVG {
   public static exec(puntuactions: PuntuactionType[]) {
     let starsAccumulate = 0;
     for (let puntuaction of puntuactions) {
@@ -13,4 +13,4 @@ class StarsAverage {
   }
 }
 
-export default StarsAverage;
+export default StarAVG;

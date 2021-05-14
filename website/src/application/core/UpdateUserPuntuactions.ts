@@ -1,3 +1,4 @@
+import { ClientPuntuactionData } from "application/types/ClientModelType";
 import { FirebaseCollectionNames } from "config/constans";
 import firebase from "firebase";
 
@@ -9,49 +10,60 @@ type UserPuntuaction = {
 };
 
 class UpdateUserPuntuactions {
-  public static exec = async (userId: string, puntuaction: UserPuntuaction) => {
+  public static exec = async (
+    userId: string,
+    newPuntuaction: UserPuntuaction
+  ) => {
     const db = firebase.firestore();
     const docRef = db.collection(FirebaseCollectionNames.client).doc(userId);
 
     try {
-      const userPuntuactions = await db.runTransaction((transaction) => {
-        return transaction.get(docRef).then((doc) => {
-          const data = doc.data();
+      const userPuntuactions = await db.runTransaction(async (transaction) => {
+        const doc = await transaction.get(docRef);
+        const client = doc.data();
 
-          const storedPuntuaction = [...data.puntuactions];
-          const existsPuntuaction = storedPuntuaction.find(
-            (v) => v.branchOfficeId === puntuaction.branchOfficeId
-          );
+        let puntuaction: ClientPuntuactionData;
 
-          let newPuntuactions = [];
+        const clientPuntuaction = client.puntuaction;
+        const clientPuntuactionStore = [...clientPuntuaction.store];
+        const clientBOIds = [...clientPuntuaction.branchOfficeIds];
 
-          const createdAt = firebase.firestore.Timestamp.now();
+        const existsPuntuaction = clientBOIds.includes(
+          newPuntuaction.branchOfficeId
+        );
 
-          if (existsPuntuaction) {
-            newPuntuactions = storedPuntuaction.map((v) => {
-              if (v.branchOfficeId === puntuaction.branchOfficeId) {
+        const createdAt = firebase.firestore.Timestamp.now();
+
+        if (existsPuntuaction) {
+          puntuaction = {
+            branchOfficeIds: [...clientPuntuaction.branchOfficeIds],
+            store: clientPuntuactionStore.map((v) => {
+              if (v.branchOfficeId === newPuntuaction.branchOfficeId) {
                 return {
-                  ...puntuaction,
+                  ...newPuntuaction,
                   createdAt,
                 };
               }
 
               return v;
-            });
-          } else {
-            newPuntuactions = [
-              ...storedPuntuaction,
+            }),
+          };
+        } else {
+          puntuaction = {
+            branchOfficeIds: [...clientBOIds, newPuntuaction.branchOfficeId],
+            store: [
+              ...clientPuntuactionStore,
               {
-                ...puntuaction,
+                ...newPuntuaction,
                 createdAt,
               },
-            ];
-          }
+            ],
+          };
+        }
 
-          transaction.update(docRef, { puntuactions: newPuntuactions });
+        transaction.update(docRef, { puntuaction });
 
-          return newPuntuactions;
-        });
+        return puntuaction;
       });
 
       return userPuntuactions;

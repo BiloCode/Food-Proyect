@@ -19,10 +19,16 @@ const ButtonsPuntuactionArea: FC<ButtonsProps> = ({
   puntuactionData,
 }) => {
   const { branchOfficeId } = useParams();
-  const { onDeletePuntuaction } = useDeletePuntuaction(
+  const { isSendData, onDeletePuntuaction } = useDeletePuntuaction(
     puntuactionData.userId,
     branchOfficeId
   );
+
+  const onClickActiveMenu = () => {
+    if (isSendData) return;
+
+    onActiveMenu();
+  };
 
   return (
     <S.MainContainer>
@@ -31,9 +37,10 @@ const ButtonsPuntuactionArea: FC<ButtonsProps> = ({
         stars={puntuactionData.stars}
       />
       <S.ButtonContainer>
-        <Button text="Cambiar Valoracion" onClick={onActiveMenu} />
+        <Button text="Cambiar Valoracion" onClick={onClickActiveMenu} />
         <Button
           text="Borrar Valoracion"
+          isLoading={isSendData}
           styles={{ color: "yellow" }}
           onClick={onDeletePuntuaction}
         />

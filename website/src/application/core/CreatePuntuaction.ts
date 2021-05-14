@@ -1,7 +1,8 @@
 import firebase from "firebase";
 
 import { FirebaseCollectionNames } from "config/constans";
-import StarsAverage from "./StarsAvegare";
+
+import StarAVG from "../utils/StarAVG";
 
 type PuntuactionType = {
   userId: string;
@@ -24,53 +25,62 @@ class CreatePuntuaction {
       .doc(branchOfficeId);
 
     try {
-      const uploadData = await db.runTransaction((transaction) => {
-        return transaction.get(docRef).then((sfDoc) => {
-          if (!sfDoc.exists) throw "Document Not Exists";
+      const uploadData = await db.runTransaction(async (transaction) => {
+        const branchOffice = await transaction.get(docRef);
 
-          const storedPuntuction = sfDoc.data().puntuactions;
-          const existsPuntuaction = storedPuntuction.find(
-            (v) => v.userId === puntuactionData.userId
-          );
+        if (!branchOffice.exists) throw "Document Not Exists";
 
-          let newPuntuactions = [];
+        const bOfficeData = branchOffice.data();
 
-          if (existsPuntuaction) {
-            newPuntuactions = storedPuntuction.map((v) => {
-              if (v.userId === puntuactionData.userId) {
-                return {
-                  ...v,
-                  ...puntuactionData,
-                  edited: true,
-                  createdAt: firebase.firestore.Timestamp.now(),
-                };
-              }
+        const savedPuntuaction = [...bOfficeData.puntuactions];
+        const savedUPuntuactionsId = [...bOfficeData.userPuntuactionsId];
+        const existsPuntuaction = savedUPuntuactionsId.includes(
+          puntuactionData.userId
+        );
 
-              return v;
-            });
-          } else {
-            newPuntuactions = [
-              ...storedPuntuction,
-              {
+        let newUPuntIds = [];
+        let newPuntuactions = [];
+
+        if (existsPuntuaction) {
+          newUPuntIds = savedUPuntuactionsId;
+          newPuntuactions = savedPuntuaction.map((v) => {
+            if (v.userId === puntuactionData.userId) {
+              return {
+                ...v,
                 ...puntuactionData,
-                edited: false,
+                edited: true,
                 createdAt: firebase.firestore.Timestamp.now(),
-              },
-            ];
-          }
+              };
+            }
 
-          const stars = StarsAverage.exec(newPuntuactions);
-
-          transaction.update(docRef, {
-            stars,
-            puntuactions: newPuntuactions,
+            return v;
           });
+        } else {
+          newUPuntIds = [...savedUPuntuactionsId, puntuactionData.userId];
 
-          return {
-            stars,
-            puntuactions: newPuntuactions,
-          };
+          newPuntuactions = [
+            ...savedPuntuaction,
+            {
+              ...puntuactionData,
+              edited: false,
+              createdAt: firebase.firestore.Timestamp.now(),
+            },
+          ];
+        }
+
+        const stars = StarAVG.exec(newPuntuactions);
+
+        transaction.update(docRef, {
+          stars,
+          userPuntuactionsId: newUPuntIds,
+          puntuactions: newPuntuactions,
         });
+
+        return {
+          stars,
+          userPuntuactionsId: newUPuntIds,
+          puntuactions: newPuntuactions,
+        };
       });
 
       return uploadData;

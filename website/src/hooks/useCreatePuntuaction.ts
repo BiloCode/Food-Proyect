@@ -12,13 +12,13 @@ const useCreatePuntuaction = (
   defaultStars: number,
   closeModal: CallableFunction
 ) => {
+  const [isSendData, setIsSendData] = useState(false);
+  const [stars, setStars] = useState<number>(defaultStars);
+
   const descriptionRef = useRef<HTMLTextAreaElement>();
 
   const { user, changeUserAuthData } = useAuthContext();
   const { setBranchOfficePuntuaction } = useBranchOfficeContext();
-
-  const [isSendData, setIsSendData] = useState(false);
-  const [stars, setStars] = useState<number>(defaultStars);
 
   const changeStarValue = (starNumber) => () => setStars(() => starNumber);
 
@@ -41,19 +41,21 @@ const useCreatePuntuaction = (
 
     if (!uploadData) return;
 
-    const puntuactionsUser = await UpdateUserPuntuactions.exec(user._id, {
+    const puntuactionData = await UpdateUserPuntuactions.exec(user._id, {
       stars,
       branchOfficeId,
       branchOfficeName,
       description: descriptionValue,
     });
 
-    if (!puntuactionsUser) return;
+    if (!puntuactionData) return;
+
+    const { store, branchOfficeIds } = puntuactionData;
 
     setBranchOfficePuntuaction(branchOfficeId, uploadData);
     changeUserAuthData({
       ...user,
-      puntuactions: puntuactionsUser,
+      puntuaction: { store, branchOfficeIds },
     });
 
     closeModal();

@@ -7,16 +7,13 @@ import NavigationBar from "components/organisms/NavigationBar";
 import ProfileLeftContent from "components/templates/ProfileLeftContent";
 import ProfileRightContent from "components/templates/ProfileRightContent";
 
-import DateFormatting from "application/core/DateFormatting";
+import DateFormatting from "application/utils/DateFormatting";
 
 import useProfileInitialize from "hooks/useProfileInitialize";
 
 const Profile: FC<RouteComponentProps> = () => {
-  const {
-    requestState,
-    currentClientInView,
-    isCurrentUserProfile,
-  } = useProfileInitialize();
+  const { requestState, currentClientInView, isCurrentUserProfile } =
+    useProfileInitialize();
 
   return (
     <div>
@@ -38,7 +35,7 @@ const Profile: FC<RouteComponentProps> = () => {
               )}
             />
             <ProfileRightContent
-              puntuactions={currentClientInView.puntuactions}
+              puntuactions={currentClientInView.puntuaction.store}
               isCurrentUserProfile={isCurrentUserProfile}
             />
           </S.ColumnContainer>
