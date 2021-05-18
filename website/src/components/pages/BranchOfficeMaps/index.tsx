@@ -41,10 +41,10 @@ const BranchOfficeMap: FC<RouteComponentProps> = () => {
   });
 
   return (
-    <S.MainContainer onClick={onClickButtonHome}>
+    <S.MainContainer>
       <MapProvider>
         <div>
-          <S.Image>
+          <S.Image onClick={onClickButtonHome}>
             <Image src={Logo} />
           </S.Image>
           <S.InformationContainer>
