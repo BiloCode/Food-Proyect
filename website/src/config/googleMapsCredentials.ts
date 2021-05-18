@@ -1,3 +1,3 @@
 export const credentials = {
-  mapsKey: "cAIzaSyDnVpvkJNUIyIkzQe3clVecjsarOTLh1gM",
+  key: "AIzaSyDnVpvkJNUIyIkzQe3clVecjsarOTLh1gM",
 };
