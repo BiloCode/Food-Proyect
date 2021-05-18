@@ -40,3 +40,7 @@ export const ListOption = styled.ul`
   grid-template-columns: repeat(3, max-content);
   column-gap: 3em;
 `;
+
+export const LogoContainer = styled.div`
+  cursor: pointer;
+`;

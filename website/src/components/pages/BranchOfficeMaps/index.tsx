@@ -1,5 +1,5 @@
 import { ChangeEvent, FC, useEffect, useState } from "react";
-import { RouteComponentProps } from "@reach/router";
+import { RouteComponentProps, useNavigate } from "@reach/router";
 import * as S from "./styles";
 
 import Logo from "assets/images/Logo.svg";
@@ -17,6 +17,10 @@ import { BranchOfficeModelType } from "application/types/BranchOfficeModelType";
 
 const BranchOfficeMap: FC<RouteComponentProps> = () => {
   const { branchOffices, requestState } = useBranchOfficeContext();
+
+  const navigation = useNavigate();
+
+  const onClickButtonHome = () => navigation("/");
 
   const [branchOfficeFilter, setBranchOfficeFilter] =
     useState<BranchOfficeModelType[]>(branchOffices);
@@ -37,7 +41,7 @@ const BranchOfficeMap: FC<RouteComponentProps> = () => {
   });
 
   return (
-    <S.MainContainer>
+    <S.MainContainer onClick={onClickButtonHome}>
       <MapProvider>
         <div>
           <S.Image>
