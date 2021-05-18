@@ -32,9 +32,9 @@ const NavigationBar: FC<NavigationBarProps> = ({ staticPosition }) => {
 
   return (
     <S.ContainerNav className={classNames({ static: staticPosition })}>
-      <div>
+      <S.LogoContainer onClick={onClickButtonHome}>
         <Image src={Logo} />
-      </div>
+      </S.LogoContainer>
       <S.ContainerOptions gridFluid={user != null}>
         <S.ListOption>
           <NavbarOption

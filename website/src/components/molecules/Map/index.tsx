@@ -43,7 +43,7 @@ const MapCredentials = () => {
       latitude={mapCoords.latitude}
       length={mapCoords.length}
       googleMapURL={
-        "https://maps.googleapis.com/maps/api/js?v=3.exp" + credentials.mapsKey
+        "https://maps.googleapis.com/maps/api/js?v=3.exp&key=" + credentials.key
       }
       containerElement={<S.Container />}
       mapElement={<S.ContainerMap />}
