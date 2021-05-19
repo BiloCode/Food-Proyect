@@ -13,6 +13,10 @@ export const Container = styled.p`
     color: #fff;
   }
 
+  &.blue {
+    color: ${colors.dark_blue};
+  }
+
   &.light-black {
     color: #3d3d3d;
   }

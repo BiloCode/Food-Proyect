@@ -24,3 +24,8 @@ export const TitleContainer = styled.div`
   display: grid;
   row-gap: 1em;
 `;
+
+export const ContactContainer = styled.div`
+  width: 80%;
+  margin: 0 auto;
+`;
