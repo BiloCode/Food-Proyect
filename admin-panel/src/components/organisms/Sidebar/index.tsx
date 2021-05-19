@@ -2,8 +2,8 @@ import { useNavigate } from "@reach/router";
 import firebase from "firebase";
 import * as S from "./styles";
 
-import EnterpriseLogo from "Logo.svg";
 import SidebarOption from "components/molecules/SidebarOption";
+import ApplicationIcon from "components/atoms/ApplicationIcon";
 
 import {
   AiOutlineHome,
@@ -41,7 +41,7 @@ const Sidebar = () => {
   return (
     <S.MainContainer>
       <S.ImageContainer>
-        <img src={EnterpriseLogo} alt="logo" />
+        <ApplicationIcon />
       </S.ImageContainer>
       <div>
         <S.ListContainer>
