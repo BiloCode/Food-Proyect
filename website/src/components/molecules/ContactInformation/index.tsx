@@ -21,7 +21,7 @@ const ContactInformation = () => {
         <S.Data>
           <Icon color="blue" Type={IoMdCall} />
           <Title size="small" color="blue" lowercase>
-            Telefono:
+            Teléfono:
           </Title>
           <Description color="blue" size="small">
             {data?.phoneNumber}
@@ -39,7 +39,7 @@ const ContactInformation = () => {
         <S.Data>
           <Icon color="blue" Type={IoIosPin} />
           <Title size="small" color="blue" lowercase>
-            Ubicacion:
+            Ubicación:
           </Title>
           <Description color="blue" size="small">
             {data?.location.address}
