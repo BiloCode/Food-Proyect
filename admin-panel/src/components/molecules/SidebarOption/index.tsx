@@ -1,16 +1,16 @@
+import { memo } from "react";
 import { IconType } from "react-icons";
 import * as S from "./styles";
 
 import Icon from "components/atoms/Icon";
 import Spinner from "components/atoms/Spinner";
-import RoundedText from "components/atoms/RoundedText";
-import { memo } from "react";
+import RoundedText, { RoundedTextProps } from "components/atoms/RoundedText";
 
 type SidebarOptionProps = {
   text: string;
   icon: IconType;
   onClick?(): void;
-  items?: {
+  items?: RoundedTextProps & {
     loading: boolean;
     numberOfItems: number;
   };
@@ -27,7 +27,9 @@ const SidebarOption = ({ icon, text, items, onClick }: SidebarOptionProps) => (
         (items.loading ? (
           <Spinner size="small" />
         ) : (
-          <RoundedText>{items.numberOfItems}</RoundedText>
+          <RoundedText bgColor={items.bgColor}>
+            {items.numberOfItems > 99 ? "+99" : items.numberOfItems}
+          </RoundedText>
         ))}
     </S.ItemStateContainer>
   </S.MainContainer>

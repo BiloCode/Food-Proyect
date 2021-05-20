@@ -8,8 +8,10 @@ import CollectionCard from "components/molecules/CollectionCard";
 import { useAtomValue } from "jotai/utils";
 import { clientStore } from "store/clientStore";
 import { branchOfficeStore } from "store/branchOfficeStore";
+import { foodStore } from "store/foodStore";
 
 const CollectionCardList = () => {
+  const food = useAtomValue(foodStore);
   const clients = useAtomValue(clientStore);
   const branchOffice = useAtomValue(branchOfficeStore);
 
@@ -29,10 +31,10 @@ const CollectionCardList = () => {
           isLoading={clients.requestState === "loading"}
         />
         <CollectionCard
-          isLoading
           color="red"
           icon={AiOutlineApple}
           collectionName="Mis Comestibles"
+          isLoading={food.requestState === "loading"}
         />
       </S.CollectionList>
     </S.MainContainer>
