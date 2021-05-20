@@ -14,56 +14,80 @@ import {
 } from "react-google-maps";
 import { useState } from "react";
 import Title from "components/atoms/Title";
+import { useBranchOfficeContext } from "context/BranchOfficeContext/context";
 
 type MapProps = {
   latitude: number;
   length: number;
+  name: string;
 };
 
-const Map = ({ latitude, length }: MapProps) => {
-  const { mapCoords } = useMapContext();
+const Markers = () => {
+  const { branchOffices } = useBranchOfficeContext();
 
-  const [stateMarker, setStateMarker] = useState<boolean>(false);
+  const [stateMarker, setStateMarker] = useState<boolean>(true);
 
   const onClickMarker = () => setStateMarker(!stateMarker);
 
-  if (latitude === 0 || length === 0)
+  return (
+    <>
+      {branchOffices.map((v, i) => {
+        return (
+          <Marker
+            key={i}
+            icon={{ url: BurguerIcon }}
+            position={{ lat: v.location.latitude, lng: v.location.longitude }}
+            title={v.name}
+            onClick={() => setStateMarker(!stateMarker)}
+          >
+            {stateMarker && (
+              <InfoWindow
+                onCloseClick={onClickMarker}
+                options={{ disableAutoPan: true }}
+              >
+                <Title color="black" size="small">
+                  {v.name}
+                </Title>
+              </InfoWindow>
+            )}
+          </Marker>
+        );
+      })}
+    </>
+  );
+};
+
+const Map = ({ latitude, length }: MapProps) => {
+  const { branchOffices } = useBranchOfficeContext();
+
+  if (latitude === 0 && length === 0) {
     return (
+      <>
+        <GoogleMap
+          defaultZoom={15}
+          center={{
+            lat: branchOffices[0]?.location.latitude,
+            lng: branchOffices[0]?.location.longitude,
+          }}
+        >
+          <Markers />
+        </GoogleMap>
+      </>
+    );
+  }
+
+  return (
+    <>
       <GoogleMap
         defaultZoom={15}
-        defaultCenter={{
-          lat: -11.992700403536038,
-          lng: -77.05174180025324,
+        center={{
+          lat: latitude,
+          lng: length,
         }}
-      ></GoogleMap>
-    );
-  return (
-    <GoogleMap
-      defaultZoom={15}
-      defaultCenter={{
-        lat: -11.992700403536038,
-        lng: -77.05174180025324,
-      }}
-      center={{
-        lat: latitude,
-        lng: length,
-      }}
-    >
-      <Marker
-        icon={{ url: BurguerIcon }}
-        position={{ lat: latitude, lng: length }}
-        title={mapCoords.text}
-        onClick={onClickMarker}
       >
-        {stateMarker && (
-          <InfoWindow onCloseClick={onClickMarker}>
-            <Title color="black" size="small">
-              {mapCoords.text}
-            </Title>
-          </InfoWindow>
-        )}
-      </Marker>
-    </GoogleMap>
+        <Markers />
+      </GoogleMap>
+    </>
   );
 };
 
@@ -76,6 +100,7 @@ const MapCredentials = () => {
     <MapWhitScripts
       latitude={mapCoords.latitude}
       length={mapCoords.length}
+      name={mapCoords.name}
       googleMapURL={
         "https://maps.googleapis.com/maps/api/js?v=3.exp&key=" + credentials.key
       }

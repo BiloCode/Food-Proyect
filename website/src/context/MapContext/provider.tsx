@@ -6,8 +6,8 @@ const MapProvider: FC = ({ children }) => {
   const [mapCoords, setMapCoords] = useState<MapCoordsTypes>({
     latitude: 0,
     length: 0,
-    text: "",
-    tittle: "",
+    name: "",
+    description: "",
     stars: 0,
   });
 
