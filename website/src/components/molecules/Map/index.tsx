@@ -1,10 +1,19 @@
 import * as S from "./styles";
 
 import Spinner from "components/atoms/Spinner";
+import BurguerIcon from "assets/images/BurguerIcon.png";
 
 import { credentials } from "config/googleMapsCredentials";
 import { useMapContext } from "context/MapContext/context";
-import { GoogleMap, withGoogleMap, withScriptjs } from "react-google-maps";
+import {
+  GoogleMap,
+  withGoogleMap,
+  withScriptjs,
+  Marker,
+  InfoWindow,
+} from "react-google-maps";
+import { useState } from "react";
+import Title from "components/atoms/Title";
 
 type MapProps = {
   latitude: number;
@@ -12,6 +21,12 @@ type MapProps = {
 };
 
 const Map = ({ latitude, length }: MapProps) => {
+  const { mapCoords } = useMapContext();
+
+  const [stateMarker, setStateMarker] = useState<boolean>(false);
+
+  const onClickMarker = () => setStateMarker(!stateMarker);
+
   if (latitude === 0 || length === 0)
     return (
       <GoogleMap
@@ -20,16 +35,35 @@ const Map = ({ latitude, length }: MapProps) => {
           lat: -11.992700403536038,
           lng: -77.05174180025324,
         }}
-      />
+      ></GoogleMap>
     );
   return (
     <GoogleMap
       defaultZoom={15}
+      defaultCenter={{
+        lat: -11.992700403536038,
+        lng: -77.05174180025324,
+      }}
       center={{
         lat: latitude,
         lng: length,
       }}
-    />
+    >
+      <Marker
+        icon={{ url: BurguerIcon }}
+        position={{ lat: latitude, lng: length }}
+        title={mapCoords.text}
+        onClick={onClickMarker}
+      >
+        {stateMarker && (
+          <InfoWindow onCloseClick={onClickMarker}>
+            <Title color="black" size="small">
+              {mapCoords.text}
+            </Title>
+          </InfoWindow>
+        )}
+      </Marker>
+    </GoogleMap>
   );
 };
 
