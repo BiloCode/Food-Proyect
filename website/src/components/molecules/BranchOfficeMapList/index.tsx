@@ -25,8 +25,8 @@ const BranchOfficeMapList = ({ branchOffices }: BranchOfficeMapListProps) => {
           return (
             <BranchOfficeMapItem
               key={i}
-              tittle={v.name}
-              text={"Descripcion de prueba"}
+              name={v.name}
+              description={v.description}
               image={v.bannerImage.url}
               latitude={v.location.latitude}
               length={v.location.longitude}

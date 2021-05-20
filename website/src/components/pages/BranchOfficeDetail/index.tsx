@@ -14,6 +14,7 @@ import BODetailPuntuactionList from "components/organisms/BODetailPuntuactionLis
 
 import useActive from "hooks/useActive";
 import useGetBranchOfficeDetail from "hooks/useGetBranchOfficeDetail";
+import ContactInformation from "components/molecules/ContactInformation";
 
 const BranchOfficeDetail: FC<RouteComponentProps> = ({}) => {
   const { active: menuActive, toggleActive: menuToggleActive } = useActive();
@@ -58,6 +59,12 @@ const BranchOfficeDetail: FC<RouteComponentProps> = ({}) => {
               <BOMostPopularFoodCard onClick={menuToggleActive} />
             </div>
           </S.ContainerContent>
+          <S.ContactContainer>
+            <Title size="medium" color="black">
+              Informacion de contacto
+            </Title>
+            <ContactInformation />
+          </S.ContactContainer>
           <Footer />
         </>
       )}

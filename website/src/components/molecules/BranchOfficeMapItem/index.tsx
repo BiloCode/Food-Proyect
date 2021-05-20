@@ -8,10 +8,10 @@ import { FiChevronRight } from "react-icons/fi";
 import * as S from "./styles";
 
 type BranchOfficeMapItemProps = {
-  text: string;
+  name: string;
   image: string;
   stars: number;
-  tittle: string;
+  description: string;
   length: number;
   latitude: number;
 };
@@ -21,8 +21,8 @@ const BranchOfficeMapItem = ({
   length,
   stars,
   image,
-  text,
-  tittle,
+  name,
+  description,
 }: BranchOfficeMapItemProps) => {
   const { setMapCoords } = useMapContext();
 
@@ -30,8 +30,8 @@ const BranchOfficeMapItem = ({
     setMapCoords({
       latitude,
       length,
-      text,
-      tittle,
+      name,
+      description,
       stars,
     });
   };
@@ -43,11 +43,11 @@ const BranchOfficeMapItem = ({
       </S.ImageContainer>
       <S.TextContainer>
         <Title size="small" color="light-black">
-          {tittle}
+          {name}
         </Title>
 
         <Description color="light-black" size="small">
-          {text}
+          {description}
         </Description>
       </S.TextContainer>
       <div>

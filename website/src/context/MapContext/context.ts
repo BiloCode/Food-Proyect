@@ -1,9 +1,9 @@
 import { createContext, useContext } from "react";
 
 export type MapCoordsTypes = {
-  text: string;
+  name: string;
   stars: number;
-  tittle: string;
+  description: string;
   length: number;
   latitude: number;
 };
