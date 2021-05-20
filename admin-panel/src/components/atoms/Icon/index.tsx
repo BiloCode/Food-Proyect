@@ -3,7 +3,7 @@ import { IconType } from "react-icons";
 import * as S from "./styles";
 
 export type IconColorType = "white";
-export type IconSizeType = "small" | "medium";
+export type IconSizeType = "small" | "medium" | "big";
 export type IconProps = {
   type: IconType;
   color?: IconColorType;
@@ -13,9 +13,10 @@ export type IconProps = {
 const Icon = ({ type: CustomIcon, color, size }: IconProps) => (
   <S.Container
     className={classnames({
-      white: color === "white",
+      big: size === "big",
       small: size === "small",
       medium: size === "medium",
+      white: color === "white",
     })}
   >
     {<CustomIcon />}

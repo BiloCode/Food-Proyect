@@ -28,7 +28,7 @@ const CollectionCard = ({
       </S.SpinnerContainer>
     )}
     <S.IconContainer>
-      <Icon color="white" size="medium" type={icon} />
+      <Icon color="white" size="big" type={icon} />
     </S.IconContainer>
     <S.TextElement>{collectionName}</S.TextElement>
   </S.MainContainer>
