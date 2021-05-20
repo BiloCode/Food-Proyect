@@ -28,7 +28,7 @@ const Sidebar = () => {
   const onClickToHome = () => navigate("/");
   const onClickToFood = () => navigate("/food");
   const onClickToClients = () => navigate("/clients");
-  const onClickToBranchOffice = () => navigate("/branch-office");
+  const onClickToBranchOffice = () => navigate("/branch-offices");
   const onClickToExit = async () => {
     const confirm = window.confirm("¿Esta seguro que desea cerrar la sesión?");
     if (!confirm) {
