@@ -2,6 +2,7 @@ import { atom } from "jotai";
 
 import type { RequestStateType } from "application/types/RequestStateType";
 import type { BranchOfficeModelType } from "application/types/BranchOfficeModelType";
+import GetAllBranchOffice from "application/core/GetAllBranchOffice";
 
 type BranchOfficeAtom = {
   data: BranchOfficeModelType[];
@@ -13,4 +14,12 @@ export const branchOfficeStore = atom<BranchOfficeAtom>({
   requestState: "loading",
 });
 
-branchOfficeStore.onMount = (setAtom) => {};
+branchOfficeStore.onMount = (setAtom) => {
+  (async () => {
+    const branchOffices = await GetAllBranchOffice.exec();
+    setAtom({
+      data: branchOffices,
+      requestState: "complete",
+    });
+  })();
+};

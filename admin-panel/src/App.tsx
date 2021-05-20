@@ -1,12 +1,16 @@
 import "config/firebase_init";
 
+import { Provider } from "jotai";
+
 import RouterApplication from "router";
 import GlobalStyles from "styles";
 
 function App() {
   return (
     <main>
-      <RouterApplication />
+      <Provider>
+        <RouterApplication />
+      </Provider>
       <GlobalStyles />
     </main>
   );

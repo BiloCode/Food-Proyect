@@ -18,7 +18,7 @@ const clientConverter = {
       data.authenticationType,
       data.profileImage,
       data.createdAt,
-      data.puntuactions
+      data.puntuaction
     );
   },
 };

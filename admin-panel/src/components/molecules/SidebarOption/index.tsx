@@ -4,6 +4,7 @@ import * as S from "./styles";
 import Icon from "components/atoms/Icon";
 import Spinner from "components/atoms/Spinner";
 import RoundedText from "components/atoms/RoundedText";
+import { memo } from "react";
 
 type SidebarOptionProps = {
   text: string;
@@ -32,4 +33,4 @@ const SidebarOption = ({ icon, text, items, onClick }: SidebarOptionProps) => (
   </S.MainContainer>
 );
 
-export default SidebarOption;
+export default memo(SidebarOption);

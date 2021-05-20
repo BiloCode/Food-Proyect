@@ -58,5 +58,5 @@ export const TextElement = styled.span`
   color: #fff;
   font-family: ${FONT};
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1.1em;
 `;
