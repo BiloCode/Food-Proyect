@@ -7,19 +7,21 @@ import CollectionCard from "components/molecules/CollectionCard";
 
 import { useAtomValue } from "jotai/utils";
 import { clientStore } from "store/clientStore";
+import { branchOfficeStore } from "store/branchOfficeStore";
 
 const CollectionCardList = () => {
   const clients = useAtomValue(clientStore);
+  const branchOffice = useAtomValue(branchOfficeStore);
 
   return (
     <S.MainContainer>
       <Title>Informacion Del Sistema</Title>
       <S.CollectionList>
         <CollectionCard
-          isLoading
           icon={AiOutlineShop}
           color="yellow"
           collectionName="Mis Sucursales"
+          isLoading={branchOffice.requestState === "loading"}
         />
         <CollectionCard
           icon={AiOutlineTeam}

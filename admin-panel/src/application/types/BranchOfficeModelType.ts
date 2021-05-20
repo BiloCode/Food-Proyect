@@ -1,13 +1,8 @@
 import firebase from "firebase";
 
-import { FoodType } from "application/types/FoodType";
-import { FirebaseImageType } from "application/types/FirebaseImageType";
-
-type LocationType = {
-  latitude: number;
-  longitude: number;
-  address: string;
-};
+import type { FoodType } from "application/types/FoodType";
+import type { FirebaseImageType } from "application/types/FirebaseImageType";
+import type { FirebaseLocationType } from "application/types/FirebaseLocationType";
 
 export type PuntuactionType = {
   userId: string;
@@ -23,15 +18,15 @@ export type PuntuactionType = {
 
 export type BranchOfficeModelType = {
   _id: string;
-  menu: [];
+  menu: any[];
   name: string;
   stars: number;
   description: string;
   phoneNumber: string;
   bannerImage: FirebaseImageType;
   foodType: FoodType;
-  location: LocationType;
+  location: FirebaseLocationType;
   userPuntuactionsId: string[];
   puntuactions: PuntuactionType[];
-  permisions: [];
+  permisions: any[];
 };
