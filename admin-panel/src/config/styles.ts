@@ -2,6 +2,8 @@ export const FONT = "Open Sans, sans-serif";
 
 export const SIDEBAR_WIDTH = "320px";
 
+/** -- COLORS -- **/
+
 export const BACKGROUND_LIGHT = "#F5F5F5";
 
 export const BLACK_LIGHT = "#515151";
