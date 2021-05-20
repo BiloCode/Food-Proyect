@@ -2,8 +2,8 @@ import { useNavigate } from "@reach/router";
 import firebase from "firebase";
 import * as S from "./styles";
 
-import EnterpriseLogo from "Logo.svg";
 import SidebarOption from "components/molecules/SidebarOption";
+import ApplicationIcon from "components/atoms/ApplicationIcon";
 
 import {
   AiOutlineHome,
@@ -13,12 +13,17 @@ import {
   AiOutlineApple,
 } from "react-icons/ai";
 
-import { useUpdateAtom } from "jotai/utils";
+import { useAtomValue, useUpdateAtom } from "jotai/utils";
 import { resetUserAuth } from "store/userAuth";
+import { clientStore } from "store/clientStore";
+import { branchOfficeStore } from "store/branchOfficeStore";
 
 const Sidebar = () => {
   const navigate = useNavigate();
   const resetAuthState = useUpdateAtom(resetUserAuth);
+
+  const clients = useAtomValue(clientStore);
+  const branchOffices = useAtomValue(branchOfficeStore);
 
   const onClickToHome = () => navigate("/");
   const onClickToFood = () => navigate("/food");
@@ -41,7 +46,7 @@ const Sidebar = () => {
   return (
     <S.MainContainer>
       <S.ImageContainer>
-        <img src={EnterpriseLogo} alt="logo" />
+        <ApplicationIcon />
       </S.ImageContainer>
       <div>
         <S.ListContainer>
@@ -54,13 +59,19 @@ const Sidebar = () => {
             text="Sucursales"
             icon={AiOutlineShop}
             onClick={onClickToBranchOffice}
-            items={{ loading: true, numberOfItems: 10 }}
+            items={{
+              numberOfItems: branchOffices.data.length,
+              loading: branchOffices.requestState === "loading",
+            }}
           />
           <SidebarOption
             icon={AiOutlineTeam}
             text="Clientes"
             onClick={onClickToClients}
-            items={{ loading: true, numberOfItems: 99 }}
+            items={{
+              numberOfItems: clients.data.length,
+              loading: clients.requestState === "loading",
+            }}
           />
           <SidebarOption
             icon={AiOutlineApple}

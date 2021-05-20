@@ -14,12 +14,11 @@ export const SpinnerElement = styled.div`
   height: var(--size);
   border-radius: 50%;
   border: var(--border-width) solid;
-  animation: ${animationRotate} 0.5s infinite linear;
+  animation: ${animationRotate} 0.6s infinite linear;
 
   &.small {
-    --size: 12px;
+    --size: 14px;
     --border-width: 2px;
-    animation-duration: 0.6s;
   }
 
   &.big {
@@ -33,7 +32,7 @@ export const SpinnerElement = styled.div`
   }
 
   &.white {
-    border-left-color: #fff;
     border-color: rgba(255, 255, 255, 0.4);
+    border-left-color: #fff;
   }
 `;
