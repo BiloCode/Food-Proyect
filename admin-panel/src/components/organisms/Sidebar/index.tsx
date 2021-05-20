@@ -13,12 +13,17 @@ import {
   AiOutlineApple,
 } from "react-icons/ai";
 
-import { useUpdateAtom } from "jotai/utils";
+import { useAtomValue, useUpdateAtom } from "jotai/utils";
 import { resetUserAuth } from "store/userAuth";
+import { clientStore } from "store/clientStore";
+import { branchOfficeStore } from "store/branchOfficeStore";
 
 const Sidebar = () => {
   const navigate = useNavigate();
   const resetAuthState = useUpdateAtom(resetUserAuth);
+
+  const clients = useAtomValue(clientStore);
+  const branchOffices = useAtomValue(branchOfficeStore);
 
   const onClickToHome = () => navigate("/");
   const onClickToFood = () => navigate("/food");
@@ -54,13 +59,19 @@ const Sidebar = () => {
             text="Sucursales"
             icon={AiOutlineShop}
             onClick={onClickToBranchOffice}
-            items={{ loading: true, numberOfItems: 10 }}
+            items={{
+              numberOfItems: branchOffices.data.length,
+              loading: branchOffices.requestState === "loading",
+            }}
           />
           <SidebarOption
             icon={AiOutlineTeam}
             text="Clientes"
             onClick={onClickToClients}
-            items={{ loading: true, numberOfItems: 99 }}
+            items={{
+              numberOfItems: clients.data.length,
+              loading: clients.requestState === "loading",
+            }}
           />
           <SidebarOption
             icon={AiOutlineApple}
