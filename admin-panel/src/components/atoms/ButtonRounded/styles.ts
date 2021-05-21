@@ -1,9 +1,4 @@
-import {
-  FONT,
-  NORMAL_GRAY,
-  NORMAL_GRAY_LIGHT,
-  NORMAL_WHITE,
-} from "config/styles";
+import { NORMAL_GRAY, NORMAL_GRAY_LIGHT, NORMAL_WHITE } from "config/styles";
 import styled from "styled-components";
 
 export const Container = styled.button`
