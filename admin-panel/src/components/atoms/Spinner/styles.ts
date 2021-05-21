@@ -14,7 +14,7 @@ export const SpinnerElement = styled.div`
   height: var(--size);
   border-radius: 50%;
   border: var(--border-width) solid;
-  animation: ${animationRotate} 0.6s infinite linear;
+  animation: ${animationRotate} 0.4s infinite linear;
 
   &.small {
     --size: 14px;

@@ -6,13 +6,13 @@ import { AiOutlineLeft } from "react-icons/ai";
 
 import Icon from "components/atoms/Icon";
 import Image from "components/atoms/Image";
+import Title from "components/atoms/Title";
 import PageWithSidebarBox from "components/templates/PageWithSidebarBox";
 import StarListPuntuaction from "components/molecules/StarListPuntuaction";
 
 import { useAtomValue, useUpdateAtom } from "jotai/utils";
 import { branchOfficeStore } from "store/branchOfficeStore";
 import { currentBranchStore } from "store/currentBranchStore";
-import Title from "components/atoms/Title";
 
 const BranchOfficeDetail = ({ navigate }: RouteComponentProps) => {
   const { id } = useParams();

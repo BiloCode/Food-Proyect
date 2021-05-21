@@ -1,6 +1,6 @@
 import { Router } from "@reach/router";
 
-import Spinner from "components/atoms/Spinner";
+import PageLoading from "components/atoms/PageLoading";
 
 import Home from "components/pages/Home";
 import Food from "components/pages/Food";
@@ -8,6 +8,7 @@ import Login from "components/pages/Login";
 import Clients from "components/pages/Clients";
 import BranchOffices from "components/pages/BranchOffices";
 import BranchOfficeDetail from "components/pages/BranchOfficeDetail";
+import DefaultPage from "components/pages/DefaultPage";
 
 import { useAtomValue } from "jotai/utils";
 import { userAuth } from "store/userAuth";
@@ -15,10 +16,11 @@ import { userAuth } from "store/userAuth";
 const RouterApplication = () => {
   const userStore = useAtomValue(userAuth);
 
-  if (userStore.requestState === "loading") return <Spinner color="blue" />;
+  if (userStore.requestState === "loading") return <PageLoading />;
 
   return (
     <Router>
+      <DefaultPage default />
       {userStore.user ? (
         <>
           <Home path="/" />

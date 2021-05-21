@@ -40,6 +40,7 @@ const Login: FC<RouteComponentProps> = () => {
     try {
       await auth.signInWithEmailAndPassword(emailFormated, passwordFormated);
       setEmailStored(emailFormated);
+      addToast("Bienvenido otra vez.", { appearance: "success" });
     } catch (error) {
       addToast(error.message, { appearance: "error" });
       setSendRequest(() => false);

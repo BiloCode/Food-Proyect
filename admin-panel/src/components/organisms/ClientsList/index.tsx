@@ -80,7 +80,7 @@ const ClientsList = () => {
               <S.NameContainer>
                 <Span
                   align="center"
-                  bold="semi-bold"
+                  bold="bold"
                   color="black-light"
                   size="small"
                 >
@@ -90,12 +90,12 @@ const ClientsList = () => {
             </S.NameTable>
 
             <S.EmailTable>
-              {v.authenticationType === "email" && (
-                <Icon size="small-medium" type={IoAtOutline} />
-              )}
-              {v.authenticationType === "google" && (
-                <Icon size="small-medium" type={IoLogoGoogle} />
-              )}
+              <Icon
+                size="small-medium"
+                type={
+                  v.authenticationType === "email" ? IoAtOutline : IoLogoGoogle
+                }
+              />
             </S.EmailTable>
 
             <S.DateTable>
@@ -116,7 +116,7 @@ const ClientsList = () => {
 
             <S.ButtonTable>
               <ButtonRounded text="Ver perfil" bgColor="white">
-                <Span uppercase bold="bold" color="gray">
+                <Span uppercase bold="bold" size="small" color="gray">
                   Ver perfil
                 </Span>
               </ButtonRounded>

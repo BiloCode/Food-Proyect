@@ -7,7 +7,7 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 65px 1fr;
   overflow: hidden;
-  border: 3px solid ${NORMAL_GRAY_LIGHT};
+  border: 2px solid ${NORMAL_GRAY_LIGHT};
   border-radius: 25px;
 `;
 
@@ -21,9 +21,8 @@ export const IconContainer = styled.div`
 export const InputContainer = styled.div`
   width: 100%;
 
-  & input {
-    padding: 0;
-    height: 35px;
-    background-color: ${NORMAL_WHITE};
+  & > input {
+    background-color: #fff;
+    padding-left: 0;
   }
 `;
