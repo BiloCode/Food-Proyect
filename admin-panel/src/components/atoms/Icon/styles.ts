@@ -1,3 +1,4 @@
+import { NORMAL_YELLOW } from "config/styles";
 import styled from "styled-components";
 
 export const Container = styled.span`
@@ -7,6 +8,10 @@ export const Container = styled.span`
 
   &.white {
     color: #fff;
+  }
+
+  &.yellow {
+    color: ${NORMAL_YELLOW};
   }
 
   &.small {

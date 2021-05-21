@@ -17,13 +17,15 @@ import { useAtomValue, useUpdateAtom } from "jotai/utils";
 import { resetUserAuth } from "store/userAuth";
 import { clientStore } from "store/clientStore";
 import { branchOfficeStore } from "store/branchOfficeStore";
+import { foodStore } from "store/foodStore";
 
 const Sidebar = () => {
   const navigate = useNavigate();
-  const resetAuthState = useUpdateAtom(resetUserAuth);
 
+  const food = useAtomValue(foodStore);
   const clients = useAtomValue(clientStore);
   const branchOffices = useAtomValue(branchOfficeStore);
+  const resetAuthState = useUpdateAtom(resetUserAuth);
 
   const onClickToHome = () => navigate("/");
   const onClickToFood = () => navigate("/food");
@@ -60,6 +62,7 @@ const Sidebar = () => {
             icon={AiOutlineShop}
             onClick={onClickToBranchOffice}
             items={{
+              bgColor: "yellow",
               numberOfItems: branchOffices.data.length,
               loading: branchOffices.requestState === "loading",
             }}
@@ -77,7 +80,11 @@ const Sidebar = () => {
             icon={AiOutlineApple}
             text="Alimentos"
             onClick={onClickToFood}
-            items={{ loading: true, numberOfItems: 100 }}
+            items={{
+              bgColor: "red",
+              numberOfItems: food.data.length,
+              loading: food.requestState === "loading",
+            }}
           />
           <SidebarOption
             text="Salir"

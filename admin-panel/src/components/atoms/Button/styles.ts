@@ -8,11 +8,17 @@ import {
   NORMAL_BLUE_LIGHT,
   DARK_BLUE_LIGHT,
   NORMAL_YELLOW_LIGHT,
+  NORMAL_GREEN,
+  NORMAL_GREEN_LIGHT,
 } from "config/styles";
 
 export const ButtonContainer = styled.button`
+  --bg: ${DARK_BLUE};
+  --txt-color: #fff;
+  --bg-hover: ${DARK_BLUE_LIGHT};
+
   width: 100%;
-  color: #fff;
+  color: var(--txt-color);
   height: 40px;
   border: none;
   outline: none;
@@ -22,33 +28,29 @@ export const ButtonContainer = styled.button`
   border-radius: 6px;
   font-family: ${FONT};
   text-transform: uppercase;
-  background-color: ${DARK_BLUE};
-
-  &:not(&.yellow):not(&.red):not(&:disabled):hover {
-    background-color: ${DARK_BLUE_LIGHT};
-  }
+  background-color: var(--bg);
 
   &.yellow {
-    color: ${NORMAL_BLUE};
-    background-color: ${NORMAL_YELLOW};
-
-    &:hover {
-      background-color: ${NORMAL_YELLOW_LIGHT};
-    }
+    --bg: ${NORMAL_YELLOW};
+    --txt-color: ${NORMAL_BLUE};
+    --bg-hover: ${NORMAL_YELLOW_LIGHT};
   }
 
   &.blue {
-    color: #fff;
-    background-color: ${NORMAL_BLUE};
+    --bg: ${NORMAL_BLUE};
+    --txt-color: #fff;
+    --bg-hover: ${NORMAL_BLUE_LIGHT};
+  }
 
-    &:hover {
-      background-color: ${NORMAL_BLUE_LIGHT};
-    }
+  &.green {
+    --bg: ${NORMAL_GREEN};
+    --txt-color: #fff;
+    --bg-hover: ${NORMAL_GREEN_LIGHT};
   }
 
   &.small {
-    font-size: 0.8em;
-    height: 32px;
+    font-size: 0.85em;
+    height: 36px;
   }
 
   &.medium {
@@ -58,6 +60,10 @@ export const ButtonContainer = styled.button`
 
   &.big {
     height: 50px;
+  }
+
+  &:hover {
+    background-color: var(--bg-hover);
   }
 
   &:not(&:disabled) {

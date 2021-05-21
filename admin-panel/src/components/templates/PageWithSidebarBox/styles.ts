@@ -12,6 +12,6 @@ export const MainContainer = styled.div`
 
 export const RightContainer = styled.div`
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+  height: 100vh;
+  overflow: auto;
 `;

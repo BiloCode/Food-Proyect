@@ -1,4 +1,10 @@
-import { FONT, NORMAL_BLUE } from "config/styles";
+import {
+  FONT,
+  NORMAL_BLUE,
+  NORMAL_GREEN,
+  NORMAL_RED,
+  NORMAL_YELLOW,
+} from "config/styles";
 import styled from "styled-components";
 
 export const TextContainer = styled.div`
@@ -12,4 +18,16 @@ export const TextContainer = styled.div`
   font-family: ${FONT};
   text-align: center;
   color: #fff;
+
+  &.yellow {
+    background-color: ${NORMAL_YELLOW};
+  }
+
+  &.red {
+    background-color: ${NORMAL_RED};
+  }
+
+  &.green {
+    background-color: ${NORMAL_GREEN};
+  }
 `;
