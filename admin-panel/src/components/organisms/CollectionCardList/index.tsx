@@ -5,15 +5,10 @@ import { AiOutlineTeam, AiOutlineShop, AiOutlineApple } from "react-icons/ai";
 import Title from "components/atoms/Title";
 import CollectionCard from "components/molecules/CollectionCard";
 
-import { useAtomValue } from "jotai/utils";
-import { clientStore } from "store/clientStore";
-import { branchOfficeStore } from "store/branchOfficeStore";
-import { foodStore } from "store/foodStore";
+import useCollectionAllData from "hooks/useCollectionAllData";
 
 const CollectionCardList = () => {
-  const food = useAtomValue(foodStore);
-  const clients = useAtomValue(clientStore);
-  const branchOffice = useAtomValue(branchOfficeStore);
+  const { clients, branchOffice, food } = useCollectionAllData();
 
   return (
     <S.MainContainer>

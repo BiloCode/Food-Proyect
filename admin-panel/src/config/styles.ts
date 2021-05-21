@@ -1,10 +1,17 @@
 export const FONT = "Open Sans, sans-serif";
 
+/** -- STYLES VALUES -- **/
+
 export const SIDEBAR_WIDTH = "320px";
+
+export const HOME_SECTIONS_ROW_GAP = "1.8em";
+export const HOME_STATISTICS_ROW_WIDTH = "140px";
 
 /** -- COLORS -- **/
 
 export const BACKGROUND_LIGHT = "#F5F5F5";
+
+export const NORMAL_GREEN = "#10EAA8";
 
 export const BLACK_LIGHT = "#515151";
 

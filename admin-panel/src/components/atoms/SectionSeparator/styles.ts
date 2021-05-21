@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
+import { HOME_SECTIONS_ROW_GAP } from "config/styles";
+
 export const MainContainer = styled.div`
-  width: 80%;
-  margin: 3em auto;
   display: grid;
-  row-gap: 2.5em;
-  align-items: start;
+  row-gap: ${HOME_SECTIONS_ROW_GAP};
 `;
