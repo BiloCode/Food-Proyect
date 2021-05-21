@@ -63,15 +63,7 @@ const ClientsList = () => {
           >
             Puntuaciones
           </Span>
-          <Span
-            size="extra_small"
-            color="gray"
-            bold="semi-bold"
-            align="center"
-            uppercase
-          >
-            *
-          </Span>
+          <Span></Span>
         </S.RowTable>
         {clients.data.map((v, i) => (
           <S.RowTable key={i}>
