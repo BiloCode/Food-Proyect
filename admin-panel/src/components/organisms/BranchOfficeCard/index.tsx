@@ -22,7 +22,7 @@ const BranchOfficeCard = ({
   description,
 }: BranchOfficeCardProps) => {
   const navigate = useNavigate();
-  const onClick = () => navigate(`/branch-offices/${id}`);
+  const onClick = () => navigate(`/branch/${id}`);
 
   return (
     <S.MainContainer>

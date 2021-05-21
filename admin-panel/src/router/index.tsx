@@ -7,6 +7,7 @@ import Food from "components/pages/Food";
 import Login from "components/pages/Login";
 import Clients from "components/pages/Clients";
 import BranchOffices from "components/pages/BranchOffices";
+import BranchOfficeDetail from "components/pages/BranchOfficeDetail";
 
 import { useAtomValue } from "jotai/utils";
 import { userAuth } from "store/userAuth";
@@ -21,7 +22,8 @@ const RouterApplication = () => {
       {userStore.user ? (
         <>
           <Home path="/" />
-          <BranchOffices path="/branch-offices" />
+          <BranchOffices path="/branch/list" />
+          <BranchOfficeDetail path="/branch/:id" />
           <Clients path="/clients" />
           <Food path="/food" />
         </>

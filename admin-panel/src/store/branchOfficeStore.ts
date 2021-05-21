@@ -1,4 +1,5 @@
 import { atom } from "jotai";
+import { useParams } from "@reach/router";
 
 import type { RequestStateType } from "application/types/RequestStateType";
 import type { BranchOfficeModelType } from "application/types/BranchOfficeModelType";
@@ -23,3 +24,10 @@ branchOfficeStore.onMount = (setAtom) => {
     });
   })();
 };
+
+export const branchOfficeById = atom((get) => {
+  const pageParams = useParams();
+  const branchStored = get(branchOfficeStore);
+
+  return branchStored.data.find((v) => v._id === pageParams?.id);
+});
