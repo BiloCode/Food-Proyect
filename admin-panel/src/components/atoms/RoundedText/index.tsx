@@ -2,7 +2,7 @@ import { FC } from "react";
 import classNames from "classnames";
 import * as S from "./styles";
 
-type ColorBackground = "yellow" | "red" | "green";
+type ColorBackground = "yellow" | "red" | "green" | "blue";
 export type RoundedTextProps = {
   bgColor?: ColorBackground;
 };
@@ -13,6 +13,7 @@ const RoundedText: FC<RoundedTextProps> = ({ children, bgColor }) => (
       red: bgColor === "red",
       yellow: bgColor === "yellow",
       green: bgColor === "green",
+      blue: bgColor === "blue",
     })}
   >
     {children}
