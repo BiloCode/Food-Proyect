@@ -7,5 +7,5 @@ export const MainContainer = styled.div`
 
 export const SearchContainer = styled.div`
   width: 450px;
-  margin: 3em 0;
+  margin: 2em 0 4em 0;
 `;

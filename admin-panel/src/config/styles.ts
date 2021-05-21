@@ -15,6 +15,7 @@ export const NORMAL_GREEN = "#10EAA8";
 export const NORMAL_GREEN_LIGHT = "#20F1B2";
 
 export const BLACK = "#000000";
+export const BLACK_SUPER_LIGHT = "#3D3D3D";
 export const BLACK_LIGHT = "#515151";
 export const BLACK_LIGHT_B = "#8D8D8D";
 

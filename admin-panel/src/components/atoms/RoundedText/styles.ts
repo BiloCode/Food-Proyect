@@ -18,6 +18,9 @@ export const TextContainer = styled.div`
   font-family: ${FONT};
   text-align: center;
   color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &.yellow {
     background-color: ${NORMAL_YELLOW};
@@ -29,5 +32,9 @@ export const TextContainer = styled.div`
 
   &.green {
     background-color: ${NORMAL_GREEN};
+  }
+
+  &.blue {
+    background-color: ${NORMAL_BLUE};
   }
 `;
