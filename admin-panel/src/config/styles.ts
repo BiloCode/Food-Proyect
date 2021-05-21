@@ -14,6 +14,7 @@ export const BACKGROUND_LIGHT = "#F5F5F5";
 export const NORMAL_GREEN = "#10EAA8";
 export const NORMAL_GREEN_LIGHT = "#20F1B2";
 
+export const BLACK = "#000000";
 export const BLACK_LIGHT = "#515151";
 export const BLACK_LIGHT_B = "#8D8D8D";
 
@@ -29,3 +30,9 @@ export const NORMAL_BLUE_LIGHT = "#193798";
 
 export const NORMAL_YELLOW = "#FBB905";
 export const NORMAL_YELLOW_LIGHT = "#FFC21D";
+
+export const NORMAL_GRAY = "#8D8D8D";
+export const NORMAL_GRAY_LIGHT = "#F5F5F5";
+export const NORMAL_GRAY_MEDIUM = "#C7C7C7";
+
+export const NORMAL_WHITE = "#FFFFFF";

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { BACKGROUND_LIGHT, FONT } from "config/styles";
+import { BACKGROUND_LIGHT, FONT, NORMAL_GRAY_MEDIUM } from "config/styles";
 
 export const CustomInput = styled.input`
   width: 100%;
@@ -13,4 +13,9 @@ export const CustomInput = styled.input`
   box-sizing: border-box;
   font-family: ${FONT};
   background-color: ${BACKGROUND_LIGHT};
+
+  ::placeholder {
+    color: ${NORMAL_GRAY_MEDIUM};
+    font-weight: 0.5;
+  }
 `;

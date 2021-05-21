@@ -1,4 +1,4 @@
-import { NORMAL_YELLOW } from "config/styles";
+import { NORMAL_GRAY_MEDIUM, NORMAL_YELLOW } from "config/styles";
 import styled from "styled-components";
 
 export const Container = styled.span`
@@ -12,6 +12,10 @@ export const Container = styled.span`
 
   &.yellow {
     color: ${NORMAL_YELLOW};
+  }
+
+  &.gray {
+    color: ${NORMAL_GRAY_MEDIUM};
   }
 
   &.small {
