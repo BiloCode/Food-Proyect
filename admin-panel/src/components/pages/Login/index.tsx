@@ -9,8 +9,16 @@ import ApplicationIcon from "components/atoms/ApplicationIcon";
 
 import { AiOutlineUser, AiOutlineLock } from "react-icons/ai";
 
+import { useToasts } from "react-toast-notifications";
+
+import { useAtom } from "jotai";
+import { userEmailStore } from "store/userEmailStore";
+
 const Login: FC<RouteComponentProps> = () => {
+  const { addToast } = useToasts();
+
   const [sendRequest, setSendRequest] = useState(false);
+  const [emailStored, setEmailStored] = useAtom(userEmailStore);
 
   const email = useRef<HTMLInputElement>();
   const password = useRef<HTMLInputElement>();
@@ -19,16 +27,21 @@ const Login: FC<RouteComponentProps> = () => {
     ev.preventDefault();
 
     const auth = firebase.auth();
+    const emailFormated = email.current.value.trim();
+    const passwordFormated = password.current.value.trim();
+
+    if (!emailFormated || !passwordFormated) {
+      addToast("Aun existen campos vacios.", { appearance: "warning" });
+      return;
+    }
 
     setSendRequest(() => true);
 
     try {
-      await auth.signInWithEmailAndPassword(
-        email.current.value,
-        password.current.value
-      );
+      await auth.signInWithEmailAndPassword(emailFormated, passwordFormated);
+      setEmailStored(emailFormated);
     } catch (error) {
-      console.log(error);
+      addToast(error.message, { appearance: "error" });
       setSendRequest(() => false);
     }
   };
@@ -45,6 +58,7 @@ const Login: FC<RouteComponentProps> = () => {
             type="email"
             labelText="Usuario"
             icon={AiOutlineUser}
+            defaultValue={emailStored}
           />
           <FormControl
             ref={password}
