@@ -2,7 +2,7 @@ export const FONT = "Open Sans, sans-serif";
 
 /** -- STYLES VALUES -- **/
 
-export const SIDEBAR_WIDTH = "320px";
+export const SIDEBAR_WIDTH = "350px";
 
 export const HOME_SECTIONS_ROW_GAP = "1.8em";
 export const HOME_STATISTICS_ROW_WIDTH = "140px";

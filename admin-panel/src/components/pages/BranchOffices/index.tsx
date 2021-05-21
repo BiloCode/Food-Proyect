@@ -7,6 +7,7 @@ import PageWithSidebarBox from "components/templates/PageWithSidebarBox";
 
 import { useAtomValue } from "jotai/utils";
 import { branchOfficeStore } from "store/branchOfficeStore";
+import PageLimiterContainer from "components/atoms/PageLimiterContainer";
 
 const BranchOffices = (_: RouteComponentProps) => {
   const branchOffices = useAtomValue(branchOfficeStore);
@@ -15,7 +16,7 @@ const BranchOffices = (_: RouteComponentProps) => {
 
   return (
     <PageWithSidebarBox>
-      <S.MainContainer>
+      <PageLimiterContainer>
         <HeaderTitle
           title="Nuestras Sucursales"
           button={{ onClick: onClickToCreate, text: "Crear Sucursal" }}
@@ -33,7 +34,7 @@ const BranchOffices = (_: RouteComponentProps) => {
             ))}
           </S.BranchOfficeList>
         </S.BranchOfficeListContainer>
-      </S.MainContainer>
+      </PageLimiterContainer>
     </PageWithSidebarBox>
   );
 };

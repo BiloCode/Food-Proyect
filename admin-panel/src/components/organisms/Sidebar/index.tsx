@@ -78,7 +78,7 @@ const Sidebar = () => {
           />
           <SidebarOption
             icon={AiOutlineApple}
-            text="Alimentos"
+            text="Comestibles"
             onClick={onClickToFood}
             items={{
               bgColor: "red",
