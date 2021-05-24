@@ -1,11 +1,9 @@
 import {
-  BLACK,
   BLACK_SUPER_LIGHT,
   FONT,
   NORMAL_BLUE,
   NORMAL_GRAY,
   NORMAL_GRAY_LIGHT,
-  NORMAL_WHITE,
 } from "config/styles";
 import styled from "styled-components";
 
