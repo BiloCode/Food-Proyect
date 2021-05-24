@@ -1,7 +1,7 @@
-import InputPlaceholderIcon from "components/molecules/InputPlaceholderIcon";
-import { ChangeEvent } from "react";
 import { IoMdSearch } from "react-icons/io";
 import * as S from "./styles";
+
+import InputPlaceholderIcon from "components/molecules/InputPlaceholderIcon";
 
 type SearchBranchOfficeProps = {
   onChange(): void;
