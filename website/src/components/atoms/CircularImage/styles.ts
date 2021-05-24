@@ -24,9 +24,8 @@ export const MainContainer = styled.div`
 
   &.hoverable > img {
     cursor: pointer;
-    transition: 0.3s;
     &:hover {
-      filter: brightness(50%);
+      filter: brightness(70%);
     }
   }
 `;

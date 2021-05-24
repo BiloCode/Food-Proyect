@@ -12,12 +12,20 @@ class RemovePuntuaction {
       const transactionResult = await db.runTransaction(async (transaction) => {
         const branchOffice = await transaction.get(branchDocRef);
 
-        const storedPuntuactions = branchOffice.data().puntuactions;
+        const data = branchOffice.data();
+
+        const storedPuntuactions = data.puntuactions;
+        const userIdsSaved = data.userPuntuactionsId;
+
         const puntuactions = [...storedPuntuactions].filter(
           (v) => v.userId !== userId
         );
 
-        transaction.update(branchDocRef, { puntuactions });
+        const userPuntuactionsId = [...userIdsSaved].filter(
+          (_id) => _id !== userId
+        );
+
+        transaction.update(branchDocRef, { puntuactions, userPuntuactionsId });
 
         return true;
       });

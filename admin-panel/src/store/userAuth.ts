@@ -37,11 +37,9 @@ userAuth.onMount = (setAtom) => {
 };
 
 //Selectors
-export const resetUserAuth = atom(null, (get, set) => {
-  const userStored = get(userAuth);
-
+export const resetUserAuth = atom(null, (_, set) => {
   set(userAuth, {
-    ...userStored,
     user: null,
+    requestState: "complete",
   });
 });

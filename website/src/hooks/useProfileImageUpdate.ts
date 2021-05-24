@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from "react";
+import { useToasts } from "react-toast-notifications";
 
 import DeleteImage from "application/core/DeleteImage";
 import FilesCheckingIsImage from "application/utils/FileCheckingIsImage";
@@ -12,6 +13,7 @@ import UpdateUserDataInPuntuactions from "application/core/UpdateUserDataInPuntu
 const useProfileImageUpdate = () => {
   const [isUploading, setIsUploading] = useState<boolean>(false);
 
+  const { addToast } = useToasts();
   const { user, changeUserAuthData } = useAuthContext();
   const { currentClientInView, setCurrentProfile } = useProfileContext();
 
@@ -43,7 +45,12 @@ const useProfileImageUpdate = () => {
       imageUploaded
     );
 
-    if (!isUpdated) return;
+    if (!isUpdated) {
+      addToast("Ocurrio un error al actualizar los datos", {
+        appearance: "error",
+      });
+      return;
+    }
 
     await UpdateUserDataInPuntuactions.exec({
       _id: user._id,
