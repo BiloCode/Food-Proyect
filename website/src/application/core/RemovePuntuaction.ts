@@ -1,39 +1,52 @@
-import { FirebaseCollectionNames } from "config/constans";
 import firebase from "firebase";
+
+import { FirebaseCollectionNames } from "config/constans";
+
+import RemovePuntuactionInBranch from "./RemovePuntuactionInBranch";
+import RemovePuntuactionInUser from "./RemovePuntuactionInUser";
 
 class RemovePuntuaction {
   public static exec = async (branchOfficeId: string, userId: string) => {
     const db = firebase.firestore();
-    const branchDocRef = db
+
+    const clientRef = db.collection(FirebaseCollectionNames.client).doc(userId);
+    const branchRef = db
       .collection(FirebaseCollectionNames.branchOffice)
       .doc(branchOfficeId);
 
     try {
       const transactionResult = await db.runTransaction(async (transaction) => {
-        const branchOffice = await transaction.get(branchDocRef);
+        const branchOffice = await transaction.get(branchRef);
+        const client = await transaction.get(clientRef);
 
-        const data = branchOffice.data();
+        const branchData = branchOffice.data();
+        const clientData = client.data();
 
-        const storedPuntuactions = data.puntuactions;
-        const userIdsSaved = data.userPuntuactionsId;
-
-        const puntuactions = [...storedPuntuactions].filter(
-          (v) => v.userId !== userId
+        const newBData = RemovePuntuactionInBranch.exec(
+          transaction,
+          branchRef,
+          {
+            userId,
+            puntuactions: branchData.puntuactions,
+            userPuntuactionsId: branchData.userPuntuactionsId,
+          }
         );
 
-        const userPuntuactionsId = [...userIdsSaved].filter(
-          (_id) => _id !== userId
-        );
+        const newUData = RemovePuntuactionInUser.exec(transaction, clientRef, {
+          branchOfficeId,
+          puntuaction: clientData.puntuaction,
+        });
 
-        transaction.update(branchDocRef, { puntuactions, userPuntuactionsId });
-
-        return true;
+        return {
+          userPuntuactions: newUData,
+          branchData: newBData,
+        };
       });
 
       return transactionResult;
     } catch (error) {
       console.log(error);
-      return false;
+      return null;
     }
   };
 }

@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 import RemovePuntuaction from "application/core/RemovePuntuaction";
-import RemovePuntuactionInUser from "application/core/RemovePuntuactionInUser";
 
 import { useAuthContext } from "context/AuthContext/context";
 import { useBranchOfficeContext } from "context/BranchOfficeContext/context";
+import { useToasts } from "react-toast-notifications";
 
 const useDeletePuntuaction = (
   puntuactionId: string,
@@ -12,6 +12,7 @@ const useDeletePuntuaction = (
 ) => {
   const [isSendData, setIsSendData] = useState(false);
 
+  const { addToast } = useToasts();
   const { user, changeUserAuthData } = useAuthContext();
   const { removeBranchOfficePuntuaction } = useBranchOfficeContext();
 
@@ -20,22 +21,16 @@ const useDeletePuntuaction = (
 
     setIsSendData(() => true);
 
-    const isRemoved = await RemovePuntuaction.exec(branchOfficeId, user._id);
-
-    //Refactor Pendiente
-    if (isRemoved) {
-      const userPuntuaction = await RemovePuntuactionInUser.exec(
-        branchOfficeId,
-        user._id
-      );
-
-      if (!userPuntuaction) return;
-
-      changeUserAuthData({ ...user, puntuaction: userPuntuaction });
+    const newData = await RemovePuntuaction.exec(branchOfficeId, user._id);
+    if (!newData) {
+      addToast("Se produjo un error al eliminar.", { appearance: "error" });
+      setIsSendData(() => false);
+      return;
     }
 
-    setIsSendData(() => false);
     removeBranchOfficePuntuaction(branchOfficeId, puntuactionId);
+    changeUserAuthData({ ...user, puntuaction: newData.userPuntuactions });
+    setIsSendData(() => false);
   };
 
   return {

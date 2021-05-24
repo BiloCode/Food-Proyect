@@ -1,42 +1,33 @@
 import firebase from "firebase";
 
-import { FirebaseCollectionNames } from "config/constans";
 import { ClientPuntuactionData } from "application/types/ClientModelType";
 
+type UserParams = {
+  puntuaction: ClientPuntuactionData;
+  branchOfficeId: string;
+};
+
 class RemovePuntuactionInUser {
-  public static exec = async (branchOfficeId: string, clientId: string) => {
-    const db = firebase.firestore();
-    const clientDocRef = db
-      .collection(FirebaseCollectionNames.client)
-      .doc(clientId);
+  public static exec = (
+    transaction: firebase.firestore.Transaction,
+    clientRef: firebase.firestore.DocumentReference,
+    params: UserParams
+  ) => {
+    const storedBranchOfficeIds = params.puntuaction.branchOfficeIds;
+    const storedPuntuactions = params.puntuaction.store;
 
-    try {
-      const transactionResult = await db.runTransaction(async (transaction) => {
-        const client = await transaction.get(clientDocRef);
+    const puntuaction: ClientPuntuactionData = {
+      branchOfficeIds: [...storedBranchOfficeIds].filter(
+        (_id) => _id !== params.branchOfficeId
+      ),
+      store: [...storedPuntuactions].filter(
+        (v) => v.branchOfficeId !== params.branchOfficeId
+      ),
+    };
 
-        const data = client.data();
-        const storedBranchOfficeIds = data.puntuaction.branchOfficeIds;
-        const storedPuntuactions = data.puntuaction.store;
+    transaction.update(clientRef, { puntuaction });
 
-        const puntuaction: ClientPuntuactionData = {
-          branchOfficeIds: [...storedBranchOfficeIds].filter(
-            (_id) => _id !== branchOfficeId
-          ),
-          store: [...storedPuntuactions].filter(
-            (v) => v.branchOfficeId !== branchOfficeId
-          ),
-        };
-
-        transaction.update(clientDocRef, { puntuaction });
-
-        return puntuaction;
-      });
-
-      return transactionResult;
-    } catch (error) {
-      console.log(error);
-      return null;
-    }
+    return puntuaction;
   };
 }
 
