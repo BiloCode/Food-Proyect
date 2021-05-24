@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useToasts } from "react-toast-notifications";
 
-import CreateNewUser from "application/core/CreateNewUser";
-import GoogleAuthentication from "application/core/GoogleAuthentication";
-import ExistsUser from "application/core/ExistsUser";
+import ExistsUser from "application/core/auth/ExistsUser";
+import CreateNewUser from "application/core/auth/CreateNewUser";
+import GoogleAuthentication from "application/core/auth/GoogleAuthentication";
 
 const useGoogleAuthentication = () => {
   const { addToast } = useToasts();
@@ -15,20 +15,15 @@ const useGoogleAuthentication = () => {
 
     const googleService = new GoogleAuthentication();
     const userData = await googleService.__invoke();
+    const userExists = await ExistsUser.exec(userData?._id);
 
-    if (!userData) return;
-
-    const checkingUser = new ExistsUser();
-    const isExists = await checkingUser.__invoke(userData._id);
-
-    if (isExists) {
+    if (userExists) {
       setIsLoading(() => false);
       addToast("Inicio de sesión correcto.");
       return;
     }
 
-    const createUserService = new CreateNewUser();
-    const isCreated = await createUserService.__invoke({
+    const isCreated = await CreateNewUser.exec({
       _id: userData._id,
       type: "google",
       data: {

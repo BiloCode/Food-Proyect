@@ -4,7 +4,7 @@ import { useAuthContext } from "context/AuthContext/context";
 import { useProfileContext } from "context/ProfileContext/context";
 
 import UpdateUserInformation from "application/core/UpdateUserInformation";
-import UpdateUserDataInPuntuactions from "application/core/UpdateUserDataInPuntuactions";
+import UpdateUserDataInPuntuactions from "application/core/puntuaction/UpdateUserDataInPuntuactions";
 
 const useProfileUpdateInformation = (onClose) => {
   const [isSendData, setIsSendData] = useState<boolean>(false);

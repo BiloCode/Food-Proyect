@@ -1,13 +1,13 @@
-import { useToasts } from "react-toast-notifications";
 import { FormEvent, useRef, useState } from "react";
+import { useToasts } from "react-toast-notifications";
 
-import CreateNewUser from "application/core/CreateNewUser";
-import CreateNewUserWithEmail from "application/core/CreateNewUserWithEmail";
+import CreateNewUser from "application/core/auth/CreateNewUser";
+import EmailAuthentication from "application/core/auth/EmailAuthentication";
 
 const useCreateUserWithEmail = () => {
   const { addToast } = useToasts();
 
-  const usernameRef = useRef<HTMLInputElement>();
+  const fullNameRef = useRef<HTMLInputElement>();
   const emailRef = useRef<HTMLInputElement>();
   const passwordRef = useRef<HTMLInputElement>();
 
@@ -16,21 +16,18 @@ const useCreateUserWithEmail = () => {
   const onSubmitFormRegister = async (ev: FormEvent) => {
     ev.preventDefault();
 
-    const usernameFormatted = usernameRef.current.value.trim();
-    const emailFormatted = emailRef.current.value.trim();
-    const passwordFormatted = passwordRef.current.value.trim();
+    const fullName = fullNameRef.current?.value.trim();
+    const email = emailRef.current?.value.trim();
+    const password = passwordRef.current?.value.trim();
 
-    if (!usernameFormatted || !passwordFormatted || !emailFormatted) return;
+    if (!fullName || !password || !email) {
+      addToast("Existen campos vacios.", { appearance: "warning" });
+      return;
+    }
 
     setIsLoading(() => true);
 
-    const createUserEmailService = new CreateNewUserWithEmail();
-
-    const userData = await createUserEmailService.__invoke(
-      usernameFormatted,
-      emailFormatted,
-      passwordFormatted
-    );
+    const userData = await EmailAuthentication.exec(email, password);
 
     if (!userData) {
       setIsLoading(() => false);
@@ -40,16 +37,17 @@ const useCreateUserWithEmail = () => {
       return;
     }
 
-    const createUserService = new CreateNewUser();
-
-    const isCreated = createUserService.__invoke({
+    const isCreated = await CreateNewUser.exec({
       _id: userData._id,
-      data: {
-        email: userData.email,
-        fullName: userData.fullName,
-        profileImage: userData.profileImage,
-      },
       type: "email",
+      data: {
+        email: email,
+        fullName: fullName,
+        profileImage: {
+          name: "",
+          url: userData.profileImage,
+        },
+      },
     });
 
     setIsLoading(() => false);
@@ -67,7 +65,7 @@ const useCreateUserWithEmail = () => {
   return {
     isLoading,
     onSubmitFormRegister,
-    usernameRef,
+    fullNameRef,
     emailRef,
     passwordRef,
   };

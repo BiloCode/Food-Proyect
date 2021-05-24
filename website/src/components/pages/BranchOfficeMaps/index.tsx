@@ -53,7 +53,6 @@ const BranchOfficeMap: FC<RouteComponentProps> = () => {
             <ReturnHomeButton />
           </S.InformationContainer>
         </div>
-
         <MapCredentials />
       </MapProvider>
     </S.MainContainer>

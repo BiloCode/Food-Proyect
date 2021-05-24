@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { useNavigate } from "@reach/router";
 import * as S from "./styles";
 
@@ -6,7 +7,6 @@ import EmptyImage from "assets/images/icon-empty.svg";
 import Title from "components/atoms/Title";
 import Description from "components/atoms/Description";
 import Button from "components/atoms/Button";
-import { memo } from "react";
 
 type ReactionListEmpty = {
   isCurrentUserProfile: boolean;

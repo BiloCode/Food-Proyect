@@ -8,7 +8,7 @@ import UpdateUserProfileImage from "application/core/UpdateUserProfileImage";
 
 import { useAuthContext } from "context/AuthContext/context";
 import { useProfileContext } from "context/ProfileContext/context";
-import UpdateUserDataInPuntuactions from "application/core/UpdateUserDataInPuntuactions";
+import UpdateUserDataInPuntuactions from "application/core/puntuaction/UpdateUserDataInPuntuactions";
 
 const useProfileImageUpdate = () => {
   const [isUploading, setIsUploading] = useState<boolean>(false);

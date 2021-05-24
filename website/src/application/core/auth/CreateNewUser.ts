@@ -16,7 +16,7 @@ type CreateUserParams = {
 };
 
 class CreateNewUser {
-  public async __invoke(params: CreateUserParams) {
+  public static exec = async (params: CreateUserParams) => {
     const firestore = firebase.firestore();
 
     try {
@@ -41,7 +41,7 @@ class CreateNewUser {
       console.log(error);
       return false;
     }
-  }
+  };
 }
 
 export default CreateNewUser;

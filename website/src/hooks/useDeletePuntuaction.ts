@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import RemovePuntuaction from "application/core/RemovePuntuaction";
+import RemovePuntuaction from "application/core/puntuaction/RemovePuntuaction";
 
 import { useAuthContext } from "context/AuthContext/context";
 import { useBranchOfficeContext } from "context/BranchOfficeContext/context";

@@ -23,7 +23,7 @@ const ProfilePuntuactionCard: FC<ClientPuntuactionsType> = ({
 
   return (
     <S.MainContainer
-      className={classnames({ description_empty: description.length === 0 })}
+      className={classnames({ description_empty: description?.length === 0 })}
     >
       <S.HeadContent>
         <S.TitleText onClick={onClickBranchOfficeName}>

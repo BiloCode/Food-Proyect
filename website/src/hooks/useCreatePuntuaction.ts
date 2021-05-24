@@ -1,22 +1,24 @@
 import { useRef, useState } from "react";
 
-import CreatePuntuaction from "application/core/CreatePuntuaction";
+import firebase from "firebase";
+
+import CreatePuntuaction from "application/core/puntuaction/CreatePuntuaction";
 
 import { useAuthContext } from "context/AuthContext/context";
 import { useBranchOfficeContext } from "context/BranchOfficeContext/context";
-import UpdateUserPuntuactions from "application/core/UpdateUserPuntuactions";
+import { useToasts } from "react-toast-notifications";
 
 const useCreatePuntuaction = (
   branchOfficeId: string,
-  branchOfficeName: string,
   defaultStars: number,
   closeModal: CallableFunction
 ) => {
+  const descriptionRef = useRef<HTMLTextAreaElement>();
+
   const [isSendData, setIsSendData] = useState(false);
   const [stars, setStars] = useState<number>(defaultStars);
 
-  const descriptionRef = useRef<HTMLTextAreaElement>();
-
+  const { addToast } = useToasts();
   const { user, changeUserAuthData } = useAuthContext();
   const { setBranchOfficePuntuaction } = useBranchOfficeContext();
 
@@ -27,35 +29,35 @@ const useCreatePuntuaction = (
 
     setIsSendData(() => true);
 
+    const userId = user._id;
     const descriptionValue = descriptionRef.current.value.trim();
 
-    const uploadData = await CreatePuntuaction.exec(branchOfficeId, {
-      stars,
-      userId: user._id,
-      description: descriptionValue,
-      client: {
-        fullName: user.fullName,
-        profileImage: user.profileImage.url,
-      },
-    });
-
-    if (!uploadData) return;
-
-    const puntuactionData = await UpdateUserPuntuactions.exec(user._id, {
-      stars,
+    const uploadPuntuaction = await CreatePuntuaction.exec(
       branchOfficeId,
-      branchOfficeName,
-      description: descriptionValue,
-    });
+      userId,
+      {
+        stars,
+        userId,
+        description: descriptionValue || "",
+        createdAt: firebase.firestore.Timestamp.now(),
+        client: {
+          fullName: user.fullName,
+          profileImage: user.profileImage.url,
+        },
+      }
+    );
 
-    if (!puntuactionData) return;
+    if (!uploadPuntuaction) {
+      addToast("Ocurrio un error al crear la puntuacion.", {
+        appearance: "error",
+      });
+      return;
+    }
 
-    const { store, branchOfficeIds } = puntuactionData;
-
-    setBranchOfficePuntuaction(branchOfficeId, uploadData);
+    setBranchOfficePuntuaction(branchOfficeId, uploadPuntuaction.branchData);
     changeUserAuthData({
       ...user,
-      puntuaction: { store, branchOfficeIds },
+      puntuaction: uploadPuntuaction.userPuntuaction,
     });
 
     closeModal();
