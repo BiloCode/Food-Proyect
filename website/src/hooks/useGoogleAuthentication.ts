@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useToasts } from "react-toast-notifications";
 
 import CreateNewUser from "application/core/CreateNewUser";
 import GoogleAuthentication from "application/core/GoogleAuthentication";
 import ExistsUser from "application/core/ExistsUser";
 
 const useGoogleAuthentication = () => {
+  const { addToast } = useToasts();
+
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const onClickGoggleAction = async () => {
@@ -20,6 +23,7 @@ const useGoogleAuthentication = () => {
 
     if (isExists) {
       setIsLoading(() => false);
+      addToast("Inicio de sesión correcto.");
       return;
     }
 
@@ -36,7 +40,14 @@ const useGoogleAuthentication = () => {
 
     setIsLoading(() => false);
 
-    if (!isCreated) return;
+    if (!isCreated) {
+      addToast("Ocurrio un error inesperado en el servidor.", {
+        appearance: "error",
+      });
+      return;
+    }
+
+    addToast("Inicio de sesión correcto.");
   };
 
   return {

@@ -1,7 +1,10 @@
 import firebase from "firebase";
 import { FormEvent, useRef, useState } from "react";
+import { useToasts } from "react-toast-notifications";
 
 const useAuthentication = () => {
+  const { addToast } = useToasts();
+
   const usernameRef = useRef<HTMLInputElement>();
   const passwordRef = useRef<HTMLInputElement>();
 
@@ -13,7 +16,10 @@ const useAuthentication = () => {
     const usernameFormatted = usernameRef.current.value.trim();
     const passwordFormatted = passwordRef.current.value.trim();
 
-    if (!usernameFormatted || !passwordFormatted) return;
+    if (!usernameFormatted || !passwordFormatted) {
+      addToast("Existen campos vacios.", { appearance: "warning" });
+      return;
+    }
 
     setIsLoading(() => true);
 
@@ -21,8 +27,12 @@ const useAuthentication = () => {
       await firebase
         .auth()
         .signInWithEmailAndPassword(usernameFormatted, passwordFormatted);
+
+      addToast(`El inicio de sesión se efectuo correctamente.`, {
+        appearance: "success",
+      });
     } catch (error) {
-      console.log(error);
+      addToast(error.message, { appearance: "error" });
     } finally {
       setIsLoading(() => false);
     }

@@ -3,6 +3,7 @@ import { describe, it } from "@jest/globals";
 
 import TestImage from "assets/images/Image_1.jpg";
 import ProfileImageArea from "components/molecules/ProfileImageArea";
+import { ToastProvider } from "react-toast-notifications";
 
 //END TO END
 
@@ -12,7 +13,11 @@ describe("Componente Avatar del perfil del usuario", () => {
   });
 
   it("Cambiar la foto de perfil", async () => {
-    render(<ProfileImageArea image="" isCurrentUserProfile />);
+    render(
+      <ToastProvider>
+        <ProfileImageArea image="" isCurrentUserProfile />
+      </ToastProvider>
+    );
 
     const input = screen.getByTestId("file-input");
     const file = new File([], TestImage, {

@@ -1,8 +1,12 @@
-import CreateNewUser from "application/core/CreateNewUser";
-import CreateNewUserWithEmail from "application/core/CreateNewUserWithEmail";
+import { useToasts } from "react-toast-notifications";
 import { FormEvent, useRef, useState } from "react";
 
+import CreateNewUser from "application/core/CreateNewUser";
+import CreateNewUserWithEmail from "application/core/CreateNewUserWithEmail";
+
 const useCreateUserWithEmail = () => {
+  const { addToast } = useToasts();
+
   const usernameRef = useRef<HTMLInputElement>();
   const emailRef = useRef<HTMLInputElement>();
   const passwordRef = useRef<HTMLInputElement>();
@@ -30,7 +34,9 @@ const useCreateUserWithEmail = () => {
 
     if (!userData) {
       setIsLoading(() => false);
-      alert("Usuario ya existe");
+      addToast("Este usuario ya se encuentra registrado.", {
+        appearance: "warning",
+      });
       return;
     }
 
@@ -48,7 +54,14 @@ const useCreateUserWithEmail = () => {
 
     setIsLoading(() => false);
 
-    if (!isCreated) return;
+    if (!isCreated) {
+      addToast("Ocurrio un error al crear el usuario.", {
+        appearance: "error",
+      });
+      return;
+    }
+
+    addToast("Usuario creado correctamente, bienvenido.");
   };
 
   return {
