@@ -1,4 +1,12 @@
-import { NORMAL_BLUE, NORMAL_GRAY_LIGHT } from "config/styles";
+import {
+  BLACK,
+  BLACK_SUPER_LIGHT,
+  FONT,
+  NORMAL_BLUE,
+  NORMAL_GRAY,
+  NORMAL_GRAY_LIGHT,
+  NORMAL_WHITE,
+} from "config/styles";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -20,6 +28,34 @@ export const RowTable = styled.div`
   margin-bottom: 0.5em;
   align-items: center;
 `;
+
+// ------------------------------------------------------------------------------------------
+
+export const TitleTable = styled.span`
+  margin: 0;
+  font-family: ${FONT};
+  text-transform: uppercase;
+  color: ${NORMAL_GRAY};
+  font-weight: 550;
+  text-align: center;
+  font-size: 0.7em;
+`;
+
+type ContentTableProps = {
+  bold: "bold" | "semi-bold";
+  color: "gray" | "black-light";
+};
+
+export const ContentTable = styled.span<ContentTableProps>`
+  margin: 0;
+  font-size: 1.1em;
+  font-family: ${FONT};
+  color: ${({ color }) => (color === "gray" ? NORMAL_GRAY : BLACK_SUPER_LIGHT)};
+  font-weight: ${({ bold }) => (bold === "bold" ? "bold" : "550")};
+  font-size: 0.95em;
+`;
+
+// ------------------------------------------------------------------------------------------
 
 export const ImageTable = styled.div`
   height: 100%;

@@ -1,6 +1,5 @@
 import * as S from "./styles";
 
-import Span from "components/atoms/Span";
 import Icon from "components/atoms/Icon";
 import RoundedText from "components/atoms/RoundedText";
 import ButtonRounded from "components/atoms/ButtonRounded";
@@ -18,52 +17,12 @@ const ClientsList = () => {
     <div>
       <S.Container>
         <S.RowTable>
-          <Span
-            size="extra_small"
-            color="gray"
-            bold="semi-bold"
-            align="center"
-            uppercase
-          >
-            Imagen
-          </Span>
-          <Span
-            size="extra_small"
-            color="gray"
-            bold="semi-bold"
-            align="center"
-            uppercase
-          >
-            Nombre completo
-          </Span>
-          <Span
-            size="extra_small"
-            color="gray"
-            bold="semi-bold"
-            align="center"
-            uppercase
-          >
-            Email
-          </Span>
-          <Span
-            size="extra_small"
-            color="gray"
-            bold="semi-bold"
-            align="center"
-            uppercase
-          >
-            Fecha de creacion
-          </Span>
-          <Span
-            size="extra_small"
-            color="gray"
-            bold="semi-bold"
-            align="center"
-            uppercase
-          >
-            Puntuaciones
-          </Span>
-          <Span></Span>
+          <S.TitleTable>Imagen</S.TitleTable>
+          <S.TitleTable>Nombre completo</S.TitleTable>
+          <S.TitleTable>Email</S.TitleTable>
+          <S.TitleTable>Fecha de creacion</S.TitleTable>
+          <S.TitleTable>Puntuaciones</S.TitleTable>
+          <S.TitleTable></S.TitleTable>
         </S.RowTable>
         {clients.data.map((v, i) => (
           <S.RowTable key={i}>
@@ -78,14 +37,9 @@ const ClientsList = () => {
 
             <S.NameTable>
               <S.NameContainer>
-                <Span
-                  align="center"
-                  bold="bold"
-                  color="black-light"
-                  size="small"
-                >
+                <S.ContentTable bold="bold" color="black-light">
                   {v.fullName}
-                </Span>
+                </S.ContentTable>
               </S.NameContainer>
             </S.NameTable>
 
@@ -100,26 +54,20 @@ const ClientsList = () => {
 
             <S.DateTable>
               <S.DateContainer>
-                <RoundedText bgColor="blue">
-                  <Span color="white" size="extra_small" bold="bold">
-                    {DateFormatting.applyFormat(v.createdAt.toDate())}
-                  </Span>
+                <RoundedText bgColor="blue" size="extra_small">
+                  {DateFormatting.applyFormat(v.createdAt.toDate())}
                 </RoundedText>
               </S.DateContainer>
             </S.DateTable>
 
             <S.PuntuactionTable>
-              <Span bold="semi-bold" size="small" color="black-light">
+              <S.ContentTable bold="semi-bold" color="black-light">
                 {v.puntuaction.store.length}
-              </Span>
+              </S.ContentTable>
             </S.PuntuactionTable>
 
             <S.ButtonTable>
-              <ButtonRounded text="Ver perfil" bgColor="white">
-                <Span uppercase bold="bold" size="small" color="gray">
-                  Ver perfil
-                </Span>
-              </ButtonRounded>
+              <ButtonRounded text="Ver perfil" />
             </S.ButtonTable>
           </S.RowTable>
         ))}

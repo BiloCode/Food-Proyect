@@ -37,4 +37,8 @@ export const TextContainer = styled.div`
   &.blue {
     background-color: ${NORMAL_BLUE};
   }
+
+  &.extra_small {
+    font-size: 0.7em;
+  }
 `;
