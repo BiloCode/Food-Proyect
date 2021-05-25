@@ -1,22 +1,32 @@
 import { ClientModelType } from "application/types/ClientModelType";
+import PaginationButton from "components/atoms/PaginationButton";
 import { useEffect, useState } from "react";
 import * as S from "./styles";
 
 type ClientsSelectPaginationProps = {
   onClickPage(pageInit: number, pageFinish: number): void;
   clients: ClientModelType[];
+  clientsForPage: number;
 };
 
 const ClientsSelectPagination = ({
   onClickPage,
   clients,
+  clientsForPage,
 }: ClientsSelectPaginationProps) => {
   const [clientsPageLength, setClientsPageLength] = useState<number>(1);
 
+  const [actualPage, setActualPage] = useState<number>(1);
+
+  const setterActualPage = (page: number) => {
+    setActualPage(page);
+  };
+
   useEffect(() => {
-    const totalLength = clients.length;
-    if (totalLength % 10 === 0) setClientsPageLength(totalLength / 10);
-    else setClientsPageLength(Math.floor(totalLength / 10) + 1);
+    const clientsLength = clients.length;
+    if (clientsLength % clientsForPage === 0)
+      setClientsPageLength(clientsLength / clientsForPage);
+    else setClientsPageLength(Math.floor(clientsLength / clientsForPage) + 1);
   }, [clients]);
 
   return (
@@ -25,12 +35,13 @@ const ClientsSelectPagination = ({
         if (i < clientsPageLength) {
           if (clientsPageLength === 1) return;
           return (
-            <S.PageButton
-              key={i}
-              onClick={() => onClickPage(i * 10 + 1, i * 10 + 10)}
-            >
-              {i + 1}
-            </S.PageButton>
+            <PaginationButton
+              actualPage={actualPage}
+              setterActualPage={setterActualPage}
+              page={i}
+              clientsForPage={clientsForPage}
+              onClick={onClickPage}
+            />
           );
         }
       })}

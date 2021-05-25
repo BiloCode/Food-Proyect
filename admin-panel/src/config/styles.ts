@@ -28,6 +28,7 @@ export const NORMAL_RED_LIGHT = "#F52A38";
 
 export const NORMAL_BLUE = "#173083";
 export const NORMAL_BLUE_LIGHT = "#193798";
+export const NORMAL_BLUE_SUPER_LIGHT = "#3060FD";
 
 export const NORMAL_YELLOW = "#FBB905";
 export const NORMAL_YELLOW_LIGHT = "#FFC21D";

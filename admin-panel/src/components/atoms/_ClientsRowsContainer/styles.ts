@@ -1,10 +1,6 @@
 import styled from "styled-components";
 
-type ContainerProps = {
-  clientsForPage: number;
-};
-
-export const Container = styled.div<ContainerProps>`
+export const Container = styled.div`
   width: 100%;
   display: grid;
   grid-template-columns:
@@ -13,10 +9,7 @@ export const Container = styled.div<ContainerProps>`
       170px
     )
     95px minmax(150px, 170px);
-  grid-template-rows: repeat(
-    ${({ clientsForPage }) => clientsForPage + 1},
-    45px
-  );
+  grid-auto-rows: 45px;
   column-gap: 0.5em;
   row-gap: 0.5em;
   align-items: center;
