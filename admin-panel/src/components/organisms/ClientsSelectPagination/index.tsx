@@ -7,20 +7,18 @@ type ClientsSelectPaginationProps = {
   onClickPage(pageInit: number, pageFinish: number): void;
   clients: ClientModelType[];
   clientsForPage: number;
+  setterActualPage(page: number): void;
+  actualPage: number;
 };
 
 const ClientsSelectPagination = ({
-  onClickPage,
   clients,
   clientsForPage,
+  onClickPage,
+  setterActualPage,
+  actualPage,
 }: ClientsSelectPaginationProps) => {
   const [clientsPageLength, setClientsPageLength] = useState<number>(1);
-
-  const [actualPage, setActualPage] = useState<number>(1);
-
-  const setterActualPage = (page: number) => {
-    setActualPage(page);
-  };
 
   useEffect(() => {
     const clientsLength = clients.length;

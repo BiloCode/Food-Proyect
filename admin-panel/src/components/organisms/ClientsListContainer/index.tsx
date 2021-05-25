@@ -23,6 +23,12 @@ const ClientsListContainer = () => {
     pageFinish: clientsForPage,
   });
 
+  const [actualPageMarker, setActualPageMarker] = useState<number>(1);
+
+  const setterActualPageMarker = (page: number) => {
+    setActualPageMarker(page);
+  };
+
   const [clientsFilter, setClientsFilter] = useState<ClientModelType[]>(data);
 
   const onClickPage = (pageInit: number, pageFinish: number) => {
@@ -30,6 +36,16 @@ const ClientsListContainer = () => {
       pageInit,
       pageFinish,
     });
+  };
+
+  const onChangeSearch = (ev: ChangeEvent<HTMLInputElement>) => {
+    ev.target.value = ev.target.value.toLocaleUpperCase();
+    const inputValue = ev.target.value;
+    const filteredList = [...data].filter((v) => {
+      const clientDescription = v.fullName.toLocaleUpperCase();
+      return clientDescription.includes(inputValue);
+    });
+    setClientsFilter(() => filteredList);
   };
 
   useEffect(() => {
@@ -42,17 +58,8 @@ const ClientsListContainer = () => {
       pageInit: 1,
       pageFinish: clientsForPage,
     });
+    setterActualPageMarker(1);
   }, [clientsFilter]);
-
-  const onChangeSearch = (ev: ChangeEvent<HTMLInputElement>) => {
-    ev.target.value = ev.target.value.toLocaleUpperCase();
-    const inputValue = ev.target.value;
-    const filteredList = [...data].filter((v) => {
-      const clientDescription = v.fullName.toLocaleUpperCase();
-      return clientDescription.includes(inputValue);
-    });
-    setClientsFilter(() => filteredList);
-  };
 
   return (
     <>
@@ -74,6 +81,8 @@ const ClientsListContainer = () => {
           clientsForPage={clientsForPage}
           clients={clientsFilter}
           onClickPage={onClickPage}
+          setterActualPage={setterActualPageMarker}
+          actualPage={actualPageMarker}
         />
       </S.ClientsContainer>
     </>

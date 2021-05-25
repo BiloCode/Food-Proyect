@@ -12,9 +12,9 @@ type PaginationButtonProps = {
 const PaginationButton = ({
   onClick,
   page,
-  actualPage,
   clientsForPage,
   setterActualPage,
+  actualPage,
 }: PaginationButtonProps) => {
   return (
     <S.Container
