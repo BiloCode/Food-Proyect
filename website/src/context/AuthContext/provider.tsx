@@ -4,7 +4,6 @@ import firebase from "firebase";
 import GetUserById from "application/core/GetUserById";
 import { ClientModelType } from "application/types/ClientModelType";
 import { AuthContext } from "./context";
-import { useToasts } from "react-toast-notifications";
 
 export const AuthProvider: FC = ({ children }) => {
   const [user, setUser] = useState<ClientModelType>(null);

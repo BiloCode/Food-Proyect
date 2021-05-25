@@ -4,25 +4,25 @@ import { useNavigate } from "@reach/router";
 import Button from "components/atoms/Button";
 import FormControl from "components/molecules/FormControl";
 
+import useCreateUserWithEmail from "hooks/useCreateUserWithEmail";
+
 import {
   BsFillPersonFill,
   BsLockFill,
   BsFillEnvelopeFill,
 } from "react-icons/bs";
-import useCreateUserWithEmail from "hooks/useCreateUserWithEmail";
 
 const FormRegister = () => {
-  const navigation = useNavigate();
-
-  const onClickButtonLogin = () => navigation("/login");
-
+  const navigate = useNavigate();
   const {
-    isLoading,
-    onSubmitFormRegister,
-    usernameRef,
     emailRef,
+    isLoading,
     passwordRef,
+    fullNameRef,
+    onSubmitFormRegister,
   } = useCreateUserWithEmail();
+
+  const onClickButtonLogin = () => navigate("/login");
 
   return (
     <S.FormContent onSubmit={onSubmitFormRegister}>
@@ -30,7 +30,7 @@ const FormRegister = () => {
         <FormControl
           icon={BsFillPersonFill}
           labelText="Nombre de usuario"
-          ref={usernameRef}
+          ref={fullNameRef}
         />
         <FormControl
           type="email"

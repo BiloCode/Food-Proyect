@@ -9,7 +9,7 @@ import useGetBranchOfficeDetail from "hooks/useGetBranchOfficeDetail";
 
 const ContactInformation = () => {
   const {
-    branchOffice: { data, uAuthPuntuaction },
+    branchOffice: { data },
   } = useGetBranchOfficeDetail();
 
   return (

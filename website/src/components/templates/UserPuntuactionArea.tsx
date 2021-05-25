@@ -10,14 +10,10 @@ import ButtonsPuntuactionArea from "components/organisms/ButtonsPuntuactionArea"
 import { PuntuactionType } from "application/types/BranchOfficeModelType";
 
 type UPuntuactionProps = {
-  branchOfficeName: string;
   uAuthPuntuaction?: PuntuactionType;
 };
 
-const UserPuntuactionArea: FC<UPuntuactionProps> = ({
-  uAuthPuntuaction,
-  branchOfficeName,
-}) => {
+const UserPuntuactionArea: FC<UPuntuactionProps> = ({ uAuthPuntuaction }) => {
   const { active, toggleActive } = useActive();
 
   return (
@@ -38,7 +34,6 @@ const UserPuntuactionArea: FC<UPuntuactionProps> = ({
         <Portals>
           <CreatePuntuactionModal
             onClose={toggleActive}
-            branchOfficeName={branchOfficeName}
             defaultStars={uAuthPuntuaction?.stars || 0}
             defaultDescription={uAuthPuntuaction?.description || ""}
           />
