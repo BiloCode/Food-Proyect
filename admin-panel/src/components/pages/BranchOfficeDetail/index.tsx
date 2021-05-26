@@ -2,13 +2,10 @@ import { useEffect } from "react";
 import { RouteComponentProps, useParams } from "@reach/router";
 import * as S from "./styles";
 
-import { AiOutlineLeft } from "react-icons/ai";
-
-import Icon from "components/atoms/Icon";
-import Image from "components/atoms/Image";
 import Title from "components/atoms/Title";
+import BranchOfficeImage from "components/organisms/BranchOfficeImage";
 import PageWithSidebarBox from "components/templates/PageWithSidebarBox";
-import StarListPuntuaction from "components/molecules/StarListPuntuaction";
+import BranchDetailTabMenu from "components/organisms/BranchDetailTabMenu";
 
 import { useAtomValue, useUpdateAtom } from "jotai/utils";
 import { branchOfficeStore } from "store/branchOfficeStore";
@@ -17,44 +14,41 @@ import { currentBranchStore } from "store/currentBranchStore";
 const BranchOfficeDetail = ({ navigate }: RouteComponentProps) => {
   const { id } = useParams();
 
-  const branchList = useAtomValue(branchOfficeStore);
+  const branchData = useAtomValue(branchOfficeStore);
   const pageData = useAtomValue(currentBranchStore);
   const setPageData = useUpdateAtom(currentBranchStore);
 
   const backToList = () => navigate("/branch/list");
 
   useEffect(() => {
-    if (branchList.requestState !== "complete") return;
+    if (branchData.requestState !== "complete") return;
 
-    const branch = [...branchList.data].find((v) => v._id === id);
+    const branch = [...branchData.data].find((v) => v._id === id);
+    if (!branch) {
+      navigate("/branch/list");
+      return;
+    }
 
     setPageData({ branch });
 
     return () => {
       setPageData({});
     };
-  }, [branchList]);
+  }, [branchData.requestState]);
 
   return (
     <PageWithSidebarBox>
       {pageData.branch && (
         <div>
-          <S.ImageContainer>
-            <Image src={pageData.branch.bannerImage.url} imageCover />
-            <S.FloatingContainer>
-              <S.BackIcon onClick={backToList}>
-                <Icon type={AiOutlineLeft} color="white" size="medium" />
-              </S.BackIcon>
-              <StarListPuntuaction
-                iconColor="white"
-                iconSize="medium"
-                stars={pageData.branch.stars}
-              />
-            </S.FloatingContainer>
-          </S.ImageContainer>
+          <BranchOfficeImage
+            onClickBack={backToList}
+            stars={pageData.branch.stars}
+            image={pageData.branch.bannerImage.url}
+          />
           <S.BranchTitleContainer>
             <Title>{pageData.branch.name}</Title>
           </S.BranchTitleContainer>
+          <BranchDetailTabMenu />
         </div>
       )}
     </PageWithSidebarBox>
