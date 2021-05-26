@@ -11,21 +11,13 @@ const BranchDetailTabMenu = () => {
   const [pageSelect, setPageSelect] = useState<number>(0);
 
   const componentSelector = (index: number) => {
-    let component = null;
+    const component = {
+      0: <BranchInformation />,
+      1: <BranchComments />,
+      2: <BranchMenu />,
+    };
 
-    switch (index) {
-      case 0:
-        component = <BranchInformation />;
-        break;
-      case 1:
-        component = <BranchComments />;
-        break;
-      case 2:
-        component = <BranchMenu />;
-        break;
-    }
-
-    return component;
+    return component[index];
   };
 
   const changePage = (index: number) => () => {
