@@ -1,10 +1,9 @@
+import { ChangeEvent, forwardRef, memo } from "react";
+import { IconType } from "react-icons/lib";
 import * as S from "./styles";
 
 import Input from "components/atoms/Input";
 import Icon from "components/atoms/Icon";
-
-import { IconType } from "react-icons/lib";
-import { ChangeEvent, forwardRef } from "react";
 
 type InputWithIconProps = {
   text: string;
@@ -27,4 +26,4 @@ const InputWithIcon = forwardRef<HTMLInputElement, InputWithIconProps>(
   }
 );
 
-export default InputWithIcon;
+export default memo(InputWithIcon);

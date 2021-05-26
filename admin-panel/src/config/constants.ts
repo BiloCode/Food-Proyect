@@ -5,3 +5,5 @@ export const FirebaseCollectionNames = {
   branchOffice: "branch-offices",
   administrator: "administrator",
 };
+
+export const CLIENTS_LIST_TABLE_ROWS = 8;

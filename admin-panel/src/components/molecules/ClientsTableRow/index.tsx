@@ -2,14 +2,17 @@ import * as S from "./styles";
 
 import Icon from "components/atoms/Icon";
 
-import defaultImage from "assets/images/default-profile-image.png";
-
 import { IoLogoGoogle } from "react-icons/io";
 import { IoAtOutline } from "react-icons/io5";
+
 import { ClientModelType } from "application/types/ClientModelType";
+
 import DateFormatting from "application/utils/DateFormatting";
+import DefaultImage from "assets/images/default-profile-image.png";
+
 import RoundedText from "components/atoms/RoundedText";
 import ButtonRounded from "components/atoms/ButtonRounded";
+import ClientRowTableGrid from "components/atoms/ClientRowTableGrid";
 
 type ClientsTableRowProps = {
   client: ClientModelType;
@@ -17,12 +20,12 @@ type ClientsTableRowProps = {
 
 const ClientsTableRow = ({ client }: ClientsTableRowProps) => {
   return (
-    <>
+    <ClientRowTableGrid>
       <S.ImageTable>
         <S.CellBar />
         <S.ImageContainer>
           <S.Image>
-            <img src={client.profileImage.url || defaultImage} alt="" />
+            <img src={client.profileImage.url || DefaultImage} alt="" />
           </S.Image>
         </S.ImageContainer>
       </S.ImageTable>
@@ -61,7 +64,7 @@ const ClientsTableRow = ({ client }: ClientsTableRowProps) => {
       <S.ButtonTable>
         <ButtonRounded text="Ver perfil" />
       </S.ButtonTable>
-    </>
+    </ClientRowTableGrid>
   );
 };
 

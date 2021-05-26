@@ -1,48 +1,33 @@
-import { ClientModelType } from "application/types/ClientModelType";
-import PaginationButton from "components/atoms/PaginationButton";
-import { useEffect, useState } from "react";
 import * as S from "./styles";
 
-type ClientsSelectPaginationProps = {
-  onClickPage(pageInit: number, pageFinish: number): void;
-  clients: ClientModelType[];
-  clientsForPage: number;
-  setterActualPage(page: number): void;
-  actualPage: number;
+import PaginationButton from "components/atoms/PaginationButton";
+
+import { useAtom } from "jotai";
+import { currentPageInClient } from "store/currentPageInClient";
+
+type PaginationProps = {
+  numberOfPages: number;
 };
 
-const ClientsSelectPagination = ({
-  clients,
-  clientsForPage,
-  onClickPage,
-  setterActualPage,
-  actualPage,
-}: ClientsSelectPaginationProps) => {
-  const [clientsPageLength, setClientsPageLength] = useState<number>(1);
+const ClientsSelectPagination = ({ numberOfPages }: PaginationProps) => {
+  const [currentPage, setCurrentPage] = useAtom(currentPageInClient);
 
-  useEffect(() => {
-    const clientsLength = clients.length;
-    if (clientsLength % clientsForPage === 0)
-      setClientsPageLength(clientsLength / clientsForPage);
-    else setClientsPageLength(Math.floor(clientsLength / clientsForPage) + 1);
-  }, [clients]);
+  const arrayRender = new Array(numberOfPages).fill("");
+  const onClickPageButton = (index: number) => () => {
+    setCurrentPage(() => index);
+  };
+
+  if (!arrayRender.length) return null;
 
   return (
     <S.Container>
-      {clients.map((_, i) => {
-        if (i < clientsPageLength) {
-          if (clientsPageLength === 1) return;
-          return (
-            <PaginationButton
-              actualPage={actualPage}
-              setterActualPage={setterActualPage}
-              page={i}
-              clientsForPage={clientsForPage}
-              onClick={onClickPage}
-            />
-          );
-        }
-      })}
+      {arrayRender.map((_, i) => (
+        <PaginationButton
+          pageNumber={i}
+          isActive={currentPage === i}
+          onClick={onClickPageButton(i)}
+        />
+      ))}
     </S.Container>
   );
 };
