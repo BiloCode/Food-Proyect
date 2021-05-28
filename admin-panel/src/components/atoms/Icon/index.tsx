@@ -2,7 +2,7 @@ import classnames from "classnames";
 import { IconType } from "react-icons";
 import * as S from "./styles";
 
-export type IconColorType = "white" | "yellow" | "gray";
+export type IconColorType = "white" | "yellow" | "gray" | "blue";
 export type IconSizeType = "small" | "small-medium" | "medium" | "big";
 export type IconProps = {
   type: IconType;
@@ -20,6 +20,7 @@ const Icon = ({ type: CustomIcon, color, size }: IconProps) => (
       white: color === "white",
       yellow: color === "yellow",
       gray: color === "gray",
+      blue: color === "blue",
     })}
   >
     {<CustomIcon />}

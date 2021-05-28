@@ -12,7 +12,7 @@ export const Container = styled.button`
   border-radius: 100px;
   cursor: pointer;
   font-weight: bold;
-  font-size: 0.95em;
+  font-size: 14px;
   font-family: ${FONT};
   color: ${NORMAL_GRAY};
   text-transform: uppercase;

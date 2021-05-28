@@ -1,5 +1,6 @@
 import {
   BLACK_SUPER_LIGHT,
+  NORMAL_BLUE,
   NORMAL_GRAY_MEDIUM,
   NORMAL_YELLOW,
 } from "config/styles";
@@ -21,6 +22,10 @@ export const Container = styled.span`
 
   &.gray {
     color: ${NORMAL_GRAY_MEDIUM};
+  }
+
+  &.blue {
+    color: ${NORMAL_BLUE};
   }
 
   &.small {
