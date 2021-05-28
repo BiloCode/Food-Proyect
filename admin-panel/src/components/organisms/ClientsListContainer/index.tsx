@@ -1,12 +1,10 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import * as S from "./styles";
 
-import { IoMdSearch } from "react-icons/io";
-
 import { ClientModelType } from "application/types/ClientModelType";
 
 import ClientsListTable from "../ClientsListTable";
-import InputWithIcon from "components/molecules/InputWithIcon";
+import SearchBar from "components/molecules/SearchBar";
 import ClientsSelectPagination from "../ClientsSelectPagination";
 
 import { useAtomValue } from "jotai/utils";
@@ -20,7 +18,7 @@ const ClientsListContainer = () => {
   const [clientsFilter, setClientsFilter] = useState<ClientModelType[]>([]);
 
   const onChangeSearch = (ev: ChangeEvent<HTMLInputElement>) => {
-    const inputValue = ev.target.value;
+    const inputValue = ev.target?.value.toLocaleUpperCase();
     const newList = [...client.data].filter((v) => {
       const clientDescription = v.fullName.toLocaleUpperCase();
       return clientDescription.includes(inputValue);
@@ -38,9 +36,8 @@ const ClientsListContainer = () => {
   return (
     <>
       <S.SearchContainer>
-        <InputWithIcon
-          icon={IoMdSearch}
-          text="Digite un nombre..."
+        <SearchBar
+          placeholder="Digite un nombre..."
           onChange={onChangeSearch}
         />
       </S.SearchContainer>

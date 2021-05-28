@@ -1,15 +1,26 @@
 import { atom } from "jotai";
 
+import GetAllFood from "application/core/GetAllFood";
+
 import type { RequestStateType } from "application/types/RequestStateType";
+import type { FoodModelType } from "application/types/FoodModelType";
 
 type FoodAtom = {
-  data: any[];
+  data: FoodModelType[];
   requestState: RequestStateType;
 };
 
 export const foodStore = atom<FoodAtom>({
   data: [],
-  requestState: "complete",
+  requestState: "loading",
 });
 
-foodStore.onMount = (setAtom) => {};
+foodStore.onMount = (setAtom) => {
+  (async () => {
+    const food = await GetAllFood.exec();
+    setAtom({
+      data: food,
+      requestState: "complete",
+    });
+  })();
+};

@@ -12,6 +12,7 @@ type ButtonTypeProps = {
   onClick?(): void;
   isLoading?: boolean;
   type?: ButtonType;
+  disabled?: boolean;
   styles?: {
     size?: ButtonSizeType;
     color?: ButtonColorType;
@@ -23,12 +24,13 @@ const Button: FC<ButtonTypeProps> = ({
   type,
   styles,
   onClick,
+  disabled,
   isLoading,
 }) => (
   <S.ButtonContainer
     type={type}
     onClick={onClick}
-    disabled={isLoading}
+    disabled={isLoading || disabled}
     className={classnames({
       big: styles.size === "big",
       small: styles.size === "small",
@@ -50,6 +52,7 @@ const Button: FC<ButtonTypeProps> = ({
 
 Button.defaultProps = {
   type: "button",
+  styles: {},
 };
 
 export default Button;

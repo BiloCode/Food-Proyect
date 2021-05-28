@@ -1,5 +1,5 @@
 export const FirebaseCollectionNames = {
-  food: "foods",
+  food: "food",
   sellFood: "sell_food",
   client: "clients",
   branchOffice: "branch-offices",
