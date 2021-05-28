@@ -62,7 +62,7 @@ export const ButtonContainer = styled.button`
     height: 50px;
   }
 
-  &:hover {
+  &:not(&:disabled):hover {
     background-color: var(--bg-hover);
   }
 
