@@ -38,5 +38,6 @@ export const NORMAL_YELLOW_LIGHT = "#FFC21D";
 export const NORMAL_GRAY = "#8D8D8D";
 export const NORMAL_GRAY_LIGHT = "#F5F5F5";
 export const NORMAL_GRAY_MEDIUM = "#C7C7C7";
+export const NORMAL_GRAY_MEDIUM_B = "#C4C4C4";
 
 export const NORMAL_WHITE = "#FFFFFF";
