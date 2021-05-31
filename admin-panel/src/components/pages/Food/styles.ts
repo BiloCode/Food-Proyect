@@ -17,6 +17,13 @@ export const ContainerContent = styled.div`
   row-gap: 3em;
 `;
 
+export const ActionsContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const SearchBarContainer = styled.div`
-  width: 50%;
+  width: 400px;
 `;

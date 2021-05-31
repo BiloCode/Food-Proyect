@@ -24,5 +24,6 @@ export const InputContainer = styled.div`
   & > input {
     background-color: #fff;
     padding-left: 0;
+    font-size: 0.9em;
   }
 `;

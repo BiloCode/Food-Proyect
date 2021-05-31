@@ -16,7 +16,7 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
     return (
       <S.Container>
         <S.IconContainer>
-          <Icon type={IoMdSearch} size="medium" color="gray" />
+          <Icon type={IoMdSearch} size="small-medium" color="gray" />
         </S.IconContainer>
         <S.InputContainer>
           <Input

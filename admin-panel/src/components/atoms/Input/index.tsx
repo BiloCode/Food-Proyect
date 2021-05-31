@@ -1,7 +1,7 @@
 import { ChangeEvent, forwardRef } from "react";
 import * as S from "./styles";
 
-export type InputType = "text" | "password" | "email";
+export type InputType = "text" | "password" | "email" | "number";
 
 export type InputProps = {
   type?: InputType;
