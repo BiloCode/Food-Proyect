@@ -15,5 +15,30 @@ export const Head = styled.div`
 `;
 
 export const ButtonContainer = styled.div`
-  width: 132px;
+  display: grid;
+  grid-template-columns: 132px 132px;
+  grid-template-rows: min-content;
+  column-gap: 1em;
+`;
+
+export const EditButton = styled.div`
+  grid-column: 2 / 3;
+`;
+
+export const TextContainer = styled.div`
+  width: 100%;
+  display: none;
+
+  &.active {
+    display: block;
+  }
+`;
+
+export const InputContainer = styled.div`
+  width: 100%;
+  display: none;
+
+  &.active {
+    display: block;
+  }
 `;

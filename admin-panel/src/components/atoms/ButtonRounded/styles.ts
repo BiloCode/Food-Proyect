@@ -1,5 +1,6 @@
 import {
   FONT,
+  NORMAL_BLUE,
   NORMAL_GRAY,
   NORMAL_GRAY_LIGHT,
   NORMAL_WHITE,
@@ -17,8 +18,14 @@ export const Container = styled.button`
   color: ${NORMAL_GRAY};
   text-transform: uppercase;
   background-color: ${NORMAL_WHITE};
+  padding: 5px 0;
 
   &:hover {
     background-color: ${NORMAL_GRAY_LIGHT};
+  }
+
+  &.blue {
+    color: ${NORMAL_BLUE};
+    border: 1px solid ${NORMAL_BLUE};
   }
 `;

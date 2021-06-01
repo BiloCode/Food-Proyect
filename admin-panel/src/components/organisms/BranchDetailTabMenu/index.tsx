@@ -1,13 +1,12 @@
 import * as S from "./styles";
 
 import { useState } from "react";
-import { IoMdArrowDropdown, IoIosAddCircle, IoMdTrash } from "react-icons/io";
 
 import BranchMenu from "components/templates/BranchMenu";
 import BranchInformation from "components/organisms/BranchInformation";
 import BranchComments from "components/templates/BranchComments";
-import classNames from "classnames";
-import Icon from "components/atoms/Icon";
+import BranchOfficeTabOption from "components/atoms/BranchOfficeTabOption";
+import BranchOfficeTabOptionMenu from "components/molecules/BranchOfficeTabOptionMenu";
 
 const tabPages = ["Detalles", "Puntuaciones", "Menu"];
 
@@ -26,12 +25,12 @@ const BranchDetailTabMenu = () => {
   };
 
   const changePage = (index: number) => () => {
-    setPageSelect(() => index);
+    setPageSelect(index);
     setToggleMenu(false);
   };
 
   const changePageToggle = (index: number) => () => {
-    setPageSelect(() => index);
+    setPageSelect(index);
     setToggleMenu(!toggleMenu);
   };
 
@@ -39,56 +38,24 @@ const BranchDetailTabMenu = () => {
     <div>
       <S.TabOptionContainer>
         {tabPages.map((v, i) => {
-          if (i !== 2) {
+          if (i === 2) {
             return (
-              <S.Option
-                key={i}
-                onClick={changePage(i)}
-                className={classNames({
-                  active: i === pageSelect,
-                })}
-              >
-                {v}
-              </S.Option>
-            );
-          } else {
-            return (
-              <S.Option
-                key={i}
+              <BranchOfficeTabOptionMenu
                 onClick={changePageToggle(i)}
-                className={classNames({
-                  active: i === pageSelect,
-                })}
-              >
-                {v}
-                {pageSelect === 2 && (
-                  <S.IconMenu>
-                    <Icon
-                      size="small-medium"
-                      color="blue"
-                      type={IoMdArrowDropdown}
-                    />
-                  </S.IconMenu>
-                )}
-                {pageSelect === 2 && (
-                  <S.DropDownContainer
-                    className={classNames({
-                      toggleActive: !toggleMenu,
-                    })}
-                  >
-                    <S.DropDownOption>
-                      <Icon type={IoIosAddCircle} size="medium" />
-                      <div>Crear nuevo comestible</div>
-                    </S.DropDownOption>
-                    <S.DropDownOption>
-                      <Icon type={IoMdTrash} size="medium" />
-                      <div>Eliminar comestibles</div>
-                    </S.DropDownOption>
-                  </S.DropDownContainer>
-                )}
-              </S.Option>
+                text={v}
+                isSelected={i === pageSelect}
+                isToggleActive={toggleMenu}
+                pageSelected={pageSelect}
+              />
             );
           }
+          return (
+            <BranchOfficeTabOption
+              onClick={changePage(i)}
+              text={v}
+              isSelected={i === pageSelect}
+            />
+          );
         })}
       </S.TabOptionContainer>
       <div>{componentSelector(pageSelect)}</div>
