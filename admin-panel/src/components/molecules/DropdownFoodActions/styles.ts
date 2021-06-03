@@ -1,5 +1,6 @@
-import { BACKGROUND_LIGHT, FONT } from "config/styles";
 import styled from "styled-components";
+
+import { BACKGROUND_LIGHT, FONT, SMOOTH_BLACK } from "config/styles";
 
 const InputHeight = "44px";
 
@@ -42,6 +43,7 @@ export const ButtonMessage = styled.span`
   font-weight: 900;
   font-size: 13px;
   text-transform: uppercase;
+  color: ${SMOOTH_BLACK};
 `;
 
 export const DropdownList = styled.ul`
@@ -62,4 +64,5 @@ export const DropdownList = styled.ul`
 
 export const DropdownItem = styled.li`
   height: 48px;
+  color: ${SMOOTH_BLACK};
 `;
