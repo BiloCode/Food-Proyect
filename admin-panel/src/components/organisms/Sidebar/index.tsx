@@ -9,8 +9,8 @@ import {
   AiOutlineHome,
   AiOutlineTeam,
   AiOutlineShop,
-  AiOutlineClose,
   AiOutlineApple,
+  AiOutlinePoweroff,
 } from "react-icons/ai";
 
 import { useAtomValue, useUpdateAtom } from "jotai/utils";
@@ -50,8 +50,8 @@ const Sidebar = () => {
       <S.ImageContainer>
         <ApplicationIcon />
       </S.ImageContainer>
-      <div>
-        <S.ListContainer>
+      <S.ListContainer>
+        <S.ListItems>
           <SidebarOption
             text="Inicio"
             icon={AiOutlineHome}
@@ -86,13 +86,15 @@ const Sidebar = () => {
               loading: food.requestState === "loading",
             }}
           />
+        </S.ListItems>
+        <S.ListItems>
           <SidebarOption
             text="Salir"
-            icon={AiOutlineClose}
+            icon={AiOutlinePoweroff}
             onClick={onClickToExit}
           />
-        </S.ListContainer>
-      </div>
+        </S.ListItems>
+      </S.ListContainer>
     </S.MainContainer>
   );
 };

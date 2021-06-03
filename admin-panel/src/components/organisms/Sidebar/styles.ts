@@ -18,7 +18,13 @@ export const ImageContainer = styled.div`
   align-items: center;
 `;
 
-export const ListContainer = styled.ul`
+export const ListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+export const ListItems = styled.ul`
   padding: 0;
   margin: 0;
   list-style: none;
