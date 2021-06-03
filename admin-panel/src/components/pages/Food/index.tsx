@@ -2,7 +2,6 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { RouteComponentProps } from "@reach/router";
 import * as S from "./styles";
 
-import FoodCard from "components/molecules/FoodCard";
 import SearchBar from "components/molecules/SearchBar";
 import HeaderTitle from "components/molecules/HeaderTitle";
 import FoodModalCreate from "components/organisms/FoodModalCreate";
@@ -15,6 +14,7 @@ import { foodStore } from "store/foodStore";
 import { FoodModelType } from "application/types/FoodModelType";
 
 import useActive from "hooks/useActive";
+import FoodGridList from "components/organisms/FoodGridList";
 
 const Foods = (_: RouteComponentProps) => {
   const foods = useAtomValue(foodStore);
@@ -36,8 +36,8 @@ const Foods = (_: RouteComponentProps) => {
   useEffect(() => {
     if (foods.requestState !== "complete") return;
 
-    setFoodFiltered(foods.data);
-  }, []);
+    setFoodFiltered(() => foods.data);
+  }, [foods.requestState]);
 
   return (
     <PageWithSidebarBox>
@@ -56,13 +56,7 @@ const Foods = (_: RouteComponentProps) => {
               onClickFoodCreate={toggleActive}
             />
           </S.ActionsContainer>
-          <S.FoodListContainer>
-            <S.FoodList>
-              {foodFilter.map((v) => (
-                <FoodCard key={v._id} foodData={v} />
-              ))}
-            </S.FoodList>
-          </S.FoodListContainer>
+          <FoodGridList foods={foodFilter} />
         </S.ContainerContent>
       </PageLimiterContainer>
       {active && <FoodModalCreate onClose={toggleActive} />}

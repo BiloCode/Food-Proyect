@@ -1,3 +1,5 @@
+import * as S from "./styles";
+
 import Icon from "components/atoms/Icon";
 
 import { BsChevronDown } from "react-icons/bs";
@@ -26,22 +28,28 @@ const DropdownFoodActions = ({
   };
 
   return (
-    <div>
-      <button onClick={toggleActive}>
-        <span>Acciones</span>
-        <Icon type={BsChevronDown} />
-      </button>
+    <S.MainContainer>
+      <S.ButtonDropdown onClick={toggleActive}>
+        <S.ButtonNestingContainer>
+          <S.ButtonMessage>Otras Acciones</S.ButtonMessage>
+          <Icon type={BsChevronDown} size="small" />
+        </S.ButtonNestingContainer>
+      </S.ButtonDropdown>
       {active && (
-        <ul>
-          <li>
-            <button onClick={onFoodCreate}>Crear nueva comida</button>
-          </li>
-          <li>
-            <button onClick={onRemoveFood}>Remover de la lista</button>
-          </li>
-        </ul>
+        <S.DropdownList>
+          <S.DropdownItem>
+            <S.ButtonDropdown onClick={onFoodCreate}>
+              Crear nueva comida
+            </S.ButtonDropdown>
+          </S.DropdownItem>
+          <S.DropdownItem>
+            <S.ButtonDropdown onClick={onRemoveFood}>
+              Remover de la lista
+            </S.ButtonDropdown>
+          </S.DropdownItem>
+        </S.DropdownList>
       )}
-    </div>
+    </S.MainContainer>
   );
 };
 

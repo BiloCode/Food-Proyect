@@ -20,7 +20,7 @@ export const FormControlContainer = styled.fieldset`
   padding: 2em 2.5em;
   box-sizing: border-box;
   display: grid;
-  row-gap: 2em;
+  row-gap: 3em;
 `;
 
 export const FormControls = styled.div`
