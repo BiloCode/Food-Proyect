@@ -11,10 +11,10 @@ import DateFormatting from "application/utils/DateFormatting";
 
 type FoodCardProps = {
   foodData: FoodModelType;
-  disabled?: boolean;
+  select?: boolean;
 };
 
-const FoodCard = ({ foodData, disabled }: FoodCardProps) => (
+const FoodCard = ({ foodData, select }: FoodCardProps) => (
   <S.MainContainer>
     <EatableCard
       imageRender={() => (
@@ -43,7 +43,7 @@ const FoodCard = ({ foodData, disabled }: FoodCardProps) => (
         </S.TextContent>
       )}
     />
-    {disabled && <S.ContainerDisabled />}
+    {select && <S.ContainerDisabled />}
   </S.MainContainer>
 );
 

@@ -12,6 +12,10 @@ import { FaHamburger } from "react-icons/fa";
 import { HiOutlineCurrencyDollar } from "react-icons/hi";
 
 import CreateNewFood from "application/core/CreateNewFood";
+import UploadFoodImage from "application/core/UploadFoodImage";
+
+import { useUpdateAtom } from "jotai/utils";
+import { addNewFood } from "store/foodStore";
 
 type ModalProps = {
   onClose(): void;
@@ -24,10 +28,12 @@ type ImageUpload = {
 
 const FoodModalCreate = ({ onClose }: ModalProps) => {
   const { addToast } = useToasts();
+  const createNewFood = useUpdateAtom(addNewFood);
 
   const nameRef = useRef<HTMLInputElement>();
   const priceRef = useRef<HTMLInputElement>();
 
+  const [isUploading, setIsUploading] = useState<boolean>(false);
   const [uploadImage, setUploadImage] = useState<ImageUpload>(null);
 
   const onChange = useCallback((ev: ChangeEvent<HTMLInputElement>) => {
@@ -53,12 +59,22 @@ const FoodModalCreate = ({ onClose }: ModalProps) => {
       return;
     }
 
-    const isCreated = await CreateNewFood.exec({ image, name, price });
-    if (!isCreated) {
+    setIsUploading(() => true);
+
+    const uploadFoodImage = new UploadFoodImage();
+    const foodService = new CreateNewFood(uploadFoodImage);
+    const newFood = await foodService.__invoke({
+      image,
+      name,
+      price,
+    });
+
+    if (!newFood) {
       addToast("Ocurrio un error al crear la comida.", { appearance: "error" });
       return;
     }
 
+    createNewFood(newFood);
     onClose();
   };
 
@@ -89,6 +105,7 @@ const FoodModalCreate = ({ onClose }: ModalProps) => {
                 <Button
                   type="submit"
                   text="Crear nueva comida"
+                  isLoading={isUploading}
                   styles={{ color: "blue" }}
                 />
                 <Button

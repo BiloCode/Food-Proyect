@@ -9,8 +9,8 @@ import PageLimiterContainer from "components/atoms/PageLimiterContainer";
 import PageWithSidebarBox from "components/templates/PageWithSidebarBox";
 import DropdownFoodActions from "components/molecules/DropdownFoodActions";
 
-import { useAtomValue } from "jotai/utils";
-import { foodStore } from "store/foodStore";
+import { useAtomValue, useUpdateAtom } from "jotai/utils";
+import { deleteMode, foodStore } from "store/foodStore";
 import { FoodModelType } from "application/types/FoodModelType";
 
 import useActive from "hooks/useActive";
@@ -18,10 +18,16 @@ import FoodGridList from "components/organisms/FoodGridList";
 
 const Foods = (_: RouteComponentProps) => {
   const foods = useAtomValue(foodStore);
+  const foodDeleteMode = useAtomValue(deleteMode);
+  const setFoodDeleteMode = useUpdateAtom(deleteMode);
 
   const { active, toggleActive } = useActive();
 
   const [foodFilter, setFoodFiltered] = useState<FoodModelType[]>([]);
+
+  const onClickDeleteMode = () => {
+    setFoodDeleteMode(() => true);
+  };
 
   const onChangeSearch = (ev: ChangeEvent<HTMLInputElement>) => {
     const inputValue = ev.target?.value.toLocaleUpperCase();
@@ -51,10 +57,12 @@ const Foods = (_: RouteComponentProps) => {
                 placeholder="Digite un nombre..."
               />
             </S.SearchBarContainer>
-            <DropdownFoodActions
-              onClickRemoveFood={() => null}
-              onClickFoodCreate={toggleActive}
-            />
+            {!foodDeleteMode && (
+              <DropdownFoodActions
+                onClickFoodCreate={toggleActive}
+                onClickRemoveFood={onClickDeleteMode}
+              />
+            )}
           </S.ActionsContainer>
           <FoodGridList foods={foodFilter} />
         </S.ContainerContent>
