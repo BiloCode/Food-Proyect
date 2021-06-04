@@ -7,9 +7,11 @@ import useUpdateBranchAddress from "hooks/useUpdateBranchAddress";
 
 import { useAtomValue } from "jotai/utils";
 import useUpdateBranchPhoneNumber from "hooks/useUpdateBranchPhoneNumber";
+import { useState } from "react";
 
 const BranchInformation = () => {
   const pageData = useAtomValue(currentBranchStore);
+  const [isActiveEdit, setIsActiveEdit] = useState<boolean>(true);
 
   const { requestStateDescription, onUpdateDescription } =
     useUpdateBranchDescription();
@@ -19,33 +21,45 @@ const BranchInformation = () => {
   const { requestStatePhoneNumber, onUpdatePhoneNumber } =
     useUpdateBranchPhoneNumber();
 
+  const onClick = () => {
+    setIsActiveEdit(!isActiveEdit);
+  };
+
   return (
     <S.Container>
       <BranchDetailContent
-        tittle="Descripcion"
+        title="Descripcion"
         id={pageData?.branch._id}
         content={pageData?.branch.description}
         onUpdate={onUpdateDescription}
+        onClick={onClick}
         requestState={requestStateDescription}
+        active={isActiveEdit}
       />
       <BranchDetailContent
-        tittle="Imagen de perfil"
+        title="Imagen de perfil"
         id={pageData?.branch._id}
         content={pageData?.branch.bannerImage.url}
+        onClick={onClick}
+        active={isActiveEdit}
       />
       <BranchDetailContent
-        tittle="Ubicacion geografica"
+        title="Ubicacion geografica"
         id={pageData?.branch._id}
         content={pageData?.branch.location.address}
         onUpdate={onUpdateAddress}
         requestState={requestStateAddress}
+        onClick={onClick}
+        active={isActiveEdit}
       />
       <BranchDetailContent
-        tittle="Numero de contacto"
+        title="Numero de contacto"
         id={pageData?.branch._id}
         content={pageData?.branch.phoneNumber}
         onUpdate={onUpdatePhoneNumber}
         requestState={requestStatePhoneNumber}
+        onClick={onClick}
+        active={isActiveEdit}
       />
     </S.Container>
   );
