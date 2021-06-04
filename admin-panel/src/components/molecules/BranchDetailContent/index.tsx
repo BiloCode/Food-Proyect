@@ -11,22 +11,27 @@ import Spinner from "components/atoms/Spinner";
 
 type BranchDetailContentProps = {
   id: string;
-  tittle: string;
+  title: string;
   content: string;
   requestState?: RequestStateType;
+  active?: boolean;
   onUpdate?(id: string, value: string): void;
+  onClick?(): void;
 };
 
 const BranchDetailContent: FC<BranchDetailContentProps> = ({
   id,
-  tittle,
+  title,
   content,
   requestState,
+  active,
+  onClick,
   onUpdate,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
+  console.log(title);
 
-  const [activeInput, setActiveInput] = useState<boolean>();
+  const [activeInput, setActiveInput] = useState<boolean>(false);
 
   const onClickUpdate = () => {
     onUpdate(id, inputRef.current.value);
@@ -35,34 +40,74 @@ const BranchDetailContent: FC<BranchDetailContentProps> = ({
   return (
     <S.Container>
       <S.Head>
-        <Title size="default">{tittle}</Title>
+        <Title size="default">{title}</Title>
         <S.ButtonContainer>
           {!activeInput ? (
-            <S.EditButton>
-              <ButtonRounded
-                text={"Editar"}
-                onClick={() => setActiveInput(() => true)}
-              />
-            </S.EditButton>
+            active && (
+              <S.EditButton>
+                <ButtonRounded
+                  text={"Editar"}
+                  onClick={() => {
+                    setActiveInput(true);
+                    onClick();
+                  }}
+                />
+              </S.EditButton>
+            )
           ) : (
             <>
               <ButtonRounded
                 text={"Guardar"}
                 onClick={() => {
                   onClickUpdate();
-                  setActiveInput(() => false);
+                  setActiveInput(false);
+                  onClick();
                 }}
                 color="blue"
               />
               <ButtonRounded
                 text={"Cancelar"}
                 onClick={() => {
-                  setActiveInput(() => false);
+                  setActiveInput(false);
+                  onClick();
                 }}
               />
             </>
           )}
         </S.ButtonContainer>
+
+        {/*         {active && (
+          <S.ButtonContainer>
+            {!activeInput ? (
+              <S.EditButton>
+                <ButtonRounded
+                  text={"Editar"}
+                  onClick={() => {
+                    setActiveInput(true);
+                    onClick();
+                  }}
+                />
+              </S.EditButton>
+            ) : (
+              <>
+                <ButtonRounded
+                  text={"Guardar"}
+                  onClick={() => {
+                    onClickUpdate();
+                    setActiveInput(false);
+                  }}
+                  color="blue"
+                />
+                <ButtonRounded
+                  text={"Cancelar"}
+                  onClick={() => {
+                    setActiveInput(false);
+                  }}
+                />
+              </>
+            )}
+          </S.ButtonContainer>
+        )} */}
       </S.Head>
       <div>
         {requestState === "loading" ? (
