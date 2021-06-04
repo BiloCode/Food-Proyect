@@ -47,7 +47,7 @@ export const MessageContainer = styled.div`
 export const Message = styled.div`
   color: #fff;
   font-family: ${FONT};
-  font-size: 15px;
+  font-size: 14px;
   font-weight: bold;
 
   &.empty_image {
