@@ -7,6 +7,8 @@ import BranchOfficeImage from "components/organisms/BranchOfficeImage";
 import PageWithSidebarBox from "components/templates/PageWithSidebarBox";
 import BranchDetailTabMenu from "components/organisms/BranchDetailTabMenu";
 
+import GetPageTabs from "application/utils/GetPageTabs";
+
 import { useAtomValue, useUpdateAtom } from "jotai/utils";
 import { branchOfficeStore } from "store/branchOfficeStore";
 import { currentBranchStore } from "store/currentBranchStore";
@@ -36,6 +38,9 @@ const BranchOfficeDetail = ({ navigate }: RouteComponentProps) => {
     };
   }, [branchData.requestState]);
 
+  const CreateFood = () => {};
+  const RemoveFood = () => {};
+
   return (
     <PageWithSidebarBox>
       {pageData.branch && (
@@ -48,7 +53,7 @@ const BranchOfficeDetail = ({ navigate }: RouteComponentProps) => {
           <S.BranchTitleContainer>
             <Title>{pageData.branch.name}</Title>
           </S.BranchTitleContainer>
-          <BranchDetailTabMenu />
+          <BranchDetailTabMenu tabs={GetPageTabs(CreateFood, RemoveFood)} />
         </div>
       )}
     </PageWithSidebarBox>

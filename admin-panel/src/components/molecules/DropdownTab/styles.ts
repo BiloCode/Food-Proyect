@@ -1,34 +1,21 @@
+import styled from "styled-components";
 import {
   BACKGROUND_LIGHT,
   BLACK_SUPER_LIGHT,
   NORMAL_WHITE,
 } from "config/styles";
-import styled from "styled-components";
-
-export const IconMenu = styled.div`
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: red;
-  left: calc(50% + 35px);
-`;
 
 export const DropDownContainer = styled.div`
   position: absolute;
   top: 100%;
   width: 100%;
   padding-top: 0.5em;
-  display: none;
+  display: flex;
   flex-direction: column;
   background-color: ${NORMAL_WHITE};
   font-size: 14px;
   color: ${BLACK_SUPER_LIGHT};
   cursor: pointer;
-
-  &.toggleActive {
-    display: flex;
-  }
 `;
 
 export const DropDownOption = styled.div`

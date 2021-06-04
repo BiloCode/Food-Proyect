@@ -11,7 +11,8 @@ import { useState } from "react";
 
 const BranchInformation = () => {
   const pageData = useAtomValue(currentBranchStore);
-  const [isActiveEdit, setIsActiveEdit] = useState<boolean>(true);
+
+  const [indexUpdated, setIndexUpdated] = useState<number>(-1);
 
   const { requestStateDescription, onUpdateDescription } =
     useUpdateBranchDescription();
@@ -21,46 +22,66 @@ const BranchInformation = () => {
   const { requestStatePhoneNumber, onUpdatePhoneNumber } =
     useUpdateBranchPhoneNumber();
 
-  const onClick = () => {
-    setIsActiveEdit(!isActiveEdit);
+  const changeIndex = (new_index: number) => () => {
+    setIndexUpdated((index) => (index === new_index ? -1 : new_index));
+  };
+
+  const getBranchDetailC = () => {
+    const array = [];
+
+    array.push({
+      data: {
+        title: "Description",
+        id: pageData?.branch._id,
+        content: pageData?.branch.description,
+      },
+      onUpdate: onUpdateDescription,
+      isLoading: requestStateDescription === "loading",
+    });
+
+    array.push({
+      data: {
+        id: pageData?.branch._id,
+        title: "Numero de contacto",
+        content: pageData?.branch.phoneNumber,
+      },
+      onUpdate: onUpdatePhoneNumber,
+      isLoading: requestStatePhoneNumber === "loading",
+    });
+
+    return array;
   };
 
   return (
     <S.Container>
-      <BranchDetailContent
-        title="Descripcion"
-        id={pageData?.branch._id}
-        content={pageData?.branch.description}
-        onUpdate={onUpdateDescription}
-        onClick={onClick}
-        requestState={requestStateDescription}
-        active={isActiveEdit}
-      />
-      <BranchDetailContent
-        title="Imagen de perfil"
-        id={pageData?.branch._id}
+      {getBranchDetailC().map((v, i) => (
+        <BranchDetailContent
+          data={v.data}
+          onUpdate={v.onUpdate}
+          isLoading={v.isLoading}
+          onClick={changeIndex(i)}
+          isActive={indexUpdated === i || indexUpdated === -1}
+        />
+      ))}
+
+      {/* <BranchDetailContent
+        data={{
+          title: "Image de Perfil",
+          id: pageData?.branch._id,
+        }}
+        index={2}
         content={pageData?.branch.bannerImage.url}
-        onClick={onClick}
-        active={isActiveEdit}
-      />
-      <BranchDetailContent
+        onClick={changeIndex(2)}
+      /> */}
+      {/* <BranchDetailContent
         title="Ubicacion geografica"
         id={pageData?.branch._id}
+        index={3}
         content={pageData?.branch.location.address}
         onUpdate={onUpdateAddress}
-        requestState={requestStateAddress}
-        onClick={onClick}
-        active={isActiveEdit}
-      />
-      <BranchDetailContent
-        title="Numero de contacto"
-        id={pageData?.branch._id}
-        content={pageData?.branch.phoneNumber}
-        onUpdate={onUpdatePhoneNumber}
-        requestState={requestStatePhoneNumber}
-        onClick={onClick}
-        active={isActiveEdit}
-      />
+        isLoading={requestStateAddress === "loading"}
+        onClick={changeIndex(3)}
+      /> */}
     </S.Container>
   );
 };

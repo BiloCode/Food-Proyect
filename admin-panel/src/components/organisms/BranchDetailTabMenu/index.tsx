@@ -1,18 +1,20 @@
-import * as S from "./styles";
-
 import { useState } from "react";
+import * as S from "./styles";
 
 import BranchMenu from "components/templates/BranchMenu";
 import BranchInformation from "components/organisms/BranchInformation";
+import { PageTab } from "application/types/PageTabs";
+
 import BranchComments from "components/templates/BranchComments";
 import BranchOfficeTabOption from "components/atoms/BranchOfficeTabOption";
-import BranchOfficeTabOptionMenu from "components/molecules/BranchOfficeTabOptionMenu";
+import DropdownTab from "components/molecules/DropdownTab";
 
-const tabPages = ["Detalles", "Puntuaciones", "Menu"];
+type TabProps = {
+  tabs: PageTab[];
+};
 
-const BranchDetailTabMenu = () => {
+const BranchDetailTabMenu = ({ tabs }: TabProps) => {
   const [pageSelect, setPageSelect] = useState<number>(0);
-  const [toggleMenu, setToggleMenu] = useState<boolean>(false);
 
   const componentSelector = (index: number) => {
     const component = {
@@ -26,37 +28,27 @@ const BranchDetailTabMenu = () => {
 
   const changePage = (index: number) => () => {
     setPageSelect(index);
-    setToggleMenu(false);
-  };
-
-  const changePageToggle = (index: number) => () => {
-    setPageSelect(index);
-    setToggleMenu(!toggleMenu);
   };
 
   return (
     <div>
       <S.TabOptionContainer>
-        {tabPages.map((v, i) => {
-          if (i === 2) {
-            return (
-              <BranchOfficeTabOptionMenu
-                onClick={changePageToggle(i)}
-                text={v}
-                isSelected={i === pageSelect}
-                isToggleActive={toggleMenu}
-                pageSelected={pageSelect}
-              />
-            );
-          }
-          return (
+        {tabs.map((v, i) =>
+          !v.options.length ? (
             <BranchOfficeTabOption
+              text={v.title}
+              isPageActive={i === pageSelect}
               onClick={changePage(i)}
-              text={v}
-              isSelected={i === pageSelect}
             />
-          );
-        })}
+          ) : (
+            <DropdownTab
+              text={v.title}
+              options={v.options}
+              onClick={changePage(i)}
+              isPageActive={i === pageSelect}
+            />
+          )
+        )}
       </S.TabOptionContainer>
       <div>{componentSelector(pageSelect)}</div>
     </div>
