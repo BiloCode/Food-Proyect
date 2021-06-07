@@ -2,12 +2,16 @@ import styled from "styled-components";
 
 import { DARK_BLUE, SIDEBAR_WIDTH } from "config/styles";
 
+const HeaderHeight = "180px";
+
 export const MainContainer = styled.div`
   width: ${SIDEBAR_WIDTH};
   height: 100vh;
   background-color: ${DARK_BLUE};
   display: grid;
-  grid-template-rows: 180px 1fr;
+  grid-template-rows: ${HeaderHeight} 1fr;
+  position: sticky;
+  top: 0;
 `;
 
 export const ImageContainer = styled.div`

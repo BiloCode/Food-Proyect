@@ -10,6 +10,10 @@ import {
   NORMAL_YELLOW_LIGHT,
   NORMAL_GREEN,
   NORMAL_GREEN_LIGHT,
+  NORMAL_RED,
+  NORMAL_RED_LIGHT,
+  BLACK_LIGHT_C,
+  BLACK_LIGHT_B,
 } from "config/styles";
 
 export const ButtonContainer = styled.button`
@@ -38,19 +42,27 @@ export const ButtonContainer = styled.button`
 
   &.blue {
     --bg: ${NORMAL_BLUE};
-    --txt-color: #fff;
     --bg-hover: ${NORMAL_BLUE_LIGHT};
   }
 
   &.green {
     --bg: ${NORMAL_GREEN};
-    --txt-color: #fff;
     --bg-hover: ${NORMAL_GREEN_LIGHT};
+  }
+
+  &.red {
+    --bg: ${NORMAL_RED};
+    --bg-hover: ${NORMAL_RED_LIGHT};
+  }
+
+  &.disabled {
+    --bg: ${BLACK_LIGHT_C};
+    --txt-color: ${BLACK_LIGHT_B};
   }
 
   &.small {
     font-size: 0.85em;
-    height: 36px;
+    height: 34px;
   }
 
   &.medium {

@@ -1,10 +1,15 @@
 import styled from "styled-components";
 
-import { BACKGROUND_LIGHT, FONT, NORMAL_GRAY_MEDIUM } from "config/styles";
+import {
+  ATOM_INPUT_HEIGHT,
+  BACKGROUND_LIGHT,
+  FONT,
+  NORMAL_GRAY_MEDIUM,
+} from "config/styles";
 
 export const CustomInput = styled.input`
   width: 100%;
-  height: 44px;
+  height: ${ATOM_INPUT_HEIGHT};
   border: none;
   border-radius: 5px;
   outline: none;

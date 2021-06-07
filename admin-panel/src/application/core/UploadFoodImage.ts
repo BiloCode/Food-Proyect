@@ -19,7 +19,9 @@ class UploadFoodImage {
   }
 
   public async __invoke(createdAt: Timestamp, image: File) {
-    const fileStorageRef = `${FOOD_IMAGE_REPOSITORY}/${createdAt.toMillis}_${image.name}`;
+    const fileStorageRef = `${FOOD_IMAGE_REPOSITORY}/${createdAt.toMillis()}_${
+      image.name
+    }`;
 
     const storage = firebase.storage();
     const storeRef = storage.ref(fileStorageRef);

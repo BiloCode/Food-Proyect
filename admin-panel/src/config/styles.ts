@@ -7,6 +7,8 @@ export const SIDEBAR_WIDTH = "340px";
 export const HOME_SECTIONS_ROW_GAP = "1.8em";
 export const HOME_STATISTICS_ROW_WIDTH = "140px";
 
+export const ATOM_INPUT_HEIGHT = "40px";
+
 /** -- COLORS -- **/
 
 export const BACKGROUND_LIGHT = "#F5F5F5";

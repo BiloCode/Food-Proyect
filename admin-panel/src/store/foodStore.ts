@@ -15,8 +15,6 @@ export const foodStore = atom<FoodAtom>({
   requestState: "loading",
 });
 
-export const deleteMode = atom<boolean>(false);
-
 foodStore.onMount = (setAtom) => {
   (async () => {
     const food = await GetAllFood.exec();
