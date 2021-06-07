@@ -7,3 +7,5 @@ export const FirebaseCollectionNames = {
 };
 
 export const CLIENTS_LIST_TABLE_ROWS = 8;
+
+export const FOOD_IMAGE_REPOSITORY = "images/food";

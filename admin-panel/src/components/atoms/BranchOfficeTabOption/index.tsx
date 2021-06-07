@@ -1,25 +1,25 @@
+import { FC } from "react";
 import * as S from "./styles";
 
 import classNames from "classnames";
-import { FC } from "react";
 
-type BranchOfficeTabOptionProps = {
-  onClick(): void;
+export type TabProps = {
   text: string;
-  isSelected: boolean;
+  onClick(): void;
+  isPageActive: boolean;
 };
 
-const BranchOfficeTabOption: FC<BranchOfficeTabOptionProps> = ({
+const BranchOfficeTabOption: FC<TabProps> = ({
   onClick,
   text,
-  isSelected,
+  isPageActive,
   children,
 }) => {
   return (
     <S.Container
       onClick={onClick}
       className={classNames({
-        active: isSelected,
+        active: isPageActive,
       })}
     >
       {text}
