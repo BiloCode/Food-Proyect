@@ -32,8 +32,8 @@ const BranchInformation = () => {
         id={pageData?.branch._id}
         content={pageData?.branch.description}
         onUpdate={onUpdateDescription}
-        onClick={onClick}
         requestState={requestStateDescription}
+        onClick={onClick}
         active={isActiveEdit}
       />
       <BranchDetailContent

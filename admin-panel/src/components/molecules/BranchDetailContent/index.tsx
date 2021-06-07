@@ -75,39 +75,6 @@ const BranchDetailContent: FC<BranchDetailContentProps> = ({
             </>
           )}
         </S.ButtonContainer>
-
-        {/*         {active && (
-          <S.ButtonContainer>
-            {!activeInput ? (
-              <S.EditButton>
-                <ButtonRounded
-                  text={"Editar"}
-                  onClick={() => {
-                    setActiveInput(true);
-                    onClick();
-                  }}
-                />
-              </S.EditButton>
-            ) : (
-              <>
-                <ButtonRounded
-                  text={"Guardar"}
-                  onClick={() => {
-                    onClickUpdate();
-                    setActiveInput(false);
-                  }}
-                  color="blue"
-                />
-                <ButtonRounded
-                  text={"Cancelar"}
-                  onClick={() => {
-                    setActiveInput(false);
-                  }}
-                />
-              </>
-            )}
-          </S.ButtonContainer>
-        )} */}
       </S.Head>
       <div>
         {requestState === "loading" ? (
