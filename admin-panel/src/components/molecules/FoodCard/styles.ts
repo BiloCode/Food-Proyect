@@ -19,6 +19,14 @@ export const ContainerDisabled = styled.div`
   background-color: rgba(255, 255, 255, 0.5);
 `;
 
+export const ButtonContainer = styled.div`
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  padding: 2em;
+  box-sizing: border-box;
+`;
+
 export const ImageContainer = styled.div`
   width: 100%;
   height: 100%;

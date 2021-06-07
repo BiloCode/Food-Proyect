@@ -18,7 +18,6 @@ export const clientStore = atom<ClientAtom>({
 clientStore.onMount = (setAtom) => {
   (async () => {
     const clients = await GetAllClient.exec();
-    console.log(clients);
     setAtom({
       data: clients,
       requestState: "complete",

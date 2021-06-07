@@ -6,7 +6,7 @@ export const FileLabel = styled.label`
   height: 100%;
   display: none;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.3);
   align-items: center;
   cursor: pointer;
   position: absolute;

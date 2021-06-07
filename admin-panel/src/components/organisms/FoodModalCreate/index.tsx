@@ -71,6 +71,7 @@ const FoodModalCreate = ({ onClose }: ModalProps) => {
 
     if (!newFood) {
       addToast("Ocurrio un error al crear la comida.", { appearance: "error" });
+      setIsUploading(() => false);
       return;
     }
 

@@ -11,10 +11,19 @@ import DateFormatting from "application/utils/DateFormatting";
 
 type FoodCardProps = {
   foodData: FoodModelType;
-  select?: boolean;
+  isSelect?: boolean;
+  selectable?: boolean;
+  onClickButton(): void;
+  onClickSelect(): void;
 };
 
-const FoodCard = ({ foodData, select }: FoodCardProps) => (
+const FoodCard = ({
+  isSelect,
+  foodData,
+  selectable,
+  onClickButton,
+  onClickSelect,
+}: FoodCardProps) => (
   <S.MainContainer>
     <EatableCard
       imageRender={() => (
@@ -39,11 +48,26 @@ const FoodCard = ({ foodData, select }: FoodCardProps) => (
               )}`}
             </S.Description>
           </S.TextContainer>
-          <Button text="Editar Comestible" styles={{ color: "yellow" }} />
+          <Button
+            disabled={isSelect}
+            onClick={onClickButton}
+            styles={{ color: selectable ? "blue" : "yellow" }}
+            text={selectable ? "Seleccionar" : "Editar Comestible"}
+          />
         </S.TextContent>
       )}
     />
-    {select && <S.ContainerDisabled />}
+    {isSelect && (
+      <S.ContainerDisabled>
+        <S.ButtonContainer>
+          <Button
+            text="Quitar"
+            onClick={onClickSelect}
+            styles={{ color: "red" }}
+          />
+        </S.ButtonContainer>
+      </S.ContainerDisabled>
+    )}
   </S.MainContainer>
 );
 

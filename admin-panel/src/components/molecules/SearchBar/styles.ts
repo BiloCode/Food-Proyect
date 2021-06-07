@@ -1,4 +1,4 @@
-import { NORMAL_WHITE, NORMAL_GRAY_LIGHT } from "config/styles";
+import { BACKGROUND_LIGHT, NORMAL_WHITE } from "config/styles";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -7,13 +7,12 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 65px 1fr;
   overflow: hidden;
-  border: 2px solid ${NORMAL_GRAY_LIGHT};
   border-radius: 25px;
 `;
 
 export const IconContainer = styled.div`
-  background-color: ${NORMAL_WHITE};
   display: flex;
+  background-color: ${BACKGROUND_LIGHT};
   justify-content: center;
   align-items: center;
 `;
@@ -25,5 +24,6 @@ export const InputContainer = styled.div`
     background-color: #fff;
     padding-left: 0;
     font-size: 0.9em;
+    background-color: ${BACKGROUND_LIGHT};
   }
 `;

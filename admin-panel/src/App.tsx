@@ -8,14 +8,14 @@ import GlobalStyles from "styles";
 
 function App() {
   return (
-    <main>
+    <>
       <ToastProvider autoDismiss autoDismissTimeout={4000}>
         <Provider>
           <RouterApplication />
         </Provider>
       </ToastProvider>
       <GlobalStyles />
-    </main>
+    </>
   );
 }
 
