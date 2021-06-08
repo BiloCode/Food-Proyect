@@ -5,8 +5,6 @@ import Icon from "components/atoms/Icon";
 import { BsChevronDown } from "react-icons/bs";
 
 import useActive from "hooks/useActive";
-import useClickOutside from "hooks/useClickOutside";
-import { useRef } from "react";
 
 type DropdownProps = {
   onClickFoodCreate(): void;
@@ -19,8 +17,6 @@ const DropdownFoodActions = ({
 }: DropdownProps) => {
   const { active, toggleActive } = useActive();
 
-  const contentDropdown = useRef<HTMLUListElement>();
-
   const onFoodCreate = () => {
     toggleActive();
     onClickFoodCreate();
@@ -31,10 +27,6 @@ const DropdownFoodActions = ({
     onClickRemoveFood();
   };
 
-  useClickOutside(contentDropdown, () => {
-    toggleActive();
-  });
-
   return (
     <S.MainContainer>
       <S.ButtonDropdown onClick={toggleActive}>
@@ -44,7 +36,7 @@ const DropdownFoodActions = ({
         </S.ButtonNestingContainer>
       </S.ButtonDropdown>
       {active && (
-        <S.DropdownList ref={contentDropdown}>
+        <S.DropdownList>
           <S.DropdownItem>
             <S.ButtonDropdown onClick={onFoodCreate}>
               Crear nueva comida
