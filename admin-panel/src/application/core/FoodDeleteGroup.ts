@@ -1,0 +1,41 @@
+import { FOOD_IMAGE_REPOSITORY } from "config/constants";
+
+import DeleteImage from "./DeleteImage";
+import FoodDeleteById from "./FoodDeleteById";
+
+type FoodDeletable = {
+  id: string;
+  image_name: string;
+};
+
+class FoodDeleteGroup {
+  private foodDeleteById: FoodDeleteById;
+  private deleteImage: DeleteImage;
+
+  constructor(foodDeleteById: FoodDeleteById, deleteImage: DeleteImage) {
+    this.foodDeleteById = foodDeleteById;
+    this.deleteImage = deleteImage;
+  }
+
+  public async exec(foods: FoodDeletable[]) {
+    try {
+      const promiseDeleteIds = foods.map(async (v) => {
+        if (v.image_name) {
+          const image_path = `${FOOD_IMAGE_REPOSITORY}/${v.image_name}`;
+          await this.deleteImage.exec(image_path);
+        }
+
+        await this.foodDeleteById.exec(v.id);
+      });
+
+      await Promise.all(promiseDeleteIds);
+
+      return true;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
+}
+
+export default FoodDeleteGroup;
