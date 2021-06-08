@@ -33,3 +33,12 @@ export const DropDownOption = styled.div`
     background-color: ${BACKGROUND_LIGHT};
   }
 `;
+
+export const IconContainer = styled.div`
+  position: absolute;
+  left: calc(50% + 30px);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

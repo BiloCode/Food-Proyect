@@ -39,13 +39,15 @@ const DropdownTab = ({
       text={text}
       isPageActive={isPageActive}
     >
-      <div>
-        <Icon type={IoChevronDown} />
-      </div>
+      <S.IconContainer>
+        {options.length !== 0 && isPageActive && (
+          <Icon type={IoChevronDown} size="small-medium" color="blue" />
+        )}
+      </S.IconContainer>
       {active && isPageActive && (
         <S.DropDownContainer>
-          {options.map((v) => (
-            <S.DropDownOption onClick={v.onClick}>
+          {options.map((v, i) => (
+            <S.DropDownOption onClick={v.onClick} key={i}>
               <Icon type={v.icon} size="medium" />
               <div>{v.text}</div>
             </S.DropDownOption>

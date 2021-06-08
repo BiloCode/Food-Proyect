@@ -11,7 +11,6 @@ export const TabOptionContainer = styled.div`
 
   &::before {
     content: "";
-    z-index: 50;
     width: 3fr;
     position: absolute;
     height: 5px;

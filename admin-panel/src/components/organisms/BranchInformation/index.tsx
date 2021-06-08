@@ -7,12 +7,16 @@ import useUpdateBranchAddress from "hooks/useUpdateBranchAddress";
 
 import { useAtomValue } from "jotai/utils";
 import useUpdateBranchPhoneNumber from "hooks/useUpdateBranchPhoneNumber";
-import { useState } from "react";
+import { ChangeEvent, ChangeEventHandler, useState } from "react";
+import BranchOfficeImageUpdateModal from "../BranchOfficeImageUpdateModal";
+import FilesCheckingIsImage from "application/utils/FileCheckingIsImage";
 
 const BranchInformation = () => {
   const pageData = useAtomValue(currentBranchStore);
+  const [isActiveEdit, setIsActiveEdit] = useState<boolean>(true);
+  const [newImageBranch, setNewImageBranch] = useState<File>();
 
-  const [indexUpdated, setIndexUpdated] = useState<number>(-1);
+  const [isActiveImageModal, setIsActiveImageModal] = useState<boolean>(false);
 
   const { requestStateDescription, onUpdateDescription } =
     useUpdateBranchDescription();
@@ -22,66 +26,77 @@ const BranchInformation = () => {
   const { requestStatePhoneNumber, onUpdatePhoneNumber } =
     useUpdateBranchPhoneNumber();
 
-  const changeIndex = (new_index: number) => () => {
-    setIndexUpdated((index) => (index === new_index ? -1 : new_index));
+  const onClick = () => {
+    setIsActiveEdit(!isActiveEdit);
   };
 
-  const getBranchDetailC = () => {
-    const array = [];
+  /* const onClickImage = () => {
+    setIsActiveImageModal(true);
+  }; */
 
-    array.push({
-      data: {
-        title: "Description",
-        id: pageData?.branch._id,
-        content: pageData?.branch.description,
-      },
-      onUpdate: onUpdateDescription,
-      isLoading: requestStateDescription === "loading",
-    });
+  const onCloseImageModal = () => {
+    setIsActiveImageModal(false);
+  };
 
-    array.push({
-      data: {
-        id: pageData?.branch._id,
-        title: "Numero de contacto",
-        content: pageData?.branch.phoneNumber,
-      },
-      onUpdate: onUpdatePhoneNumber,
-      isLoading: requestStatePhoneNumber === "loading",
-    });
-
-    return array;
+  const onChangeImage: ChangeEventHandler<HTMLInputElement> = (
+    v: ChangeEvent<HTMLInputElement>
+  ) => {
+    const files = v.target.files;
+    const imagesUploaded = FilesCheckingIsImage.check(files);
+    if (imagesUploaded.length !== 1) {
+      alert("Seleccione una imagen valida");
+      return;
+    }
+    setNewImageBranch(files[0]);
+    setIsActiveImageModal(true);
   };
 
   return (
     <S.Container>
-      {getBranchDetailC().map((v, i) => (
-        <BranchDetailContent
-          data={v.data}
-          onUpdate={v.onUpdate}
-          isLoading={v.isLoading}
-          onClick={changeIndex(i)}
-          isActive={indexUpdated === i || indexUpdated === -1}
-        />
-      ))}
-
-      {/* <BranchDetailContent
+      <BranchDetailContent
         data={{
-          title: "Image de Perfil",
           id: pageData?.branch._id,
+          title: "Descripcion",
+          content: pageData?.branch.description,
         }}
-        index={2}
-        content={pageData?.branch.bannerImage.url}
-        onClick={changeIndex(2)}
-      /> */}
-      {/* <BranchDetailContent
-        title="Ubicacion geografica"
-        id={pageData?.branch._id}
-        index={3}
-        content={pageData?.branch.location.address}
+        onUpdate={onUpdateDescription}
+        isLoading={requestStateDescription === "loading"}
+        onClick={onClick}
+        isActive={isActiveEdit}
+      />
+      <BranchDetailContent
+        data={{ id: pageData?.branch._id, title: "Imagen de Perfil" }}
+        isLoading={requestStateDescription === "loading"}
+        isActive={isActiveEdit}
+        onChangeImage={onChangeImage}
+        isModal
+        isFile
+      />
+      <BranchDetailContent
+        data={{ id: pageData?.branch._id, title: "Ubicación geofráfica" }}
         onUpdate={onUpdateAddress}
         isLoading={requestStateAddress === "loading"}
-        onClick={changeIndex(3)}
-      /> */}
+        onClick={onClick}
+        isActive={isActiveEdit}
+      />
+      <BranchDetailContent
+        data={{
+          id: pageData?.branch._id,
+          title: "Numero de contacto",
+          content: pageData?.branch.phoneNumber,
+        }}
+        onUpdate={onUpdatePhoneNumber}
+        isLoading={requestStatePhoneNumber === "loading"}
+        onClick={onClick}
+        isActive={isActiveEdit}
+      />
+
+      {isActiveImageModal && (
+        <BranchOfficeImageUpdateModal
+          onClose={onCloseImageModal}
+          image={newImageBranch}
+        />
+      )}
     </S.Container>
   );
 };

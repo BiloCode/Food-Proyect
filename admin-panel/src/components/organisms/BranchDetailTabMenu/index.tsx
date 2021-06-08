@@ -36,12 +36,14 @@ const BranchDetailTabMenu = ({ tabs }: TabProps) => {
         {tabs.map((v, i) =>
           !v.options.length ? (
             <BranchOfficeTabOption
+              key={i}
               text={v.title}
               isPageActive={i === pageSelect}
               onClick={changePage(i)}
             />
           ) : (
             <DropdownTab
+              key={i}
               text={v.title}
               options={v.options}
               onClick={changePage(i)}

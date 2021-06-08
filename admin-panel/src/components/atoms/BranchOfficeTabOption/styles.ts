@@ -17,7 +17,6 @@ export const Container = styled.div`
   user-select: none; //HACK NOT SELECTION
 
   &.active {
-    z-index: 100;
     color: ${NORMAL_BLUE};
 
     &::before {

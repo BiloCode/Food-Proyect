@@ -26,6 +26,7 @@ const Button: FC<ButtonTypeProps> = ({
   onClick,
   disabled,
   isLoading,
+  children,
 }) => (
   <S.ButtonContainer
     type={type}
@@ -49,6 +50,7 @@ const Button: FC<ButtonTypeProps> = ({
         <Spinner size="small" color="white" />
       </S.ButtonContainerSpinner>
     )}
+    {children}
   </S.ButtonContainer>
 );
 
