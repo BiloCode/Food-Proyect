@@ -13,19 +13,17 @@ import {
   AiOutlinePoweroff,
 } from "react-icons/ai";
 
-import { useAtomValue, useUpdateAtom } from "jotai/utils";
-import { resetUserAuth } from "store/userAuth";
-import { clientStore } from "store/clientStore";
-import { branchOfficeStore } from "store/branchOfficeStore";
-import { foodStore } from "store/foodStore";
+import { useAtomValue } from "jotai/utils";
+import { foods } from "store/foods";
+import { branchOffice } from "store/branchOffice";
+import { clients as clientsStore } from "store/clients";
 
 const Sidebar = () => {
   const navigate = useNavigate();
 
-  const food = useAtomValue(foodStore);
-  const clients = useAtomValue(clientStore);
-  const branchOffices = useAtomValue(branchOfficeStore);
-  const resetAuthState = useUpdateAtom(resetUserAuth);
+  const food = useAtomValue(foods);
+  const clients = useAtomValue(clientsStore);
+  const branchOffices = useAtomValue(branchOffice);
 
   const onClickToHome = () => navigate("/");
   const onClickToFood = () => navigate("/food");
@@ -39,7 +37,6 @@ const Sidebar = () => {
 
     try {
       await firebase.auth().signOut();
-      resetAuthState();
     } catch (error) {
       console.log(error);
     }

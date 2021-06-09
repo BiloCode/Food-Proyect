@@ -6,7 +6,7 @@ import UploadFoodImage from "application/core/UploadFoodImage";
 import FilesCheckingIsImage from "application/utils/FileCheckingIsImage";
 
 import { useUpdateAtom } from "jotai/utils";
-import { addNewFood } from "store/foodStore";
+import { addNewFood } from "store/foods";
 
 type ImageUpload = {
   file: File;

@@ -5,4 +5,4 @@ type StoreData = {
   branch?: BranchOfficeModelType;
 };
 
-export const currentBranchStore = atom<StoreData>({});
+export const currentBranch = atom<StoreData>({});

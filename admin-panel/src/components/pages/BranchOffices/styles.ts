@@ -9,7 +9,7 @@ export const BranchOfficeListContainer = styled.div`
 
 export const BranchOfficeList = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 310px);
+  grid-template-columns: repeat(3, 340px);
   gap: 1.5em;
   margin: 3em 0;
 `;

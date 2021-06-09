@@ -10,12 +10,12 @@ type FoodAtom = {
   requestState: RequestStateType;
 };
 
-export const foodStore = atom<FoodAtom>({
+export const foods = atom<FoodAtom>({
   data: [],
   requestState: "loading",
 });
 
-foodStore.onMount = (setAtom) => {
+foods.onMount = (setAtom) => {
   (async () => {
     const food = await GetAllFood.exec();
     setAtom({
@@ -26,14 +26,14 @@ foodStore.onMount = (setAtom) => {
 };
 
 export const addNewFood = atom(null, (_, set, new_food: FoodModelType) => {
-  set(foodStore, (food) => ({
+  set(foods, (food) => ({
     ...food,
     data: [...food.data, new_food],
   }));
 });
 
 export const deleteGroupById = atom(null, (_, set, ids: string[]) => {
-  set(foodStore, (food) => ({
+  set(foods, (food) => ({
     ...food,
     data: [...food.data].filter((v) => !ids.includes(v._id)),
   }));

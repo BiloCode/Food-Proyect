@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { BACKGROUND_LIGHT, BLACK_LIGHT_B, FONT } from "config/styles";
+import { BACKGROUND_LIGHT, BLACK_LIGHT, FONT } from "config/styles";
 
 const cardRadius = "10px";
 
@@ -12,19 +12,19 @@ export const MainContainer = styled.div`
 
 export const BranchOfficeDataContainer = styled.div`
   display: grid;
-  row-gap: 1.2em;
+  row-gap: 1.6em;
   padding: 1.5em 2em;
   box-sizing: border-box;
 `;
 
 export const DataContainer = styled.div`
   display: grid;
-  row-gap: 10px;
+  row-gap: 1em;
 `;
 
 export const ImageContainer = styled.div`
   width: 100%;
-  height: 180px;
+  height: 200px;
   border-radius: ${cardRadius} ${cardRadius} 0 0;
 
   & > img {
@@ -34,19 +34,19 @@ export const ImageContainer = styled.div`
 
 export const TextContainer = styled.div`
   display: grid;
-  row-gap: 4px;
+  row-gap: 8px;
 `;
 
 export const Description = styled.p`
   height: 60px;
-  font-weight: 300;
+  font-weight: 400;
   margin: 0;
   text-overflow: ellipsis;
   white-space: normal;
   overflow: hidden;
-  color: ${BLACK_LIGHT_B};
+  color: ${BLACK_LIGHT};
   font-family: ${FONT};
-  font-size: 0.9em;
+  font-size: 0.95em;
 `;
 
 export const StarsContainer = styled.div`

@@ -11,6 +11,11 @@ export const TitleContainer = styled.div`
   border-bottom: 2px solid rgb(240, 240, 240);
 `;
 
+export const TitleWithMessage = styled.div`
+  display: grid;
+  row-gap: 6px;
+`;
+
 export const ButtonContainer = styled.div`
   width: 180px;
 `;

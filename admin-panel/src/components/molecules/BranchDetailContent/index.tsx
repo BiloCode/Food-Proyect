@@ -7,7 +7,7 @@ import Input from "components/atoms/Input";
 import classNames from "classnames";
 import Spinner from "components/atoms/Spinner";
 
-import { FC, useRef, useState } from "react";
+import { FC, memo, useRef, useState } from "react";
 
 type BranchDetailContentProps = {
   data: {
@@ -69,7 +69,7 @@ const BranchDetailContent: FC<BranchDetailContentProps> = ({
             double_button: activeInput,
           })}
         >
-          {isActive && (
+          {!isActive && (
             <S.ButtonFile>
               <S.LabelFile>
                 <ButtonRounded onClick={toggleActive} text="Editar" />
@@ -88,23 +88,25 @@ const BranchDetailContent: FC<BranchDetailContentProps> = ({
           )}
         </S.ButtonContainer>
       </S.Head>
-      <div>
-        {isLoading ? (
-          <Spinner color="blue" size="small" />
-        ) : (
-          <>
-            {!activeInput ? (
-              <Description size="small" color="black">
-                {data.content}
-              </Description>
-            ) : (
-              <Input defaultValue={data.content} type="text" ref={inputRef} />
-            )}
-          </>
-        )}
-      </div>
+      {data.content && (
+        <div>
+          {isLoading ? (
+            <Spinner color="blue" size="small" />
+          ) : (
+            <>
+              {!activeInput ? (
+                <Description size="small" color="black">
+                  {data.content}
+                </Description>
+              ) : (
+                <Input defaultValue={data.content} type="text" ref={inputRef} />
+              )}
+            </>
+          )}
+        </div>
+      )}
     </S.Container>
   );
 };
 
-export default BranchDetailContent;
+export default memo(BranchDetailContent);

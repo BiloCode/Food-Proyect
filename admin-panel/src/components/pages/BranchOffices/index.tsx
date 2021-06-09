@@ -6,11 +6,11 @@ import BranchOfficeCard from "components/organisms/BranchOfficeCard";
 import PageWithSidebarBox from "components/templates/PageWithSidebarBox";
 
 import { useAtomValue } from "jotai/utils";
-import { branchOfficeStore } from "store/branchOfficeStore";
+import { branchOffice } from "store/branchOffice";
 import PageLimiterContainer from "components/atoms/PageLimiterContainer";
 
 const BranchOffices = (_: RouteComponentProps) => {
-  const branchOffices = useAtomValue(branchOfficeStore);
+  const branchOffices = useAtomValue(branchOffice);
 
   const onClickToCreate = () => console.log("Create...");
 
@@ -19,6 +19,7 @@ const BranchOffices = (_: RouteComponentProps) => {
       <PageLimiterContainer>
         <HeaderTitle
           title="Nuestras Sucursales"
+          subtitleMessage={`${branchOffices.data.length} sucursales   registradas.`}
           button={{ onClick: onClickToCreate, text: "Crear Sucursal" }}
         />
         <S.BranchOfficeListContainer>

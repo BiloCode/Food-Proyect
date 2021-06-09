@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect, useState } from "react";
 
 import { useAtomValue, useResetAtom } from "jotai/utils";
-import { foodStore } from "store/foodStore";
+import { foods as foodStore } from "store/foods";
 import { deleteMode } from "store/foodDeleteMode";
 
 import { FoodModelType } from "application/types/FoodModelType";
@@ -37,9 +37,10 @@ const useFoodPageInit = () => {
   }, [foods]);
 
   return {
-    onSearchByName,
     foodFilter,
     createModal,
+    onSearchByName,
+    foodStored: foods.data.length,
   };
 };
 

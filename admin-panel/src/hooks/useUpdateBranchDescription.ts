@@ -1,9 +1,10 @@
-import UpdateBranchDescription from "application/core/UpdateBranchDescription";
 import { RequestStateType } from "application/types/RequestStateType";
 import { useAtom } from "jotai";
 import { useState } from "react";
 import { useToasts } from "react-toast-notifications";
-import { currentBranchStore } from "store/currentBranchStore";
+import { currentBranch as currentBranchStore } from "store/currentBranch";
+
+import UpdateBranchDescription from "application/core/UpdateBranchDescription";
 
 const useUpdateBranchDescription = () => {
   const [currentBranch, setCurrentBranch] = useAtom(currentBranchStore);

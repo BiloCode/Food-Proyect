@@ -1,11 +1,12 @@
+import { useState } from "react";
+import { useToasts } from "react-toast-notifications";
+
 import UploadBranchImage from "application/core/UploadBranchImage";
 import UpdateBranchImage from "application/core/UpdateBranchImage";
-import { currentBranchStore } from "store/currentBranchStore";
+import { RequestStateType } from "application/types/RequestStateType";
 
 import { useAtom } from "jotai";
-import { useState } from "react";
-import { RequestStateType } from "application/types/RequestStateType";
-import { useToasts } from "react-toast-notifications";
+import { currentBranch as currentBranchStore } from "store/currentBranch";
 
 const useUpdateBranchImage = () => {
   const [currentBranch, setCurrentBranch] = useAtom(currentBranchStore);
@@ -17,8 +18,6 @@ const useUpdateBranchImage = () => {
   const UpdatePercentaje = (percentaje: number) => {
     setLoadingPercentaje(percentaje);
   };
-
-  console.log(loadingPercentaje);
 
   const updateImage = async (image: File) => {
     setIsLoading("loading");

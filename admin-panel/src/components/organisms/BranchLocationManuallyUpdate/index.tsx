@@ -5,8 +5,9 @@ import FormControl from "components/molecules/FormControl";
 
 import { IoMdPerson } from "react-icons/io";
 import useUpdateBranchLocation from "hooks/useUpdateBranchLocation";
-import { currentBranchStore } from "store/currentBranchStore";
-import { useAtom } from "jotai";
+import { currentBranch as currentBranchStore } from "store/currentBranch";
+
+import { useAtomValue } from "jotai/utils";
 
 type BranchLocationManuallyUpdateProps = {
   onClose(): void;
@@ -15,8 +16,7 @@ type BranchLocationManuallyUpdateProps = {
 const BranchLocationManuallyUpdate = ({
   onClose,
 }: BranchLocationManuallyUpdateProps) => {
-  const [currentBranch, _] = useAtom(currentBranchStore);
-
+  const currentBranch = useAtomValue(currentBranchStore);
   const {
     addressRef,
     latitudeRef,

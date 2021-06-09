@@ -1,3 +1,3 @@
-import { atom } from "jotai";
+import { atomWithReset } from "jotai/utils";
 
-export const currentPageInClient = atom(0);
+export const currentPageInClient = atomWithReset(0);

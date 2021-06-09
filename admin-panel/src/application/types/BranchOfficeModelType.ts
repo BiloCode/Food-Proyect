@@ -29,4 +29,5 @@ export type BranchOfficeModelType = {
   userPuntuactionsId: string[];
   puntuactions: PuntuactionType[];
   permisions: any[];
+  createdAt: firebase.firestore.Timestamp;
 };

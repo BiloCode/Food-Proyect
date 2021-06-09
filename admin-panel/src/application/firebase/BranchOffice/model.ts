@@ -1,3 +1,5 @@
+import firebase from "firebase";
+
 import type { FoodType } from "application/types/FoodType";
 import type { FirebaseImageType } from "application/types/FirebaseImageType";
 import type { FirebaseLocationType } from "application/types/FirebaseLocationType";
@@ -15,7 +17,8 @@ class BranchOfficeModel {
     readonly permisions: any[],
     readonly phoneNumber: string,
     readonly puntuactions: PuntuactionType[],
-    readonly userPuntuactionsId: string[]
+    readonly userPuntuactionsId: string[],
+    readonly createdAt: firebase.firestore.Timestamp
   ) {}
 }
 

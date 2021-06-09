@@ -1,11 +1,11 @@
 import { useAtomValue } from "jotai/utils";
-import { clientStore } from "store/clientStore";
-import { branchOfficeStore } from "store/branchOfficeStore";
-import { foodStore } from "store/foodStore";
+import { clients as clientsStore } from "store/clients";
+import { foods as foodsStore } from "store/foods";
+import { branchOffice as branchOfficeStore } from "store/branchOffice";
 
 const useCollectionAllData = () => {
-  const food = useAtomValue(foodStore);
-  const clients = useAtomValue(clientStore);
+  const food = useAtomValue(foodsStore);
+  const clients = useAtomValue(clientsStore);
   const branchOffice = useAtomValue(branchOfficeStore);
 
   return {

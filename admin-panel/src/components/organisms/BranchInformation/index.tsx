@@ -1,7 +1,7 @@
 import * as S from "./styles";
 
 import BranchDetailContent from "components/molecules/BranchDetailContent";
-import { currentBranchStore } from "store/currentBranchStore";
+import { currentBranch } from "store/currentBranch";
 import useUpdateBranchDescription from "hooks/useUpdateBranchDescription";
 import BranchOfficeImageUpdateModal from "components/organisms/BranchOfficeImageUpdateModal";
 import FilesCheckingIsImage from "application/utils/FileCheckingIsImage";
@@ -11,28 +11,23 @@ import useUpdateBranchPhoneNumber from "hooks/useUpdateBranchPhoneNumber";
 import { useAtomValue } from "jotai/utils";
 import { useState } from "react";
 import { useToasts } from "react-toast-notifications";
+import useActive from "hooks/useActive";
 
 const BranchInformation = () => {
-  const pageData = useAtomValue(currentBranchStore);
+  const pageData = useAtomValue(currentBranch);
   const { addToast } = useToasts();
 
-  const [isActiveEdit, setIsActiveEdit] = useState<boolean>(true);
   const [newImageBranch, setNewImageBranch] = useState<File>();
 
-  const [isActiveImageModal, setIsActiveImageModal] = useState<boolean>(false);
-
-  const [isActiveLocationModal, setIsActiveLocationModal] =
-    useState<boolean>(false);
+  const editActive = useActive();
+  const modalUploadImage = useActive();
+  const modalLocation = useActive();
 
   const { requestStateDescription, onUpdateDescription } =
     useUpdateBranchDescription();
 
   const { requestStatePhoneNumber, onUpdatePhoneNumber } =
     useUpdateBranchPhoneNumber();
-
-  const onClick = () => {
-    setIsActiveEdit(!isActiveEdit);
-  };
 
   const onClickImage = () => {
     const inputFile = document.createElement<"input">("input");
@@ -47,21 +42,10 @@ const BranchInformation = () => {
         addToast("Seleccione una imagen correcta", { appearance: "warning" });
         return;
       }
+
       setNewImageBranch(files[0]);
-      setIsActiveImageModal(true);
+      modalUploadImage.toggleActive();
     });
-  };
-
-  const onCloseImageModal = () => {
-    setIsActiveImageModal(false);
-  };
-
-  const onClickModalLocation = () => {
-    setIsActiveLocationModal(true);
-  };
-
-  const onCloseLocationModal = () => {
-    setIsActiveLocationModal(false);
   };
 
   return (
@@ -74,20 +58,24 @@ const BranchInformation = () => {
         }}
         onUpdate={onUpdateDescription}
         isLoading={requestStateDescription === "loading"}
-        onClick={onClick}
-        isActive={isActiveEdit}
+        onClick={editActive.toggleActive}
+        isActive={editActive.active}
       />
       <BranchDetailContent
         data={{ id: pageData?.branch._id, title: "Imagen de Perfil" }}
-        isActive={isActiveEdit}
+        isActive={editActive.active}
         onClickModalFile={onClickImage}
         isModal
         isFile
       />
       <BranchDetailContent
-        data={{ id: pageData?.branch._id, title: "Ubicación geofráfica" }}
-        isActive={isActiveEdit}
-        onClick={onClickModalLocation}
+        data={{
+          id: pageData?.branch._id,
+          title: "Ubicación geofráfica",
+          content: pageData?.branch.location.address,
+        }}
+        isActive={editActive.active}
+        onClick={modalLocation.toggleActive}
         isModal
       />
       <BranchDetailContent
@@ -98,19 +86,19 @@ const BranchInformation = () => {
         }}
         onUpdate={onUpdatePhoneNumber}
         isLoading={requestStatePhoneNumber === "loading"}
-        onClick={onClick}
-        isActive={isActiveEdit}
+        isActive={editActive.active}
+        onClick={editActive.toggleActive}
       />
 
-      {isActiveImageModal && (
+      {modalUploadImage.active && (
         <BranchOfficeImageUpdateModal
-          onClose={onCloseImageModal}
           image={newImageBranch}
+          onClose={modalUploadImage.toggleActive}
         />
       )}
 
-      {isActiveLocationModal && (
-        <BranchOfficeUpdateLocation onClose={onCloseLocationModal} />
+      {modalLocation.active && (
+        <BranchOfficeUpdateLocation onClose={modalLocation.toggleActive} />
       )}
     </S.Container>
   );

@@ -10,12 +10,12 @@ type BranchOfficeAtom = {
   requestState: RequestStateType;
 };
 
-export const branchOfficeStore = atom<BranchOfficeAtom>({
+export const branchOffice = atom<BranchOfficeAtom>({
   data: [],
   requestState: "loading",
 });
 
-branchOfficeStore.onMount = (setAtom) => {
+branchOffice.onMount = (setAtom) => {
   (async () => {
     const branchOffices = await GetAllBranchOffice.exec();
     setAtom({
@@ -27,7 +27,7 @@ branchOfficeStore.onMount = (setAtom) => {
 
 export const branchOfficeById = atom((get) => {
   const pageParams = useParams();
-  const branchStored = get(branchOfficeStore);
+  const branchStored = get(branchOffice);
 
   return branchStored.data.find((v) => v._id === pageParams?.id);
 });

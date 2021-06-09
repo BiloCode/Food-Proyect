@@ -1,5 +1,6 @@
-import { BLACK, NORMAL_WHITE, FONT, NORMAL_GRAY } from "config/styles";
 import styled from "styled-components";
+
+import { BLACK, NORMAL_WHITE, FONT, BLACK_LIGHT } from "config/styles";
 
 export const Container = styled.p`
   margin: 0;
@@ -13,7 +14,7 @@ export const Container = styled.p`
   }
 
   &.gray {
-    color: ${NORMAL_GRAY};
+    color: ${BLACK_LIGHT};
   }
 
   &.semi_bold {

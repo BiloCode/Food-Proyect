@@ -8,14 +8,14 @@ import SearchBar from "components/molecules/SearchBar";
 import ClientsSelectPagination from "../ClientsSelectPagination";
 
 import { useAtomValue } from "jotai/utils";
-import { clientStore } from "store/clientStore";
+import { clients } from "store/clients";
 
 import { CLIENTS_LIST_TABLE_ROWS } from "config/constants";
 import { useAtom } from "jotai";
 import { currentPageInClient } from "store/currentPageInClient";
 
 const ClientsListContainer = () => {
-  const client = useAtomValue(clientStore);
+  const client = useAtomValue(clients);
 
   const [clientsFilter, setClientsFilter] = useState<ClientModelType[]>([]);
   const [currentPage, setCurrentPage] = useAtom(currentPageInClient);

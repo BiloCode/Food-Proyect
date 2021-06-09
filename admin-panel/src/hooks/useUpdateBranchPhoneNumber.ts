@@ -1,6 +1,6 @@
 import UpdateBranchPhoneNumber from "application/core/UpdateBranchPhoneNumber";
 import { RequestStateType } from "application/types/RequestStateType";
-import { currentBranchStore } from "store/currentBranchStore";
+import { currentBranch as currentBranchStore } from "store/currentBranch";
 
 import { useAtom } from "jotai";
 import { useState } from "react";

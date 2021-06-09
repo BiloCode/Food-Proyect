@@ -24,7 +24,8 @@ const branchOfficeConverter = {
       data.permisions,
       data.phoneNumber,
       data.puntuactions,
-      data.userPuntuactionsId
+      data.userPuntuactionsId,
+      data.createdAt
     );
   },
 };

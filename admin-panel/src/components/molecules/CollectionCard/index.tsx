@@ -7,6 +7,7 @@ import Spinner from "components/atoms/Spinner";
 
 type CollectionColorType = "yellow" | "red";
 type CollectionCardProps = {
+  onClick(): void;
   icon: IconType;
   isLoading: boolean;
   collectionName: string;
@@ -18,8 +19,10 @@ const CollectionCard = ({
   color,
   isLoading,
   collectionName,
+  onClick,
 }: CollectionCardProps) => (
   <S.MainContainer
+    onClick={onClick}
     className={classNames({ red: color === "red", yellow: color === "yellow" })}
   >
     {isLoading && (

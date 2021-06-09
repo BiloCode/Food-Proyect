@@ -11,12 +11,16 @@ import PageWithSidebarBox from "components/templates/PageWithSidebarBox";
 import useFoodPageInit from "hooks/useFoodPageInit";
 
 const Foods = (_: RouteComponentProps) => {
-  const { createModal, foodFilter, onSearchByName } = useFoodPageInit();
+  const { createModal, foodFilter, onSearchByName, foodStored } =
+    useFoodPageInit();
 
   return (
     <PageWithSidebarBox>
       <PageLimiterContainer>
-        <HeaderTitle title="Nuestros Comestibles" />
+        <HeaderTitle
+          title="Nuestros Comestibles"
+          subtitleMessage={`${foodStored} comidas registradas.`}
+        />
         <S.ContainerContent>
           <FoodActions
             onChangeSearch={onSearchByName}

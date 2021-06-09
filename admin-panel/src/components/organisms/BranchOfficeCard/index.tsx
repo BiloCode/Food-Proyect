@@ -32,7 +32,7 @@ const BranchOfficeCard = ({
       <S.BranchOfficeDataContainer>
         <S.DataContainer>
           <S.TextContainer>
-            <Title size="small">{name}</Title>
+            <Title size="small-medium">{name}</Title>
             <S.Description>{description}</S.Description>
           </S.TextContainer>
           <S.StarsContainer>
@@ -47,7 +47,6 @@ const BranchOfficeCard = ({
           onClick={onClick}
           text="Ver Detalles"
           styles={{
-            size: "small",
             color: "blue",
           }}
         />

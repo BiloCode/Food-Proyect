@@ -3,7 +3,7 @@ import { RequestStateType } from "application/types/RequestStateType";
 import { useAtom } from "jotai";
 import { FormEvent, useRef, useState } from "react";
 import { useToasts } from "react-toast-notifications";
-import { currentBranchStore } from "store/currentBranchStore";
+import { currentBranch as currentBranchStore } from "store/currentBranch";
 
 const useUpdateBranchLocation = () => {
   const [currentBranch, setCurrentBranch] = useAtom(currentBranchStore);

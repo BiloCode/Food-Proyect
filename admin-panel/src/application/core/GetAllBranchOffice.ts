@@ -33,6 +33,7 @@ class GetAllBranchOffice {
           bannerImage: data.bannerImage,
           puntuactions: data.puntuactions,
           userPuntuactionsId: data.userPuntuactionsId,
+          createdAt: data.createdAt,
         });
       });
 

@@ -2,7 +2,7 @@ import { useToasts } from "react-toast-notifications";
 
 import { useAtomValue, useResetAtom, useUpdateAtom } from "jotai/utils";
 import { activeMode, deleteMode } from "store/foodDeleteMode";
-import { deleteGroupById, foodStore } from "store/foodStore";
+import { deleteGroupById, foods as foodStore } from "store/foods";
 import { activeScreenLoader, screenLoader } from "store/screenLoader";
 
 import DeleteImage from "application/core/DeleteImage";

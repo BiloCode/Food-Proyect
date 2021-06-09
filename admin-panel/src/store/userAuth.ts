@@ -3,13 +3,14 @@ import firebase from "firebase";
 
 import { AdminModelType } from "application/types/AdminModelType";
 import { RequestStateType } from "application/types/RequestStateType";
+import { atomWithReset } from "jotai/utils";
 
 type UserAtomType = {
   user: AdminModelType;
   requestState: RequestStateType;
 };
 
-export const userAuth = atom<UserAtomType>({
+export const userAuth = atomWithReset<UserAtomType>({
   user: null,
   requestState: "initialize",
 });
@@ -17,7 +18,7 @@ export const userAuth = atom<UserAtomType>({
 userAuth.onMount = (setAtom) => {
   setAtom((data) => ({ ...data, requestState: "loading" }));
 
-  const firebaseAuthState = firebase.auth().onAuthStateChanged((user) => {
+  firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       setAtom(() => ({
         requestState: "complete",
@@ -30,16 +31,6 @@ userAuth.onMount = (setAtom) => {
       return;
     }
 
-    setAtom((data) => ({ ...data, requestState: "complete" }));
+    setAtom(() => ({ user: null, requestState: "complete" }));
   });
-
-  return () => firebaseAuthState();
 };
-
-//Selectors
-export const resetUserAuth = atom(null, (_, set) => {
-  set(userAuth, {
-    user: null,
-    requestState: "complete",
-  });
-});

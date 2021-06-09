@@ -10,12 +10,12 @@ type ClientAtom = {
   requestState: RequestStateType;
 };
 
-export const clientStore = atom<ClientAtom>({
+export const clients = atom<ClientAtom>({
   data: [],
   requestState: "loading",
 });
 
-clientStore.onMount = (setAtom) => {
+clients.onMount = (setAtom) => {
   (async () => {
     const clients = await GetAllClient.exec();
     setAtom({
