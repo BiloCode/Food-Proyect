@@ -19,6 +19,7 @@ class UpdateBranchImage {
       await branchOfficeRef.update({
         bannerImage: params.image,
       });
+
       return true;
     } catch (error) {
       console.log(error);

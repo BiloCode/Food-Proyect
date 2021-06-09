@@ -23,32 +23,3 @@ export const ButtonContainer = styled.div`
     grid-template-columns: repeat(2, ${buttonSize});
   }
 `;
-
-export const ButtonFile = styled.div`
-  position: relative;
-`;
-
-export const LabelFile = styled.label`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  opacity: 1;
-  height: 31px;
-
-  cursor: pointer;
-`;
-
-export const InputFile = styled.input`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  opacity: 1;
-  height: 31px;
-
-  display: none;
-  cursor: pointer;
-`;

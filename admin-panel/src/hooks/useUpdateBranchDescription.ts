@@ -29,7 +29,8 @@ const useUpdateBranchDescription = () => {
     }
 
     addToast("Descripción actualizada", { appearance: "success" });
-    const newCurrentBrach = currentBranch;
+
+    const newCurrentBrach = { ...currentBranch };
 
     newCurrentBrach.branch.description = description;
 

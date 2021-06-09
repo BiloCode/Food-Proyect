@@ -20,7 +20,7 @@ const BranchOfficeImageUpdateModal = ({
   image,
   onClose,
 }: BranchOfficeImageUpdateModalProps) => {
-  const { updateImage, loadingPercentaje, isLoading, setIsLoading } =
+  const { updateImage, loadingPercentaje, setRequestState, requestState } =
     useUpdateBranchImage();
 
   const onClickUpdateImage = () => {
@@ -28,18 +28,18 @@ const BranchOfficeImageUpdateModal = ({
   };
 
   useMemo(() => {
-    if (isLoading === "complete") {
+    if (requestState === "complete") {
       onClose();
-      setIsLoading("initialize");
+      setRequestState("initialize");
     }
-  }, [isLoading]);
+  }, [requestState]);
 
   return (
     <Portals>
       <DarkScreen>
         <S.Container>
           <S.ModalContainer>
-            <Title size="default">Cambiar de imagen</Title>
+            <Title>Cambiar de imagen</Title>
 
             <S.ImageDataContainer>
               <S.ImageName>
@@ -59,7 +59,7 @@ const BranchOfficeImageUpdateModal = ({
                 onClick={onClickUpdateImage}
                 text="Actualizar Imagen"
                 styles={{ color: "blue", size: "medium" }}
-                isLoading={isLoading === "loading"}
+                isLoading={requestState === "loading"}
               />
               <Button
                 type="button"

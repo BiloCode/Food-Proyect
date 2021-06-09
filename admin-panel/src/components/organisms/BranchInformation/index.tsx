@@ -20,8 +20,9 @@ const BranchInformation = () => {
   const [newImageBranch, setNewImageBranch] = useState<File>();
 
   const editActive = useActive();
-  const modalUploadImage = useActive();
-  const modalLocation = useActive();
+  const [isActiveImageModal, setIsActiveImageModal] = useState<boolean>(false);
+  const [isActiveLocationModal, setIsActiveLocationModal] =
+    useState<boolean>(false);
 
   const { requestStateDescription, onUpdateDescription } =
     useUpdateBranchDescription();
@@ -44,8 +45,20 @@ const BranchInformation = () => {
       }
 
       setNewImageBranch(files[0]);
-      modalUploadImage.toggleActive();
+      setIsActiveImageModal(true);
     });
+  };
+
+  const onClickLocation = () => {
+    setIsActiveLocationModal(true);
+  };
+
+  const onCloseImageModal = () => {
+    setIsActiveImageModal(false);
+  };
+
+  const onCloseLocationModal = () => {
+    setIsActiveLocationModal(false);
   };
 
   return (
@@ -64,18 +77,16 @@ const BranchInformation = () => {
       <BranchDetailContent
         data={{ id: pageData?.branch._id, title: "Imagen de Perfil" }}
         isActive={editActive.active}
-        onClickModalFile={onClickImage}
+        onClick={onClickImage}
         isModal
-        isFile
       />
       <BranchDetailContent
         data={{
           id: pageData?.branch._id,
           title: "Ubicación geofráfica",
-          content: pageData?.branch.location.address,
         }}
         isActive={editActive.active}
-        onClick={modalLocation.toggleActive}
+        onClick={onClickLocation}
         isModal
       />
       <BranchDetailContent
@@ -90,15 +101,15 @@ const BranchInformation = () => {
         onClick={editActive.toggleActive}
       />
 
-      {modalUploadImage.active && (
+      {isActiveImageModal && (
         <BranchOfficeImageUpdateModal
           image={newImageBranch}
-          onClose={modalUploadImage.toggleActive}
+          onClose={onCloseImageModal}
         />
       )}
 
-      {modalLocation.active && (
-        <BranchOfficeUpdateLocation onClose={modalLocation.toggleActive} />
+      {isActiveLocationModal && (
+        <BranchOfficeUpdateLocation onClose={onCloseLocationModal} />
       )}
     </S.Container>
   );

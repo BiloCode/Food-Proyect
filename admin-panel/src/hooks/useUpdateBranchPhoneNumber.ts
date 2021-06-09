@@ -18,8 +18,6 @@ const useUpdateBranchPhoneNumber = () => {
 
     const updateService = new UpdateBranchPhoneNumber();
 
-    console.log(id, phoneNumber);
-
     const update = await updateService.__invoke({
       id: id,
       phoneNumber: phoneNumber,
@@ -32,7 +30,7 @@ const useUpdateBranchPhoneNumber = () => {
 
     addToast("Numero actualizado", { appearance: "success" });
 
-    const newCurrentBrach = currentBranch;
+    const newCurrentBrach = { ...currentBranch };
 
     newCurrentBrach.branch.phoneNumber = phoneNumber;
 

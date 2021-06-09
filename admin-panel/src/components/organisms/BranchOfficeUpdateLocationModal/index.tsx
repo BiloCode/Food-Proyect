@@ -13,7 +13,7 @@ import { useToasts } from "react-toast-notifications";
 import { IoIosClose } from "react-icons/io";
 
 type BranchOfficeUpdateLocationModalProps = {
-  onClose?(): void;
+  onClose(): void;
 };
 
 const BranchOfficeUpdateLocationModal = ({
@@ -39,7 +39,7 @@ const BranchOfficeUpdateLocationModal = ({
               <Icon type={IoIosClose} size="big" />
             </S.IconClose>
             <S.TittleContainer>
-              <Title size="default">ACTUALIZAR UBICACION</Title>
+              <Title>ACTUALIZAR UBICACION</Title>
               {!isActiveManually && (
                 <Description color="black" size="small" bold="semi-bold">
                   Elige una de las 2 formas para actualizar la informacion

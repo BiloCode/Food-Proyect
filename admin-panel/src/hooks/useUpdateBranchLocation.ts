@@ -14,7 +14,7 @@ const useUpdateBranchLocation = () => {
   const longitudeRef = useRef<HTMLInputElement>(null);
 
   const [requestStateAddress, setRequestStateAddress] =
-    useState<RequestStateType>();
+    useState<RequestStateType>("initialize");
 
   const onUpdateAddress = async (ev: FormEvent) => {
     ev.preventDefault();
@@ -35,12 +35,12 @@ const useUpdateBranchLocation = () => {
 
     if (!update) {
       addToast("Error en la actualizacion", { appearance: "error" });
-      setRequestStateAddress("complete");
+      setRequestStateAddress("error");
     }
 
     addToast("Localizacion actualizada", { appearance: "success" });
 
-    const newCurrentBrach = currentBranch;
+    const newCurrentBrach = { ...currentBranch };
 
     newCurrentBrach.branch.location = {
       address,
@@ -61,6 +61,7 @@ const useUpdateBranchLocation = () => {
     longitudeRef,
     onUpdateAddress,
     requestStateAddress,
+    setRequestStateAddress,
   };
 };
 

@@ -16,10 +16,8 @@ type BranchDetailContentProps = {
     content?: string;
   };
   isModal?: boolean;
-  isFile?: boolean;
   isLoading?: boolean;
   isActive: boolean;
-  onClickModalFile?(): void;
   onUpdate?(id: string, value: string): void;
   onClick?(): void;
 };
@@ -29,8 +27,6 @@ const BranchDetailContent: FC<BranchDetailContentProps> = ({
   isLoading,
   isActive,
   isModal,
-  isFile,
-  onClickModalFile,
   onClick,
   onUpdate,
 }) => {
@@ -45,14 +41,8 @@ const BranchDetailContent: FC<BranchDetailContentProps> = ({
   const toggleActive = () => {
     if (!isModal) {
       setActiveInput((active) => !active);
-      onClick();
     }
-
-    if (isModal && !isFile) {
-      onClick();
-    }
-
-    if (isFile) onClickModalFile();
+    onClick();
   };
 
   const onClickSave = () => {
@@ -69,13 +59,7 @@ const BranchDetailContent: FC<BranchDetailContentProps> = ({
             double_button: activeInput,
           })}
         >
-          {!isActive && (
-            <S.ButtonFile>
-              <S.LabelFile>
-                <ButtonRounded onClick={toggleActive} text="Editar" />
-              </S.LabelFile>
-            </S.ButtonFile>
-          )}
+          {!isActive && <ButtonRounded onClick={toggleActive} text="Editar" />}
           {activeInput && (
             <>
               <ButtonRounded
