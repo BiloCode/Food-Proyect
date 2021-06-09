@@ -2,13 +2,15 @@ import firebase from "firebase";
 
 import { FirebaseCollectionNames } from "config/constants";
 
-type UpdateBranchDescriptionParams = {
+type UpdateBranchLocationParams = {
   id: string;
   address: string;
+  latitude: number;
+  longitude: number;
 };
 
-class UpdateBranchDescription {
-  public async __invoke(params: UpdateBranchDescriptionParams) {
+class UpdateBranchLocation {
+  public async __invoke(params: UpdateBranchLocationParams) {
     const firestore = firebase.firestore();
     const branchOfficeRef = firestore
       .collection(FirebaseCollectionNames.branchOffice)
@@ -16,7 +18,11 @@ class UpdateBranchDescription {
 
     try {
       await branchOfficeRef.update({
-        "location.address": params.address,
+        location: {
+          address: params.address,
+          latitude: params.latitude,
+          longitude: params.longitude,
+        },
       });
       return true;
     } catch (error) {
@@ -26,4 +32,4 @@ class UpdateBranchDescription {
   }
 }
 
-export default UpdateBranchDescription;
+export default UpdateBranchLocation;

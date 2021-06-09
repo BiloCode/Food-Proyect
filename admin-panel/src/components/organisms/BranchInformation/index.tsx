@@ -3,25 +3,29 @@ import * as S from "./styles";
 import BranchDetailContent from "components/molecules/BranchDetailContent";
 import { currentBranchStore } from "store/currentBranchStore";
 import useUpdateBranchDescription from "hooks/useUpdateBranchDescription";
-import useUpdateBranchAddress from "hooks/useUpdateBranchAddress";
+import BranchOfficeImageUpdateModal from "components/organisms/BranchOfficeImageUpdateModal";
+import FilesCheckingIsImage from "application/utils/FileCheckingIsImage";
+import BranchOfficeUpdateLocation from "../BranchOfficeUpdateLocationModal";
+import useUpdateBranchPhoneNumber from "hooks/useUpdateBranchPhoneNumber";
 
 import { useAtomValue } from "jotai/utils";
-import useUpdateBranchPhoneNumber from "hooks/useUpdateBranchPhoneNumber";
-import { ChangeEvent, ChangeEventHandler, useState } from "react";
-import BranchOfficeImageUpdateModal from "../BranchOfficeImageUpdateModal";
-import FilesCheckingIsImage from "application/utils/FileCheckingIsImage";
+import { useState } from "react";
+import { useToasts } from "react-toast-notifications";
 
 const BranchInformation = () => {
   const pageData = useAtomValue(currentBranchStore);
+  const { addToast } = useToasts();
+
   const [isActiveEdit, setIsActiveEdit] = useState<boolean>(true);
   const [newImageBranch, setNewImageBranch] = useState<File>();
 
   const [isActiveImageModal, setIsActiveImageModal] = useState<boolean>(false);
 
+  const [isActiveLocationModal, setIsActiveLocationModal] =
+    useState<boolean>(false);
+
   const { requestStateDescription, onUpdateDescription } =
     useUpdateBranchDescription();
-
-  const { requestStateAddress, onUpdateAddress } = useUpdateBranchAddress();
 
   const { requestStatePhoneNumber, onUpdatePhoneNumber } =
     useUpdateBranchPhoneNumber();
@@ -30,25 +34,34 @@ const BranchInformation = () => {
     setIsActiveEdit(!isActiveEdit);
   };
 
-  /* const onClickImage = () => {
-    setIsActiveImageModal(true);
-  }; */
+  const onClickImage = () => {
+    const inputFile = document.createElement<"input">("input");
+    inputFile.setAttribute("type", "file");
+    inputFile.setAttribute("accept", "image/*");
+    inputFile.click();
+
+    inputFile.addEventListener("change", (ev) => {
+      const files = (ev.currentTarget as HTMLInputElement).files;
+      const imagesUploaded = FilesCheckingIsImage.check(files);
+      if (imagesUploaded.length !== 1) {
+        addToast("Seleccione una imagen correcta", { appearance: "warning" });
+        return;
+      }
+      setNewImageBranch(files[0]);
+      setIsActiveImageModal(true);
+    });
+  };
 
   const onCloseImageModal = () => {
     setIsActiveImageModal(false);
   };
 
-  const onChangeImage: ChangeEventHandler<HTMLInputElement> = (
-    v: ChangeEvent<HTMLInputElement>
-  ) => {
-    const files = v.target.files;
-    const imagesUploaded = FilesCheckingIsImage.check(files);
-    if (imagesUploaded.length !== 1) {
-      alert("Seleccione una imagen valida");
-      return;
-    }
-    setNewImageBranch(files[0]);
-    setIsActiveImageModal(true);
+  const onClickModalLocation = () => {
+    setIsActiveLocationModal(true);
+  };
+
+  const onCloseLocationModal = () => {
+    setIsActiveLocationModal(false);
   };
 
   return (
@@ -66,18 +79,16 @@ const BranchInformation = () => {
       />
       <BranchDetailContent
         data={{ id: pageData?.branch._id, title: "Imagen de Perfil" }}
-        isLoading={requestStateDescription === "loading"}
         isActive={isActiveEdit}
-        onChangeImage={onChangeImage}
+        onClickModalFile={onClickImage}
         isModal
         isFile
       />
       <BranchDetailContent
         data={{ id: pageData?.branch._id, title: "Ubicación geofráfica" }}
-        onUpdate={onUpdateAddress}
-        isLoading={requestStateAddress === "loading"}
-        onClick={onClick}
         isActive={isActiveEdit}
+        onClick={onClickModalLocation}
+        isModal
       />
       <BranchDetailContent
         data={{
@@ -96,6 +107,10 @@ const BranchInformation = () => {
           onClose={onCloseImageModal}
           image={newImageBranch}
         />
+      )}
+
+      {isActiveLocationModal && (
+        <BranchOfficeUpdateLocation onClose={onCloseLocationModal} />
       )}
     </S.Container>
   );

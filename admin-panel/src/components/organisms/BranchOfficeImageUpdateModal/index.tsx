@@ -11,7 +11,7 @@ import Description from "components/atoms/Description";
 import useUpdateBranchImage from "hooks/useUpdateBranchImage";
 import { useMemo } from "react";
 
-type BranchOfficeImageUpdateModal = {
+type BranchOfficeImageUpdateModalProps = {
   image: File;
   onClose(): void;
 };
@@ -19,7 +19,7 @@ type BranchOfficeImageUpdateModal = {
 const BranchOfficeImageUpdateModal = ({
   image,
   onClose,
-}: BranchOfficeImageUpdateModal) => {
+}: BranchOfficeImageUpdateModalProps) => {
   const { updateImage, loadingPercentaje, isLoading, setIsLoading } =
     useUpdateBranchImage();
 

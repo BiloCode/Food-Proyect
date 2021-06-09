@@ -2,10 +2,12 @@ import UpdateBranchDescription from "application/core/UpdateBranchDescription";
 import { RequestStateType } from "application/types/RequestStateType";
 import { useAtom } from "jotai";
 import { useState } from "react";
+import { useToasts } from "react-toast-notifications";
 import { currentBranchStore } from "store/currentBranchStore";
 
 const useUpdateBranchDescription = () => {
   const [currentBranch, setCurrentBranch] = useAtom(currentBranchStore);
+  const { addToast } = useToasts();
 
   const [requestStateDescription, setRequestStateDescription] =
     useState<RequestStateType>();
@@ -22,8 +24,10 @@ const useUpdateBranchDescription = () => {
 
     if (!update) {
       setRequestStateDescription("complete");
+      addToast("Error en actualizacion ", { appearance: "error" });
     }
 
+    addToast("Descripción actualizada", { appearance: "success" });
     const newCurrentBrach = currentBranch;
 
     newCurrentBrach.branch.description = description;

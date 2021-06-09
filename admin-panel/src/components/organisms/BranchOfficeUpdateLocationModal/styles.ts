@@ -11,6 +11,7 @@ export const Container = styled.div`
 `;
 
 export const ModalContainer = styled.div`
+  position: relative;
   width: 600px;
   background-color: ${NORMAL_WHITE};
   padding: 3em 4em;
@@ -20,25 +21,21 @@ export const ModalContainer = styled.div`
   row-gap: 2em;
 `;
 
+export const TittleContainer = styled.div`
+  display: grid;
+  row-gap: 0.5em;
+`;
+
 export const ButtonsContainer = styled.div`
   display: grid;
   row-gap: 0.5em;
 `;
 
-export const ImageDataContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr min-content;
-  column-gap: 1em;
-`;
-
-export const ImageName = styled.div`
-  display: grid;
-  grid-template-columns: min-content 1fr;
-  column-gap: 0.5em;
-
-  & p {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
+export const IconClose = styled.div`
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  right: 0;
+  margin-top: 0.5em;
+  margin-right: 0.5em;
 `;
