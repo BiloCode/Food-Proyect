@@ -5,9 +5,11 @@ import { currentBranchStore } from "store/currentBranchStore";
 import { useAtom } from "jotai";
 import { useState } from "react";
 import { RequestStateType } from "application/types/RequestStateType";
+import { useToasts } from "react-toast-notifications";
 
 const useUpdateBranchImage = () => {
   const [currentBranch, setCurrentBranch] = useAtom(currentBranchStore);
+  const { addToast } = useToasts();
 
   const [isLoading, setIsLoading] = useState<RequestStateType>("initialize");
   const [loadingPercentaje, setLoadingPercentaje] = useState<number>(0);
@@ -30,7 +32,9 @@ const useUpdateBranchImage = () => {
 
     if (!newImage) {
       setIsLoading("error");
-      alert("No se cargo correctamente la imagen");
+      addToast("La imagen no se actualizo correctamente", {
+        appearance: "error",
+      });
       return;
     }
 
@@ -43,9 +47,13 @@ const useUpdateBranchImage = () => {
 
     if (!updateCurrentBranch) {
       setIsLoading("error");
-      alert("Algo salio mal");
+      addToast("La imagen no se actualizo correctamente", {
+        appearance: "error",
+      });
       return;
     }
+
+    addToast("Imagen actualizada", { appearance: "success" });
 
     const newCurrentBrach = currentBranch;
 

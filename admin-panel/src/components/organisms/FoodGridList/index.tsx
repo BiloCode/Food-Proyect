@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo } from "react";
 import * as S from "./styles";
 
 import FoodCard from "components/molecules/FoodCard";

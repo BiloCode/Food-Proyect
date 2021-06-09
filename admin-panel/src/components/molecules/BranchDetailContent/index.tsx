@@ -7,7 +7,7 @@ import Input from "components/atoms/Input";
 import classNames from "classnames";
 import Spinner from "components/atoms/Spinner";
 
-import { ChangeEvent, ChangeEventHandler, FC, useRef, useState } from "react";
+import { FC, useRef, useState } from "react";
 
 type BranchDetailContentProps = {
   data: {
@@ -19,7 +19,7 @@ type BranchDetailContentProps = {
   isFile?: boolean;
   isLoading?: boolean;
   isActive: boolean;
-  onChangeImage?(v: ChangeEvent<HTMLInputElement>);
+  onClickModalFile?(): void;
   onUpdate?(id: string, value: string): void;
   onClick?(): void;
 };
@@ -30,15 +30,13 @@ const BranchDetailContent: FC<BranchDetailContentProps> = ({
   isActive,
   isModal,
   isFile,
-  onChangeImage,
+  onClickModalFile,
   onClick,
   onUpdate,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [activeInput, setActiveInput] = useState<boolean>(false);
-
-  const inputFileRef = useRef<HTMLInputElement>(null);
 
   const onClickUpdate = () => {
     onUpdate(data.id, inputRef.current.value);
@@ -50,7 +48,11 @@ const BranchDetailContent: FC<BranchDetailContentProps> = ({
       onClick();
     }
 
-    if (isFile) inputFileRef.current.click();
+    if (isModal && !isFile) {
+      onClick();
+    }
+
+    if (isFile) onClickModalFile();
   };
 
   const onClickSave = () => {
@@ -61,7 +63,7 @@ const BranchDetailContent: FC<BranchDetailContentProps> = ({
   return (
     <S.Container>
       <S.Head>
-        <Title size="default">{data.title}</Title>
+        <Title size="small-medium">{data.title}</Title>
         <S.ButtonContainer
           className={classNames({
             double_button: activeInput,
@@ -71,15 +73,6 @@ const BranchDetailContent: FC<BranchDetailContentProps> = ({
             <S.ButtonFile>
               <S.LabelFile>
                 <ButtonRounded onClick={toggleActive} text="Editar" />
-                {isFile && (
-                  <S.InputFile
-                    ref={inputFileRef}
-                    onChange={onChangeImage}
-                    type="file"
-                    accept="image/*"
-                    id="upload-image"
-                  />
-                )}
               </S.LabelFile>
             </S.ButtonFile>
           )}

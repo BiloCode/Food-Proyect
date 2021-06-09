@@ -17,7 +17,7 @@ export const Container = styled.p`
   }
 
   &.semi_bold {
-    font-weight: 400;
+    font-weight: 500;
   }
 
   &.uppercase {
