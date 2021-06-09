@@ -31,3 +31,10 @@ export const addNewFood = atom(null, (_, set, new_food: FoodModelType) => {
     data: [...food.data, new_food],
   }));
 });
+
+export const deleteGroupById = atom(null, (_, set, ids: string[]) => {
+  set(foodStore, (food) => ({
+    ...food,
+    data: [...food.data].filter((v) => !ids.includes(v._id)),
+  }));
+});

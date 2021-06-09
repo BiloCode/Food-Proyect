@@ -1,11 +1,12 @@
 import { atom } from "jotai";
+import { atomWithReset } from "jotai/utils";
 
 type DeleteAtom = {
   state: boolean;
   ids: string[];
 };
 
-export const deleteMode = atom<DeleteAtom>({
+export const deleteMode = atomWithReset<DeleteAtom>({
   ids: [],
   state: false,
 });
@@ -21,6 +22,13 @@ export const addNewIdSelect = atom(null, (get, set, _id: string) => {
   set(deleteMode, (delete_mode) => ({
     ...delete_mode,
     ids: newIds,
+  }));
+});
+
+export const activeMode = atom(null, (_, set) => {
+  set(deleteMode, (delete_mode) => ({
+    ...delete_mode,
+    state: true,
   }));
 });
 

@@ -1,9 +1,12 @@
+import { FirebaseCollectionNames } from "config/constants";
 import firebase from "firebase";
 
 class FoodDeleteById {
   public exec = async (_id: string) => {
     const firestore = firebase.firestore();
-    const document = firestore.doc(_id);
+    const document = firestore
+      .collection(FirebaseCollectionNames.food)
+      .doc(_id);
 
     try {
       await document.delete();

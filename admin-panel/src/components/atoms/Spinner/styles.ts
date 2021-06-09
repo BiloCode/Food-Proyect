@@ -26,6 +26,11 @@ export const SpinnerElement = styled.div`
     --border-width: 6px;
   }
 
+  &.extra_big {
+    --size: 64px;
+    --border-width: 6px;
+  }
+
   &.blue {
     border-color: rgb(245, 245, 245);
     border-left-color: ${DARK_BLUE};

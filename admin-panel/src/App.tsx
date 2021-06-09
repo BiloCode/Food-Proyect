@@ -3,8 +3,9 @@ import "config/firebase_init";
 import { Provider } from "jotai";
 import { ToastProvider } from "react-toast-notifications";
 
-import RouterApplication from "router";
 import GlobalStyles from "styles";
+import RouterApplication from "router";
+import FullScreenLoader from "components/molecules/FullScreenLoader";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <ToastProvider autoDismiss autoDismissTimeout={4000}>
         <Provider>
           <RouterApplication />
+          <FullScreenLoader />
         </Provider>
       </ToastProvider>
       <GlobalStyles />

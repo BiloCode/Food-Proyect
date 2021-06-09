@@ -7,5 +7,5 @@ export const DarkScreenContainer = styled.div`
   top: 0;
   left: 0;
   z-index: 10;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
 `;
