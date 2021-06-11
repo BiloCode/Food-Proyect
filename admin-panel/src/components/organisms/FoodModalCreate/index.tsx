@@ -25,6 +25,7 @@ const FoodModalCreate = ({ onClose }: ModalProps) => {
           <S.FormContainer onSubmit={onSubmitFile}>
             <FoodCreateImage
               onChange={onChangeFile}
+              changeEnabled={!file.isUploading}
               foodImage={file.uploadImage?.localURL}
             />
             <S.FormControlContainer>
