@@ -16,18 +16,34 @@ export type PuntuactionType = {
   };
 };
 
+export type MenuType = {
+  _id: string;
+  description: string;
+  food: {
+    _id: string;
+    name: string;
+    price: number;
+    image: string;
+  };
+};
+
+export type PermisionsType = {
+  _id: string;
+  name: string;
+};
+
 export type BranchOfficeModelType = {
   _id: string;
-  menu: any[];
   name: string;
   stars: number;
+  menu: MenuType[];
+  foodType: FoodType;
   description: string;
   phoneNumber: string;
-  bannerImage: FirebaseImageType;
-  foodType: FoodType;
-  location: FirebaseLocationType;
+  permisions: PermisionsType[];
   userPuntuactionsId: string[];
+  bannerImage: FirebaseImageType;
+  location: FirebaseLocationType;
   puntuactions: PuntuactionType[];
-  permisions: any[];
   createdAt: firebase.firestore.Timestamp;
 };
