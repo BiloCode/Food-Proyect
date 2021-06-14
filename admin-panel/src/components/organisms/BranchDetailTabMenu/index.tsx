@@ -7,7 +7,7 @@ import ContainerSticky from "components/atoms/ContainerSticky";
 
 import { PageTab } from "application/types/PageTabs";
 
-import BranchComments from "components/templates/BranchComments";
+import BranchComments from "components/organisms/BranchComments";
 import BranchOfficeTabOption from "components/atoms/BranchOfficeTabOption";
 import DropdownTab from "components/molecules/DropdownTab";
 
