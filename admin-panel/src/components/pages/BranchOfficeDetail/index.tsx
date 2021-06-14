@@ -1,13 +1,10 @@
 import { useEffect } from "react";
 import { RouteComponentProps, useParams } from "@reach/router";
-import * as S from "./styles";
 
-import Title from "components/atoms/Title";
-import Button from "components/atoms/Button";
-import Description from "components/atoms/Description";
 import BranchOfficeImage from "components/organisms/BranchOfficeImage";
 import PageWithSidebarBox from "components/templates/PageWithSidebarBox";
 import BranchDetailTabMenu from "components/organisms/BranchDetailTabMenu";
+import BranchOfficeDetailHeader from "components/molecules/BranchOfficeDetailHeader";
 
 import GetPageTabs from "application/utils/GetPageTabs";
 import DateFormatting from "application/utils/DateFormatting";
@@ -49,31 +46,25 @@ const BranchOfficeDetail = ({ navigate }: RouteComponentProps) => {
   return (
     <PageWithSidebarBox>
       {pageData.branch && (
-        <div>
+        <>
           <BranchOfficeImage
             onClickBack={backToList}
             stars={pageData.branch.stars}
             image={pageData.branch.bannerImage.url}
           />
-          <S.BranchTitleContainer>
-            <S.TitleContainer>
-              <Title>{pageData.branch.name}</Title>
-              <Description size="small">
-                {`Creado el ${DateFormatting.applyFormat(
+          <BranchDetailTabMenu
+            tabs={GetPageTabs(CreateFood, RemoveFood)}
+            topRender={() => (
+              <BranchOfficeDetailHeader
+                title={pageData.branch.name}
+                onClickButton={deleteBranchOffice}
+                subtitle={`Creado el ${DateFormatting.applyFormat(
                   pageData.branch.createdAt.toDate()
                 )}`}
-              </Description>
-            </S.TitleContainer>
-            <S.ButtonContainer>
-              <Button
-                text="Eliminar Sucursal"
-                onClick={deleteBranchOffice}
-                styles={{ color: "red", size: "small" }}
               />
-            </S.ButtonContainer>
-          </S.BranchTitleContainer>
-          <BranchDetailTabMenu tabs={GetPageTabs(CreateFood, RemoveFood)} />
-        </div>
+            )}
+          />
+        </>
       )}
     </PageWithSidebarBox>
   );

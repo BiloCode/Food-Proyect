@@ -6,7 +6,7 @@ import Sidebar from "components/organisms/Sidebar";
 const PageWithSidebarBox: FC = ({ children }) => (
   <S.MainContainer>
     <Sidebar />
-    <>{children}</>
+    <S.ChildrenContainer>{children}</S.ChildrenContainer>
   </S.MainContainer>
 );
 

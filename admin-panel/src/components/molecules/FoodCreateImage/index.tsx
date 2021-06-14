@@ -9,34 +9,41 @@ import { BsImageFill } from "react-icons/bs";
 
 type ImageProps = {
   foodImage?: string;
+  changeEnabled: boolean;
   onChange(ev: ChangeEvent<HTMLInputElement>): void;
 };
 
-const FoodCreateImage = ({ foodImage, onChange }: ImageProps) => {
+const FoodCreateImage = ({
+  foodImage,
+  onChange,
+  changeEnabled,
+}: ImageProps) => {
   return (
     <S.ImageContainer>
       <Image imageCover src={foodImage} />
-      <S.FileLabel
-        htmlFor="file-custom"
-        className={classNames({ empty_image: !foodImage })}
-      >
-        <S.MessageContainer>
-          <Icon
-            type={BsImageFill}
-            size="small"
-            color={foodImage ? "white" : "gray"}
+      {changeEnabled && (
+        <S.FileLabel
+          htmlFor="file-custom"
+          className={classNames({ empty_image: !foodImage })}
+        >
+          <S.MessageContainer>
+            <Icon
+              type={BsImageFill}
+              size="small"
+              color={foodImage ? "white" : "gray"}
+            />
+            <S.Message className={classNames({ empty_image: !foodImage })}>
+              {!foodImage ? "Subir una imagen" : "Remplazar Imagen"}
+            </S.Message>
+          </S.MessageContainer>
+          <S.InputHide
+            required
+            type="file"
+            id="file-custom"
+            onChange={onChange}
           />
-          <S.Message className={classNames({ empty_image: !foodImage })}>
-            {!foodImage ? "Subir una imagen" : "Remplazar Imagen"}
-          </S.Message>
-        </S.MessageContainer>
-        <S.InputHide
-          required
-          type="file"
-          id="file-custom"
-          onChange={onChange}
-        />
-      </S.FileLabel>
+        </S.FileLabel>
+      )}
     </S.ImageContainer>
   );
 };

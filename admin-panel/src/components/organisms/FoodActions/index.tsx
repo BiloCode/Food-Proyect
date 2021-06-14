@@ -5,6 +5,7 @@ import SearchBar from "components/molecules/SearchBar";
 import HeaderDeleteMode from "components/molecules/HeaderDeleteMode";
 import DropdownFoodActions from "components/molecules/DropdownFoodActions";
 import useFoodActions from "hooks/useFoodActions";
+import ContainerSticky from "components/atoms/ContainerSticky";
 
 type FoodActionsProps = {
   onChangeSearch(ev: ChangeEvent<HTMLInputElement>): void;
@@ -16,28 +17,30 @@ const FoodActions = ({ onChangeSearch, onCreateToggle }: FoodActionsProps) => {
     useFoodActions();
 
   return (
-    <S.ActionsContainer>
-      {!deleteMode.state ? (
-        <>
-          <S.SearchBarContainer>
-            <SearchBar
-              onChange={onChangeSearch}
-              placeholder="Digite un nombre..."
+    <ContainerSticky>
+      <S.ActionsContainer>
+        {!deleteMode.state ? (
+          <>
+            <S.SearchBarContainer>
+              <SearchBar
+                onChange={onChangeSearch}
+                placeholder="Digite un nombre..."
+              />
+            </S.SearchBarContainer>
+            <DropdownFoodActions
+              onClickRemoveFood={onDeleteMode}
+              onClickFoodCreate={onCreateToggle}
             />
-          </S.SearchBarContainer>
-          <DropdownFoodActions
-            onClickRemoveFood={onDeleteMode}
-            onClickFoodCreate={onCreateToggle}
+          </>
+        ) : (
+          <HeaderDeleteMode
+            onSuccess={onClickDelete}
+            onCancel={offDeleteMode}
+            foodSelectNumber={deleteMode.ids.length}
           />
-        </>
-      ) : (
-        <HeaderDeleteMode
-          onSuccess={onClickDelete}
-          onCancel={offDeleteMode}
-          foodSelectNumber={deleteMode.ids.length}
-        />
-      )}
-    </S.ActionsContainer>
+        )}
+      </S.ActionsContainer>
+    </ContainerSticky>
   );
 };
 

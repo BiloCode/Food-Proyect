@@ -9,6 +9,8 @@ export const HOME_STATISTICS_ROW_WIDTH = "140px";
 
 export const ATOM_INPUT_HEIGHT = "40px";
 
+export const PADDDING_BRANCH_DETAIL_TABS = "2em 3em";
+
 /** -- COLORS -- **/
 
 export const BACKGROUND_LIGHT = "#F5F5F5";

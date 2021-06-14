@@ -9,10 +9,6 @@ export const ActionsContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 1.5em 1em;
-  background-color: #fff;
-  position: sticky;
-  top: 0;
-  z-index: 1;
 `;
 
 export const SearchBarContainer = styled.div`
