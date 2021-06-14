@@ -12,17 +12,21 @@ type FormControlProps = InputProps & {
 };
 
 const FormControl = forwardRef<HTMLInputElement, FormControlProps>(
-  ({ type, icon, labelText, defaultValue, maxLength }, ref) => (
+  (props, ref) => (
     <S.MainContainer>
       <S.LabelWithIcon>
-        <Icon type={icon} />
-        <Label>{labelText}</Label>
+        <Icon type={props.icon} />
+        <Label>{props.labelText}</Label>
       </S.LabelWithIcon>
       <Input
         ref={ref}
-        type={type}
-        defaultValue={defaultValue}
-        maxLength={maxLength}
+        id={props.id}
+        type={props.type}
+        maxLength={props.maxLength}
+        onFocus={props.onFocus}
+        onBlur={props.onBlur}
+        onChange={props.onChange}
+        defaultValue={props.defaultValue}
       />
     </S.MainContainer>
   )

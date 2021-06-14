@@ -4,7 +4,7 @@ import * as S from "./styles";
 import FoodActions from "components/organisms/FoodActions";
 import HeaderTitle from "components/molecules/HeaderTitle";
 import FoodGridList from "components/organisms/FoodGridList";
-import FoodModalCreate from "components/organisms/FoodModalCreate";
+import FoodModalCreate from "components/templates/FoodModalCreate";
 import PageLimiterContainer from "components/atoms/PageLimiterContainer";
 import PageWithSidebarBox from "components/templates/PageWithSidebarBox";
 

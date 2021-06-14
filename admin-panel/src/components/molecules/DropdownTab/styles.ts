@@ -1,21 +1,38 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import {
   BACKGROUND_LIGHT,
   BLACK_SUPER_LIGHT,
   NORMAL_WHITE,
 } from "config/styles";
 
+const slideDown = keyframes`
+  from {
+    opacity:0;
+    visibilty:hidden;
+    top: 90%;
+  }
+
+  to {
+    opacity:1;
+    visibilty:visible;
+    top: 100%;
+  }
+`;
+
 export const DropDownContainer = styled.div`
   position: absolute;
-  top: 100%;
   width: 100%;
   padding-top: 0.5em;
   display: flex;
   flex-direction: column;
   background-color: ${NORMAL_WHITE};
+  overflow: hidden;
   font-size: 14px;
   color: ${BLACK_SUPER_LIGHT};
   cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  animation: ${slideDown} 0.2s linear forwards;
 `;
 
 export const DropDownOption = styled.div`
@@ -28,6 +45,7 @@ export const DropDownOption = styled.div`
   column-gap: 1em;
   padding: 0 20px;
   box-sizing: border-box;
+  background-color: #fff;
 
   &:hover {
     background-color: ${BACKGROUND_LIGHT};

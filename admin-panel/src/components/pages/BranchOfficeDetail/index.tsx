@@ -1,5 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { RouteComponentProps, useParams } from "@reach/router";
+
+import useActive from "hooks/useActive";
 
 import BranchOfficeImage from "components/organisms/BranchOfficeImage";
 import PageWithSidebarBox from "components/templates/PageWithSidebarBox";
@@ -8,6 +10,7 @@ import BranchOfficeDetailHeader from "components/molecules/BranchOfficeDetailHea
 
 import GetPageTabs from "application/utils/GetPageTabs";
 import DateFormatting from "application/utils/DateFormatting";
+import MenuModalCreate from "components/templates/MenuModalCreate";
 
 import { useAtomValue, useUpdateAtom } from "jotai/utils";
 import { branchOffice } from "store/branchOffice";
@@ -15,6 +18,7 @@ import { currentBranch as currentBranchStore } from "store/currentBranch";
 
 const BranchOfficeDetail = ({ navigate }: RouteComponentProps) => {
   const { id } = useParams();
+  const { active, toggleActive } = useActive();
 
   const branchData = useAtomValue(branchOffice);
   const pageData = useAtomValue(currentBranchStore);
@@ -38,7 +42,7 @@ const BranchOfficeDetail = ({ navigate }: RouteComponentProps) => {
     };
   }, [branchData.requestState]);
 
-  const CreateFood = () => {};
+  const CreateFood = () => toggleActive();
   const RemoveFood = () => {};
 
   const deleteBranchOffice = () => {};
@@ -64,6 +68,7 @@ const BranchOfficeDetail = ({ navigate }: RouteComponentProps) => {
               />
             )}
           />
+          {active && <MenuModalCreate onClose={toggleActive} />}
         </>
       )}
     </PageWithSidebarBox>

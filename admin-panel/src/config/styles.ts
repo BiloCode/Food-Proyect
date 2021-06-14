@@ -8,6 +8,7 @@ export const HOME_SECTIONS_ROW_GAP = "1.8em";
 export const HOME_STATISTICS_ROW_WIDTH = "140px";
 
 export const ATOM_INPUT_HEIGHT = "40px";
+export const FOOD_MODAL_ITEM_HEIGHT = "64px";
 
 export const PADDDING_BRANCH_DETAIL_TABS = "2em 3em";
 
@@ -41,6 +42,7 @@ export const NORMAL_YELLOW = "#FBB905";
 export const NORMAL_YELLOW_LIGHT = "#FFC21D";
 
 export const NORMAL_GRAY = "#8D8D8D";
+export const NORMAL_GRAY_LIGHT_B = "#F1F1F1";
 export const NORMAL_GRAY_LIGHT = "#F5F5F5";
 export const NORMAL_GRAY_MEDIUM = "#C7C7C7";
 export const NORMAL_GRAY_MEDIUM_B = "#C4C4C4";

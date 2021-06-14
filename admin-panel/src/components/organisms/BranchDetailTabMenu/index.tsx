@@ -1,7 +1,7 @@
 import { useState, memo } from "react";
 import * as S from "./styles";
 
-import BranchMenu from "components/templates/BranchMenu";
+import BranchMenu from "components/organisms/BranchMenu";
 import BranchInformation from "components/organisms/BranchInformation";
 import ContainerSticky from "components/atoms/ContainerSticky";
 
