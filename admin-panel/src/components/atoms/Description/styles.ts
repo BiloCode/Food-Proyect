@@ -1,6 +1,12 @@
 import styled from "styled-components";
 
-import { BLACK, NORMAL_WHITE, FONT, BLACK_LIGHT } from "config/styles";
+import {
+  BLACK,
+  NORMAL_WHITE,
+  FONT,
+  BLACK_LIGHT,
+  NORMAL_BLUE,
+} from "config/styles";
 
 export const Container = styled.p`
   margin: 0;
@@ -17,8 +23,12 @@ export const Container = styled.p`
     color: ${BLACK_LIGHT};
   }
 
+  &.blue {
+    color: ${NORMAL_BLUE};
+  }
+
   &.semi_bold {
-    font-weight: 500;
+    font-weight: 510;
   }
 
   &.uppercase {
@@ -26,7 +36,7 @@ export const Container = styled.p`
   }
 
   &.bold {
-    font-weight: bold;
+    font-weight: 900;
   }
 
   &.extra_small {

@@ -84,6 +84,7 @@ const BranchInformation = () => {
         data={{
           id: pageData?.branch._id,
           title: "Ubicación geofráfica",
+          content: pageData?.branch.location.address,
         }}
         isActive={editActive.active}
         onClick={onClickLocation}

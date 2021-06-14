@@ -3,7 +3,13 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: grid;
-  row-gap: 2em;
+  grid-template-columns: 1fr 320px;
+  column-gap: 3em;
   padding: ${PADDDING_BRANCH_DETAIL_TABS};
   box-sizing: border-box;
+`;
+
+export const CommentsContainer = styled.div`
+  display: grid;
+  row-gap: 0.5em;
 `;

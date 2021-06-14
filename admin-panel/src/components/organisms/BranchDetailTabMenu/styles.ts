@@ -19,3 +19,9 @@ export const TabOptionContainer = styled.div`
     background-color: ${BLACK_LIGHT_C};
   }
 `;
+
+
+export const PageContainer = styled.div`
+  padding: 2em 3em;
+  box-sizing: border-box;
+`;

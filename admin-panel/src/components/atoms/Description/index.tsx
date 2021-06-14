@@ -4,7 +4,7 @@ import * as S from "./styles";
 
 type sizeType = "extra_small" | "small" | "medium" | "large";
 
-type TextColorType = "white" | "black" | "gray";
+type TextColorType = "white" | "black" | "gray" | "blue";
 
 type boldType = "regular" | "semi-bold" | "bold";
 
@@ -26,6 +26,7 @@ const Description: FC<DescriptionType> = ({
     <S.Container
       className={classNames({
         white: color === "white",
+        blue: color === "blue",
         gray: color === "gray",
         extra_small: size === "extra_small",
         small: size === "small",

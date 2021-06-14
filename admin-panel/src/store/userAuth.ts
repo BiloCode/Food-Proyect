@@ -1,4 +1,3 @@
-import { atom } from "jotai";
 import firebase from "firebase";
 
 import { AdminModelType } from "application/types/AdminModelType";
