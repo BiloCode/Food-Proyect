@@ -22,6 +22,7 @@ export const BLACK_SUPER_LIGHT = "#3D3D3D";
 export const BLACK_LIGHT = "#515151";
 export const BLACK_LIGHT_B = "#8D8D8D";
 export const BLACK_LIGHT_C = "#DFDFDF";
+export const BLACK_LIGHT_D = "#ECECEC";
 
 export const DARK_BLUE = "#19213C";
 export const DARK_BLUE_LIGHT = "#212B4A";

@@ -5,7 +5,7 @@ import BranchMenu from "components/templates/BranchMenu";
 import BranchInformation from "components/organisms/BranchInformation";
 import { PageTab } from "application/types/PageTabs";
 
-import BranchComments from "components/templates/BranchComments";
+import BranchComments from "components/organisms/BranchComments";
 import BranchOfficeTabOption from "components/atoms/BranchOfficeTabOption";
 import DropdownTab from "components/molecules/DropdownTab";
 
@@ -52,7 +52,7 @@ const BranchDetailTabMenu = ({ tabs }: TabProps) => {
           )
         )}
       </S.TabOptionContainer>
-      <div>{componentSelector(pageSelect)}</div>
+      <S.PageContainer>{componentSelector(pageSelect)}</S.PageContainer>
     </div>
   );
 };
