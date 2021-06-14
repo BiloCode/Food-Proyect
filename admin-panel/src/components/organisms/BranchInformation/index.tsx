@@ -3,9 +3,9 @@ import * as S from "./styles";
 import BranchDetailContent from "components/molecules/BranchDetailContent";
 import { currentBranch } from "store/currentBranch";
 import useUpdateBranchDescription from "hooks/useUpdateBranchDescription";
-import BranchOfficeImageUpdateModal from "components/organisms/BranchOfficeImageUpdateModal";
+import BranchOfficeImageUpdateModal from "components/templates/BranchOfficeImageUpdateModal";
 import FilesCheckingIsImage from "application/utils/FileCheckingIsImage";
-import BranchOfficeUpdateLocation from "../BranchOfficeUpdateLocationModal";
+import BranchOfficeUpdateLocation from "components/templates/BranchOfficeUpdateLocationModal";
 import useUpdateBranchPhoneNumber from "hooks/useUpdateBranchPhoneNumber";
 
 import { useAtomValue } from "jotai/utils";
@@ -20,9 +20,8 @@ const BranchInformation = () => {
   const [newImageBranch, setNewImageBranch] = useState<File>();
 
   const editActive = useActive();
-  const [isActiveImageModal, setIsActiveImageModal] = useState<boolean>(false);
-  const [isActiveLocationModal, setIsActiveLocationModal] =
-    useState<boolean>(false);
+  const imageModal = useActive();
+  const locationModal = useActive();
 
   const { requestStateDescription, onUpdateDescription } =
     useUpdateBranchDescription();
@@ -45,20 +44,8 @@ const BranchInformation = () => {
       }
 
       setNewImageBranch(files[0]);
-      setIsActiveImageModal(true);
+      imageModal.toggleActive();
     });
-  };
-
-  const onClickLocation = () => {
-    setIsActiveLocationModal(true);
-  };
-
-  const onCloseImageModal = () => {
-    setIsActiveImageModal(false);
-  };
-
-  const onCloseLocationModal = () => {
-    setIsActiveLocationModal(false);
   };
 
   return (
@@ -87,7 +74,7 @@ const BranchInformation = () => {
           content: pageData?.branch.location.address,
         }}
         isActive={editActive.active}
-        onClick={onClickLocation}
+        onClick={locationModal.toggleActive}
         isModal
       />
       <BranchDetailContent
@@ -102,15 +89,15 @@ const BranchInformation = () => {
         onClick={editActive.toggleActive}
       />
 
-      {isActiveImageModal && (
+      {imageModal.active && (
         <BranchOfficeImageUpdateModal
           image={newImageBranch}
-          onClose={onCloseImageModal}
+          onClose={imageModal.toggleActive}
         />
       )}
 
-      {isActiveLocationModal && (
-        <BranchOfficeUpdateLocation onClose={onCloseLocationModal} />
+      {locationModal.active && (
+        <BranchOfficeUpdateLocation onClose={locationModal.toggleActive} />
       )}
     </S.Container>
   );

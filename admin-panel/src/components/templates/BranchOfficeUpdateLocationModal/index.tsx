@@ -6,7 +6,7 @@ import Title from "components/atoms/Title";
 import Button from "components/atoms/Button";
 import Icon from "components/atoms/Icon";
 import Description from "components/atoms/Description";
-import BranchLocationManuallyUpdate from "../BranchLocationManuallyUpdate";
+import BranchLocationManuallyUpdate from "../../organisms/BranchLocationManuallyUpdate";
 
 import { useState } from "react";
 import { useToasts } from "react-toast-notifications";
@@ -19,8 +19,9 @@ type BranchOfficeUpdateLocationModalProps = {
 const BranchOfficeUpdateLocationModal = ({
   onClose,
 }: BranchOfficeUpdateLocationModalProps) => {
-  const [isActiveManually, setIsActiveManually] = useState<boolean>(false);
   const { addToast } = useToasts();
+
+  const [isActiveManually, setIsActiveManually] = useState<boolean>(false);
 
   const onClickManually = () => {
     setIsActiveManually(true);
