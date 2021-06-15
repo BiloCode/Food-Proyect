@@ -1,3 +1,4 @@
+import { FONT } from "config/styles";
 import { createGlobalStyle } from "styled-components";
 
 const globalStyles = createGlobalStyle`
@@ -8,6 +9,10 @@ const globalStyles = createGlobalStyle`
     &::-webkit-scrollbar {
       display: none;
     }
+  }
+
+  .swal2-container * {
+    font-family: ${FONT};
   }
 `;
 

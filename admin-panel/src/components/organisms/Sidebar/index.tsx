@@ -1,4 +1,5 @@
 import { useNavigate } from "@reach/router";
+import Swal from "sweetalert2";
 import firebase from "firebase";
 import * as S from "./styles";
 
@@ -17,9 +18,11 @@ import { useAtomValue } from "jotai/utils";
 import { foods } from "store/foods";
 import { branchOffice } from "store/branchOffice";
 import { clients as clientsStore } from "store/clients";
+import useShowConfirm from "hooks/useShowConfirm";
 
 const Sidebar = () => {
   const navigate = useNavigate();
+  const confirmAction = useShowConfirm();
 
   const food = useAtomValue(foods);
   const clients = useAtomValue(clientsStore);
@@ -30,8 +33,13 @@ const Sidebar = () => {
   const onClickToClients = () => navigate("/clients");
   const onClickToBranchOffice = () => navigate("/branch/list");
   const onClickToExit = async () => {
-    const confirm = window.confirm("¿Esta seguro que desea cerrar la sesión?");
-    if (!confirm) {
+    const isConfirmed = await confirmAction({
+      title: "¿Cerrar Sesión?",
+      description: "Tu sesión sera borrada de este navegador.",
+      icon: "info",
+    });
+
+    if (!isConfirmed) {
       return;
     }
 

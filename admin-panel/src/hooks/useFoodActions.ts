@@ -5,12 +5,16 @@ import { activeMode, deleteMode } from "store/foodDeleteMode";
 import { deleteGroupById, foods as foodStore } from "store/foods";
 import { activeScreenLoader, screenLoader } from "store/screenLoader";
 
+import useShowConfirm from "./useShowConfirm";
+
 import DeleteImage from "application/core/DeleteImage";
 import FoodDeleteById from "application/core/FoodDeleteById";
 import FoodDeleteGroup from "application/core/FoodDeleteGroup";
 
 const useFoodActions = () => {
   const { addToast } = useToasts();
+
+  const confirmActions = useShowConfirm();
 
   const foods = useAtomValue(foodStore);
   const deleteFoods = useUpdateAtom(deleteGroupById);
@@ -28,6 +32,14 @@ const useFoodActions = () => {
     const ids = delete_mode.ids;
 
     if (!ids.length) return;
+
+    const isConfirm = await confirmActions({
+      title: "Eliminar Comidas",
+      description: "¿Esta de acuerdo con esta descision?",
+      icon: "warning",
+    });
+
+    if (!isConfirm) return;
 
     activeLoader("Eliminando la información...");
 
