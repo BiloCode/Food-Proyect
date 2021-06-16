@@ -1,7 +1,4 @@
-import { useEffect, useState } from "react";
-import { RouteComponentProps, useParams } from "@reach/router";
-
-import useActive from "hooks/useActive";
+import { RouteComponentProps } from "@reach/router";
 
 import BranchOfficeImage from "components/organisms/BranchOfficeImage";
 import PageWithSidebarBox from "components/templates/PageWithSidebarBox";
@@ -12,47 +9,24 @@ import GetPageTabs from "application/utils/GetPageTabs";
 import DateFormatting from "application/utils/DateFormatting";
 import MenuModalCreate from "components/templates/MenuModalCreate";
 
-import { useAtomValue, useUpdateAtom } from "jotai/utils";
-import { branchOffice } from "store/branchOffice";
-import { currentBranch as currentBranchStore } from "store/currentBranch";
+import useBranchDetailInit from "hooks/useBranchDetailInit";
+import useBranchDetailActions from "hooks/useBranchDetailActions";
 
-const BranchOfficeDetail = ({ navigate }: RouteComponentProps) => {
-  const { id } = useParams();
-  const { active, toggleActive } = useActive();
-
-  const branchData = useAtomValue(branchOffice);
-  const pageData = useAtomValue(currentBranchStore);
-  const setPageData = useUpdateAtom(currentBranchStore);
-
-  const backToList = () => navigate("/branch/list");
-
-  useEffect(() => {
-    if (branchData.requestState !== "complete") return;
-
-    const branch = [...branchData.data].find((v) => v._id === id);
-    if (!branch) {
-      navigate("/branch/list");
-      return;
-    }
-
-    setPageData({ branch });
-
-    return () => {
-      setPageData({});
-    };
-  }, [branchData.requestState]);
-
-  const CreateFood = () => toggleActive();
-  const RemoveFood = () => {};
-
-  const deleteBranchOffice = () => {};
+const BranchOfficeDetail = (_: RouteComponentProps) => {
+  const { pageData } = useBranchDetailInit();
+  const {
+    CreateFood,
+    RemoveFood,
+    DisabledBranch,
+    menuModalActive,
+    menuModalToggle,
+  } = useBranchDetailActions();
 
   return (
     <PageWithSidebarBox>
       {pageData.branch && (
         <>
           <BranchOfficeImage
-            onClickBack={backToList}
             stars={pageData.branch.stars}
             image={pageData.branch.bannerImage.url}
           />
@@ -61,14 +35,14 @@ const BranchOfficeDetail = ({ navigate }: RouteComponentProps) => {
             topRender={() => (
               <BranchOfficeDetailHeader
                 title={pageData.branch.name}
-                onClickButton={deleteBranchOffice}
+                onClickButton={DisabledBranch}
                 subtitle={`Creado el ${DateFormatting.applyFormat(
                   pageData.branch.createdAt.toDate()
                 )}`}
               />
             )}
           />
-          {active && <MenuModalCreate onClose={toggleActive} />}
+          {menuModalActive && <MenuModalCreate onClose={menuModalToggle} />}
         </>
       )}
     </PageWithSidebarBox>

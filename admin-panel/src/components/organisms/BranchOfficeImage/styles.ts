@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ImageContainer = styled.div`
   width: 100%;
-  height: 200px;
+  height: 180px;
   position: relative;
 
   & > img {
@@ -21,7 +21,7 @@ export const FloatingContainer = styled.div`
   box-sizing: border-box;
 `;
 
-export const BackIcon = styled.div`
+export const BackIcon = styled.a`
   width: 48px;
   height: 48px;
   border-radius: 50%;

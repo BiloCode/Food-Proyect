@@ -18,5 +18,5 @@ export const DarkScreenContainer = styled.div`
   left: 0;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.7);
-  animation: ${FadeInAnimation} 0.2s linear forwards;
+  animation: ${FadeInAnimation} 0.1s linear forwards;
 `;

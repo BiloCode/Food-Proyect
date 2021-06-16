@@ -2,29 +2,30 @@ import * as S from "./styles";
 
 import Title from "components/atoms/Title";
 import Image from "components/atoms/Image";
+import Button from "components/atoms/Button";
 import Description from "components/atoms/Description";
 import EatableCard from "components/atoms/EatableCard";
-import Button from "components/atoms/Button";
 
-const FoodMenuCard = () => (
+type FoodProps = {
+  image: string;
+  title: string;
+  price: number;
+  description: string;
+};
+
+const FoodMenuCard = ({ title, price, description, image }: FoodProps) => (
   <EatableCard
     imageRender={() => (
       <S.ImageContainer>
-        <Image
-          imageCover
-          src="https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2020/08/hamburguesa-2028707.jpg"
-        />
+        <Image imageCover src={image} />
       </S.ImageContainer>
     )}
     textRender={() => (
       <S.InformationContainer>
         <S.TextContainer>
-          <Title size="small-medium">Compo Papas + Hamburgesa</Title>
-          <S.PriceText>S/ 32.20</S.PriceText>
-          <Description size="small">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry...
-          </Description>
+          <Title size="small-medium">{title}</Title>
+          <S.PriceText>S/ {price.toFixed(2)}</S.PriceText>
+          <Description size="small">{description}</Description>
         </S.TextContainer>
         <Button text="Editar Comida" styles={{ color: "yellow" }} />
       </S.InformationContainer>

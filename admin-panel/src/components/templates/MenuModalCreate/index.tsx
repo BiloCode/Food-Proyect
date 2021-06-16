@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import * as S from "./styles";
 
 import { FaHamburger } from "react-icons/fa";
@@ -24,6 +24,9 @@ type ModalProps = {
 const MenuModalCreate = ({ onClose }: ModalProps) => {
   const foodStore = useAtomValue(foods);
 
+  const nameRef = useRef<HTMLInputElement>();
+  const descriptionRef = useRef<HTMLInputElement>();
+
   const [foodSaved, setFoodSaved] = useState<FoodModelType[]>([]);
   const [foodFiltered, setFoodFiltered] = useState<FoodModelType[]>([]);
 
@@ -40,6 +43,20 @@ const MenuModalCreate = ({ onClose }: ModalProps) => {
 
   const onClearFoods = () => setFoodSaved(() => []);
 
+  const onSubmit = async (ev: FormEvent) => {
+    ev.preventDefault();
+
+    const name = nameRef.current?.value.trim();
+    const description = descriptionRef.current?.value.trim();
+
+    if (!foodSaved.length || !name || !description) return;
+
+    try {
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     if (foodStore.requestState !== "complete") return;
 
@@ -52,10 +69,15 @@ const MenuModalCreate = ({ onClose }: ModalProps) => {
         <S.MainContainer>
           <S.Container>
             <Title>Crear Nuevo Menu</Title>
-            <S.FormContainer>
+            <S.FormContainer onSubmit={onSubmit}>
               <S.FormControlText>
-                <FormControl labelText="Nombre" icon={FaHamburger} />
                 <FormControl
+                  ref={nameRef}
+                  labelText="Nombre"
+                  icon={FaHamburger}
+                />
+                <FormControl
+                  ref={descriptionRef}
                   labelText="Descripcion"
                   icon={BsReverseLayoutTextSidebarReverse}
                 />

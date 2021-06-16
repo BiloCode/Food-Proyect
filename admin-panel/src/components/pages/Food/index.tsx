@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { RouteComponentProps } from "@reach/router";
 import * as S from "./styles";
 
@@ -8,11 +9,21 @@ import FoodModalCreate from "components/templates/FoodModalCreate";
 import PageLimiterContainer from "components/atoms/PageLimiterContainer";
 import PageWithSidebarBox from "components/templates/PageWithSidebarBox";
 
+import useActive from "hooks/useActive";
+import useScroll from "hooks/useScroll";
 import useFoodPageInit from "hooks/useFoodPageInit";
 
 const Foods = (_: RouteComponentProps) => {
-  const { createModal, foodFilter, onSearchByName, foodStored } =
-    useFoodPageInit();
+  const { foodFilter, onSearchByName, foodStored } = useFoodPageInit();
+
+  const createModal = useActive();
+
+  const { enabled, disabled } = useScroll();
+
+  useEffect(() => {
+    createModal.active && disabled();
+    !createModal.active && enabled();
+  }, [createModal.active]);
 
   return (
     <PageWithSidebarBox>

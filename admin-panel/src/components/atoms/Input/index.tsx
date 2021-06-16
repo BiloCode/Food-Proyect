@@ -38,6 +38,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
       maxLength={maxLength}
       placeholder={placeholder}
       defaultValue={defaultValue}
+      step={type === "number" && "any"}
     />
   );
 });

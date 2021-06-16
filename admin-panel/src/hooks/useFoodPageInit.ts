@@ -9,8 +9,6 @@ import { FoodModelType } from "application/types/FoodModelType";
 import useActive from "hooks/useActive";
 
 const useFoodPageInit = () => {
-  const createModal = useActive();
-
   const foods = useAtomValue(foodStore);
   const resetDeleteMode = useResetAtom(deleteMode);
 
@@ -38,7 +36,6 @@ const useFoodPageInit = () => {
 
   return {
     foodFilter,
-    createModal,
     onSearchByName,
     foodStored: foods.data.length,
   };
