@@ -13,12 +13,15 @@ export const FormContainer = styled.form`
   background-color: #fff;
   border-radius: 20px;
   overflow: hidden;
+  padding: 2em;
+  display: grid;
+  row-gap: 3em;
+  box-sizing: border-box;
 `;
 
 export const FormControlContainer = styled.fieldset`
   border: none;
-  padding: 2em 2.5em;
-  box-sizing: border-box;
+  padding: 0;
   display: grid;
   row-gap: 3em;
 `;

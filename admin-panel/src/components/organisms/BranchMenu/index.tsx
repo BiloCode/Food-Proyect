@@ -14,10 +14,10 @@ const BranchMenu = () => {
         {pageData.branch.menu.map((v) => (
           <FoodMenuCard
             key={v._id}
-            title={v.food.name}
-            image={v.food.image}
-            price={v.food.price}
+            title={v.title}
             description={v.description}
+            images={v.foods.map((v) => v.image)}
+            price={v.foods.reduce((prev, next) => prev + next.price, 0)}
           />
         ))}
       </S.FoodList>

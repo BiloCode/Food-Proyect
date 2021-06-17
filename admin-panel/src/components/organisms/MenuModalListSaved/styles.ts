@@ -4,11 +4,10 @@ import { FONT, FOOD_MODAL_ITEM_HEIGHT } from "config/styles";
 
 export const FoodListContainer = styled.div`
   display: grid;
-  align-items: flex-start;
   row-gap: 1em;
 `;
 
-const numItemsRender = 2;
+const numItemsRender = 3;
 const GapItemHeight = "4px";
 
 const TotalGap = `calc(${GapItemHeight} * ${numItemsRender - 1})`;
@@ -25,6 +24,7 @@ export const FoodSavedContainer = styled.div`
   height: 100%;
   overflow: auto;
   display: grid;
+  grid-auto-rows: max-content;
   align-items: flex-start;
   row-gap: 4px;
 `;

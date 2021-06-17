@@ -7,6 +7,7 @@ export type InputProps = {
   id?: string;
   type?: InputType;
   placeholder?: string;
+  required?: boolean;
   maxLength?: number;
   defaultValue?: string;
   onBlur?(): void;
@@ -18,6 +19,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const {
     id,
     type,
+    required,
     defaultValue,
     placeholder,
     maxLength,
@@ -30,11 +32,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     <S.CustomInput
       id={id}
       ref={ref}
-      required
       type={type}
       onBlur={onBlur}
       onFocus={onFocus}
       onChange={onChange}
+      required={required}
       maxLength={maxLength}
       placeholder={placeholder}
       defaultValue={defaultValue}
@@ -45,6 +47,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 
 Input.defaultProps = {
   type: "text",
+  required: true,
 };
 
 export default Input;

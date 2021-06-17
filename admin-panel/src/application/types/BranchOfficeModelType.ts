@@ -16,15 +16,18 @@ export type PuntuactionType = {
   };
 };
 
+export type MenuFoodType = {
+  _id: string;
+  name: string;
+  price: number;
+  image: string;
+};
+
 export type MenuType = {
   _id: string;
+  title: string;
   description: string;
-  food: {
-    _id: string;
-    name: string;
-    price: number;
-    image: string;
-  };
+  foods: MenuFoodType[];
 };
 
 export type PermisionsType = {

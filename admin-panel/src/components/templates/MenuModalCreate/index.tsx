@@ -12,8 +12,12 @@ import FormControl from "components/molecules/FormControl";
 import MenuModalListSaved from "components/organisms/MenuModalListSaved";
 import FormControlSearchable from "components/organisms/FormControlSearchable";
 
-import { useAtomValue } from "jotai/utils";
+import AddNewMenu from "application/core/AddNewMenu";
+
+import { useAtomValue, useUpdateAtom } from "jotai/utils";
 import { foods } from "store/foods";
+import { currentBranch } from "store/currentBranch";
+import { setBranchMenu } from "store/branchOffice";
 
 import { FoodModelType } from "application/types/FoodModelType";
 
@@ -23,12 +27,16 @@ type ModalProps = {
 
 const MenuModalCreate = ({ onClose }: ModalProps) => {
   const foodStore = useAtomValue(foods);
+  const updateBranchMenu = useUpdateAtom(setBranchMenu);
+  const currentBranchDetail = useAtomValue(currentBranch);
 
   const nameRef = useRef<HTMLInputElement>();
   const descriptionRef = useRef<HTMLInputElement>();
+  const searchInputRef = useRef<HTMLInputElement>();
 
   const [foodSaved, setFoodSaved] = useState<FoodModelType[]>([]);
-  const [foodFiltered, setFoodFiltered] = useState<FoodModelType[]>([]);
+  const [foodFilter, setFoodFilter] = useState<FoodModelType[]>([]);
+  const [isSendRequest, setIsSendRequest] = useState<boolean>(false);
 
   const addFood = (_id: string) => () => {
     const foodSelect = [...foodStore.data].find((v) => v._id === _id);
@@ -36,10 +44,28 @@ const MenuModalCreate = ({ onClose }: ModalProps) => {
       return;
     }
 
-    setFoodSaved((foods) => [...foods, foodSelect]);
+    searchInputRef.current.value = "";
+    setFoodSaved((foods) => [foodSelect, ...foods]);
   };
 
-  const onSearch = (ev: ChangeEvent<HTMLInputElement>) => {};
+  const removeFood = (index: number) => () => {
+    const newFood = [...foodSaved].filter((_, i) => i !== index);
+    setFoodSaved(() => newFood);
+  };
+
+  const onSearch = (ev: ChangeEvent<HTMLInputElement>) => {
+    const inputValue = ev.target.value.trim();
+    if (!inputValue) {
+      setFoodFilter(() => foodStore.data);
+      return;
+    }
+
+    const foodFinded = foodFilter.find((v) => v.name.includes(inputValue));
+
+    if (!foodFinded) return;
+
+    setFoodFilter(() => [foodFinded]);
+  };
 
   const onClearFoods = () => setFoodSaved(() => []);
 
@@ -47,20 +73,33 @@ const MenuModalCreate = ({ onClose }: ModalProps) => {
     ev.preventDefault();
 
     const name = nameRef.current?.value.trim();
+    const foodsId = foodSaved.map((v) => v._id);
     const description = descriptionRef.current?.value.trim();
 
-    if (!foodSaved.length || !name || !description) return;
+    if (!foodsId.length || !name || !description) return;
+
+    setIsSendRequest(() => true);
 
     try {
+      const menu = await AddNewMenu.exec(currentBranchDetail.branch._id, {
+        name,
+        description,
+        foodsId,
+      });
+
+      updateBranchMenu({ branchId: currentBranchDetail.branch._id, menu });
+      onClose();
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsSendRequest(() => false);
     }
   };
 
   useEffect(() => {
     if (foodStore.requestState !== "complete") return;
 
-    setFoodFiltered(() => foodStore.data);
+    setFoodFilter(() => foodStore.data);
   }, [foodStore]);
 
   return (
@@ -83,27 +122,30 @@ const MenuModalCreate = ({ onClose }: ModalProps) => {
                 />
               </S.FormControlText>
               <FormControlSearchable
-                foods={foodFiltered}
-                onSearch={onSearch}
+                foods={foodFilter}
                 onAddItem={addFood}
+                onSearch={onSearch}
+                ref={searchInputRef}
                 onClearFoods={onClearFoods}
               />
+              <MenuModalListSaved foods={foodSaved} onClickTrash={removeFood} />
+              <S.BottomContainer>
+                <S.ButtonsContainer>
+                  <Button
+                    type="submit"
+                    isLoading={isSendRequest}
+                    text="Guardar Informacion"
+                    styles={{ color: "yellow" }}
+                  />
+                  <Button
+                    onClick={onClose}
+                    text="Cerrar Ventana"
+                    disabled={isSendRequest}
+                    styles={{ color: "blue" }}
+                  />
+                </S.ButtonsContainer>
+              </S.BottomContainer>
             </S.FormContainer>
-            <MenuModalListSaved foods={foodSaved} />
-            <S.BottomContainer>
-              <S.ButtonsContainer>
-                <Button
-                  type="submit"
-                  text="Guardar Informacion"
-                  styles={{ color: "yellow" }}
-                />
-                <Button
-                  onClick={onClose}
-                  text="Cerrar Ventana"
-                  styles={{ color: "blue" }}
-                />
-              </S.ButtonsContainer>
-            </S.BottomContainer>
           </S.Container>
         </S.MainContainer>
       </DarkScreen>

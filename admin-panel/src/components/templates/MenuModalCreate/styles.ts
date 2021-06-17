@@ -10,7 +10,8 @@ export const MainContainer = styled.div`
 
 export const Container = styled.div`
   width: 70%;
-  min-width: 700px;
+  max-width: 1200px;
+  min-width: 800px;
   padding: 3em 4em;
   box-sizing: border-box;
   border-radius: 10px;

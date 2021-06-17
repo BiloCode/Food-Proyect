@@ -12,6 +12,7 @@ export const FileLabel = styled.label`
   position: absolute;
   top: 0;
   left: 0;
+  border-radius: 20px;
 
   &.empty_image {
     display: flex;
@@ -25,7 +26,8 @@ export const InputHide = styled.input`
 
 export const ImageContainer = styled.div`
   width: 100%;
-  height: 240px;
+  height: 220px;
+  border-radius: 20px;
   position: relative;
 
   &:hover ${FileLabel} {

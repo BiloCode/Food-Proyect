@@ -29,7 +29,7 @@ const useBranchDetailInit = () => {
     return () => {
       setPageData({});
     };
-  }, [branchData.requestState]);
+  }, [branchData]);
 
   return {
     pageData,

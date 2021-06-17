@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, memo } from "react";
 import { IconType } from "react-icons";
 import * as S from "./styles";
 
@@ -22,6 +22,7 @@ const FormControl = forwardRef<HTMLInputElement, FormControlProps>(
         ref={ref}
         id={props.id}
         type={props.type}
+        required={props.required}
         maxLength={props.maxLength}
         onFocus={props.onFocus}
         onBlur={props.onBlur}
@@ -32,4 +33,4 @@ const FormControl = forwardRef<HTMLInputElement, FormControlProps>(
   )
 );
 
-export default FormControl;
+export default memo(FormControl);

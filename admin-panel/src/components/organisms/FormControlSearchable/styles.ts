@@ -16,13 +16,7 @@ export const InputContainer = styled.div`
 `;
 
 const itemsRender = 3;
-const itemsGap = "3px";
-const bottomSpacing = "10px";
-
-const FullGap = `calc(${itemsGap} * ${itemsRender - 1})`;
-const FullHeightItems = `calc(${FOOD_MODAL_ITEM_HEIGHT} * ${itemsRender})`;
-
-const FullHeight = `calc(${FullHeightItems} + ${FullGap})`;
+const FullHeight = `calc(${FOOD_MODAL_ITEM_HEIGHT} * ${itemsRender})`;
 
 export const SearchContainer = styled.div`
   width: 100%;
@@ -34,7 +28,6 @@ export const SearchContainer = styled.div`
   background-color: #fff;
   box-sizing: border-box;
   display: grid;
-  row-gap: ${itemsGap};
   border-radius: 5px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 `;
