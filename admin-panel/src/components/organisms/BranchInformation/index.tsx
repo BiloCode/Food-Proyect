@@ -19,9 +19,11 @@ const BranchInformation = () => {
 
   const [newImageBranch, setNewImageBranch] = useState<File>();
 
+  const [isModalImageActive, setIsModalImageActive] = useState<boolean>(false);
+  const [isModalLocationActive, setIsModalLocationActive] =
+    useState<boolean>(false);
+
   const editActive = useActive();
-  const imageModal = useActive();
-  const locationModal = useActive();
 
   const { requestStateDescription, onUpdateDescription } =
     useUpdateBranchDescription();
@@ -29,7 +31,7 @@ const BranchInformation = () => {
   const { requestStatePhoneNumber, onUpdatePhoneNumber } =
     useUpdateBranchPhoneNumber();
 
-  const onClickImage = () => {
+  const onClickImageModal = () => {
     const inputFile = document.createElement<"input">("input");
     inputFile.setAttribute("type", "file");
     inputFile.setAttribute("accept", "image/*");
@@ -44,8 +46,20 @@ const BranchInformation = () => {
       }
 
       setNewImageBranch(files[0]);
-      imageModal.toggleActive();
+      setIsModalImageActive(true);
     });
+  };
+
+  const onClickLocationModal = () => {
+    setIsModalLocationActive(true);
+  };
+
+  const onCloseImage = () => {
+    setIsModalImageActive(false);
+  };
+
+  const onCloseLocation = () => {
+    setIsModalLocationActive(false);
   };
 
   return (
@@ -64,7 +78,7 @@ const BranchInformation = () => {
       <BranchDetailContent
         data={{ id: pageData?.branch._id, title: "Imagen de Perfil" }}
         isActive={editActive.active}
-        onClick={onClickImage}
+        onClick={onClickImageModal}
         isModal
       />
       <BranchDetailContent
@@ -74,7 +88,7 @@ const BranchInformation = () => {
           content: pageData?.branch.location.address,
         }}
         isActive={editActive.active}
-        onClick={locationModal.toggleActive}
+        onClick={onClickLocationModal}
         isModal
       />
       <BranchDetailContent
@@ -89,15 +103,15 @@ const BranchInformation = () => {
         onClick={editActive.toggleActive}
       />
 
-      {imageModal.active && (
+      {isModalImageActive && (
         <BranchOfficeImageUpdateModal
           image={newImageBranch}
-          onClose={imageModal.toggleActive}
+          onClose={onCloseImage}
         />
       )}
 
-      {locationModal.active && (
-        <BranchOfficeUpdateLocation onClose={locationModal.toggleActive} />
+      {isModalLocationActive && (
+        <BranchOfficeUpdateLocation onClose={onCloseLocation} />
       )}
     </S.Container>
   );

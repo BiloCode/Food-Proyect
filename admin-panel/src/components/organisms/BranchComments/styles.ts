@@ -11,5 +11,6 @@ export const Container = styled.div`
 
 export const CommentsContainer = styled.div`
   display: grid;
+  grid-template-rows: min-content;
   row-gap: 0.5em;
 `;

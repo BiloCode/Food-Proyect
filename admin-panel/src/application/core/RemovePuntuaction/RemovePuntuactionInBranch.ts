@@ -18,6 +18,10 @@ class RemovePuntuactionInBranch {
       (punt) => punt.userId !== data.userId
     );
 
+    const puntuactionsNoUser = data.puntuactions.filter(
+      (punt) => punt.userId === data.userId
+    );
+
     const userPuntuactionsId = data.userPuntuactionsId.filter(
       (_id) => _id !== data.userId
     );
@@ -27,6 +31,7 @@ class RemovePuntuactionInBranch {
     return {
       puntuactions,
       userPuntuactionsId,
+      puntuactionsNoUser,
     };
   };
 }

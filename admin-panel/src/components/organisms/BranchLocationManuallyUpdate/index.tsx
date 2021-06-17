@@ -9,7 +9,6 @@ import { currentBranch as currentBranchStore } from "store/currentBranch";
 
 import { useAtomValue } from "jotai/utils";
 import { useMemo } from "react";
-import { timeStamp } from "node:console";
 
 type BranchLocationManuallyUpdateProps = {
   onClose(): void;

@@ -4,9 +4,10 @@ import { FirebaseCollectionNames } from "config/constants";
 
 import RemovePuntuactionInBranch from "./RemovePuntuactionInBranch";
 import RemovePuntuactionInUser from "./RemovePuntuactionInUser";
+import GetAllBranchOffice from "../GetAllBranchOffice";
 
 class RemovePuntuaction {
-  public static exec = async (branchOfficeId: string, userId: string) => {
+  public exec = async (branchOfficeId: string, userId: string) => {
     const db = firebase.firestore();
 
     const clientRef = db.collection(FirebaseCollectionNames.client).doc(userId);
@@ -38,6 +39,7 @@ class RemovePuntuaction {
         });
 
         return {
+          currentBranchOfficeClientComment: newBData.puntuactionsNoUser,
           userPuntuactions: newUData,
           branchData: newBData,
         };

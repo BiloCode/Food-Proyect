@@ -14,6 +14,8 @@ const useShowConfirm = () => {
       icon: props?.icon || "info",
       showCancelButton: true,
       showConfirmButton: true,
+      cancelButtonText: "Cancelar",
+      confirmButtonText: "Si",
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
     });

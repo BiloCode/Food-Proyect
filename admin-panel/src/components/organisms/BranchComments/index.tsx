@@ -17,7 +17,7 @@ const BranchComments = () => {
 
   useEffect(() => {
     setCurrentComment(branchData.branch.puntuactions[0]);
-  }, []);
+  }, [branchData]);
 
   const changeComment = (comment: number) => {
     setCommentSelected(comment);

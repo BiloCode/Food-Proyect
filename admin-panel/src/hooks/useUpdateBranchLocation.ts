@@ -21,8 +21,8 @@ const useUpdateBranchLocation = () => {
     setRequestStateAddress("loading");
 
     const address = addressRef.current.value;
-    const latitude = parseInt(latitudeRef.current.value);
-    const longitude = parseInt(longitudeRef.current.value);
+    const latitude = parseFloat(latitudeRef.current.value);
+    const longitude = parseFloat(longitudeRef.current.value);
 
     const updateService = new UpdateBranchLocation();
 
