@@ -54,10 +54,12 @@ const BranchOfficeDetail: FC<RouteComponentProps> = ({}) => {
               </S.MainContainer>
             </S.ContainerBranchData>
             <div>
-              <BOMostPopularFoodCard
-                onClick={menuToggleActive}
-                sellMenu={branchOffice.data.menu[0]}
-              />
+              {branchOffice.data.menu.length > 0 && (
+                <BOMostPopularFoodCard
+                  onClick={menuToggleActive}
+                  sellMenu={branchOffice.data.menu[0]}
+                />
+              )}
             </div>
           </S.ContainerContent>
           <S.ContactContainer>
