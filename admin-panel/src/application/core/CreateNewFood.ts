@@ -1,8 +1,9 @@
 import firebase from "firebase";
 
-import UploadFoodImage from "application/core/UploadFoodImage";
 import { FirebaseCollectionNames } from "config/constants";
+
 import { FoodModelType } from "application/types/FoodModelType";
+import UploadFoodImage from "application/core/UploadFoodImage";
 
 type Food = {
   image: File;
@@ -32,18 +33,20 @@ class CreateNewFood {
         return null;
       }
 
+      const branchIds = [];
       const newFood = await foodCollection.add({
         name,
         price,
-        image: imageUpload,
+        branchIds,
         createdAt,
+        image: imageUpload,
       });
 
       return {
         _id: newFood.id,
         name,
         price,
-        branchIds: [],
+        branchIds,
         image: imageUpload,
         createdAt,
       };
