@@ -65,7 +65,9 @@ const MenuModalCreate = ({ onClose }: ModalProps) => {
       return;
     }
 
-    const foodFinded = foodFilter.find((v) => v.name.includes(inputValue));
+    const foodFinded = [...foodFilter].find((v) =>
+      v.name.includes(inputValue.toUpperCase())
+    );
 
     if (!foodFinded) return;
 
