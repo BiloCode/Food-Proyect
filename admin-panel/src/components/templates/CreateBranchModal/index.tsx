@@ -5,7 +5,11 @@ import DarkScreen from "components/atoms/DarkScreen";
 import Title from "components/atoms/Title";
 import CreateBranchForm from "components/organisms/CreateBranchForm";
 
-const CreateBranchModal = () => {
+type CreateBranchModal = {
+  onClose(): void;
+};
+
+const CreateBranchModal = ({ onClose }: CreateBranchModal) => {
   return (
     <Portals>
       <DarkScreen>
@@ -14,7 +18,7 @@ const CreateBranchModal = () => {
             <S.TitleContainer>
               <Title color="blue">Crear nueva sucursal</Title>
             </S.TitleContainer>
-            <CreateBranchForm />
+            <CreateBranchForm onClose={onClose} />
           </S.ModalContainer>
         </S.Container>
       </DarkScreen>
