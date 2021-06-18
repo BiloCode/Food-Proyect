@@ -19,17 +19,26 @@ import { FaHamburger } from "react-icons/fa";
 import Description from "components/atoms/Description";
 import Icon from "components/atoms/Icon";
 import { FoodType } from "application/types/FoodType";
+import { useToasts } from "react-toast-notifications";
 
 type CreateBranchFormType = {
   onClose(): void;
 };
 
 const CreateBranchForm = ({ onClose }: CreateBranchFormType) => {
+  const { addToast } = useToasts();
+
   const { file, onChangeFile, onSubmit, setTypeFood, refs } =
     useCreateBranchOffice(onClose);
 
   const onClickOption = (optionSelected: FoodType) =>
     setTypeFood(optionSelected);
+
+  const onClickGoogleMaps = () => {
+    addToast("Esta opción estará disponible pronto", {
+      appearance: "info",
+    });
+  };
 
   return (
     <S.Container onSubmit={onSubmit}>
@@ -84,7 +93,7 @@ const CreateBranchForm = ({ onClose }: CreateBranchFormType) => {
         <S.GroupFormContainer>
           <S.GeographyContainer>
             <Title size="small-medium">Informacion geográfica</Title>
-            <S.GoogleMapsTittle>
+            <S.GoogleMapsTittle onClick={onClickGoogleMaps}>
               <Description size="small" color="blue">
                 Google Maps
               </Description>
@@ -126,6 +135,7 @@ const CreateBranchForm = ({ onClose }: CreateBranchFormType) => {
           type="button"
           text="Cancelar y cerrar"
           onClick={onClose}
+          disabled={file.isUploading}
         />
       </S.ButtonsContainer>
     </S.Container>

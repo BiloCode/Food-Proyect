@@ -65,7 +65,6 @@ class CreateNewBranchOffice {
       return {
         _id: newBranchOffice.id,
         name: props.params.name,
-        stars: 0,
         menu: [],
         foodType: props.params.foodType,
         description: props.params.description,
