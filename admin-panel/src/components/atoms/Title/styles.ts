@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { FONT, SMOOTH_BLACK } from "config/styles";
+import { FONT, NORMAL_BLUE, SMOOTH_BLACK } from "config/styles";
 
 export const TextElement = styled.span`
   font-size: 1.4em;
@@ -10,6 +10,10 @@ export const TextElement = styled.span`
 
   &.c_black_ligth {
     color: ${SMOOTH_BLACK};
+  }
+
+  &.c_blue {
+    color: ${NORMAL_BLUE};
   }
 
   &.small_size {

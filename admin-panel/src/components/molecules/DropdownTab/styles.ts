@@ -43,7 +43,7 @@ export const DropDownOption = styled.div`
   justify-items: left;
   grid-template-columns: 25px 1fr;
   column-gap: 1em;
-  padding: 0 20px;
+  padding: 0 2em;
   box-sizing: border-box;
   background-color: #fff;
 

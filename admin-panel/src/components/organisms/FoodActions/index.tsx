@@ -1,11 +1,12 @@
 import { ChangeEvent } from "react";
 import * as S from "./styles";
 
+import useFoodActions from "hooks/useFoodActions";
+
 import SearchBar from "components/molecules/SearchBar";
+import ContainerSticky from "components/atoms/ContainerSticky";
 import HeaderDeleteMode from "components/molecules/HeaderDeleteMode";
 import DropdownFoodActions from "components/molecules/DropdownFoodActions";
-import useFoodActions from "hooks/useFoodActions";
-import ContainerSticky from "components/atoms/ContainerSticky";
 
 type FoodActionsProps = {
   onChangeSearch(ev: ChangeEvent<HTMLInputElement>): void;
@@ -36,7 +37,7 @@ const FoodActions = ({ onChangeSearch, onCreateToggle }: FoodActionsProps) => {
           <HeaderDeleteMode
             onSuccess={onClickDelete}
             onCancel={offDeleteMode}
-            foodSelectNumber={deleteMode.ids.length}
+            elementsSelected={deleteMode.ids.length}
           />
         )}
       </S.ActionsContainer>

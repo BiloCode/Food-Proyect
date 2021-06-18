@@ -19,12 +19,12 @@ const GetPageTabs = (onClickCreate: Callback, onClickDelete: Callback) => {
       options: [
         {
           icon: IoIosAddCircle,
-          text: "Crear nuevos Comestibles",
+          text: "Crear nuevas Comidas",
           onClick: onClickCreate,
         },
         {
           icon: IoMdTrash,
-          text: "Eliminar Comestibles",
+          text: "Eliminar Comidas",
           onClick: onClickDelete,
         },
       ],

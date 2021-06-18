@@ -15,9 +15,16 @@ type FoodProps = {
   title: string;
   price: number;
   description: string;
+  onClickButton(): void;
 };
 
-const FoodMenuCard = ({ title, price, description, images }: FoodProps) => {
+const FoodMenuCard = ({
+  title,
+  price,
+  description,
+  images,
+  onClickButton,
+}: FoodProps) => {
   const [index, setIndex] = useState<number>(0);
 
   const changeIndex = (index: number) => () => {
@@ -59,7 +66,11 @@ const FoodMenuCard = ({ title, price, description, images }: FoodProps) => {
             <S.PriceText>S/ {price.toFixed(2)}</S.PriceText>
             <Description size="small">{description}</Description>
           </S.TextContainer>
-          <Button text="Editar Comida" styles={{ color: "yellow" }} />
+          <Button
+            text="Editar Comida"
+            onClick={onClickButton}
+            styles={{ color: "yellow" }}
+          />
         </S.InformationContainer>
       )}
     />

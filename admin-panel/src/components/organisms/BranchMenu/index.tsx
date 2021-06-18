@@ -16,6 +16,7 @@ const BranchMenu = () => {
             key={v._id}
             title={v.title}
             description={v.description}
+            onClickButton={() => null}
             images={v.foods.map((v) => v.image)}
             price={v.foods.reduce((prev, next) => prev + next.price, 0)}
           />
