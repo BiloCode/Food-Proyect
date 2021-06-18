@@ -1,13 +1,10 @@
+import { FC, memo, useRef, useState } from "react";
+import classNames from "classnames";
 import * as S from "./styles";
 
+import Title from "components/atoms/Title";
 import ButtonRounded from "components/atoms/ButtonRounded";
 import Description from "components/atoms/Description";
-import Title from "components/atoms/Title";
-import Input from "components/atoms/Input";
-import classNames from "classnames";
-import Spinner from "components/atoms/Spinner";
-
-import { FC, memo, useRef, useState } from "react";
 
 type BranchDetailContentProps = {
   data: {
@@ -16,7 +13,6 @@ type BranchDetailContentProps = {
     content?: string;
   };
   isModal?: boolean;
-  isLoading?: boolean;
   isActive: boolean;
   onUpdate?(id: string, value: string): void;
   onClick?(): void;
@@ -24,7 +20,6 @@ type BranchDetailContentProps = {
 
 const BranchDetailContent: FC<BranchDetailContentProps> = ({
   data,
-  isLoading,
   isActive,
   isModal,
   onClick,
@@ -42,6 +37,7 @@ const BranchDetailContent: FC<BranchDetailContentProps> = ({
     if (!isModal) {
       setActiveInput((active) => !active);
     }
+
     onClick();
   };
 
@@ -50,6 +46,7 @@ const BranchDetailContent: FC<BranchDetailContentProps> = ({
     setActiveInput(false);
     onClick();
   };
+
   return (
     <S.Container>
       <S.Head>
@@ -74,18 +71,17 @@ const BranchDetailContent: FC<BranchDetailContentProps> = ({
       </S.Head>
       {data.content && (
         <div>
-          {isLoading ? (
-            <Spinner color="blue" size="small" />
+          {!activeInput ? (
+            <Description size="small" color="black">
+              {data.content}
+            </Description>
           ) : (
-            <>
-              {!activeInput ? (
-                <Description size="small" color="black">
-                  {data.content}
-                </Description>
-              ) : (
-                <Input defaultValue={data.content} type="text" ref={inputRef} />
-              )}
-            </>
+            <S.Input
+              autoFocus
+              type="text"
+              ref={inputRef}
+              defaultValue={data.content}
+            />
           )}
         </div>
       )}

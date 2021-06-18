@@ -25,11 +25,8 @@ const BranchInformation = () => {
 
   const editActive = useActive();
 
-  const { requestStateDescription, onUpdateDescription } =
-    useUpdateBranchDescription();
-
-  const { requestStatePhoneNumber, onUpdatePhoneNumber } =
-    useUpdateBranchPhoneNumber();
+  const { onUpdateDescription } = useUpdateBranchDescription();
+  const { onUpdatePhoneNumber } = useUpdateBranchPhoneNumber();
 
   const onClickImageModal = () => {
     const inputFile = document.createElement<"input">("input");
@@ -71,7 +68,6 @@ const BranchInformation = () => {
           content: pageData?.branch.description,
         }}
         onUpdate={onUpdateDescription}
-        isLoading={requestStateDescription === "loading"}
         onClick={editActive.toggleActive}
         isActive={editActive.active}
       />
@@ -98,7 +94,6 @@ const BranchInformation = () => {
           content: pageData?.branch.phoneNumber,
         }}
         onUpdate={onUpdatePhoneNumber}
-        isLoading={requestStatePhoneNumber === "loading"}
         isActive={editActive.active}
         onClick={editActive.toggleActive}
       />

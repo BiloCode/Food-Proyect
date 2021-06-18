@@ -2,19 +2,17 @@ import firebase from "firebase";
 
 import { FirebaseCollectionNames } from "config/constants";
 
-import foodSellConverter from "application/firebase/FoodSell/converter";
-import branchOfficeConverter from "application/firebase/BranchOffice/converter";
-import foodConverter from "application/firebase/Food/converter";
+import type { MenuType } from "application/types/BranchOfficeModelType";
 
-import type {
-  MenuFoodType,
-  MenuType,
-} from "application/types/BranchOfficeModelType";
+import foodSellConverter from "application/firebase/FoodSell/converter";
+
+import UpdateBranchIdsInFoods from "./UpdateBranchIdsInFood";
+import branchOfficeConverter from "application/firebase/BranchOffice/converter";
 
 type MenuProps = {
   name: string;
-  description: string;
   foodsId: string[];
+  description: string;
 };
 
 class AddNewMenu {
@@ -34,7 +32,7 @@ class AddNewMenu {
         const branchOffice = await transaction.get(branchRef);
         const branchData = branchOffice.data();
 
-        const newSellFood = await foodSellRef.add({
+        const NewSellFood = await foodSellRef.add({
           name: foodSell.name,
           description: foodSell.description,
           foodIds: foodSell.foodsId,
@@ -45,41 +43,14 @@ class AddNewMenu {
           },
         });
 
-        const getFoodsById = async () => {
-          const promiseFoods = [];
-
-          foodSell.foodsId.forEach((v) => {
-            const foodRef = db
-              .collection(FirebaseCollectionNames.food)
-              .withConverter(foodConverter)
-              .doc(v);
-
-            promiseFoods.push(foodRef.get());
-          });
-
-          const allData = await Promise.all(promiseFoods);
-
-          const foods: MenuFoodType[] = allData.map((doc) => {
-            const foodData = doc.data();
-
-            return {
-              _id: doc.id,
-              image: foodData.image.url,
-              name: foodData.name,
-              price: foodData.price,
-            };
-          });
-
-          return foods;
-        };
-
+        const foods = await UpdateBranchIdsInFoods.exec(foodSell.foodsId);
         const newBranchMenu: MenuType[] = [
           ...branchData.menu,
           {
-            _id: newSellFood.id,
+            foods,
+            _id: NewSellFood.id,
             title: foodSell.name,
             description: foodSell.description,
-            foods: await getFoodsById(),
           },
         ];
 

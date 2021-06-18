@@ -25,6 +25,7 @@ export default class GetAllFood {
           name: data.name,
           price: data.price,
           image: data.image,
+          branchIds: data.branchIds,
           createdAt: data.createdAt,
         });
       });

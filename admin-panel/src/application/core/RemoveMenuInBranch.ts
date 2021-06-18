@@ -23,15 +23,13 @@ class RemoveMenuInBranch {
         );
 
         const removeInDocument = async () => {
-          const promises = [];
-
-          deleteMenusId.forEach((v) => {
+          const promises = deleteMenusId.map(async (v) => {
             const foodSellRef = db
               .collection(FirebaseCollectionNames.sellFood)
               .withConverter(foodSellConverter)
               .doc(v);
 
-            promises.push(foodSellRef.delete());
+            return foodSellRef.delete();
           });
 
           await Promise.all(promises);

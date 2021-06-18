@@ -8,8 +8,8 @@ import { activeScreenLoader, screenLoader } from "store/screenLoader";
 import useShowConfirm from "./useShowConfirm";
 
 import DeleteImage from "application/core/DeleteImage";
-import FoodDeleteById from "application/core/FoodDeleteById";
-import FoodDeleteGroup from "application/core/FoodDeleteGroup";
+import FoodDeleteById from "application/core/FoodDelete/FoodDeleteById";
+import FoodDeleteGroup from "application/core/FoodDelete/FoodDeleteGroup";
 
 const useFoodActions = () => {
   const { addToast } = useToasts();

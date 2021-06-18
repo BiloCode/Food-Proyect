@@ -1,9 +1,12 @@
 import * as S from "./styles";
 
-import Description from "components/atoms/Description";
-import Button from "components/atoms/Button";
 import { PuntuactionType } from "application/types/BranchOfficeModelType";
+
 import useDeleteComment from "hooks/useDeleteComment";
+
+import Button from "components/atoms/Button";
+import Description from "components/atoms/Description";
+
 import { useAtomValue } from "jotai/utils";
 import { currentBranch } from "store/currentBranch";
 
@@ -19,59 +22,56 @@ const ClientsCommentsDetail = ({ comment }: ClientsCommentsDetailType) => {
     userId: comment?.userId,
   });
 
-  const TypePuntuaction = (puntuaction: number) => {
-    switch (puntuaction) {
-      case 1:
-        return "Negativa";
-      case 2:
-        return "Negativa / Neutral";
-      case 3:
-        return "Neutral";
-      case 4:
-        return "Positiva / Neutral";
-      case 5:
-        return "Positiva";
-      default:
-        return "Sin puntuacion";
-    }
+  const getTextRender = (puntuaction: number) => {
+    const textRender = {
+      1: "Negativa",
+      2: "Negativa / Neutral",
+      3: "Neutral",
+      4: "Positiva / Neutral",
+      5: "Positiva",
+    };
+
+    return textRender[puntuaction] || "Sin puntuación";
   };
 
+  const commentIsNull = !comment;
+
   return (
-    <>
-      {comment?.userId && (
-        <S.Container>
-          <S.Tittle>
-            <Description color="blue" size="medium" bold="bold">
-              Informacion Adicional
-            </Description>
-          </S.Tittle>
-          <S.InformationContainer>
-            <S.Information>
-              <Description size="medium" color="gray" bold="bold" uppercase>
-                Estado
-              </Description>
-              <Description size="medium" color="gray">
-                {comment?.edited ? "Sin Editar" : "Editado"}
-              </Description>
-            </S.Information>
-            <S.Information>
-              <Description size="medium" color="gray" bold="bold" uppercase>
-                Puntuacion
-              </Description>
-              <Description size="medium" color="gray">
-                {TypePuntuaction(comment?.stars)}
-              </Description>
-            </S.Information>
-            <Button
-              text="Eliminar comentario"
-              type="button"
-              styles={{ color: "yellow", size: "medium" }}
-              onClick={DeleteComment}
-            />
-          </S.InformationContainer>
-        </S.Container>
-      )}
-    </>
+    <S.Container>
+      <S.Tittle>
+        <Description color="blue" size="small" bold="bold">
+          Detalle de la Puntuación
+        </Description>
+      </S.Tittle>
+      <S.InformationContainer>
+        <S.Information>
+          <Description size="small" color="gray" bold="bold" uppercase>
+            Estado
+          </Description>
+          <Description size="small" color="gray">
+            {commentIsNull
+              ? "No seleccionado"
+              : comment?.edited
+              ? "Sin Editar"
+              : "Editado"}
+          </Description>
+        </S.Information>
+        <S.Information>
+          <Description size="small" color="gray" bold="bold" uppercase>
+            Puntuacion
+          </Description>
+          <Description size="small" color="gray">
+            {getTextRender(comment?.stars)}
+          </Description>
+        </S.Information>
+        <Button
+          disabled={commentIsNull}
+          text="Eliminar comentario"
+          onClick={!commentIsNull && DeleteComment}
+          styles={{ color: "yellow", size: "medium" }}
+        />
+      </S.InformationContainer>
+    </S.Container>
   );
 };
 
