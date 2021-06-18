@@ -7,8 +7,9 @@ import Description from "components/atoms/Description";
 import StarListPuntuaction from "components/molecules/StarListPuntuaction";
 import { PuntuactionType } from "application/types/BranchOfficeModelType";
 import classNames from "classnames";
+import { memo } from "react";
 
-type ClientsComments = {
+type ClientsCommentsType = {
   clientPuntuaction: PuntuactionType;
   onClickComment(): void;
   active: boolean;
@@ -18,7 +19,7 @@ const ClientsComments = ({
   clientPuntuaction,
   onClickComment,
   active,
-}: ClientsComments) => {
+}: ClientsCommentsType) => {
   return (
     <S.Container
       onClick={onClickComment}
@@ -32,9 +33,7 @@ const ClientsComments = ({
         </S.ImageClient>
         <div>
           <S.ClientNameAndDate>
-            <Title size="small-medium">
-              {clientPuntuaction.client.fullName}
-            </Title>
+            <Title size="small">{clientPuntuaction.client.fullName}</Title>
             <div>
               <Description color="blue" size="small" bold="semi-bold">
                 {clientPuntuaction.createdAt.toDate().toLocaleDateString()}
@@ -52,7 +51,7 @@ const ClientsComments = ({
       </S.ClienDataContainer>
       <div>
         <Description
-          size="medium"
+          size="small"
           color={!clientPuntuaction.description ? "gray" : "black"}
         >
           {clientPuntuaction.description || "Sin descripcion..."}
@@ -62,4 +61,4 @@ const ClientsComments = ({
   );
 };
 
-export default ClientsComments;
+export default memo(ClientsComments);

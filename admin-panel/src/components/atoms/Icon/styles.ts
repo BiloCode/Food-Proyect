@@ -43,4 +43,8 @@ export const Container = styled.span`
   &.big {
     font-size: 2.4em;
   }
+
+  &.extra_big {
+    font-size: 5em;
+  }
 `;

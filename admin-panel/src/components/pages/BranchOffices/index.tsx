@@ -4,15 +4,17 @@ import * as S from "./styles";
 import HeaderTitle from "components/molecules/HeaderTitle";
 import BranchOfficeCard from "components/organisms/BranchOfficeCard";
 import PageWithSidebarBox from "components/templates/PageWithSidebarBox";
+import CreateBranchModal from "components/templates/CreateBranchModal";
 
 import { useAtomValue } from "jotai/utils";
 import { branchOffice } from "store/branchOffice";
 import PageLimiterContainer from "components/atoms/PageLimiterContainer";
+import useActive from "hooks/useActive";
 
 const BranchOffices = (_: RouteComponentProps) => {
   const branchOffices = useAtomValue(branchOffice);
 
-  const onClickToCreate = () => console.log("Create...");
+  const modalCreatebranch = useActive();
 
   return (
     <PageWithSidebarBox>
@@ -20,7 +22,10 @@ const BranchOffices = (_: RouteComponentProps) => {
         <HeaderTitle
           title="Nuestras Sucursales"
           subtitleMessage={`${branchOffices.data.length} sucursales   registradas.`}
-          button={{ onClick: onClickToCreate, text: "Crear Sucursal" }}
+          button={{
+            onClick: modalCreatebranch.toggleActive,
+            text: "Crear Sucursal",
+          }}
         />
         <S.BranchOfficeListContainer>
           <S.BranchOfficeList>
@@ -36,6 +41,7 @@ const BranchOffices = (_: RouteComponentProps) => {
           </S.BranchOfficeList>
         </S.BranchOfficeListContainer>
       </PageLimiterContainer>
+      {modalCreatebranch.active && <CreateBranchModal></CreateBranchModal>}
     </PageWithSidebarBox>
   );
 };
