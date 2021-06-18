@@ -41,7 +41,9 @@ const BranchOffices = (_: RouteComponentProps) => {
           </S.BranchOfficeList>
         </S.BranchOfficeListContainer>
       </PageLimiterContainer>
-      {modalCreatebranch.active && <CreateBranchModal></CreateBranchModal>}
+      {modalCreatebranch.active && (
+        <CreateBranchModal onClose={modalCreatebranch.toggleActive} />
+      )}
     </PageWithSidebarBox>
   );
 };
