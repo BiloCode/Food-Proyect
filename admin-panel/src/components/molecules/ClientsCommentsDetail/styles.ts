@@ -1,5 +1,6 @@
-import { NORMAL_GRAY_MEDIUM } from "config/styles";
 import styled from "styled-components";
+
+import { NORMAL_GRAY_MEDIUM } from "config/styles";
 
 const paddingContainer = 1.5;
 
@@ -10,7 +11,7 @@ export const Container = styled.div`
   row-gap: ${paddingContainer * 2}em;
   padding: ${paddingContainer}em 2.5em;
   position: relative;
-  border: 2px solid ${NORMAL_GRAY_MEDIUM};
+  border: 1px solid ${NORMAL_GRAY_MEDIUM};
   border-radius: 20px;
   overflow: hidden;
 `;
@@ -24,7 +25,7 @@ export const Tittle = styled.div`
     content: "";
     position: absolute;
     width: 200%;
-    height: 2px;
+    height: 1px;
     background-color: ${NORMAL_GRAY_MEDIUM};
 
     bottom: calc(${-paddingContainer}em - 2px);

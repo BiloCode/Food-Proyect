@@ -9,8 +9,8 @@ class DeleteImage {
       await storeRef.delete();
       return true;
     } catch (error) {
-      return false;
       console.log(error);
+      return false;
     }
   }
 }

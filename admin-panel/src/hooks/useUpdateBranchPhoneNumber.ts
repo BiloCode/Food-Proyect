@@ -1,21 +1,15 @@
+import { useToasts } from "react-toast-notifications";
+
 import UpdateBranchPhoneNumber from "application/core/UpdateBranchPhoneNumber";
-import { RequestStateType } from "application/types/RequestStateType";
-import { currentBranch as currentBranchStore } from "store/currentBranch";
 
 import { useAtom } from "jotai";
-import { useState } from "react";
-import { useToasts } from "react-toast-notifications";
+import { currentBranch as currentBranchStore } from "store/currentBranch";
 
 const useUpdateBranchPhoneNumber = () => {
   const [currentBranch, setCurrentBranch] = useAtom(currentBranchStore);
   const { addToast } = useToasts();
 
-  const [requestStatePhoneNumber, setRequestStatePhoneNumber] =
-    useState<RequestStateType>();
-
   const onUpdatePhoneNumber = async (id: string, phoneNumber: string) => {
-    setRequestStatePhoneNumber("loading");
-
     const updateService = new UpdateBranchPhoneNumber();
 
     const update = await updateService.__invoke({
@@ -25,7 +19,6 @@ const useUpdateBranchPhoneNumber = () => {
 
     if (!update) {
       addToast("Error en la actualizacion", { appearance: "error" });
-      setRequestStatePhoneNumber("complete");
     }
 
     addToast("Numero actualizado", { appearance: "success" });
@@ -37,13 +30,10 @@ const useUpdateBranchPhoneNumber = () => {
     setCurrentBranch({
       branch: newCurrentBrach.branch,
     });
-
-    setRequestStatePhoneNumber("complete");
   };
 
   return {
     onUpdatePhoneNumber,
-    requestStatePhoneNumber,
   };
 };
 

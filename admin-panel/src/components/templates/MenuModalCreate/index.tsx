@@ -39,6 +39,11 @@ const MenuModalCreate = ({ onClose }: ModalProps) => {
   const [isSendRequest, setIsSendRequest] = useState<boolean>(false);
 
   const addFood = (_id: string) => () => {
+    const isExists = foodSaved.some((v) => v._id === _id);
+    if (isExists) {
+      return;
+    }
+
     const foodSelect = [...foodStore.data].find((v) => v._id === _id);
     if (!foodSelect) {
       return;

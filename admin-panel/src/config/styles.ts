@@ -10,7 +10,7 @@ export const HOME_STATISTICS_ROW_WIDTH = "140px";
 export const ATOM_INPUT_HEIGHT = "40px";
 export const FOOD_MODAL_ITEM_HEIGHT = "64px";
 
-export const PADDDING_BRANCH_DETAIL_TABS = "4em 3em";
+export const PADDDING_BRANCH_DETAIL_TABS = "3em 3em";
 
 /** -- COLORS -- **/
 

@@ -31,23 +31,21 @@ const ClientsComments = ({
         <S.ImageClient>
           <Image src={clientPuntuaction.client.profileImage} />
         </S.ImageClient>
-        <div>
+        <S.ClientData>
           <S.ClientNameAndDate>
             <Title size="small">{clientPuntuaction.client.fullName}</Title>
             <div>
-              <Description color="blue" size="small" bold="semi-bold">
+              <Description color="blue" size="extra_small" bold="semi-bold">
                 {clientPuntuaction.createdAt.toDate().toLocaleDateString()}
               </Description>
             </div>
           </S.ClientNameAndDate>
-          <div>
-            <StarListPuntuaction
-              iconColor="yellow"
-              iconSize="small"
-              stars={clientPuntuaction.stars}
-            />
-          </div>
-        </div>
+          <StarListPuntuaction
+            iconColor="yellow"
+            iconSize="small"
+            stars={clientPuntuaction.stars}
+          />
+        </S.ClientData>
       </S.ClienDataContainer>
       <div>
         <Description

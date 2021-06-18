@@ -43,6 +43,7 @@ class CreateNewFood {
         _id: newFood.id,
         name,
         price,
+        branchIds: [],
         image: imageUpload,
         createdAt,
       };

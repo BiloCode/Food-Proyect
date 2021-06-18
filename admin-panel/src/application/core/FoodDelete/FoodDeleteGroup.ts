@@ -1,6 +1,6 @@
 import { FOOD_IMAGE_REPOSITORY } from "config/constants";
 
-import DeleteImage from "./DeleteImage";
+import DeleteImage from "../DeleteImage";
 import FoodDeleteById from "./FoodDeleteById";
 
 type FoodDeletable = {
@@ -9,12 +9,12 @@ type FoodDeletable = {
 };
 
 class FoodDeleteGroup {
-  private foodDeleteById: FoodDeleteById;
   private deleteImage: DeleteImage;
+  private foodDeleteById: FoodDeleteById;
 
   constructor(foodDeleteById: FoodDeleteById, deleteImage: DeleteImage) {
-    this.foodDeleteById = foodDeleteById;
     this.deleteImage = deleteImage;
+    this.foodDeleteById = foodDeleteById;
   }
 
   public async exec(foods: FoodDeletable[]) {

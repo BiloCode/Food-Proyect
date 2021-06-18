@@ -14,9 +14,9 @@ const useBranchDetailActions = () => {
   const setDeleteMode = useUpdateAtom(menuDeleteMode);
 
   useEffect(() => {
-    (active || deleteMode.state) && disabled();
-    (!active || !deleteMode.state) && enabled();
-  }, [active, deleteMode.state]);
+    active && disabled();
+    !active && enabled();
+  }, [active]);
 
   const CreateFood = () => toggleActive();
   const RemoveFood = () => setDeleteMode((mode) => ({ ...mode, state: true }));

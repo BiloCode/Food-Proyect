@@ -11,7 +11,13 @@ const foodConverter = {
     options: firebase.firestore.SnapshotOptions
   ): FoodModel {
     const data = snapshot.data(options);
-    return new FoodModel(data.name, data.price, data.image, data.createdAt);
+    return new FoodModel(
+      data.name,
+      data.price,
+      data.branchIds,
+      data.image,
+      data.createdAt
+    );
   },
 };
 
