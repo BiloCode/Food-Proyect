@@ -18,27 +18,24 @@ import ContactInformation from "components/molecules/ContactInformation";
 
 const BranchOfficeDetail: FC<RouteComponentProps> = ({}) => {
   const { active: menuActive, toggleActive: menuToggleActive } = useActive();
-  const {
-    userAuth,
-    branchOffice: { data, uAuthPuntuaction },
-  } = useGetBranchOfficeDetail();
+  const { userAuth, branchOffice } = useGetBranchOfficeDetail();
 
   return (
     <div>
       <NavigationBar />
-      {data && (
+      {branchOffice.data && (
         <>
           <ParallaxImage
             styles={{ size: "small" }}
-            src={data.bannerImage.url}
+            src={branchOffice.data.bannerImage.url}
           />
           <S.ContainerContent>
             <S.ContainerBranchData>
               <BODetailText
-                name={data.name}
-                stars={data.stars}
-                foodType={data.foodType}
-                description={data.description}
+                stars={branchOffice.stars}
+                name={branchOffice.data.name}
+                foodType={branchOffice.data.foodType}
+                description={branchOffice.data.description}
               />
               <S.MainContainer>
                 <S.TitleContainer>
@@ -46,14 +43,21 @@ const BranchOfficeDetail: FC<RouteComponentProps> = ({}) => {
                     Valoraciones del lugar
                   </Title>
                   {userAuth && (
-                    <UserPuntuactionArea uAuthPuntuaction={uAuthPuntuaction} />
+                    <UserPuntuactionArea
+                      uAuthPuntuaction={branchOffice.uAuthPuntuaction}
+                    />
                   )}
                 </S.TitleContainer>
-                <BODetailPuntuactionList cardList={data.puntuactions} />
+                <BODetailPuntuactionList
+                  cardList={branchOffice.data.puntuactions}
+                />
               </S.MainContainer>
             </S.ContainerBranchData>
             <div>
-              <BOMostPopularFoodCard onClick={menuToggleActive} />
+              <BOMostPopularFoodCard
+                onClick={menuToggleActive}
+                sellMenu={branchOffice.data.menu[0]}
+              />
             </div>
           </S.ContainerContent>
           <S.ContactContainer>
@@ -65,7 +69,12 @@ const BranchOfficeDetail: FC<RouteComponentProps> = ({}) => {
           <Footer />
         </>
       )}
-      {menuActive && <BranchOfficeDetailMenu onClose={menuToggleActive} />}
+      {menuActive && (
+        <BranchOfficeDetailMenu
+          onClose={menuToggleActive}
+          listMenu={branchOffice.data.menu}
+        />
+      )}
     </div>
   );
 };

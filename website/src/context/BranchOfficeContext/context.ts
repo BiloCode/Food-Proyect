@@ -7,7 +7,6 @@ import {
 import { RequestStateType } from "application/types/RequestStateType";
 
 export type UploadBranchData = {
-  stars: number;
   userPuntuactionsId: string[];
   puntuactions: PuntuactionType[];
 };

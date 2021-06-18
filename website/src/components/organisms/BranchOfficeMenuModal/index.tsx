@@ -9,14 +9,14 @@ import Portals from "components/atoms/Portals";
 import DarkScreen from "components/atoms/DarkScreen";
 import PaginationButtonList from "components/molecules/PaginationButtonList";
 import Icon from "components/atoms/Icon";
-
-const fakeList = new Array(30).fill("");
+import { MenuType } from "application/types/BranchOfficeModelType";
 
 type MenuModalProps = {
   onClose(): void;
+  listMenu: MenuType[];
 };
 
-const BranchOfficeMenuModal: FC<MenuModalProps> = ({ onClose }) => {
+const BranchOfficeMenuModal: FC<MenuModalProps> = ({ onClose, listMenu }) => {
   const [pageSelect, setPageSelect] = useState<number>(0);
   const [cardsInView, setCardsInView] = useState<number>(3);
 
@@ -38,11 +38,11 @@ const BranchOfficeMenuModal: FC<MenuModalProps> = ({ onClose }) => {
                   <Icon color="blue" Type={FaTimes} />
                 </S.IconContainer>
               </S.TitleContainer>
-              <FoodSellList pageSelect={pageSelect} food={fakeList} />
+              <FoodSellList pageSelect={pageSelect} listMenu={listMenu} />
               <PaginationButtonList
                 pageSelect={pageSelect}
                 onClickButton={changePage}
-                pageNumber={Math.ceil(fakeList.length / cardsInView)}
+                pageNumber={Math.ceil(listMenu.length / cardsInView)}
               />
             </S.LimiterContainer>
           </S.ModalMenuContainer>

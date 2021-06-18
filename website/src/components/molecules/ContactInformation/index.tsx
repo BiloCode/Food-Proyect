@@ -15,7 +15,7 @@ const ContactInformation = () => {
   return (
     <S.Container>
       <S.ImageContainer>
-        <img src={contactImage} alt="" />
+        <img src={contactImage} />
       </S.ImageContainer>
       <S.ContactData>
         <S.Data>

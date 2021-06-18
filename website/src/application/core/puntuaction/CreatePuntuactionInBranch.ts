@@ -4,7 +4,6 @@ import { PuntuactionType } from "application/types/BranchOfficeModelType";
 import { NewPuntuactionType } from "application/types/NewPuntuactionType";
 
 type BranchParams = {
-  branchStars: number;
   uPuntuactionsId: string[];
   puntuactions: PuntuactionType[];
   newPuntuaction: NewPuntuactionType;
@@ -16,8 +15,7 @@ class CreatePuntuactionInBranch {
     branchRef: firebase.firestore.DocumentReference,
     params: BranchParams
   ) => {
-    const { puntuactions, newPuntuaction, uPuntuactionsId, branchStars } =
-      params;
+    const { puntuactions, newPuntuaction, uPuntuactionsId } = params;
 
     const existsPuntuaction = uPuntuactionsId.includes(newPuntuaction.userId);
 
@@ -48,7 +46,6 @@ class CreatePuntuactionInBranch {
     }
 
     const saveInDoc = {
-      stars: branchStars,
       userPuntuactionsId: newUPuntIds,
       puntuactions: newPuntuactions,
     };

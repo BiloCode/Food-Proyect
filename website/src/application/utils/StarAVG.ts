@@ -1,16 +1,11 @@
 import { PuntuactionType } from "application/types/BranchOfficeModelType";
 
-class StarAVG {
+class StarsPromedy {
   public static exec(puntuactions: PuntuactionType[]) {
-    let starsAccumulate = 0;
-    for (let puntuaction of puntuactions) {
-      starsAccumulate += puntuaction.stars;
-    }
+    const stars = puntuactions.reduce((prev, next) => prev + next.stars, 0);
 
-    const stars = Math.floor(starsAccumulate / puntuactions.length);
-
-    return stars;
+    return stars / puntuactions.length;
   }
 }
 
-export default StarAVG;
+export default StarsPromedy;

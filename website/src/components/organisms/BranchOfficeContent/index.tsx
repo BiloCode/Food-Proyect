@@ -3,6 +3,7 @@ import * as S from "./styles";
 
 import BranchOfficeInformation from "components/molecules/BranchOfficeInformation";
 import { BranchOfficeModelType } from "application/types/BranchOfficeModelType";
+import StarsPromedy from "application/utils/StarAVG";
 
 type BranchOfficeContentProps = {
   branchOfficeFilter: BranchOfficeModelType[];
@@ -20,7 +21,7 @@ const BranchOfficeContent = ({
           image={v.bannerImage.url}
           textTittle={v.name}
           textDescription={faker.lorem.words(20)}
-          stars={v.stars}
+          stars={StarsPromedy.exec(v.puntuactions)}
         />
       ))}
     </S.Container>

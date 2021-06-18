@@ -1,23 +1,34 @@
-import faker from "faker";
+import { memo } from "react";
 import * as S from "./styles";
 
 import Title from "components/atoms/Title";
 import Description from "components/atoms/Description";
 import Image from "components/atoms/Image";
-import { memo } from "react";
 
-const FoodSellCard = () => (
+type FoodSellCardProps = {
+  name: string;
+  price: number;
+  images: string[];
+  description: string;
+};
+
+const FoodSellCard = ({
+  name,
+  price,
+  images,
+  description,
+}: FoodSellCardProps) => (
   <S.MainContainer>
     <S.ImageContainer>
-      <Image src={faker.random.image()} imageCover />
+      <Image src={images[0]} imageCover />
     </S.ImageContainer>
     <S.TextContainer>
       <Title color="black" size="small">
-        Combo Papas + Hamburgesa
+        {name}
       </Title>
-      <S.Money>S/ 32.20</S.Money>
+      <S.Money>S/ {price.toFixed(2)}</S.Money>
       <S.DescriptionContainer>
-        <Description size="small">{faker.lorem.words(15)}</Description>
+        <Description size="small">{description}</Description>
       </S.DescriptionContainer>
     </S.TextContainer>
   </S.MainContainer>

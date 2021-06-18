@@ -4,6 +4,7 @@ import BranchOfficeMapItem from "../BranchOfficeMapItem";
 import NoSearchResults from "../NoSearchResults";
 import classNames from "classnames";
 import { BranchOfficeModelType } from "application/types/BranchOfficeModelType";
+import StarsPromedy from "application/utils/StarAVG";
 
 type BranchOfficeMapListProps = {
   branchOffices: BranchOfficeModelType[];
@@ -30,7 +31,7 @@ const BranchOfficeMapList = ({ branchOffices }: BranchOfficeMapListProps) => {
               image={v.bannerImage.url}
               latitude={v.location.latitude}
               length={v.location.longitude}
-              stars={v.stars}
+              stars={StarsPromedy.exec(v.puntuactions)}
             />
           );
         })
