@@ -1,4 +1,4 @@
-import { BACKGROUND_LIGHT, BLACK_LIGHT_B, FONT } from "config/styles";
+import { BLACK_LIGHT_B } from "config/styles";
 import styled from "styled-components";
 
 export const FileLabel = styled.label`
@@ -6,17 +6,22 @@ export const FileLabel = styled.label`
   height: 100%;
   display: none;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.3);
   align-items: center;
   cursor: pointer;
   position: absolute;
   top: 0;
   left: 0;
   border-radius: 20px;
+  border: 2px dashed #fff;
+  box-sizing: border-box;
 
   &.empty_image {
     display: flex;
-    background-color: ${BACKGROUND_LIGHT};
+    border: 2px dashed ${BLACK_LIGHT_B};
+
+    &:hover {
+      background-color: rgb(250, 250, 250);
+    }
   }
 `;
 
@@ -26,7 +31,7 @@ export const InputHide = styled.input`
 
 export const ImageContainer = styled.div`
   width: 100%;
-  height: 220px;
+  height: 200px;
   border-radius: 20px;
   position: relative;
 
@@ -36,23 +41,5 @@ export const ImageContainer = styled.div`
 
   & > img {
     filter: brightness(90%);
-  }
-`;
-
-export const MessageContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, max-content);
-  align-items: center;
-  column-gap: 8px;
-`;
-
-export const Message = styled.div`
-  color: #fff;
-  font-family: ${FONT};
-  font-size: 14px;
-  font-weight: bold;
-
-  &.empty_image {
-    color: ${BLACK_LIGHT_B};
   }
 `;

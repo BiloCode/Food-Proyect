@@ -20,7 +20,6 @@ const branchOfficeConverter = {
       data.location,
       data.menu,
       data.name,
-      data.stars,
       data.permisions,
       data.phoneNumber,
       data.puntuactions,

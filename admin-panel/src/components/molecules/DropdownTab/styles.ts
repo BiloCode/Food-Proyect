@@ -15,14 +15,14 @@ const slideDown = keyframes`
   to {
     opacity:1;
     visibilty:visible;
-    top: 100%;
+    top: calc(100% + 1em);
   }
 `;
 
 export const DropDownContainer = styled.div`
   position: absolute;
   width: 100%;
-  padding-top: 0.5em;
+  padding: 1em 0;
   display: flex;
   flex-direction: column;
   background-color: ${NORMAL_WHITE};
@@ -30,7 +30,7 @@ export const DropDownContainer = styled.div`
   font-size: 14px;
   color: ${BLACK_SUPER_LIGHT};
   cursor: pointer;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 -5px 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   animation: ${slideDown} 0.2s linear forwards;
 `;

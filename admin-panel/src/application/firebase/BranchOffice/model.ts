@@ -17,7 +17,6 @@ class BranchOfficeModel {
     readonly location: FirebaseLocationType,
     readonly menu: MenuType[],
     readonly name: string,
-    readonly stars: number,
     readonly permisions: PermisionsType[],
     readonly phoneNumber: string,
     readonly puntuactions: PuntuactionType[],

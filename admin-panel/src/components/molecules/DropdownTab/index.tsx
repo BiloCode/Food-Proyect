@@ -49,7 +49,7 @@ const DropdownTab = ({
           {options.map((v, i) => (
             <S.DropDownOption onClick={v.onClick} key={i}>
               <Icon type={v.icon} size="medium" />
-              <div>{v.text}</div>
+              <span>{v.text}</span>
             </S.DropDownOption>
           ))}
         </S.DropDownContainer>

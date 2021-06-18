@@ -10,6 +10,7 @@ import FormControl from "components/molecules/FormControl";
 import FoodCreateImage from "components/molecules/FoodCreateImage";
 
 import useFoodCreate from "hooks/useFoodCreate";
+import Title from "components/atoms/Title";
 
 type ModalProps = {
   onClose(): void;
@@ -22,42 +23,45 @@ const FoodModalCreate = ({ onClose }: ModalProps) => {
     <Portals>
       <DarkScreen>
         <S.MainContainer>
-          <S.FormContainer onSubmit={onSubmitFile}>
-            <FoodCreateImage
-              onChange={onChangeFile}
-              changeEnabled={!file.isUploading}
-              foodImage={file.uploadImage?.localURL}
-            />
-            <S.FormControlContainer>
-              <S.FormControls>
-                <FormControl
-                  ref={refs.nameRef}
-                  icon={FaHamburger}
-                  labelText="Nombre"
-                />
-                <FormControl
-                  type="number"
-                  ref={refs.priceRef}
-                  icon={HiOutlineCurrencyDollar}
-                  labelText="Precio"
-                />
-              </S.FormControls>
-              <S.GridButtons>
-                <Button
-                  type="submit"
-                  text="Crear nueva comida"
-                  isLoading={file.isUploading}
-                  styles={{ color: "blue" }}
-                />
-                <Button
-                  onClick={onClose}
-                  text="Cancelar y Cerrar"
-                  styles={{ color: "yellow" }}
-                  disabled={file.isUploading}
-                />
-              </S.GridButtons>
-            </S.FormControlContainer>
-          </S.FormContainer>
+          <S.Container>
+            <Title>Crear Nuevo Comestible</Title>
+            <S.FormContainer onSubmit={onSubmitFile}>
+              <FoodCreateImage
+                onChange={onChangeFile}
+                changeEnabled={!file.isUploading}
+                foodImage={file.uploadImage?.localURL}
+              />
+              <S.FormControlContainer>
+                <S.FormControls>
+                  <FormControl
+                    ref={refs.nameRef}
+                    icon={FaHamburger}
+                    labelText="Nombre"
+                  />
+                  <FormControl
+                    type="number"
+                    ref={refs.priceRef}
+                    icon={HiOutlineCurrencyDollar}
+                    labelText="Precio"
+                  />
+                </S.FormControls>
+                <S.GridButtons>
+                  <Button
+                    type="submit"
+                    text="Crear nueva comida"
+                    isLoading={file.isUploading}
+                    styles={{ color: "blue" }}
+                  />
+                  <Button
+                    onClick={onClose}
+                    text="Cancelar y Cerrar"
+                    styles={{ color: "yellow" }}
+                    disabled={file.isUploading}
+                  />
+                </S.GridButtons>
+              </S.FormControlContainer>
+            </S.FormContainer>
+          </S.Container>
         </S.MainContainer>
       </DarkScreen>
     </Portals>

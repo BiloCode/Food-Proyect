@@ -8,6 +8,7 @@ import PageWithSidebarBox from "components/templates/PageWithSidebarBox";
 import { useAtomValue } from "jotai/utils";
 import { branchOffice } from "store/branchOffice";
 import PageLimiterContainer from "components/atoms/PageLimiterContainer";
+import StarsPromedy from "application/utils/StarsPromedy";
 
 const BranchOffices = (_: RouteComponentProps) => {
   const branchOffices = useAtomValue(branchOffice);
@@ -28,9 +29,9 @@ const BranchOffices = (_: RouteComponentProps) => {
               <BranchOfficeCard
                 id={v._id}
                 name={v.name}
-                stars={v.stars}
                 image={v.bannerImage.url}
                 description={v.description}
+                stars={StarsPromedy.exec(v.puntuactions)}
               />
             ))}
           </S.BranchOfficeList>
