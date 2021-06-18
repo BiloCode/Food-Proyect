@@ -29,13 +29,10 @@ class CreatePuntuaction {
         const client = (await transaction.get(clientRef)).data();
         const branchOffice = (await transaction.get(branchRef)).data();
 
-        const branchStars = StarAVG.exec(branchOffice.puntuactions);
-
         const newBData = CreatePuntuactionInBranch.exec(
           transaction,
           branchRef,
           {
-            branchStars,
             newPuntuaction,
             puntuactions: branchOffice.puntuactions,
             uPuntuactionsId: branchOffice.userPuntuactionsId,

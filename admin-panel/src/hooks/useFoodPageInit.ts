@@ -6,8 +6,6 @@ import { deleteMode } from "store/foodDeleteMode";
 
 import { FoodModelType } from "application/types/FoodModelType";
 
-import useActive from "hooks/useActive";
-
 const useFoodPageInit = () => {
   const foods = useAtomValue(foodStore);
   const resetDeleteMode = useResetAtom(deleteMode);

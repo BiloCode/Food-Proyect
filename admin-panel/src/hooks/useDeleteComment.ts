@@ -1,8 +1,6 @@
 import RemovePuntuaction from "application/core/RemovePuntuaction";
-import { RequestStateType } from "application/types/RequestStateType";
 import { useAtom } from "jotai";
 
-import { useState } from "react";
 import { useToasts } from "react-toast-notifications";
 import { currentBranch as currentBranchStore } from "store/currentBranch";
 import Swal from "sweetalert2";

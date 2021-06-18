@@ -15,6 +15,9 @@ const useGoogleAuthentication = () => {
 
     const googleService = new GoogleAuthentication();
     const userData = await googleService.__invoke();
+
+    if (!userData) return;
+
     const userExists = await ExistsUser.exec(userData?._id);
 
     if (userExists) {

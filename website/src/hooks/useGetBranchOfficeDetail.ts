@@ -4,12 +4,14 @@ import { useParams } from "@reach/router";
 import { useAuthContext } from "context/AuthContext/context";
 import { useBranchOfficeContext } from "context/BranchOfficeContext/context";
 
+import StarsPromedy from "application/utils/StarAVG";
 import {
   BranchOfficeModelType,
   PuntuactionType,
 } from "application/types/BranchOfficeModelType";
 
 type BranchOfficeData = {
+  stars: number;
   data: BranchOfficeModelType;
   uAuthPuntuaction: PuntuactionType;
 };
@@ -21,6 +23,7 @@ const useGetBranchOfficeDetail = () => {
 
   const [branchOfficeData, setBranchOfficeData] = useState<BranchOfficeData>({
     data: null,
+    stars: 0,
     uAuthPuntuaction: null,
   });
 
@@ -33,30 +36,32 @@ const useGetBranchOfficeDetail = () => {
         (v) => v.userId === user?._id
       );
 
-      let dataBranchOffice = currentBranch;
+      let data = currentBranch;
 
       if (uAuthPuntuaction) {
-        const nowBranchCopy = { ...currentBranch };
+        const currentBranchCopy = { ...currentBranch };
 
-        dataBranchOffice = {
-          ...nowBranchCopy,
-          puntuactions: nowBranchCopy.puntuactions.filter(
+        data = {
+          ...currentBranchCopy,
+          puntuactions: currentBranchCopy.puntuactions.filter(
             (v) => v.userId !== user?._id
           ),
         };
       }
 
       return {
+        data,
         uAuthPuntuaction,
-        dataBranchOffice,
+        stars: StarsPromedy.exec(currentBranch.puntuactions),
       };
     };
 
-    const { dataBranchOffice, uAuthPuntuaction } = filterDataFromContext();
+    const { data, uAuthPuntuaction, stars } = filterDataFromContext();
 
     setBranchOfficeData(() => ({
+      data,
+      stars,
       uAuthPuntuaction,
-      data: dataBranchOffice,
     }));
   }, [branchOffices, user, requestState]);
 

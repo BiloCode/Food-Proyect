@@ -5,7 +5,7 @@ import { memo } from "react";
 import classNames from "classnames";
 
 type HeaderProps = {
-  foodSelectNumber: number;
+  elementsSelected: number;
   onCancel(): void;
   onSuccess(): void;
 };
@@ -13,21 +13,21 @@ type HeaderProps = {
 const HeaderDeleteMode = ({
   onCancel,
   onSuccess,
-  foodSelectNumber,
+  elementsSelected,
 }: HeaderProps) => (
   <>
     <S.ContainerMessages>
       <S.DescriptiveMessage>
-        Eliga las comidas que desea eliminar
+        Eliga los elementos que desea eliminar
       </S.DescriptiveMessage>
       <S.DescriptiveMessage className="normal">
-        {foodSelectNumber} comidas seleccionadas.
+        {elementsSelected} elementos seleccionados.
       </S.DescriptiveMessage>
     </S.ContainerMessages>
     <S.ButtonContainer
-      className={classNames({ is_empty: foodSelectNumber === 0 })}
+      className={classNames({ is_empty: elementsSelected === 0 })}
     >
-      {foodSelectNumber > 0 && (
+      {elementsSelected > 0 && (
         <Button
           onClick={onSuccess}
           text="Eliminar la seleccion"

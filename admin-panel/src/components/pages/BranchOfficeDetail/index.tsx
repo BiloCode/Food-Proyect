@@ -11,6 +11,8 @@ import MenuModalCreate from "components/templates/MenuModalCreate";
 
 import useBranchDetailInit from "hooks/useBranchDetailInit";
 import useBranchDetailActions from "hooks/useBranchDetailActions";
+import StarsPromedy from "application/utils/StarsPromedy";
+import MenuDeleteModal from "components/templates/MenuDeleteModal";
 
 const BranchOfficeDetail = (_: RouteComponentProps) => {
   const { pageData } = useBranchDetailInit();
@@ -20,6 +22,7 @@ const BranchOfficeDetail = (_: RouteComponentProps) => {
     DisabledBranch,
     menuModalActive,
     menuModalToggle,
+    menuDeleteModal,
   } = useBranchDetailActions();
 
   return (
@@ -27,8 +30,8 @@ const BranchOfficeDetail = (_: RouteComponentProps) => {
       {pageData.branch && (
         <>
           <BranchOfficeImage
-            stars={pageData.branch.stars}
             image={pageData.branch.bannerImage.url}
+            stars={StarsPromedy.exec(pageData.branch.puntuactions)}
           />
           <BranchDetailTabMenu
             tabs={GetPageTabs(CreateFood, RemoveFood)}
@@ -42,6 +45,7 @@ const BranchOfficeDetail = (_: RouteComponentProps) => {
               />
             )}
           />
+          {menuDeleteModal && <MenuDeleteModal />}
           {menuModalActive && <MenuModalCreate onClose={menuModalToggle} />}
         </>
       )}

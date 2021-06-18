@@ -24,7 +24,6 @@ class GetAllBranchOffice {
           _id: v.id,
           menu: data.menu,
           name: data.name,
-          stars: data.stars,
           location: data.location,
           foodType: data.foodType,
           permisions: data.permisions,

@@ -52,3 +52,29 @@ export const setBranchMenu = atom(null, (get, set, props: MenuBranch) => {
     }),
   }));
 });
+
+type MenuDelete = {
+  branchId: string;
+  idsDelete: string[];
+};
+
+export const removeBranchMenu = atom(null, (get, set, props: MenuDelete) => {
+  const currentBranch = [...get(branchOffice).data].find(
+    (v) => v._id === props.branchId
+  );
+
+  const currentMenu = [...currentBranch.menu].filter(
+    (v) => !props.idsDelete.includes(v._id)
+  );
+
+  set(branchOffice, (branch) => ({
+    ...branch,
+    data: branch.data.map((v) => {
+      if (v._id === props.branchId) {
+        return { ...currentBranch, menu: currentMenu };
+      }
+
+      return v;
+    }),
+  }));
+});

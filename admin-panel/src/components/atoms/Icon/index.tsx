@@ -2,7 +2,7 @@ import classnames from "classnames";
 import { IconType } from "react-icons";
 import * as S from "./styles";
 
-export type IconColorType = "white" | "yellow" | "gray" | "blue";
+export type IconColorType = "white" | "yellow" | "gray" | "blue" | "default";
 export type IconSizeType =
   | "small"
   | "small-medium"

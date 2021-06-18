@@ -29,13 +29,12 @@ export const BranchOfficeProvider: FC = ({ children }) => {
     branchOfficeId: string,
     uploadData: UploadBranchData
   ) => {
-    const { puntuactions, stars, userPuntuactionsId } = uploadData;
+    const { puntuactions, userPuntuactionsId } = uploadData;
 
     const branchListUpdated = [...branchOffices].map((v) => {
       if (v._id === branchOfficeId) {
         return {
           ...v,
-          stars,
           puntuactions,
           userPuntuactionsId,
         };

@@ -1,5 +1,4 @@
 import { FC, memo } from "react";
-import faker from "faker";
 import * as S from "./styles";
 
 import Image from "components/atoms/Image";
@@ -7,25 +6,29 @@ import Title from "components/atoms/Title";
 import Description from "components/atoms/Description";
 import Button from "components/atoms/Button";
 
+import { MenuType } from "application/types/BranchOfficeModelType";
+
 type MostPopularCardProps = {
   onClick?(): void;
+  sellMenu: MenuType;
 };
 
-const BOMostPopularFoodCard: FC<MostPopularCardProps> = ({ onClick }) => (
+const BOMostPopularFoodCard: FC<MostPopularCardProps> = ({
+  onClick,
+  sellMenu,
+}) => (
   <S.MainContainer>
     <Title color="blue" size="small-medium">
-      Combo Vegano para dos
+      {sellMenu.title}
     </Title>
     <S.ImageContainer>
-      <Image
-        imageCover
-        src="https://d31npzejelj8v1.cloudfront.net/media/catalog/product/d/u/duo-queso-tocino_1.jpg"
-      />
+      <Image imageCover src={sellMenu.foods[0].image} />
     </S.ImageContainer>
-    <Description size="small">{faker.lorem.words(20)}</Description>
+    <Description size="small">{sellMenu.description}</Description>
     <S.MoneyContainer>
       <Title size="medium" color="blue">
-        S/ 16.00
+        S/{" "}
+        {sellMenu.foods.reduce((prev, next) => prev + next.price, 0).toFixed(2)}
       </Title>
     </S.MoneyContainer>
     <Button

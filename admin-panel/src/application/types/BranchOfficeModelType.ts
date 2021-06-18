@@ -38,7 +38,6 @@ export type PermisionsType = {
 export type BranchOfficeModelType = {
   _id: string;
   name: string;
-  stars: number;
   menu: MenuType[];
   foodType: FoodType;
   description: string;

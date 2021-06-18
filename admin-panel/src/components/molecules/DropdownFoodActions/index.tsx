@@ -31,7 +31,7 @@ const DropdownFoodActions = ({
     <S.MainContainer>
       <S.ButtonDropdown onClick={toggleActive}>
         <S.ButtonNestingContainer>
-          <S.ButtonMessage>Operaciones</S.ButtonMessage>
+          <S.ButtonMessage>Mas Opciones</S.ButtonMessage>
           <Icon type={BsChevronDown} size="small" />
         </S.ButtonNestingContainer>
       </S.ButtonDropdown>

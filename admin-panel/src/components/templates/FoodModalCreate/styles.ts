@@ -8,15 +8,21 @@ export const MainContainer = styled.div`
   align-items: center;
 `;
 
-export const FormContainer = styled.form`
-  width: 420px;
+export const Container = styled.div`
+  width: 440px;
+  display: grid;
+  row-gap: 2em;
   background-color: #fff;
   border-radius: 20px;
   overflow: hidden;
-  padding: 2em;
+  padding: 2.5em;
+  box-sizing: border-box;
+  text-align: center;
+`;
+
+export const FormContainer = styled.form`
   display: grid;
   row-gap: 3em;
-  box-sizing: border-box;
 `;
 
 export const FormControlContainer = styled.fieldset`
