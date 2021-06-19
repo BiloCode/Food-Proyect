@@ -2,7 +2,7 @@ import { useAtom } from "jotai";
 import { useToasts } from "react-toast-notifications";
 import { currentBranch as currentBranchStore } from "store/currentBranch";
 
-import UpdateBranchDescription from "application/core/UpdateBranchDescription";
+import UpdateBranchDescription from "application/core/BranchOffice/UpdateBranchDescription";
 
 const useUpdateBranchDescription = () => {
   const { addToast } = useToasts();

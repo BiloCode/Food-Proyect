@@ -1,14 +1,15 @@
 import firebase from "firebase";
 
-import UploadBranchImage from "application/core/UploadBranchImage";
 import { FirebaseCollectionNames } from "config/constants";
-import { FoodModelType } from "application/types/FoodModelType";
-import { BranchOfficeModelType } from "application/types/BranchOfficeModelType";
-import { FoodType } from "application/types/FoodType";
 
-type CreateNewBranchOfficeParams = {
+import type { FoodType } from "application/types/FoodType";
+
+import UploadBranchImage from "./UploadBranchImage";
+import { BranchOfficeModelType } from "application/types/BranchOfficeModelType";
+
+type TData = {
   image: File;
-  UpdatePercentaje(percentaje: number): void;
+  updatePercentaje(percentaje: number): void;
   params: {
     name: string;
     foodType: FoodType;
@@ -29,9 +30,11 @@ class CreateNewBranchOffice {
     this.uploadBranchImage = uploadImage;
   }
 
-  public __invoke = async (
-    props: CreateNewBranchOfficeParams
-  ): Promise<BranchOfficeModelType> => {
+  public __invoke = async ({
+    image,
+    params,
+    updatePercentaje,
+  }: TData): Promise<BranchOfficeModelType> => {
     const firestore = firebase.firestore();
     const foodCollection = firestore.collection(
       FirebaseCollectionNames.branchOffice
@@ -40,39 +43,40 @@ class CreateNewBranchOffice {
     try {
       const createdAt = firebase.firestore.Timestamp.now();
       const imageUpload = await this.uploadBranchImage.__invoke({
-        image: props.image,
-        UpdatePercentaje: props.UpdatePercentaje,
+        image,
+        updatePercentaje,
       });
+
       if (!imageUpload) {
         return null;
       }
 
       const newBranchOffice = await foodCollection.add({
-        name: props.params.name,
+        name: params.name,
         stars: 0,
         menu: [],
-        foodType: props.params.foodType,
-        description: props.params.description,
-        phoneNumber: props.params.phoneNumber,
+        foodType: params.foodType,
+        description: params.description,
+        phoneNumber: params.phoneNumber,
         permisions: [],
         userPuntuactionsId: [],
         bannerImage: imageUpload,
-        location: props.params.location,
+        location: params.location,
         puntuactions: [],
         createdAt: createdAt,
       });
 
       return {
         _id: newBranchOffice.id,
-        name: props.params.name,
+        name: params.name,
         menu: [],
-        foodType: props.params.foodType,
-        description: props.params.description,
-        phoneNumber: props.params.phoneNumber,
+        foodType: params.foodType,
+        description: params.description,
+        phoneNumber: params.phoneNumber,
         permisions: [],
         userPuntuactionsId: [],
         bannerImage: imageUpload,
-        location: props.params.location,
+        location: params.location,
         puntuactions: [],
         createdAt: createdAt,
       };

@@ -1,9 +1,9 @@
 import firebase from "firebase";
 
-import branchOfficeConverter from "application/firebase/BranchOffice/converter";
-
 import { FirebaseCollectionNames } from "config/constants";
-import foodSellConverter from "application/firebase/FoodSell/converter";
+
+import SellFoodDelete from "../SellFoodDelete";
+import branchOfficeConverter from "application/firebase/BranchOffice/converter";
 
 class RemoveMenuInBranch {
   public static async exec(branchId: string, deleteMenusId: string[]) {
@@ -22,20 +22,7 @@ class RemoveMenuInBranch {
           (v) => !deleteMenusId.includes(v._id)
         );
 
-        const removeInDocument = async () => {
-          const promises = deleteMenusId.map(async (v) => {
-            const foodSellRef = db
-              .collection(FirebaseCollectionNames.sellFood)
-              .withConverter(foodSellConverter)
-              .doc(v);
-
-            return foodSellRef.delete();
-          });
-
-          await Promise.all(promises);
-        };
-
-        await removeInDocument();
+        await Promise.all(deleteMenusId.map((_id) => SellFoodDelete.exec(_id)));
 
         transaction.update(branchRef, { menu });
       });

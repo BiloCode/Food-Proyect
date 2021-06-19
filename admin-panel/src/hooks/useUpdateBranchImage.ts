@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useToasts } from "react-toast-notifications";
 
-import UploadBranchImage from "application/core/UploadBranchImage";
-import UpdateBranchImage from "application/core/UpdateBranchImage";
 import { RequestStateType } from "application/types/RequestStateType";
+import DeleteImage from "application/core/DeleteImage";
+import UploadBranchImage from "application/core/BranchOffice/UploadBranchImage";
+import UpdateBranchImage from "application/core/BranchOffice/UpdateBranchImage";
 
 import { useAtom } from "jotai";
 import { currentBranch as currentBranchStore } from "store/currentBranch";
-import DeleteImage from "application/core/DeleteImage";
 import { BRANCH_OFFICES_IMAGE_REPOSITORY } from "config/constants";
 
 const useUpdateBranchImage = () => {
@@ -18,7 +18,7 @@ const useUpdateBranchImage = () => {
     useState<RequestStateType>("initialize");
   const [loadingPercentaje, setLoadingPercentaje] = useState<number>(0);
 
-  const UpdatePercentaje = (percentaje: number) => {
+  const updatePercentaje = (percentaje: number) => {
     setLoadingPercentaje(percentaje);
   };
 
@@ -29,7 +29,7 @@ const useUpdateBranchImage = () => {
 
     const newImage = await updateImageService.__invoke({
       image,
-      UpdatePercentaje,
+      updatePercentaje,
     });
 
     if (!newImage) {

@@ -12,7 +12,7 @@ import FormControl from "components/molecules/FormControl";
 import MenuModalListSaved from "components/organisms/MenuModalListSaved";
 import FormControlSearchable from "components/organisms/FormControlSearchable";
 
-import AddNewMenu from "application/core/AddNewMenu";
+import BranchAddNewMenu from "application/core/BranchOffice/BranchAddNewMenu";
 
 import { useAtomValue, useUpdateAtom } from "jotai/utils";
 import { foods } from "store/foods";
@@ -88,7 +88,7 @@ const MenuModalCreate = ({ onClose }: ModalProps) => {
     setIsSendRequest(() => true);
 
     try {
-      const menu = await AddNewMenu.exec(currentBranchDetail.branch._id, {
+      const menu = await BranchAddNewMenu.exec(currentBranchDetail.branch._id, {
         name,
         description,
         foodsId,

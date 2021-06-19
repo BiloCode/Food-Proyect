@@ -9,7 +9,7 @@ import Description from "components/atoms/Description";
 import FoodHorizontalCard from "components/molecules/FoodHorizontalCard";
 
 import { MenuType } from "application/types/BranchOfficeModelType";
-import RemoveMenuInBranch from "application/core/RemoveMenuInBranch";
+import BranchRemoveMenu from "application/core/BranchOffice/BranchRemoveMenu";
 
 import { useAtomValue, useResetAtom, useUpdateAtom } from "jotai/utils";
 import { currentBranch } from "store/currentBranch";
@@ -43,7 +43,7 @@ const MenuDeleteModal = () => {
     const branchId = currentData.branch._id;
 
     try {
-      const isUpdated = await RemoveMenuInBranch.exec(branchId, deleteMode.ids);
+      const isUpdated = await BranchRemoveMenu.exec(branchId, deleteMode.ids);
 
       if (!isUpdated) {
       }

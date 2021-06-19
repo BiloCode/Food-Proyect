@@ -1,8 +1,10 @@
-import UpdateBranchLocation from "application/core/UpdateBranchLocation";
-import { RequestStateType } from "application/types/RequestStateType";
-import { useAtom } from "jotai";
 import { FormEvent, useRef, useState } from "react";
 import { useToasts } from "react-toast-notifications";
+
+import { RequestStateType } from "application/types/RequestStateType";
+import UpdateBranchLocation from "application/core/BranchOffice/UpdateBranchLocation";
+
+import { useAtom } from "jotai";
 import { currentBranch as currentBranchStore } from "store/currentBranch";
 
 const useUpdateBranchLocation = () => {

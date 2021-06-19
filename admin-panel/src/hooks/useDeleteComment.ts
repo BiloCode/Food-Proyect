@@ -1,10 +1,12 @@
-import RemovePuntuaction from "application/core/RemovePuntuaction";
-import { useAtom } from "jotai";
-
-import { useToasts } from "react-toast-notifications";
-import { currentBranch as currentBranchStore } from "store/currentBranch";
 import Swal from "sweetalert2";
+import { useToasts } from "react-toast-notifications";
+
+import RemovePuntuaction from "application/core/RemovePuntuaction";
+
 import useShowConfirm from "./useShowConfirm";
+
+import { useAtom } from "jotai";
+import { currentBranch as currentBranchStore } from "store/currentBranch";
 
 type useDeleteCommentProps = {
   branchOfficeId: string;
@@ -35,18 +37,16 @@ const useDeleteComment = ({
 
     Swal.fire({
       title: "Eliminando",
+      allowOutsideClick: false,
       didOpen: () => {
         Swal.showLoading();
       },
-      allowOutsideClick: false,
     });
 
     const newCurrentBranchData = await removeCommentService.exec(
       branchOfficeId,
       userId
     );
-
-    console.log(newCurrentBranchData);
 
     if (!newCurrentBranchData) {
       addToast("Error al eliminar ", { appearance: "error" });

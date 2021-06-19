@@ -1,6 +1,6 @@
 import { useToasts } from "react-toast-notifications";
 
-import UpdateBranchPhoneNumber from "application/core/UpdateBranchPhoneNumber";
+import UpdateBranchPhoneNumber from "application/core/BranchOffice/UpdateBranchPhoneNumber";
 
 import { useAtom } from "jotai";
 import { currentBranch as currentBranchStore } from "store/currentBranch";

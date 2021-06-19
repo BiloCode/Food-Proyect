@@ -7,23 +7,23 @@ type UploadTask = firebase.storage.UploadTask;
 
 type UploadBranchImageParams = {
   image: File;
-  UpdatePercentaje(percentaje: number): void;
+  updatePercentaje(percentaje: number): void;
 };
 
 type UploadStateParams = {
   reference: UploadTask;
-  UpdatePercentaje(percentaje: number): void;
+  updatePercentaje(percentaje: number): void;
 };
 
 class UploadBranchImage {
-  private UploadState({ reference, UpdatePercentaje }: UploadStateParams) {
+  private UploadState({ reference, updatePercentaje }: UploadStateParams) {
     return new Promise<void>((resolve, reject) => {
       reference.on(
         "state_changed",
         (snapshot) => {
           let percentage =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          UpdatePercentaje(percentage);
+          updatePercentaje(percentage);
         },
         (error) => reject(error),
         () => resolve()
@@ -31,7 +31,7 @@ class UploadBranchImage {
     });
   }
 
-  public async __invoke({ image, UpdatePercentaje }: UploadBranchImageParams) {
+  public async __invoke({ image, updatePercentaje }: UploadBranchImageParams) {
     const fileStorageRef = `${BRANCH_OFFICES_IMAGE_REPOSITORY}/${
       firebase.firestore.Timestamp.now() + "_" + image.name
     }`;
@@ -41,7 +41,7 @@ class UploadBranchImage {
     const upload = storeRef.put(image);
 
     try {
-      await this.UploadState({ reference: upload, UpdatePercentaje });
+      await this.UploadState({ reference: upload, updatePercentaje });
 
       const imageURL = await upload.snapshot.ref.getDownloadURL();
       const reference = upload.snapshot.ref.storage.refFromURL(imageURL);
