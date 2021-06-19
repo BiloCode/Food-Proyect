@@ -11,14 +11,11 @@ import { useAtomValue } from "jotai/utils";
 import { clients } from "store/clients";
 
 import { CLIENTS_LIST_TABLE_ROWS } from "config/constants";
-import { useAtom } from "jotai";
-import { currentPageInClient } from "store/currentPageInClient";
 
 const ClientsListContainer = () => {
   const client = useAtomValue(clients);
 
   const [clientsFilter, setClientsFilter] = useState<ClientModelType[]>([]);
-  const [currentPage, setCurrentPage] = useAtom(currentPageInClient);
 
   const onChangeSearch = (ev: ChangeEvent<HTMLInputElement>) => {
     const inputValue = ev.target?.value.toLocaleUpperCase();
@@ -26,7 +23,7 @@ const ClientsListContainer = () => {
       const clientDescription = v.fullName.toLocaleUpperCase();
       return clientDescription.includes(inputValue);
     });
-    setCurrentPage(0);
+
     setClientsFilter(() => newList);
   };
 

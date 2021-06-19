@@ -15,7 +15,7 @@ export const InputContainer = styled.div`
   position: relative;
 `;
 
-const itemsRender = 3;
+const itemsRender = 4;
 const FullHeight = `calc(${FOOD_MODAL_ITEM_HEIGHT} * ${itemsRender})`;
 
 export const SearchContainer = styled.div`

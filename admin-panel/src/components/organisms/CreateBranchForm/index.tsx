@@ -44,7 +44,6 @@ const CreateBranchForm = ({ onClose }: CreateBranchFormType) => {
     <S.Container onSubmit={onSubmit}>
       <S.GroupFormContainer>
         <Title size="small-medium">Informacion Basica</Title>
-
         <S.RightFormContainer>
           <FoodCreateImage
             onChange={onChangeFile}

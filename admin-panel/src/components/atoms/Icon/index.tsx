@@ -9,6 +9,7 @@ export type IconSizeType =
   | "medium"
   | "big"
   | "extra-big";
+
 export type IconProps = {
   type: IconType;
   color?: IconColorType;
@@ -29,7 +30,7 @@ const Icon = ({ type: CustomIcon, color, size }: IconProps) => (
       blue: color === "blue",
     })}
   >
-    {<CustomIcon />}
+    <CustomIcon />
   </S.Container>
 );
 

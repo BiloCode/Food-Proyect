@@ -31,9 +31,14 @@ export const InputHide = styled.input`
 
 export const ImageContainer = styled.div`
   width: 100%;
-  height: 200px;
+  height: 220px;
   border-radius: 20px;
   position: relative;
+
+  &:hover > img {
+    transition: 0.3s;
+    filter: brightness(70%);
+  }
 
   &:hover ${FileLabel} {
     display: flex;

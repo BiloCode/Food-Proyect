@@ -13,13 +13,14 @@ import FoodSearchbleItem from "components/molecules/FoodSearchableItem";
 
 type SearchableProps = {
   foods: FoodModelType[];
+  savedFoods: string[];
   onClearFoods(): void;
   onAddItem(_id: string): () => void;
   onSearch(ev: ChangeEvent<HTMLInputElement>): void;
 };
 
 const FormControlSearchable = forwardRef<HTMLInputElement, SearchableProps>(
-  ({ foods, onSearch, onAddItem, onClearFoods }, ref) => {
+  ({ foods, onSearch, onAddItem, onClearFoods, savedFoods }, ref) => {
     const { active, setState } = useActive();
 
     const onClose = () => setState(false);
@@ -52,6 +53,7 @@ const FormControlSearchable = forwardRef<HTMLInputElement, SearchableProps>(
                   key={v._id}
                   name={v.name}
                   onClick={AddNewItemToList(v._id)}
+                  isSaved={savedFoods.includes(v._id)}
                 />
               ))}
             </S.SearchContainer>
@@ -59,7 +61,7 @@ const FormControlSearchable = forwardRef<HTMLInputElement, SearchableProps>(
         </S.InputContainer>
         <Button
           styles={{ color: active ? "red" : "yellow" }}
-          text={active ? "Cerrar" : "Limpiar Todo"}
+          text={active ? "Cerrar" : "Limpiar Lista"}
           onClick={active ? onClose : onClearFoods}
         />
       </S.FormControlSearch>

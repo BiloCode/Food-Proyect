@@ -30,19 +30,18 @@ const BranchOffices = (_: RouteComponentProps) => {
             text: "Crear Sucursal",
           }}
         />
-        <S.BranchOfficeListContainer>
-          <S.BranchOfficeList>
-            {branchOffices.data.map((v) => (
-              <BranchOfficeCard
-                id={v._id}
-                name={v.name}
-                image={v.bannerImage.url}
-                description={v.description}
-                stars={StarsPromedy.exec(v.puntuactions)}
-              />
-            ))}
-          </S.BranchOfficeList>
-        </S.BranchOfficeListContainer>
+        <S.BranchOfficeList>
+          {branchOffices.data.map((v) => (
+            <BranchOfficeCard
+              id={v._id}
+              name={v.name}
+              image={v.bannerImage.url}
+              description={v.description}
+              commentsNumber={v.puntuactions.length}
+              stars={StarsPromedy.exec(v.puntuactions)}
+            />
+          ))}
+        </S.BranchOfficeList>
       </PageLimiterContainer>
       {modalCreatebranch.active && (
         <CreateBranchModal onClose={modalCreatebranch.toggleActive} />

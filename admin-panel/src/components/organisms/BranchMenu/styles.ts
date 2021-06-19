@@ -10,5 +10,5 @@ export const MainContainer = styled.div`
 export const FoodList = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 10px;
+  gap: 1.5em;
 `;

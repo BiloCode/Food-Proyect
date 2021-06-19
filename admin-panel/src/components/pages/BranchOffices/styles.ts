@@ -2,14 +2,11 @@ import styled from "styled-components";
 
 export const BranchOfficeListContainer = styled.div`
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 export const BranchOfficeList = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 340px);
-  gap: 1.5em;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 1em;
   margin: 3em 0;
 `;

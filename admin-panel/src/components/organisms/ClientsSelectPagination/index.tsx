@@ -23,6 +23,7 @@ const ClientsSelectPagination = ({ numberOfPages }: PaginationProps) => {
     <S.Container>
       {arrayRender.map((_, i) => (
         <PaginationButton
+          key={i}
           pageNumber={i}
           isActive={currentPage === i}
           onClick={onClickPageButton(i)}

@@ -1,3 +1,4 @@
+import { FONT, NORMAL_BLUE } from "config/styles";
 import styled from "styled-components";
 
 export const MainContainer = styled.div`
@@ -24,6 +25,11 @@ const Spacing = "1em";
 
 export const FormContainer = styled.form`
   display: grid;
+  row-gap: 3em;
+`;
+
+export const FormInputsContainer = styled.div`
+  display: grid;
   row-gap: 1.5em;
 `;
 
@@ -33,6 +39,24 @@ export const FormControlText = styled.fieldset`
   grid-template-columns: repeat(2, 1fr);
   column-gap: ${Spacing};
   padding: 0;
+`;
+
+export const PriceMessageContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  padding: 0 1em;
+`;
+
+export const PriceMessage = styled.div`
+  font-family: ${FONT};
+  font-size: 14px;
+  font-weight: 600;
+
+  & > span {
+    font-weight: 800;
+    color: ${NORMAL_BLUE};
+  }
 `;
 
 export const BottomContainer = styled.div`

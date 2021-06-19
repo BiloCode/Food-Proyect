@@ -62,14 +62,14 @@ const BranchInformation = () => {
   return (
     <S.Container>
       <BranchDetailContent
+        onUpdate={onUpdateDescription}
+        onClick={editActive.toggleActive}
+        isActive={editActive.active}
         data={{
           id: pageData?.branch._id,
           title: "Descripcion",
           content: pageData?.branch.description,
         }}
-        onUpdate={onUpdateDescription}
-        onClick={editActive.toggleActive}
-        isActive={editActive.active}
       />
       <BranchDetailContent
         data={{ id: pageData?.branch._id, title: "Imagen de Perfil" }}

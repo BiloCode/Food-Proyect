@@ -1,4 +1,3 @@
-import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import * as S from "./styles";
 
 import { FaHamburger } from "react-icons/fa";
@@ -12,102 +11,23 @@ import FormControl from "components/molecules/FormControl";
 import MenuModalListSaved from "components/organisms/MenuModalListSaved";
 import FormControlSearchable from "components/organisms/FormControlSearchable";
 
-import BranchAddNewMenu from "application/core/BranchOffice/BranchAddNewMenu";
-
-import { useAtomValue, useUpdateAtom } from "jotai/utils";
-import { foods } from "store/foods";
-import { currentBranch } from "store/currentBranch";
-import { setBranchMenu } from "store/branchOffice";
-
-import { FoodModelType } from "application/types/FoodModelType";
+import useCreateMenuInBranch from "hooks/useCreateMenuInBranch";
+import FoodPriceSum from "application/utils/FoodPriceSum";
 
 type ModalProps = {
   onClose(): void;
 };
 
 const MenuModalCreate = ({ onClose }: ModalProps) => {
-  const foodStore = useAtomValue(foods);
-  const updateBranchMenu = useUpdateAtom(setBranchMenu);
-  const currentBranchDetail = useAtomValue(currentBranch);
-
-  const nameRef = useRef<HTMLInputElement>();
-  const descriptionRef = useRef<HTMLInputElement>();
-  const searchInputRef = useRef<HTMLInputElement>();
-
-  const [foodSaved, setFoodSaved] = useState<FoodModelType[]>([]);
-  const [foodFilter, setFoodFilter] = useState<FoodModelType[]>([]);
-  const [isSendRequest, setIsSendRequest] = useState<boolean>(false);
-
-  const addFood = (_id: string) => () => {
-    const isExists = foodSaved.some((v) => v._id === _id);
-    if (isExists) {
-      return;
-    }
-
-    const foodSelect = [...foodStore.data].find((v) => v._id === _id);
-    if (!foodSelect) {
-      return;
-    }
-
-    searchInputRef.current.value = "";
-    setFoodSaved((foods) => [foodSelect, ...foods]);
-  };
-
-  const removeFood = (index: number) => () => {
-    const newFood = [...foodSaved].filter((_, i) => i !== index);
-    setFoodSaved(() => newFood);
-  };
-
-  const onSearch = (ev: ChangeEvent<HTMLInputElement>) => {
-    const inputValue = ev.target.value.trim();
-    if (!inputValue) {
-      setFoodFilter(() => foodStore.data);
-      return;
-    }
-
-    const foodFinded = [...foodFilter].find((v) =>
-      v.name.includes(inputValue.toUpperCase())
-    );
-
-    if (!foodFinded) return;
-
-    setFoodFilter(() => [foodFinded]);
-  };
-
-  const onClearFoods = () => setFoodSaved(() => []);
-
-  const onSubmit = async (ev: FormEvent) => {
-    ev.preventDefault();
-
-    const name = nameRef.current?.value.trim();
-    const foodsId = foodSaved.map((v) => v._id);
-    const description = descriptionRef.current?.value.trim();
-
-    if (!foodsId.length || !name || !description) return;
-
-    setIsSendRequest(() => true);
-
-    try {
-      const menu = await BranchAddNewMenu.exec(currentBranchDetail.branch._id, {
-        name,
-        description,
-        foodsId,
-      });
-
-      updateBranchMenu({ branchId: currentBranchDetail.branch._id, menu });
-      onClose();
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setIsSendRequest(() => false);
-    }
-  };
-
-  useEffect(() => {
-    if (foodStore.requestState !== "complete") return;
-
-    setFoodFilter(() => foodStore.data);
-  }, [foodStore]);
+  const {
+    ref,
+    addFood,
+    onClearFoods,
+    onSearch,
+    onSubmit,
+    removeFood,
+    foodStates: { foodFilter, isSendRequest, foodSaved },
+  } = useCreateMenuInBranch(onClose);
 
   return (
     <Portals>
@@ -116,26 +36,38 @@ const MenuModalCreate = ({ onClose }: ModalProps) => {
           <S.Container>
             <Title>Crear Nuevo Menu</Title>
             <S.FormContainer onSubmit={onSubmit}>
-              <S.FormControlText>
-                <FormControl
-                  ref={nameRef}
-                  labelText="Nombre"
-                  icon={FaHamburger}
+              <S.FormInputsContainer>
+                <S.FormControlText>
+                  <FormControl
+                    ref={ref.nameRef}
+                    labelText="Nombre"
+                    icon={FaHamburger}
+                  />
+                  <FormControl
+                    ref={ref.descriptionRef}
+                    labelText="Descripcion"
+                    icon={BsReverseLayoutTextSidebarReverse}
+                  />
+                </S.FormControlText>
+                <FormControlSearchable
+                  foods={foodFilter}
+                  onAddItem={addFood}
+                  onSearch={onSearch}
+                  ref={ref.searchInputRef}
+                  onClearFoods={onClearFoods}
+                  savedFoods={foodSaved.map((v) => v._id)}
                 />
-                <FormControl
-                  ref={descriptionRef}
-                  labelText="Descripcion"
-                  icon={BsReverseLayoutTextSidebarReverse}
+                <MenuModalListSaved
+                  foods={foodSaved}
+                  onClickTrash={removeFood}
                 />
-              </S.FormControlText>
-              <FormControlSearchable
-                foods={foodFilter}
-                onAddItem={addFood}
-                onSearch={onSearch}
-                ref={searchInputRef}
-                onClearFoods={onClearFoods}
-              />
-              <MenuModalListSaved foods={foodSaved} onClickTrash={removeFood} />
+                <S.PriceMessageContainer>
+                  <S.PriceMessage>
+                    Precio Total :{" "}
+                    <span>S/ {FoodPriceSum.exec(foodSaved)}</span>
+                  </S.PriceMessage>
+                </S.PriceMessageContainer>
+              </S.FormInputsContainer>
               <S.BottomContainer>
                 <S.ButtonsContainer>
                   <Button

@@ -1,4 +1,4 @@
-import { BLACK_LIGHT_C, BACKGROUND_LIGHT } from "config/styles";
+import { BLACK_LIGHT_C, BACKGROUND_LIGHT, SIDEBAR_WIDTH } from "config/styles";
 import styled from "styled-components";
 
 export const TabOptionContainer = styled.div`
@@ -20,8 +20,22 @@ export const TabOptionContainer = styled.div`
   }
 `;
 
+type PageProps = {
+  activeIndex: number;
+};
 
-export const PageContainer = styled.div`
-  padding: 2em 3em;
-  box-sizing: border-box;
+export const MovablePage = styled.div<PageProps>`
+  display: grid;
+  grid-template-columns: repeat(3, 100%);
+  transform: translateX(-${(props) => props.activeIndex * 100}%);
+  transition: 0.2s;
+`;
+
+type LimiterProps = {
+  isCurrent: boolean;
+};
+
+export const PageLimiter = styled.div<LimiterProps>`
+  height: ${(props) => !props.isCurrent && "0"};
+  overflow: ${(props) => !props.isCurrent && "hidden"};
 `;

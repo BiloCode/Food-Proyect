@@ -8,6 +8,6 @@ export const FoodListContainer = styled.div`
 
 export const FoodList = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, minmax(320px, 340px));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1em;
 `;

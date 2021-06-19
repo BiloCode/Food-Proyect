@@ -21,6 +21,7 @@ const slideDown = keyframes`
 
 export const DropDownContainer = styled.div`
   position: absolute;
+  z-index: 1;
   width: 100%;
   padding: 1em 0;
   display: flex;

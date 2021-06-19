@@ -12,6 +12,7 @@ export const MainContainer = styled.div`
   grid-template-rows: ${HeaderHeight} 1fr;
   position: sticky;
   top: 0;
+  z-index: 1;
 `;
 
 export const ImageContainer = styled.div`
