@@ -1,0 +1,63 @@
+{
+  "name": "@food-proyect/website",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@reach/router": "^1.3.4",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/googlemaps": "^3.43.3",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "classnames": "^2.3.1",
+    "faker": "^5.5.3",
+    "firebase": "^8.4.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-google-maps": "^9.4.5",
+    "react-icons": "^4.2.0",
+    "react-scripts": "4.0.3",
+    "react-toast-notifications": "^2.4.4",
+    "styled-components": "^5.2.3",
+    "typescript": "^4.1.2",
+    "web-vitals": "^1.0.1",
+    "@food-proyect/shared-types":"0.1.0",
+    "@food-proyect/shared-functions":"0.1.0",
+    "@food-proyect/shared-components":"0.1.0",
+    "@food-proyect/shared-firebase-converter":"0.1.0"
+  },
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "craco eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/classnames": "^2.2.11",
+    "@types/faker": "^5.5.3",
+    "@types/firebase": "^3.2.1",
+    "@types/reach__router": "^1.3.7",
+    "@types/styled-components": "^5.1.9"
+  }
+}
