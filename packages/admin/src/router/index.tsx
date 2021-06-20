@@ -22,7 +22,6 @@ const RouterApplication = () => {
 
   return (
     <Router>
-      <DefaultPage default />
       {userStore.user ? (
         <>
           <Home path="/" />
@@ -34,6 +33,7 @@ const RouterApplication = () => {
       ) : (
         <Login path="/" />
       )}
+      {/* <DefaultPage default /> */}
     </Router>
   );
 };

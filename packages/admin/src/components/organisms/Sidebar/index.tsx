@@ -44,6 +44,7 @@ const Sidebar = () => {
 
     try {
       await firebase.auth().signOut();
+      await navigate("/");
     } catch (error) {
       console.log(error);
     }

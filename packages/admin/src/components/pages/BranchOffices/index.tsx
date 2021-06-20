@@ -33,6 +33,7 @@ const BranchOffices = (_: RouteComponentProps) => {
         <S.BranchOfficeList>
           {branchOffices.data.map((v) => (
             <BranchOfficeCard
+              key={v._id}
               id={v._id}
               name={v.name}
               image={v.bannerImage.url}
