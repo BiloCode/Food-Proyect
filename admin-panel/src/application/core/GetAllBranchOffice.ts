@@ -29,6 +29,7 @@ class GetAllBranchOffice {
           permisions: data.permisions,
           phoneNumber: data.phoneNumber,
           description: data.description,
+          email: data.email,
           bannerImage: data.bannerImage,
           puntuactions: data.puntuactions,
           userPuntuactionsId: data.userPuntuactionsId,

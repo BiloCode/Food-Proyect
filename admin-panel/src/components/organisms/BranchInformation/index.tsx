@@ -12,6 +12,7 @@ import { useAtomValue } from "jotai/utils";
 import { useState } from "react";
 import { useToasts } from "react-toast-notifications";
 import useActive from "hooks/useActive";
+import useUpdateBranchEmail from "hooks/useUpdateBranchEmail";
 
 const BranchInformation = () => {
   const pageData = useAtomValue(currentBranch);
@@ -27,6 +28,7 @@ const BranchInformation = () => {
 
   const { onUpdateDescription } = useUpdateBranchDescription();
   const { onUpdatePhoneNumber } = useUpdateBranchPhoneNumber();
+  const { onUpdateEmail } = useUpdateBranchEmail();
 
   const onClickImageModal = () => {
     const inputFile = document.createElement<"input">("input");
@@ -68,7 +70,7 @@ const BranchInformation = () => {
         data={{
           id: pageData?.branch._id,
           title: "Descripcion",
-          content: pageData?.branch.description,
+          content: pageData?.branch.description || "Sin descripcion",
         }}
       />
       <BranchDetailContent
@@ -91,11 +93,21 @@ const BranchInformation = () => {
         data={{
           id: pageData?.branch._id,
           title: "Numero de contacto",
-          content: pageData?.branch.phoneNumber,
+          content: pageData?.branch.phoneNumber || "Sin numero",
         }}
         onUpdate={onUpdatePhoneNumber}
         isActive={editActive.active}
         onClick={editActive.toggleActive}
+      />
+      <BranchDetailContent
+        onUpdate={onUpdateEmail}
+        onClick={editActive.toggleActive}
+        isActive={editActive.active}
+        data={{
+          id: pageData?.branch._id,
+          title: "Correo de contacto",
+          content: pageData?.branch.email || "Sin correo",
+        }}
       />
 
       {isModalImageActive && (

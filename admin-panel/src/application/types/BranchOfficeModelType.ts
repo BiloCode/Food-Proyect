@@ -41,6 +41,7 @@ export type BranchOfficeModelType = {
   menu: MenuType[];
   foodType: FoodType;
   description: string;
+  email: string;
   phoneNumber: string;
   permisions: PermisionsType[];
   userPuntuactionsId: string[];

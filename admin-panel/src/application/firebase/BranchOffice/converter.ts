@@ -17,6 +17,7 @@ const branchOfficeConverter = {
       data.bannerImage,
       data.foodType,
       data.description,
+      data.email,
       data.location,
       data.menu,
       data.name,

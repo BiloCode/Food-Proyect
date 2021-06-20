@@ -94,6 +94,7 @@ const useCreateBranchOffice = (onModalClose: () => void) => {
         foodType: typeFood,
         description: description,
         phoneNumber: phone,
+        email: email,
         location: {
           address: locationName,
           latitude: latitude,

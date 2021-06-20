@@ -14,6 +14,7 @@ class BranchOfficeModel {
     readonly bannerImage: FirebaseImageType,
     readonly foodType: FoodType,
     readonly description: string,
+    readonly email: string,
     readonly location: FirebaseLocationType,
     readonly menu: MenuType[],
     readonly name: string,

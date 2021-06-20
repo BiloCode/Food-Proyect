@@ -11,6 +11,7 @@ type TData = {
   image: File;
   updatePercentaje(percentaje: number): void;
   params: {
+    email: string;
     name: string;
     foodType: FoodType;
     description: string;
@@ -72,6 +73,7 @@ class CreateNewBranchOffice {
         menu: [],
         foodType: params.foodType,
         description: params.description,
+        email: params.email,
         phoneNumber: params.phoneNumber,
         permisions: [],
         userPuntuactionsId: [],
