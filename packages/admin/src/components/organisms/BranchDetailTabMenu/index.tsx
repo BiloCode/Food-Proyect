@@ -1,4 +1,4 @@
-import { useState, memo } from "react";
+import { useState } from "react";
 import * as S from "./styles";
 
 import BranchMenu from "components/organisms/BranchMenu";

@@ -1,3 +1,5 @@
+import "./eventListener";
+
 import { Router } from "@reach/router";
 
 import PageLoading from "components/atoms/PageLoading";

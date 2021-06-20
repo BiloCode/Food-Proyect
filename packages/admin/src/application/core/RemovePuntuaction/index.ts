@@ -4,7 +4,6 @@ import { FirebaseCollectionNames } from "config/constants";
 
 import RemovePuntuactionInBranch from "./RemovePuntuactionInBranch";
 import RemovePuntuactionInUser from "./RemovePuntuactionInUser";
-import GetAllBranchOffice from "../GetAllBranchOffice";
 
 class RemovePuntuaction {
   public exec = async (branchOfficeId: string, userId: string) => {

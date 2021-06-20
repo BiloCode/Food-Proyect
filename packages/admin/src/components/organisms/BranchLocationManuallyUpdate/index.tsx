@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import * as S from "./styles";
 
 import Button from "components/atoms/Button";
@@ -5,10 +6,9 @@ import FormControl from "components/molecules/FormControl";
 
 import { IoMdPerson } from "react-icons/io";
 import useUpdateBranchLocation from "hooks/useUpdateBranchLocation";
-import { currentBranch as currentBranchStore } from "store/currentBranch";
 
 import { useAtomValue } from "jotai/utils";
-import { useMemo } from "react";
+import { currentBranch as currentBranchStore } from "store/currentBranch";
 
 type BranchLocationManuallyUpdateProps = {
   onClose(): void;

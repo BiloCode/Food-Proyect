@@ -1,5 +1,4 @@
 import { useNavigate } from "@reach/router";
-import Swal from "sweetalert2";
 import firebase from "firebase";
 import * as S from "./styles";
 
