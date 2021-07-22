@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import * as S from "./styles";
 
-import Title from "components/atoms/Title";
+import { Title } from "@food-proyect/shared-components";
 import Description from "components/atoms/Description";
 
 import { TextColorType } from "application/types/TextColorType";
@@ -28,9 +28,7 @@ const HomeTitleWithDescription = ({
       })}
     >
       <S.TitleContainer>
-        <Title letterSpacing color={color}>
-          {title}
-        </Title>
+        <Title>{title}</Title>
       </S.TitleContainer>
       <S.DescriptionContainer>
         <Description color={color} size="medium">

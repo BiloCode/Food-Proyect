@@ -4,7 +4,7 @@ import * as S from "./styles";
 
 import { IoIosArrowBack } from "react-icons/io";
 
-import Icon from "components/atoms/Icon";
+import { Icon } from "@food-proyect/shared-components";
 import Description from "components/atoms/Description";
 
 const ReturnHomeButton = () => {
@@ -15,7 +15,7 @@ const ReturnHomeButton = () => {
     <S.ReturnMenuContainer>
       <S.ReturnMenu onClick={onClickHome}>
         <S.IconContainer>
-          <Icon color="white" size="small-medium" Type={IoIosArrowBack} />
+          <Icon color="white" size="small-medium" type={IoIosArrowBack} />
         </S.IconContainer>
         <div>
           <Description color="black" size="medium">

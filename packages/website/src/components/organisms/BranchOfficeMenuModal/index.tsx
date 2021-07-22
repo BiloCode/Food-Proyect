@@ -3,12 +3,12 @@ import * as S from "./styles";
 
 import { FaTimes } from "react-icons/fa";
 
-import Title from "components/atoms/Title";
 import FoodSellList from "../FoodSellList";
 import Portals from "components/atoms/Portals";
 import DarkScreen from "components/atoms/DarkScreen";
 import PaginationButtonList from "components/molecules/PaginationButtonList";
-import Icon from "components/atoms/Icon";
+
+import { Icon, Title } from "@food-proyect/shared-components";
 import { MenuType } from "@food-proyect/shared-types";
 
 type MenuModalProps = {
@@ -31,11 +31,9 @@ const BranchOfficeMenuModal: FC<MenuModalProps> = ({ onClose, listMenu }) => {
           <S.ModalMenuContainer>
             <S.LimiterContainer>
               <S.TitleContainer>
-                <Title color="black" size="medium" letterSpacing>
-                  Nuestro Menu del Dia
-                </Title>
+                <Title>Nuestro Menu del Dia</Title>
                 <S.IconContainer onClick={onClose}>
-                  <Icon color="blue" Type={FaTimes} />
+                  <Icon color="blue" type={FaTimes} />
                 </S.IconContainer>
               </S.TitleContainer>
               <FoodSellList pageSelect={pageSelect} listMenu={listMenu} />

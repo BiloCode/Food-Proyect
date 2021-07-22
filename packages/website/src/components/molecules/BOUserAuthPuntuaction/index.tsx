@@ -1,9 +1,8 @@
 import { FC } from "react";
 import * as S from "./styles";
 
-import Title from "components/atoms/Title";
 import Description from "components/atoms/Description";
-import StarListPuntuaction from "../StarListPuntuaction";
+import { StarListPuntuaction, Title } from "@food-proyect/shared-components";
 
 type BOUserAuthPuntuactionProps = {
   stars: number;

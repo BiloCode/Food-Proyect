@@ -4,7 +4,7 @@ import classnames from "classnames";
 import * as S from "./styles";
 
 import Description from "components/atoms/Description";
-import StarListPuntuaction from "components/molecules/StarListPuntuaction";
+import { StarListPuntuaction } from "@food-proyect/shared-components";
 
 import { ClientPuntuactionsType } from "@food-proyect/shared-types";
 

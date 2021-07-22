@@ -1,11 +1,14 @@
 import { FC, memo } from "react";
 import classnames from "classnames";
 import * as S from "./styles";
-import Image, { ImageType } from "../Image";
+
+import { Image } from "@food-proyect/shared-components";
 
 type CircularImageSizeType = "small" | "extra-big" | "big";
 
-type CircularImageProps = ImageType & {
+type CircularImageProps = {
+  src: string;
+  alt?: string;
   hoverable?: boolean;
   onClickImage?(): void;
   type?: CircularImageSizeType;

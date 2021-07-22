@@ -1,10 +1,5 @@
+import { useState } from "react";
 import * as S from "./styles";
-
-import Spinner from "components/atoms/Spinner";
-import BurguerIcon from "assets/images/BurguerIcon.png";
-
-import { credentials } from "config/googleMapsCredentials";
-import { useMapContext } from "context/MapContext/context";
 import {
   GoogleMap,
   withGoogleMap,
@@ -12,9 +7,14 @@ import {
   Marker,
   InfoWindow,
 } from "react-google-maps";
-import { useState } from "react";
-import Title from "components/atoms/Title";
+
+import BurguerIcon from "assets/images/BurguerIcon.png";
+
+import { credentials } from "config/googleMapsCredentials";
+import { useMapContext } from "context/MapContext/context";
 import { useBranchOfficeContext } from "context/BranchOfficeContext/context";
+
+import { Title, Spinner } from "@food-proyect/shared-components";
 
 type MapProps = {
   latitude: number;
@@ -45,9 +45,7 @@ const Markers = () => {
                 onCloseClick={onClickMarker}
                 options={{ disableAutoPan: true }}
               >
-                <Title color="black" size="small">
-                  {v.name}
-                </Title>
+                <Title size="small">{v.name}</Title>
               </InfoWindow>
             )}
           </Marker>

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import * as S from "./styles";
 
-import Title from "components/atoms/Title";
+import { Title } from "@food-proyect/shared-components";
 
 import { ClientPuntuactionsType } from "@food-proyect/shared-types";
 import ProfilePuntuactionCard from "../../organisms/ProfilePuntuactionCard";
@@ -20,7 +20,7 @@ const ProfileRightContent: FC<ProfileRightContentProps> = ({
   return (
     <S.MainContainer>
       <S.TitleContainer>
-        <Title color="black" lowercase>
+        <Title>
           {isCurrentUserProfile ? "Mis Reseñas" : "Reseñas Realizadas"}
         </Title>
         <Description size="medium">

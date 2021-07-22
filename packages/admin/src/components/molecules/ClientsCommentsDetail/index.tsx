@@ -15,11 +15,13 @@ type ClientsCommentsDetailType = {
 };
 
 const ClientsCommentsDetail = ({ comment }: ClientsCommentsDetailType) => {
+  const commentIsNull = !comment;
   const branchData = useAtomValue(currentBranch);
 
   const { DeleteComment } = useDeleteComment({
     branchOfficeId: branchData.branch._id,
     userId: comment?.userId,
+    defaultCommentIsNull: commentIsNull,
   });
 
   const getTextRender = (puntuaction: number) => {
@@ -33,8 +35,6 @@ const ClientsCommentsDetail = ({ comment }: ClientsCommentsDetailType) => {
 
     return textRender[puntuaction] || "Sin puntuación";
   };
-
-  const commentIsNull = !comment;
 
   return (
     <S.Container>
@@ -65,9 +65,9 @@ const ClientsCommentsDetail = ({ comment }: ClientsCommentsDetailType) => {
           </Description>
         </S.Information>
         <Button
+          onClick={DeleteComment}
           disabled={commentIsNull}
           text="Eliminar comentario"
-          onClick={!commentIsNull && DeleteComment}
           styles={{ color: "yellow", size: "medium" }}
         />
       </S.InformationContainer>

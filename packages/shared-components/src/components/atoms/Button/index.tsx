@@ -5,13 +5,14 @@ import classnames from "classnames";
 import Spinner from "../Spinner";
 
 type ButtonType = "button" | "submit";
-type ButtonColorType = "yellow" | "normal";
+type ButtonColorType = "yellow" | "blue" | "green" | "red";
 type ButtonSizeType = "small" | "normal" | "big" | "medium";
 type ButtonTypeProps = {
   text: string;
   onClick?(): void;
   isLoading?: boolean;
   type?: ButtonType;
+  disabled?: boolean;
   styles?: {
     size?: ButtonSizeType;
     color?: ButtonColorType;
@@ -23,17 +24,23 @@ const Button: FC<ButtonTypeProps> = ({
   type,
   styles,
   onClick,
+  disabled,
   isLoading,
+  children,
 }) => (
   <S.ButtonContainer
     type={type}
     onClick={onClick}
-    disabled={isLoading}
+    disabled={isLoading || disabled}
     className={classnames({
-      big: styles.size === "big",
-      small: styles.size === "small",
-      medium: styles.size === "medium",
-      yellow: styles.color === "yellow",
+      disabled,
+      big: styles?.size === "big",
+      small: styles?.size === "small",
+      medium: styles?.size === "medium",
+      yellow: styles?.color === "yellow",
+      blue: styles?.color === "blue",
+      green: styles?.color === "green",
+      red: styles?.color === "red",
     })}
   >
     {!isLoading ? (
@@ -43,15 +50,13 @@ const Button: FC<ButtonTypeProps> = ({
         <Spinner size="small" color="white" />
       </S.ButtonContainerSpinner>
     )}
+    {children}
   </S.ButtonContainer>
 );
 
 Button.defaultProps = {
   type: "button",
-  styles: {
-    size: "normal",
-    color: "normal",
-  },
+  styles: {},
 };
 
 export default Button;

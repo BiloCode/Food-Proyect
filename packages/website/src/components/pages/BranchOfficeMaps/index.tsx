@@ -3,7 +3,7 @@ import { RouteComponentProps, useNavigate } from "@reach/router";
 import * as S from "./styles";
 
 import Logo from "assets/images/Logo.svg";
-import Image from "components/atoms/Image";
+import { Image } from "@food-proyect/shared-components";
 import MapProvider from "context/MapContext/provider";
 import MapCredentials from "components/molecules/Map";
 import ReturnHomeButton from "components/molecules/ReturnHomeButton";

@@ -7,23 +7,20 @@ import {
 } from "react-icons/ai";
 
 import Description from "components/atoms/Description";
-import Icon from "components/atoms/Icon";
-import Title from "components/atoms/Title";
+import { Icon, Title } from "@food-proyect/shared-components";
 
 const Footer = () => (
   <S.Container>
     <S.TextContainer>
-      <Title size="medium" color="white">
-        Bembos SAC
-      </Title>
+      <Title>Bembos SAC</Title>
       <Description color="white">
         (2021) Todos los derechos reservados
       </Description>
     </S.TextContainer>
     <S.IconsContainer>
-      <Icon size="medium" Type={AiFillFacebook} color="white" />
-      <Icon size="medium" Type={AiFillYoutube} color="white" />
-      <Icon size="medium" Type={AiOutlineTwitter} color="white" />
+      <Icon size="medium" type={AiFillFacebook} color="white" />
+      <Icon size="medium" type={AiFillYoutube} color="white" />
+      <Icon size="medium" type={AiOutlineTwitter} color="white" />
     </S.IconsContainer>
   </S.Container>
 );

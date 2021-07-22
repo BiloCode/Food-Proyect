@@ -1,11 +1,10 @@
-import Description from "components/atoms/Description";
-import Icon from "components/atoms/Icon";
-import Image from "components/atoms/Image";
-import Title from "components/atoms/Title";
 import { useMapContext } from "context/MapContext/context";
 import { memo } from "react";
 import { FiChevronRight } from "react-icons/fi";
 import * as S from "./styles";
+
+import Description from "components/atoms/Description";
+import { Title, Icon, Image } from "@food-proyect/shared-components";
 
 type BranchOfficeMapItemProps = {
   name: string;
@@ -42,16 +41,14 @@ const BranchOfficeMapItem = ({
         <Image src={image} />
       </S.ImageContainer>
       <S.TextContainer>
-        <Title size="small" color="light-black">
-          {name}
-        </Title>
+        <Title>{name}</Title>
 
         <Description color="light-black" size="small">
           {description}
         </Description>
       </S.TextContainer>
       <div>
-        <Icon Type={FiChevronRight} size="small-medium" color="gray" />
+        <Icon type={FiChevronRight} size="small-medium" color="gray" />
       </div>
     </S.Container>
   );

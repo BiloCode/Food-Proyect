@@ -2,8 +2,8 @@ import { atom } from "jotai";
 
 import GetAllFood from "application/core/GetAllFood";
 
-import type { RequestStateType } from "@food-proyect/shared-types";
 import type { FoodModelType } from "@food-proyect/shared-types";
+import type { RequestStateType } from "@food-proyect/shared-types";
 
 type FoodAtom = {
   data: FoodModelType[];

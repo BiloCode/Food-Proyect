@@ -2,7 +2,7 @@ import { FC } from "react";
 import * as S from "./styles";
 import { IconType } from "react-icons/lib";
 
-import Icon from "components/atoms/Icon";
+import { Icon } from "@food-proyect/shared-components";
 
 type NavDropdownItemProps = {
   text: string;
@@ -16,7 +16,7 @@ const NavDropdownItem: FC<NavDropdownItemProps> = ({
   IconItem,
 }) => (
   <S.DropdownListElement onClick={onClick}>
-    <Icon Type={IconItem} />
+    <Icon type={IconItem} />
     <span>{text}</span>
   </S.DropdownListElement>
 );

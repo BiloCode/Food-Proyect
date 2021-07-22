@@ -4,11 +4,11 @@ import * as S from "./styles";
 
 import { BiCommentDetail } from "react-icons/bi";
 
-import Title from "components/atoms/Title";
-import Button from "components/atoms/Button";
 import DarkScreen from "components/atoms/DarkScreen";
 import FormControlTextarea from "components/molecules/FormControlTextarea";
 import StarsInteractive from "components/molecules/StarsInteractive";
+
+import { Title, Button } from "@food-proyect/shared-components";
 
 import useCreatePuntuaction from "hooks/useCreatePuntuaction";
 
@@ -37,9 +37,7 @@ const CreatePuntuactionModal: FC<ModalProps> = ({
     <DarkScreen>
       <S.MainContainer>
         <S.ElementsContainer>
-          <Title color="black" size="small-medium">
-            Deja una valoracion
-          </Title>
+          <Title size="small-medium">Deja una valoracion</Title>
           <StarsInteractive clientStars={stars} onClickStar={changeStarValue} />
           <FormControlTextarea
             size="small"

@@ -2,10 +2,11 @@ import { FC, memo } from "react";
 
 import useActive from "hooks/useActive";
 
-import Button from "components/atoms/Button";
 import Portals from "components/atoms/Portals";
 import CreatePuntuactionModal from "../organisms/CreatePuntuactionModal";
 import ButtonsPuntuactionArea from "components/organisms/ButtonsPuntuactionArea";
+
+import { Button } from "@food-proyect/shared-components";
 
 import { PuntuactionType } from "@food-proyect/shared-types";
 

@@ -1,6 +1,5 @@
 import "config/firebase_init";
 
-import { Provider } from "jotai";
 import { ToastProvider } from "react-toast-notifications";
 
 import GlobalStyles from "styles";
@@ -11,10 +10,8 @@ function App() {
   return (
     <>
       <ToastProvider autoDismiss autoDismissTimeout={4000}>
-        <Provider>
-          <RouterApplication />
-          <FullScreenLoader />
-        </Provider>
+        <RouterApplication />
+        <FullScreenLoader />
       </ToastProvider>
       <GlobalStyles />
     </>

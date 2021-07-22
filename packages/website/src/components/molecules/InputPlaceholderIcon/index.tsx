@@ -1,8 +1,9 @@
-import * as S from "./styles";
-import Input from "components/atoms/Input";
-import Icon from "components/atoms/Icon";
-import { IconType } from "react-icons/lib";
 import { ChangeEvent, forwardRef } from "react";
+import { IconType } from "react-icons/lib";
+import * as S from "./styles";
+
+import Input from "components/atoms/Input";
+import { Icon } from "@food-proyect/shared-components";
 
 type InputPlaceholderIconProps = {
   text: string;
@@ -16,7 +17,7 @@ const InputPlaceholderIcon = forwardRef<
 >(({ icon, text, onChange }, ref) => (
   <S.Container>
     <S.IconContainer>
-      <Icon Type={icon} size="small-medium" color="gray" />
+      <Icon type={icon} size="small-medium" color="gray" />
     </S.IconContainer>
     <S.InputContainer>
       <Input ref={ref} type="text" placeholder={text} onChange={onChange} />

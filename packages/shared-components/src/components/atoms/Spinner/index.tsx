@@ -2,7 +2,7 @@ import classnames from "classnames";
 import { FC } from "react";
 import * as S from "./styles";
 
-type SpinnerSizeType = "small" | "big";
+type SpinnerSizeType = "small" | "big" | "extra-big";
 type SpinnerColorType = "white" | "blue";
 type SpinnerProps = {
   size?: SpinnerSizeType;
@@ -16,6 +16,7 @@ const Spinner: FC<SpinnerProps> = ({ size, color }) => (
       blue: color === "blue",
       white: color === "white",
       big: size === "big",
+      extra_big: size === "extra-big",
       small: size === "small",
     })}
   ></S.SpinnerElement>

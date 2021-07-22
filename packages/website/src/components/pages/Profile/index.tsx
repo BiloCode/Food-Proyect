@@ -2,7 +2,7 @@ import { FC } from "react";
 import * as S from "./styles";
 import { RouteComponentProps } from "@reach/router";
 
-import Spinner from "components/atoms/Spinner";
+import { Spinner } from "@food-proyect/shared-components";
 import NavigationBar from "components/organisms/NavigationBar";
 import ProfileLeftContent from "components/templates/ProfileLeftContent";
 import ProfileRightContent from "components/templates/ProfileRightContent";

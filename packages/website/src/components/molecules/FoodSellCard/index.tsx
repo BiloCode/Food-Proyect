@@ -1,9 +1,8 @@
 import { memo } from "react";
 import * as S from "./styles";
 
-import Title from "components/atoms/Title";
 import Description from "components/atoms/Description";
-import Image from "components/atoms/Image";
+import { Image, Title } from "@food-proyect/shared-components";
 
 type FoodSellCardProps = {
   name: string;
@@ -23,9 +22,7 @@ const FoodSellCard = ({
       <Image src={images[0]} imageCover />
     </S.ImageContainer>
     <S.TextContainer>
-      <Title color="black" size="small">
-        {name}
-      </Title>
+      <Title size="small">{name}</Title>
       <S.Money>S/ {price.toFixed(2)}</S.Money>
       <S.DescriptionContainer>
         <Description size="small">{description}</Description>

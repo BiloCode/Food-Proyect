@@ -1,5 +1,6 @@
-import { colors } from "config/colors";
 import styled, { keyframes } from "styled-components";
+
+import { DARK_BLUE } from "../../../config/styles";
 
 const animationRotate = keyframes`
   to{ transform: rotate(1turn); }
@@ -16,8 +17,8 @@ export const SpinnerElement = styled.div`
   animation: ${animationRotate} 0.4s infinite linear;
 
   &.small {
-    --size: 16px;
-    --border-width: 3px;
+    --size: 14px;
+    --border-width: 2px;
   }
 
   &.big {
@@ -25,13 +26,18 @@ export const SpinnerElement = styled.div`
     --border-width: 6px;
   }
 
+  &.extra_big {
+    --size: 64px;
+    --border-width: 6px;
+  }
+
   &.blue {
-    border-color: ${colors.dark_blue};
-    border-bottom-color: ${colors.super_light_black};
+    border-color: rgb(245, 245, 245);
+    border-left-color: ${DARK_BLUE};
   }
 
   &.white {
-    border-color: #fff;
-    border-bottom-color: rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.4);
+    border-left-color: #fff;
   }
 `;

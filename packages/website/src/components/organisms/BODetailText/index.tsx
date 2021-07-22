@@ -1,12 +1,11 @@
 import { FC, memo } from "react";
 import * as S from "./styles";
 
-import Title from "components/atoms/Title";
-import Button from "components/atoms/Button";
 import Description from "components/atoms/Description";
-import StarListPuntuaction from "components/molecules/StarListPuntuaction";
+import { StarListPuntuaction } from "@food-proyect/shared-components";
 
 import { FoodType } from "@food-proyect/shared-types";
+import { Title, Button } from "@food-proyect/shared-components";
 
 type BODetailTextProps = {
   name: string;
@@ -24,9 +23,7 @@ const BODetailText: FC<BODetailTextProps> = ({
   <S.MainContainer>
     <div>
       <S.TitleContainer>
-        <Title size="medium" color="black">
-          {name}
-        </Title>
+        <Title>{name}</Title>
         <S.ButtonContainer>
           <Button text={foodType} styles={{ size: "small" }} />
         </S.ButtonContainer>
