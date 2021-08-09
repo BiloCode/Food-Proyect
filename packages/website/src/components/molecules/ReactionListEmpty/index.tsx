@@ -4,9 +4,8 @@ import * as S from "./styles";
 
 import EmptyImage from "assets/images/icon-empty.svg";
 
-import Title from "components/atoms/Title";
 import Description from "components/atoms/Description";
-import Button from "components/atoms/Button";
+import { Title, Button } from "@food-proyect/shared-components";
 
 type ReactionListEmpty = {
   isCurrentUserProfile: boolean;
@@ -21,9 +20,7 @@ const ReactionListEmpty = ({ isCurrentUserProfile }: ReactionListEmpty) => {
     <S.EmptyDesign>
       <img src={EmptyImage} alt="svg-icon-empty" />
       <S.TextContainer>
-        <Title lowercase color="black" letterSpacing size="medium">
-          Sin reseñas
-        </Title>
+        <Title>Sin reseñas</Title>
         <Description size="small">
           {isCurrentUserProfile
             ? "Deja alguna reseña en nuestras distintas sucursales de la aplicacion"

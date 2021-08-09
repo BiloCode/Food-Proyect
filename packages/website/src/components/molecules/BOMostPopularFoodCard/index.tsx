@@ -1,12 +1,10 @@
 import { FC, memo } from "react";
 import * as S from "./styles";
 
-import Image from "components/atoms/Image";
-import Title from "components/atoms/Title";
 import Description from "components/atoms/Description";
-import Button from "components/atoms/Button";
 
 import { MenuType } from "@food-proyect/shared-types";
+import { Image, Title, Button } from "@food-proyect/shared-components";
 
 type MostPopularCardProps = {
   onClick?(): void;
@@ -26,7 +24,7 @@ const BOMostPopularFoodCard: FC<MostPopularCardProps> = ({
     </S.ImageContainer>
     <Description size="small">{sellMenu.description}</Description>
     <S.MoneyContainer>
-      <Title size="medium" color="blue">
+      <Title color="blue">
         S/{" "}
         {sellMenu.foods.reduce((prev, next) => prev + next.price, 0).toFixed(2)}
       </Title>

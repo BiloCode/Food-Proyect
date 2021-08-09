@@ -4,10 +4,10 @@ import * as S from "./styles";
 
 import useDeletePuntuaction from "hooks/useDeletePuntuaction";
 
-import Button from "components/atoms/Button";
 import BOUserAuthPuntuaction from "components/molecules/BOUserAuthPuntuaction";
 
 import { PuntuactionType } from "@food-proyect/shared-types";
+import { Button } from "@food-proyect/shared-components";
 
 type ButtonsProps = {
   onActiveMenu(): void;

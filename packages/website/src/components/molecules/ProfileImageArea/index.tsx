@@ -3,8 +3,8 @@ import * as S from "./styles";
 
 import { GoCloudUpload } from "react-icons/go";
 
-import Spinner from "components/atoms/Spinner";
 import UploadIcon from "components/atoms/UploadIcon";
+import { Spinner } from "@food-proyect/shared-components";
 import CircularImage from "components/atoms/CircularImage";
 
 import useProfileImageUpdate from "hooks/useProfileImageUpdate";

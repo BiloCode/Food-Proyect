@@ -21,6 +21,7 @@ const BranchOfficeList: FC<RouteComponentProps> = () => {
 
   useEffect(() => {
     if (requestState !== "complete") return;
+
     setBranchOfficeFilter(branchOffices);
   }, [requestState]);
 

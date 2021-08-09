@@ -1,13 +1,13 @@
 {
   "name": "food-proyect",
   "private": true,
-  "workspaces": [
-    "./packages/*"
-  ],
   "devDependencies": {
     "craco": "^0.0.3",
     "lerna": "^4.0.0"
   },
+  "workspaces":[
+    "packages/*"
+  ],
   "scripts": {
     "start:admin": "lerna exec --scope @food-proyect/admin -- yarn start",
     "build:admin": "lerna exec --scope @food-proyect/admin -- yarn build",

@@ -1,11 +1,9 @@
 import "config/firebaseInit";
 
-import { Suspense } from "react";
 import { ToastProvider } from "react-toast-notifications";
 
 import GlobalStyles from "./styles";
 import RouterApplication from "router";
-import FallbackLoading from "components/molecules/FallbackLoading";
 
 import { AuthProvider } from "context/AuthContext/provider";
 import { ProfileProvider } from "context/ProfileContext/provider";
@@ -22,9 +20,7 @@ function App() {
         <AuthProvider>
           <ProfileProvider>
             <BranchOfficeProvider>
-              <Suspense fallback={<FallbackLoading />}>
-                <RouterApplication />
-              </Suspense>
+              <RouterApplication />
             </BranchOfficeProvider>
           </ProfileProvider>
         </AuthProvider>

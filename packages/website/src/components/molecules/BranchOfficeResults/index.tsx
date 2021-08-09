@@ -1,5 +1,5 @@
 import Description from "components/atoms/Description";
-import Title from "components/atoms/Title";
+import { Title } from "@food-proyect/shared-components";
 import * as S from "./styles";
 
 type BranchOfficeFilterProps = {
@@ -10,9 +10,7 @@ type BranchOfficeFilterProps = {
 const BranchOfficeResults = ({ tittle, results }: BranchOfficeFilterProps) => {
   return (
     <S.Container>
-      <Title color="blue" size="medium" lowercase>
-        {tittle}
-      </Title>
+      <Title color="blue">{tittle}</Title>
       <Description color="light-black" size="small">
         {results} resultados
       </Description>

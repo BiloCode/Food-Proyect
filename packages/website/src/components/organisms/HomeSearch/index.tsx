@@ -1,8 +1,9 @@
 import { useNavigate } from "@reach/router";
 import * as S from "./styles";
 
-import Button from "components/atoms/Button";
 import HomeTitleWithDescription from "components/molecules/HomeTitleWithDescription";
+
+import { Button } from "@food-proyect/shared-components";
 
 const HomeSearch = () => {
   const navigate = useNavigate();

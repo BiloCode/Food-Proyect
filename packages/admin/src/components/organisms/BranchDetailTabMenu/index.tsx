@@ -1,4 +1,4 @@
-import { useState, memo } from "react";
+import { useState } from "react";
 import * as S from "./styles";
 
 import BranchMenu from "components/organisms/BranchMenu";
@@ -48,7 +48,7 @@ const BranchDetailTabMenu = ({ tabs, topRender: TopComponent }: TabProps) => {
       </S.TabOptionContainer>
       <S.MovablePage activeIndex={pageSelect}>
         {pages.map((Component, index) => (
-          <S.PageLimiter isCurrent={pageSelect === index}>
+          <S.PageLimiter key={index} isCurrent={pageSelect === index}>
             <Component />
           </S.PageLimiter>
         ))}

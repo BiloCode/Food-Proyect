@@ -11,17 +11,21 @@ import { currentBranch as currentBranchStore } from "store/currentBranch";
 type useDeleteCommentProps = {
   branchOfficeId: string;
   userId: string;
+  defaultCommentIsNull: boolean;
 };
 
 const useDeleteComment = ({
   branchOfficeId,
   userId,
+  defaultCommentIsNull,
 }: useDeleteCommentProps) => {
   const [currentBranch, setCurrentBranch] = useAtom(currentBranchStore);
+
   const { addToast } = useToasts();
+  const ConfirmDialog = useShowConfirm();
 
   const DeleteComment = async () => {
-    const ConfirmDialog = useShowConfirm();
+    if (defaultCommentIsNull) return;
 
     const dialogResult = await ConfirmDialog({
       title: "Eliminar Comentario",

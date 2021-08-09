@@ -1,8 +1,9 @@
 import * as S from "./styles";
 
-import Image from "components/atoms/Image";
-import HomeTitleWithDescription from "components/molecules/HomeTitleWithDescription";
 import imageSource from "assets/images/Image_1.jpg";
+
+import { Image } from "@food-proyect/shared-components";
+import HomeTitleWithDescription from "components/molecules/HomeTitleWithDescription";
 
 const HomeAboutUs = () => {
   return (

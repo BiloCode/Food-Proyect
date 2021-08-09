@@ -1,7 +1,7 @@
 import * as S from "./styles";
 import { IoIosArrowDown } from "react-icons/io";
 
-import Icon from "components/atoms/Icon";
+import { Icon } from "@food-proyect/shared-components";
 
 import useActive from "hooks/useActive";
 import { useState } from "react";
@@ -20,7 +20,7 @@ const BranchOfficeSelect = ({ onClickOption }: BranchOfficeSelectProps) => {
   return (
     <S.Container onClick={toggleActive}>
       <span>{searchText}</span>
-      <Icon size="small" color="gray" Type={IoIosArrowDown} />
+      <Icon size="small" color="gray" type={IoIosArrowDown} />
       {active && (
         <S.OptionsContainer>
           <S.Option

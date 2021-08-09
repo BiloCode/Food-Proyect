@@ -3,8 +3,9 @@ import { IconType } from "react-icons";
 import * as S from "./styles";
 
 import Label from "components/atoms/Label";
-import Icon from "components/atoms/Icon";
 import Input, { InputProps } from "components/atoms/Input";
+
+import { Icon } from "@food-proyect/shared-components";
 
 type FormControlProps = InputProps & {
   icon: IconType;

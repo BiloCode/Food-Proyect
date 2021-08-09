@@ -3,17 +3,17 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { MdDescription } from "react-icons/md";
 import * as S from "./styles";
 
-import Button from "components/atoms/Button";
 import DarkScreen from "components/atoms/DarkScreen";
 import FormControl from "components/molecules/FormControl";
 import FormControlTextarea from "components/molecules/FormControlTextarea";
+
+import { Button, Spinner } from "@food-proyect/shared-components";
 
 import useProfileUpdateInformation from "hooks/useProfileUpdateInformation";
 import {
   clientDescriptionMaxLength,
   clientFullNameMaxLength,
 } from "config/constans";
-import Spinner from "components/atoms/Spinner";
 
 type ProfileUpdateModalProps = {
   fullName: string;
@@ -26,12 +26,8 @@ const ProfileUpdateModal: FC<ProfileUpdateModalProps> = ({
   fullName,
   description,
 }) => {
-  const {
-    onSubmit,
-    isSendData,
-    fullnameRef,
-    descriptionRef,
-  } = useProfileUpdateInformation(onClose);
+  const { onSubmit, isSendData, fullnameRef, descriptionRef } =
+    useProfileUpdateInformation(onClose);
 
   return (
     <DarkScreen>

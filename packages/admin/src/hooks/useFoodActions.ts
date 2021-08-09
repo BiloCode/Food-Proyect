@@ -10,6 +10,7 @@ import useShowConfirm from "./useShowConfirm";
 import DeleteImage from "application/core/DeleteImage";
 import FoodDeleteById from "application/core/FoodDelete/FoodDeleteById";
 import FoodDeleteGroup from "application/core/FoodDelete/FoodDeleteGroup";
+import FoodDeleteInBranchMenu from "application/core/FoodDelete/FoodDeleteInBranchMenu";
 
 const useFoodActions = () => {
   const { addToast } = useToasts();
@@ -51,7 +52,12 @@ const useFoodActions = () => {
 
     const deleteImage = new DeleteImage();
     const deleteData = new FoodDeleteById();
-    const foodGroupDelete = new FoodDeleteGroup(deleteData, deleteImage);
+    const deleteInBranch = new FoodDeleteInBranchMenu();
+    const foodGroupDelete = new FoodDeleteGroup(
+      deleteData,
+      deleteImage,
+      deleteInBranch
+    );
 
     const groupIsDelete = await foodGroupDelete.exec(dataForDelete);
 

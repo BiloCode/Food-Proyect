@@ -1,5 +1,6 @@
-import { BLACK_LIGHT_C, BACKGROUND_LIGHT, SIDEBAR_WIDTH } from "config/styles";
 import styled from "styled-components";
+
+import { BLACK_LIGHT_C, BACKGROUND_LIGHT } from "config/styles";
 
 export const TabOptionContainer = styled.div`
   width: 100%;

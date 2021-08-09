@@ -1,8 +1,8 @@
 import * as S from "./styles";
 import { useNavigate } from "@reach/router";
 
-import Button from "components/atoms/Button";
 import FormControl from "components/molecules/FormControl";
+import { Button } from "@food-proyect/shared-components";
 
 import useCreateUserWithEmail from "hooks/useCreateUserWithEmail";
 

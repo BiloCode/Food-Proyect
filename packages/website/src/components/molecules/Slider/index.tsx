@@ -1,18 +1,18 @@
-import Image from "components/atoms/Image";
+import { memo, useRef, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import * as S from "./styles";
 
 import Image01 from "assets/images/Hamburguesa.jpg";
 import Image02 from "assets/images/Hamburguesa_02.jpg";
 import Image03 from "assets/images/Hamburguesa_03.jpg";
-import Icon from "components/atoms/Icon";
-import { LegacyRef, memo, useRef, useState } from "react";
+
+import { Icon, Image } from "@food-proyect/shared-components";
 
 const Slider = () => {
   const images = [Image01, Image03, Image02];
   const [position, setPosition] = useState<number>(0);
 
-  const ImagesRef: LegacyRef<HTMLDivElement> = useRef(null);
+  const ImagesRef = useRef<HTMLDivElement>(null);
 
   const onClickPrevius = () => {
     if (position === 0) return;
@@ -38,10 +38,10 @@ const Slider = () => {
       </S.SliderImages>
       <S.ArrowsContainer>
         <S.Arrow onClick={onClickPrevius}>
-          <Icon color="white" size="medium" Type={IoIosArrowBack} />
+          <Icon color="white" size="medium" type={IoIosArrowBack} />
         </S.Arrow>
         <S.Arrow onClick={onClickNext}>
-          <Icon color="white" size="medium" Type={IoIosArrowForward} />
+          <Icon color="white" size="medium" type={IoIosArrowForward} />
         </S.Arrow>
       </S.ArrowsContainer>
     </S.Container>

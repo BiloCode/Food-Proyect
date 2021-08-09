@@ -19,15 +19,15 @@ export const branchOffice = atom<BranchOfficeAtom>({
   requestState: "loading",
 });
 
-branchOffice.onMount = (setAtom) => {
-  (async () => {
-    const branchOffices = await GetAllBranchOffice.exec();
-    setAtom({
-      data: branchOffices,
-      requestState: "complete",
-    });
-  })();
-};
+// branchOffice.onMount = (setAtom) => {
+//   (async () => {
+//     const branchOffices = await GetAllBranchOffice.exec();
+//     setAtom({
+//       data: branchOffices,
+//       requestState: "complete",
+//     });
+//   })();
+// };
 
 export const branchOfficeById = atom((get) => {
   const pageParams = useParams();

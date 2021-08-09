@@ -43,8 +43,8 @@ const FoodMenuCard = ({
       imageRender={() => (
         <S.ImageContainer>
           <S.ImageList imageIndex={index} columns={images.length}>
-            {images.map((v) => (
-              <Image imageCover src={v} />
+            {images.map((url) => (
+              <Image imageCover src={url} />
             ))}
           </S.ImageList>
           {index < images.length - 1 && (

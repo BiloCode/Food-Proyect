@@ -1,27 +1,18 @@
 import "./routerEventListener";
 
-import { lazy } from "react";
 import { Router } from "@reach/router";
 import { useAuthContext } from "context/AuthContext/context";
 
 import RedirectToHome from "components/pages/RedirectToHome";
 import FallbackLoading from "components/molecules/FallbackLoading";
 
-const HomeLazy = lazy(() => import("components/pages/Home"));
-const LoginLazy = lazy(() => import("components/pages/Login"));
-const RegisterLazy = lazy(() => import("components/pages/Register"));
-const ProfileLazy = lazy(() => import("components/pages/Profile"));
-
-const BranchOfficeListLazy = lazy(
-  () => import("components/pages/BranchOfficeList")
-);
-const BranchOfficeMapsLazy = lazy(
-  () => import("components/pages/BranchOfficeMaps")
-);
-
-const BranchOfficeDetailLazy = lazy(
-  () => import("components/pages/BranchOfficeDetail")
-);
+import Home from "components/pages/Home";
+import Login from "components/pages/Login";
+import Profile from "components/pages/Profile";
+import Register from "components/pages/Register";
+import BranchOfficeList from "components/pages/BranchOfficeList";
+import BranchOfficeDetail from "components/pages/BranchOfficeDetail";
+import BranchOfficeMap from "components/pages/BranchOfficeMaps";
 
 const RouterApplication = () => {
   const { user, isLoading } = useAuthContext();
@@ -30,18 +21,18 @@ const RouterApplication = () => {
 
   return (
     <Router>
-      <HomeLazy path="/" />
-      <BranchOfficeListLazy path="/branch-office" />
-      <BranchOfficeDetailLazy path="/branch-office/:branchOfficeId" />
-      <ProfileLazy path="/user/:userPageId" />
+      <Home path="/" />
+      <BranchOfficeList path="/branch-office" />
+      <BranchOfficeDetail path="/branch-office/:branchOfficeId" />
+      <Profile path="/user/:userPageId" />
       {!user && (
         <>
-          <LoginLazy path="/login" />
-          <RegisterLazy path="/register" />
+          <Login path="/login" />
+          <Register path="/register" />
         </>
       )}
-      <BranchOfficeMapsLazy path="/map" />
       <RedirectToHome path="*" />
+      <BranchOfficeMap path="/map" />
     </Router>
   );
 };

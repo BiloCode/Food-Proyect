@@ -2,7 +2,7 @@ import { FC } from "react";
 import { RouteComponentProps } from "@reach/router";
 import * as S from "./styles";
 
-import Title from "components/atoms/Title";
+import { Title } from "@food-proyect/shared-components";
 import Footer from "components/organisms/Footer";
 import ParallaxImage from "components/atoms/ParallaxImage";
 import BODetailText from "components/organisms/BODetailText";
@@ -16,7 +16,7 @@ import useActive from "hooks/useActive";
 import useGetBranchOfficeDetail from "hooks/useGetBranchOfficeDetail";
 import ContactInformation from "components/molecules/ContactInformation";
 
-const BranchOfficeDetail: FC<RouteComponentProps> = ({}) => {
+const BranchOfficeDetail: FC<RouteComponentProps> = () => {
   const { active: menuActive, toggleActive: menuToggleActive } = useActive();
   const { userAuth, branchOffice } = useGetBranchOfficeDetail();
 
@@ -39,9 +39,7 @@ const BranchOfficeDetail: FC<RouteComponentProps> = ({}) => {
               />
               <S.MainContainer>
                 <S.TitleContainer>
-                  <Title color="black" size="medium">
-                    Valoraciones del lugar
-                  </Title>
+                  <Title>Valoraciones del lugar</Title>
                   {userAuth && (
                     <UserPuntuactionArea
                       uAuthPuntuaction={branchOffice.uAuthPuntuaction}
@@ -63,9 +61,7 @@ const BranchOfficeDetail: FC<RouteComponentProps> = ({}) => {
             </div>
           </S.ContainerContent>
           <S.ContactContainer>
-            <Title size="medium" color="black">
-              Informacion de contacto
-            </Title>
+            <Title>Informacion de contacto</Title>
             <ContactInformation />
           </S.ContactContainer>
           <Footer />

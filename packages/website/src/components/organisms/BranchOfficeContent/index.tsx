@@ -1,9 +1,9 @@
-import faker from "faker";
 import * as S from "./styles";
 
-import BranchOfficeInformation from "components/molecules/BranchOfficeInformation";
 import { BranchOfficeModelType } from "@food-proyect/shared-types";
 import { StarsPromedy } from "@food-proyect/shared-functions";
+import { BranchOfficeCard } from "@food-proyect/shared-components";
+import { useNavigate } from "@reach/router";
 
 type BranchOfficeContentProps = {
   branchOfficeFilter: BranchOfficeModelType[];
@@ -11,21 +11,28 @@ type BranchOfficeContentProps = {
 
 const BranchOfficeContent = ({
   branchOfficeFilter,
-}: BranchOfficeContentProps) => (
-  <S.MainContainer>
-    <S.Container>
-      {branchOfficeFilter.map((v, i) => (
-        <BranchOfficeInformation
-          key={i}
-          id={v._id}
-          image={v.bannerImage.url}
-          textTittle={v.name}
-          textDescription={faker.lorem.words(20)}
-          stars={StarsPromedy.exec(v.puntuactions)}
-        />
-      ))}
-    </S.Container>
-  </S.MainContainer>
-);
+}: BranchOfficeContentProps) => {
+  const navigate = useNavigate();
+
+  const navToBranchDetail = (id: string) => () =>
+    navigate("/branch-office/" + id);
+
+  return (
+    <S.MainContainer>
+      <S.Container>
+        {branchOfficeFilter.map((v, i) => (
+          <BranchOfficeCard
+            name={v.name}
+            image={v.bannerImage.url}
+            onClickButton={navToBranchDetail(v._id)}
+            description={v.description}
+            commentsNumber={v.puntuactions.length}
+            stars={StarsPromedy.exec(v.puntuactions)}
+          />
+        ))}
+      </S.Container>
+    </S.MainContainer>
+  );
+};
 
 export default BranchOfficeContent;

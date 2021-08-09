@@ -10,10 +10,10 @@ import * as S from "./styles";
 
 import Logo from "assets/images/Logo.svg";
 
-import Image from "components/atoms/Image";
-import Button from "components/atoms/Button";
 import NavUserProfile from "../NavUserProfile";
 import NavbarOption from "components/molecules/NavbarOption";
+
+import { Button, Image } from "@food-proyect/shared-components";
 
 import { useAuthContext } from "context/AuthContext/context";
 
@@ -38,16 +38,16 @@ const NavigationBar: FC<NavigationBarProps> = ({ staticPosition }) => {
       <S.ContainerOptions gridFluid={user != null}>
         <S.ListOption>
           <NavbarOption
-            Icon={AiFillHome}
+            icon={AiFillHome}
             text="Inicio"
             onClick={onClickButtonHome}
           />
           <NavbarOption
-            Icon={GiFoodTruck}
+            icon={GiFoodTruck}
             text="Sucursales"
             onClick={onClickButtonBranchOffices}
           />
-          <NavbarOption text="Mapa" Icon={BsMap} onClick={onClickButtonMap} />
+          <NavbarOption text="Mapa" icon={BsMap} onClick={onClickButtonMap} />
         </S.ListOption>
         {!user ? (
           <Button

@@ -3,9 +3,8 @@ import * as S from "./styles";
 
 import { AiFillCalendar } from "react-icons/ai";
 
-import Icon from "components/atoms/Icon";
-import Title from "components/atoms/Title";
-import Button from "components/atoms/Button";
+import { Button, Title, Icon } from "@food-proyect/shared-components";
+
 import Portals from "components/atoms/Portals";
 import Description from "components/atoms/Description";
 import ProfileUpdateModal from "../../organisms/ProfileUpdateModal";
@@ -38,9 +37,7 @@ const ProfileLeftContent: FC<ProfileLeftContentProps> = ({
           isCurrentUserProfile={isCurrentUserProfile}
         />
         <S.UserAreaTextContainer>
-          <Title size="medium" color="black">
-            # {fullName}
-          </Title>
+          <Title># {fullName}</Title>
           <Description size="medium">
             <div
               dangerouslySetInnerHTML={{
@@ -50,7 +47,7 @@ const ProfileLeftContent: FC<ProfileLeftContentProps> = ({
           </Description>
         </S.UserAreaTextContainer>
         <S.UserAreaDateContainer>
-          <Icon color="blue" size="small" Type={AiFillCalendar} />
+          <Icon color="blue" size="small" type={AiFillCalendar} />
           <S.UserAreaDateText>Se unio el {createdAt}</S.UserAreaDateText>
         </S.UserAreaDateContainer>
       </S.UserAreaContainer>

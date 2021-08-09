@@ -3,7 +3,7 @@ import * as S from "./styles";
 
 import { IoIosStarOutline, IoIosStar } from "react-icons/io";
 
-import Icon from "components/atoms/Icon";
+import { Icon } from "@food-proyect/shared-components";
 
 type StarsProps = {
   clientStars: number;
@@ -21,7 +21,7 @@ const StarsInteractive: FC<StarsProps> = ({ onClickStar, clientStars }) => (
             <Icon
               size="medium"
               color="yellow"
-              Type={i < clientStars ? IoIosStar : IoIosStarOutline}
+              type={i < clientStars ? IoIosStar : IoIosStarOutline}
             />
           </S.StarIconContainer>
         ))}

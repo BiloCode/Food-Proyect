@@ -2,7 +2,7 @@ import { IconType } from "react-icons/lib";
 import { forwardRef, memo } from "react";
 import * as S from "./styles";
 
-import Icon from "components/atoms/Icon";
+import { Icon } from "@food-proyect/shared-components";
 import Label from "components/atoms/Label";
 import Textarea, { TextareaProps } from "components/atoms/Textarea";
 import classNames from "classnames";
@@ -17,7 +17,7 @@ const FormControlTextarea = forwardRef<HTMLTextAreaElement, FormControlProps>(
   ({ icon, labelText, defaultValue, size }, ref) => (
     <S.MainContainer className={classNames({ small: size === "small" })}>
       <S.LabelWithIcon>
-        <Icon Type={icon} />
+        <Icon type={icon} />
         <Label>{labelText}</Label>
       </S.LabelWithIcon>
       <S.TextareaContainer>

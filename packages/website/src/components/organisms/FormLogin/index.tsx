@@ -1,8 +1,9 @@
 import { useNavigate } from "@reach/router";
 import * as S from "./styles";
 
-import Button from "components/atoms/Button";
 import FormControl from "components/molecules/FormControl";
+import { Button } from "@food-proyect/shared-components";
+
 import useAuthentication from "hooks/useAuthentication";
 
 import { BsFillPersonFill, BsLockFill } from "react-icons/bs";
@@ -12,12 +13,8 @@ type FloatLoginHomeProps = {
 };
 
 const FloatLoginHome = ({ buttonBig }: FloatLoginHomeProps) => {
-  const {
-    isLoading,
-    passwordRef,
-    usernameRef,
-    onSubmitLoginForm,
-  } = useAuthentication();
+  const { isLoading, passwordRef, usernameRef, onSubmitLoginForm } =
+    useAuthentication();
 
   const navigation = useNavigate();
 

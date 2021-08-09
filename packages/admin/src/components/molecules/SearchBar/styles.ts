@@ -1,5 +1,6 @@
-import { BACKGROUND_LIGHT, NORMAL_WHITE } from "config/styles";
 import styled from "styled-components";
+
+import { BACKGROUND_LIGHT } from "config/styles";
 
 export const Container = styled.div`
   width: 100%;

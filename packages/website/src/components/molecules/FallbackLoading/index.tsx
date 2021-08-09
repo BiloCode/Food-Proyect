@@ -1,9 +1,7 @@
 import * as S from "./styles";
 
-import Image from "../../atoms/Image";
-
 import Logo from "assets/images/Logo.svg";
-import Spinner from "../../atoms/Spinner";
+import { Image, Spinner } from "@food-proyect/shared-components";
 
 const FallbackLoading = () => (
   <S.MainContainer>

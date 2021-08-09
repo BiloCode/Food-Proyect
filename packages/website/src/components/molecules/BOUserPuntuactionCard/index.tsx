@@ -4,8 +4,9 @@ import { useNavigate } from "@reach/router";
 import * as S from "./styles";
 
 import Description from "components/atoms/Description";
-import StarListPuntuaction from "../StarListPuntuaction";
 import CircularImage from "components/atoms/CircularImage";
+
+import { StarListPuntuaction } from "@food-proyect/shared-components";
 
 type PuntuactionCardProps = {
   userId: string;

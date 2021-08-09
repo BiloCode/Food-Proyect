@@ -1,4 +1,4 @@
-import { ChangeEvent, forwardRef, useRef } from "react";
+import { ChangeEvent, forwardRef } from "react";
 import * as S from "./styles";
 
 import { IoFastFood } from "react-icons/io5";

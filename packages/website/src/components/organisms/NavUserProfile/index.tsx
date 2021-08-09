@@ -6,11 +6,13 @@ import * as S from "./styles";
 
 import { BiUser, BiDoorOpen } from "react-icons/bi";
 
-import Icon from "components/atoms/Icon";
 import CircularImage from "components/atoms/CircularImage";
 import NavDropdownItem from "components/molecules/NavDropdownItem";
+
 import useActive from "hooks/useActive";
 import useDefaultProfileImage from "hooks/useDefaultProfileImage";
+
+import { Icon } from "@food-proyect/shared-components";
 
 type NavUserProfileProps = {
   _id: string;
@@ -33,7 +35,7 @@ const NavUserProfile: FC<NavUserProfileProps> = ({ _id, profileImage }) => {
     <S.MainContainer>
       <S.ImageContainer onClick={toggleActive}>
         <CircularImage src={profileImage || defaultImage} />
-        <Icon color="white" Type={FiChevronDown} />
+        <Icon color="white" type={FiChevronDown} />
       </S.ImageContainer>
       {active && (
         <S.DropdownList>
