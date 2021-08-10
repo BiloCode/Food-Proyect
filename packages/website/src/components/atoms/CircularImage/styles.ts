@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { PROFILE_IMAGE_SIZE_BIG } from "config/constans";
 
 export const MainContainer = styled.div`
-  --size: 48px;
+  --size: 56px;
 
   width: var(--size);
   height: var(--size);

@@ -18,7 +18,7 @@ export const MainContainer = styled.div`
 export const BranchOfficeDataContainer = styled.div`
   display: grid;
   row-gap: 1.6em;
-  padding: 1.5em 2em;
+  padding: 1.5em;
   box-sizing: border-box;
 `;
 
@@ -29,7 +29,7 @@ export const DataContainer = styled.div`
 
 export const ImageContainer = styled.div`
   width: 100%;
-  height: 200px;
+  height: 154px;
   border-radius: ${cardRadius} ${cardRadius} 0 0;
 
   & > img {

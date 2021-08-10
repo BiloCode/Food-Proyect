@@ -17,7 +17,7 @@ const Profile: FC<RouteComponentProps> = () => {
 
   return (
     <div>
-      <NavigationBar staticPosition />
+      <NavigationBar />
       {requestState === "loading" ? (
         <S.SpinnerContainer>
           <Spinner size="big" />

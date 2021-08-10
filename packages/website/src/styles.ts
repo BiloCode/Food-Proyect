@@ -2,8 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
   :root {
-    --font: 'Noto Sans', sans-serif;
-    --extra-font: 'Open Sans', sans-serif;
+    --font: 'Raleway', sans-serif;
   }
 
   body {

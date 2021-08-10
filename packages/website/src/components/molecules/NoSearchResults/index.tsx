@@ -5,7 +5,7 @@ import * as S from "./styles";
 const NoSearchResults = () => {
   return (
     <S.Container>
-      <Title size="small-medium">SIN RESULTADOS</Title>
+      <Title>SIN RESULTADOS</Title>
       <Description size="medium" color="black">
         No se ha podido encontrar resultados para esta busqueda
       </Description>

@@ -2,14 +2,10 @@ import { memo, useRef, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import * as S from "./styles";
 
-import Image01 from "assets/images/Hamburguesa.jpg";
-import Image02 from "assets/images/Hamburguesa_02.jpg";
-import Image03 from "assets/images/Hamburguesa_03.jpg";
-
 import { Icon, Image } from "@food-proyect/shared-components";
 
 const Slider = () => {
-  const images = [Image01, Image03, Image02];
+  const images = new Array(3).fill("");
   const [position, setPosition] = useState<number>(0);
 
   const ImagesRef = useRef<HTMLDivElement>(null);

@@ -1,26 +1,47 @@
 import styled from "styled-components";
 
-import { FONT, NORMAL_BLUE, SMOOTH_BLACK } from "../../../config/styles";
+import { Colors, Font } from "../../../config";
 
 export const TextElement = styled.span`
-  font-size: 1.4em;
+  font-size: 20px;
   text-transform: uppercase;
-  font-weight: 800;
-  font-family: ${FONT};
+  font-weight: bold;
+  font-family: ${Font};
+  color: ${Colors.BLACK};
 
-  &.c_black_ligth {
-    color: ${SMOOTH_BLACK};
+  &.blue {
+    color: ${Colors.BLUE};
   }
 
-  &.c_blue {
-    color: ${NORMAL_BLUE};
+  &.uppercase {
+    text-transform: uppercase;
   }
 
-  &.small_size {
-    font-size: 0.9em;
+  &.e_bold {
+    font-weight: 800;
   }
 
-  &.small_medium {
-    font-size: 1em;
+  &.black {
+    font-weight: 900;
+  }
+
+  &.small {
+    font-size: 15px;
+  }
+
+  &.medium {
+    font-size: 18px;
+  }
+
+  &.m_big {
+    font-size: 22px;
+  }
+
+  &.big {
+    font-size: 24px;
+  }
+
+  &.e_big {
+    font-size: 32px;
   }
 `;

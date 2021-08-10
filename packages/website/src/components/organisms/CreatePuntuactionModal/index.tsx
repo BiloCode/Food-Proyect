@@ -37,7 +37,7 @@ const CreatePuntuactionModal: FC<ModalProps> = ({
     <DarkScreen>
       <S.MainContainer>
         <S.ElementsContainer>
-          <Title size="small-medium">Deja una valoracion</Title>
+          <Title size="big">Deja una valoracion</Title>
           <StarsInteractive clientStars={stars} onClickStar={changeStarValue} />
           <FormControlTextarea
             size="small"

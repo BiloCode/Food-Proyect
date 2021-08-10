@@ -2,20 +2,35 @@ import classNames from "classnames";
 import { FC } from "react";
 import * as S from "./styles";
 
-type TitleSize = "small" | "small-medium" | "default";
-type TitleColor = "light" | "blue";
+type TColor = "blue" | "default";
+type TWeight = "e-bold" | "black";
+type TSize = "small" | "medium" | "m-big" | "big" | "e-big";
+
 type TitleProps = {
-  size?: TitleSize;
-  color?: TitleColor;
+  size?: TSize;
+  color?: TColor;
+  weight?: TWeight;
+  uppercase?: boolean;
 };
 
-const Title: FC<TitleProps> = ({ children, size, color }) => (
+const Title: FC<TitleProps> = ({
+  children,
+  size,
+  color,
+  uppercase,
+  weight,
+}) => (
   <S.TextElement
     className={classNames({
-      small_size: size === "small",
-      c_black_ligth: color === "light",
-      c_blue: color === "blue",
-      small_medium: size === "small-medium",
+      uppercase,
+      blue: color === "blue",
+      e_bold: weight === "e-bold",
+      black: weight === "black",
+      small: size === "small",
+      medium: size === "medium",
+      m_big: size === "m-big",
+      big: size === "big",
+      e_big: size === "e-big",
     })}
   >
     {children}

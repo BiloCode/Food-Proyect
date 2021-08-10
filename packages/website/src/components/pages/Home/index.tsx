@@ -3,22 +3,17 @@ import { RouteComponentProps } from "@reach/router";
 import * as S from "./styles";
 
 import NavigationBar from "components/organisms/NavigationBar";
-import Footer from "components/organisms/Footer";
-import HomeSearch from "components/organisms/HomeSearch";
-import HomeBanner from "components/organisms/HomeBanner";
-import HomeAboutUs from "components/organisms/HomeAboutUs";
-import HomeCharacterist from "components/organisms/HomeCharacteristList";
+import HomeBanner from "components/molecules/HomeBanner";
+import PageLimiter from "components/atoms/PageLimiter";
 
 const Home: FC<RouteComponentProps> = () => {
   return (
-    <S.HomeContainer>
+    <div>
       <NavigationBar />
-      <HomeBanner />
-      <HomeAboutUs />
-      <HomeCharacterist />
-      <HomeSearch />
-      <Footer />
-    </S.HomeContainer>
+      <PageLimiter>
+        <HomeBanner />
+      </PageLimiter>
+    </div>
   );
 };
 

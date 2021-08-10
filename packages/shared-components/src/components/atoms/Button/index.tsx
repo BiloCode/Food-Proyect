@@ -5,13 +5,14 @@ import classnames from "classnames";
 import Spinner from "../Spinner";
 
 type ButtonType = "button" | "submit";
-type ButtonColorType = "yellow" | "blue" | "green" | "red";
+type ButtonColorType = "yellow" | "blue";
 type ButtonSizeType = "small" | "normal" | "big" | "medium";
 type ButtonTypeProps = {
+  type?: ButtonType;
   text: string;
   onClick?(): void;
+  ghost?: boolean;
   isLoading?: boolean;
-  type?: ButtonType;
   disabled?: boolean;
   styles?: {
     size?: ButtonSizeType;
@@ -27,20 +28,20 @@ const Button: FC<ButtonTypeProps> = ({
   disabled,
   isLoading,
   children,
+  ghost,
 }) => (
   <S.ButtonContainer
     type={type}
     onClick={onClick}
     disabled={isLoading || disabled}
     className={classnames({
+      ghost,
       disabled,
       big: styles?.size === "big",
       small: styles?.size === "small",
       medium: styles?.size === "medium",
       yellow: styles?.color === "yellow",
       blue: styles?.color === "blue",
-      green: styles?.color === "green",
-      red: styles?.color === "red",
     })}
   >
     {!isLoading ? (

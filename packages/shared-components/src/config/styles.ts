@@ -1,11 +1,12 @@
-export const FONT = "Open Sans, sans-serif";
+export const FONT = "Raleway, sans-serif";
 
 export const BACKGROUND_LIGHT = "#F5F5F5";
 
 export const NORMAL_GREEN = "#10EAA8";
 export const NORMAL_GREEN_LIGHT = "#20F1B2";
 
-export const BLACK = "#000000";
+export const BLACK = "#262626";
+
 export const SMOOTH_BLACK = "#3D3D3D";
 export const BLACK_SUPER_LIGHT = "#3D3D3D";
 export const BLACK_LIGHT = "#515151";

@@ -6,12 +6,6 @@ import {
   NORMAL_YELLOW,
   NORMAL_BLUE_LIGHT,
   NORMAL_YELLOW_LIGHT,
-  NORMAL_GREEN,
-  NORMAL_GREEN_LIGHT,
-  NORMAL_RED,
-  NORMAL_RED_LIGHT,
-  BLACK_LIGHT_C,
-  BLACK_LIGHT_B,
 } from "../../../config/styles";
 
 export const ButtonContainer = styled.button`
@@ -23,14 +17,21 @@ export const ButtonContainer = styled.button`
   color: var(--txt-color);
   height: 40px;
   border: none;
-  outline: none;
   user-select: none;
-  font-size: 1em;
+  font-size: 15px;
   font-weight: 800;
-  border-radius: 6px;
+  border-radius: 5px;
+  padding: 0 2em;
+  box-sizing: border-box;
   font-family: ${FONT};
   text-transform: uppercase;
   background-color: var(--bg);
+
+  &.ghost {
+    background-color: transparent;
+    border: 2px solid var(--bg);
+    --txt-color: var(---bg);
+  }
 
   &.yellow {
     --bg: ${NORMAL_YELLOW};
@@ -38,45 +39,12 @@ export const ButtonContainer = styled.button`
     --bg-hover: ${NORMAL_YELLOW_LIGHT};
   }
 
-  &.green {
-    --bg: ${NORMAL_GREEN};
-    --bg-hover: ${NORMAL_GREEN_LIGHT};
-  }
-
-  &.red {
-    --bg: ${NORMAL_RED};
-    --bg-hover: ${NORMAL_RED_LIGHT};
-  }
-
-  &.disabled {
-    --bg: ${BLACK_LIGHT_C};
-    --txt-color: ${BLACK_LIGHT_B};
-  }
-
-  &.small {
-    font-size: 0.85em;
-    height: 34px;
-  }
-
-  &.medium {
-    font-size: 0.95em;
-    height: 38px;
-  }
-
   &.big {
-    height: 50px;
-  }
-
-  &:not(&:disabled):hover {
-    background-color: var(--bg-hover);
+    height: 48px;
   }
 
   &:not(&:disabled) {
     cursor: pointer;
-  }
-
-  &:not(&:disabled):active {
-    transform: scale(0.98);
   }
 `;
 

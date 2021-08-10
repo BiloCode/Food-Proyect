@@ -1,66 +1,70 @@
-import { FC, memo } from "react";
-import classNames from "classnames";
-import { useNavigate } from "@reach/router";
-
-import { AiFillHome } from "react-icons/ai";
-import { GiFoodTruck } from "react-icons/gi";
-import { BsMap } from "react-icons/bs";
-
 import * as S from "./styles";
+import { Link } from "@reach/router";
+import {
+  Title,
+  Button,
+  SearchIcon,
+  EnterpriseFavicon,
+} from "@food-proyect/shared-components";
 
-import Logo from "assets/images/Logo.svg";
-
-import NavUserProfile from "../NavUserProfile";
-import NavbarOption from "components/molecules/NavbarOption";
-
-import { Button, Image } from "@food-proyect/shared-components";
+import routes from "config/navigation_routes";
+import useNavigateRouter from "hooks/useNavigate";
+import CircularImage from "components/atoms/CircularImage";
 
 import { useAuthContext } from "context/AuthContext/context";
+import PageLimiter from "components/atoms/PageLimiter";
+import BetweenSeparate from "components/atoms/BetweenSeparate";
 
-type NavigationBarProps = {
-  staticPosition?: boolean;
-};
-
-const NavigationBar: FC<NavigationBarProps> = ({ staticPosition }) => {
+const NavigationBar = () => {
   const { user } = useAuthContext();
-  const navigation = useNavigate();
-
-  const onClickButtonHome = () => navigation("/");
-  const onClickButtonLogin = () => navigation("/login");
-  const onClickButtonMap = () => navigation("/map");
-  const onClickButtonBranchOffices = () => navigation("/branch-office");
+  const { navigateToLogin, navigateToRegister, navigateToProfile } =
+    useNavigateRouter();
 
   return (
-    <S.ContainerNav className={classNames({ static: staticPosition })}>
-      <S.LogoContainer onClick={onClickButtonHome}>
-        <Image src={Logo} />
-      </S.LogoContainer>
-      <S.ContainerOptions gridFluid={user != null}>
-        <S.ListOption>
-          <NavbarOption
-            icon={AiFillHome}
-            text="Inicio"
-            onClick={onClickButtonHome}
-          />
-          <NavbarOption
-            icon={GiFoodTruck}
-            text="Sucursales"
-            onClick={onClickButtonBranchOffices}
-          />
-          <NavbarOption text="Mapa" icon={BsMap} onClick={onClickButtonMap} />
-        </S.ListOption>
-        {!user ? (
-          <Button
-            text="Iniciar Sesión"
-            styles={{ color: "yellow" }}
-            onClick={onClickButtonLogin}
-          />
-        ) : (
-          <NavUserProfile _id={user._id} profileImage={user.profileImage.url} />
-        )}
-      </S.ContainerOptions>
-    </S.ContainerNav>
+    <S.MainContainer>
+      <S.TopContainer>
+        <PageLimiter>
+          <BetweenSeparate>
+            <EnterpriseFavicon />
+            {!user ? (
+              <S.ButtonContainer>
+                <Button text="Iniciar Sesion" onClick={navigateToLogin} />
+                <Button
+                  text="Registrate Ahora"
+                  ghost
+                  onClick={navigateToRegister}
+                />
+              </S.ButtonContainer>
+            ) : (
+              <S.UserContainer onClick={navigateToProfile(user._id)}>
+                <S.UserText>
+                  <Title size="small" weight="e-bold">
+                    {user.fullName}
+                  </Title>
+                  <span>{user.puntuaction.store.length} reseñas</span>
+                </S.UserText>
+                <CircularImage src={user.profileImage.url} />
+              </S.UserContainer>
+            )}
+          </BetweenSeparate>
+        </PageLimiter>
+      </S.TopContainer>
+      <S.BottomContainer>
+        <PageLimiter>
+          <BetweenSeparate>
+            <S.OptionList>
+              {routes.map((v, i) => (
+                <S.Option key={i} as={Link} to={v.link}>
+                  {v.name}
+                </S.Option>
+              ))}
+            </S.OptionList>
+            <SearchIcon />
+          </BetweenSeparate>
+        </PageLimiter>
+      </S.BottomContainer>
+    </S.MainContainer>
   );
 };
 
-export default memo(NavigationBar);
+export default NavigationBar;

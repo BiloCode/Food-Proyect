@@ -1,46 +1,57 @@
+import { colors } from "config/colors";
 import styled from "styled-components";
 
-import { colors } from "config/colors";
-import { NAVBAR_HEIGHT } from "config/constans";
-
-export const ContainerNav = styled.nav`
+export const MainContainer = styled.nav`
   width: 100%;
-  height: ${NAVBAR_HEIGHT}px;
-  background-color: ${colors.dark_blue};
-  padding: 0 3.5em;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  &:not(&.static) {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-  }
 `;
 
-type ContainerOptionsType = {
-  gridFluid?: boolean;
-};
-
-export const ContainerOptions = styled.div<ContainerOptionsType>`
+export const ButtonContainer = styled.div`
   display: grid;
-  align-items: center;
-  grid-template-columns: 1fr ${({ gridFluid }) =>
-      gridFluid ? "max-content" : "250px"};
-  column-gap: ${({ gridFluid }) => (gridFluid ? "6em" : "4em")};
+  grid-template-columns: repeat(2, max-content);
+  column-gap: 8px;
 `;
 
-export const ListOption = styled.ul`
-  padding: 0;
-  margin: 0;
-  list-style: none;
+export const TopContainer = styled.div`
+  height: 96px;
+  background-color: #fff;
+`;
+
+export const OptionList = styled.li`
   display: grid;
   grid-template-columns: repeat(3, max-content);
-  column-gap: 3em;
+  column-gap: 2.5em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 `;
 
-export const LogoContainer = styled.div`
+export const Option = styled.a`
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 800;
+  font-family: var(--font);
+  text-decoration: none;
+`;
+
+// Auth
+
+export const UserContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  align-items: center;
+  column-gap: 1em;
   cursor: pointer;
+`;
+
+export const UserText = styled.div`
+  display: grid;
+  justify-items: end;
+`;
+
+// No Auth
+
+export const BottomContainer = styled.div`
+  height: 48px;
+  background-color: ${colors.blue};
 `;

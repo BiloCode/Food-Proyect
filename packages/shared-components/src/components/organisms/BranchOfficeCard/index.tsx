@@ -7,6 +7,7 @@ import Title from "../../atoms/Title";
 import Image from "../../atoms/Image";
 import Button from "../../atoms/Button";
 import StarListPuntuaction from "../../molecules/StarListPuntuaction";
+import { Paragraph } from "@food-proyect/shared-components";
 
 type BranchOfficeCardProps = {
   name: string;
@@ -32,8 +33,10 @@ const BranchOfficeCard = ({
     <S.BranchOfficeDataContainer>
       <S.DataContainer>
         <S.TextContainer>
-          <Title size="small-medium">{name}</Title>
-          <S.Description>{description}</S.Description>
+          <Title uppercase weight="e-bold" size="small">
+            {name}
+          </Title>
+          <Paragraph size="small">{description}</Paragraph>
         </S.TextContainer>
         <S.AsideContainer>
           <S.CommentsContainer>
