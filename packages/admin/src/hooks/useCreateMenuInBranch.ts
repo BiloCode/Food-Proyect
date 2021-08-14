@@ -5,7 +5,7 @@ import { foods } from "store/foods";
 import { currentBranch } from "store/currentBranch";
 import { setBranchMenu } from "store/branchOffice";
 
-import type { FoodModelType } from "@food-proyect/shared-types";
+import type { Food } from "@food/shared-types";
 import BranchAddNewMenu from "application/core/BranchOffice/BranchAddNewMenu";
 
 const useCreateMenuInBranch = (onClose: () => void) => {
@@ -17,9 +17,9 @@ const useCreateMenuInBranch = (onClose: () => void) => {
   const descriptionRef = useRef<HTMLInputElement>();
   const searchInputRef = useRef<HTMLInputElement>();
 
-  const [foodSaved, setFoodSaved] = useState<FoodModelType[]>([]);
+  const [foodSaved, setFoodSaved] = useState<Food[]>([]);
   const [isSendRequest, setIsSendRequest] = useState<boolean>(false);
-  const [foodFilter, setFoodFilter] = useState<FoodModelType[]>(foodStore.data);
+  const [foodFilter, setFoodFilter] = useState<Food[]>(foodStore.data);
 
   const addFood = (_id: string) => () => {
     const isExists = foodSaved.some((v) => v._id === _id);

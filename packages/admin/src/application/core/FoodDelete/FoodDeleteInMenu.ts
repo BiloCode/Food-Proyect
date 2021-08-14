@@ -2,7 +2,7 @@ import firebase from "firebase";
 
 import { FirebaseCollectionNames } from "config/constants";
 
-import { branchOfficeConverter } from "@food-proyect/shared-firebase-converter";
+import { branchOfficeConverter } from "@food/shared-firebase-converter";
 
 class FoodDeleteInMenu {
   public async exec(branchId: string, foodId: string) {

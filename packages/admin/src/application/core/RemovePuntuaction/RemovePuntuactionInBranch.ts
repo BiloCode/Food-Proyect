@@ -1,6 +1,6 @@
 import firebase from "firebase";
 
-import { PuntuactionType } from "@food-proyect/shared-types";
+import { PuntuactionType } from "@food/shared-types";
 
 type BranchOfficeParams = {
   userId: string;

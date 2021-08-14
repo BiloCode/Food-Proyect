@@ -1,17 +1,13 @@
 import { atom } from "jotai";
 import { useParams } from "@reach/router";
 
-import {
-  MenuType,
-  BranchOfficeModelType,
-  RequestStateType,
-} from "@food-proyect/shared-types";
+import { MenuType, BranchOffice, RequestState } from "@food/shared-types";
 
 import GetAllBranchOffice from "application/core/GetAllBranchOffice";
 
 type BranchOfficeAtom = {
-  data: BranchOfficeModelType[];
-  requestState: RequestStateType;
+  data: BranchOffice[];
+  requestState: RequestState;
 };
 
 export const branchOffice = atom<BranchOfficeAtom>({

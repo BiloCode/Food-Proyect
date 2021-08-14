@@ -1,7 +1,7 @@
 import firebase from "firebase";
 
 import { FirebaseCollectionNames } from "config/constants";
-import { FirebaseImageType } from "@food-proyect/shared-types";
+import { FirebaseImageType } from "@food/shared-types";
 
 type UpdateBranchImageParams = {
   id: string;

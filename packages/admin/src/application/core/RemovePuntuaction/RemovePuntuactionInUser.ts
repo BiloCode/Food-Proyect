@@ -1,6 +1,6 @@
 import firebase from "firebase";
 
-import { ClientPuntuactionData } from "@food-proyect/shared-types";
+import { ClientPuntuactionData } from "@food/shared-types";
 
 type UserParams = {
   puntuaction: ClientPuntuactionData;

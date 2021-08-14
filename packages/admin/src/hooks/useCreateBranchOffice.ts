@@ -1,9 +1,9 @@
 import { ChangeEvent, FormEvent, useCallback, useRef, useState } from "react";
 import { useToasts } from "react-toast-notifications";
 
-import { FoodType } from "@food-proyect/shared-types";
+import { FoodType } from "@food/shared-types";
 
-import { FilesCheckingIsImage } from "@food-proyect/shared-functions";
+import { FilesCheckingIsImage } from "@food/shared-functions";
 import UploadBranchImage from "application/core/BranchOffice/UploadBranchImage";
 import CreateNewBranchOffice from "application/core/BranchOffice/CreateNewBranchOffice";
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useToasts } from "react-toast-notifications";
 
-import { RequestStateType } from "@food-proyect/shared-types";
+import { RequestState } from "@food/shared-types";
 import DeleteImage from "application/core/DeleteImage";
 import UploadBranchImage from "application/core/BranchOffice/UploadBranchImage";
 import UpdateBranchImage from "application/core/BranchOffice/UpdateBranchImage";
@@ -14,8 +14,7 @@ const useUpdateBranchImage = () => {
   const [currentBranch, setCurrentBranch] = useAtom(currentBranchStore);
   const { addToast } = useToasts();
 
-  const [requestState, setRequestState] =
-    useState<RequestStateType>("initialize");
+  const [requestState, setRequestState] = useState<RequestState>("initialize");
   const [loadingPercentaje, setLoadingPercentaje] = useState<number>(0);
 
   const updatePercentaje = (percentaje: number) => {

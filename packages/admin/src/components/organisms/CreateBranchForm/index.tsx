@@ -18,7 +18,7 @@ import {
 import { FaHamburger } from "react-icons/fa";
 import Description from "components/atoms/Description";
 import Icon from "components/atoms/Icon";
-import { FoodType } from "@food-proyect/shared-types";
+import { FoodType } from "@food/shared-types";
 import { useToasts } from "react-toast-notifications";
 
 type CreateBranchFormType = {

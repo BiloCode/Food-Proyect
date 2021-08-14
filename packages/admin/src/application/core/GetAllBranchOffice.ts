@@ -2,17 +2,17 @@ import firebase from "firebase";
 
 import { FirebaseCollectionNames } from "config/constants";
 
-import { BranchOfficeModelType } from "@food-proyect/shared-types";
-import { branchOfficeConverter } from "@food-proyect/shared-firebase-converter";
+import { BranchOffice } from "@food/shared-types";
+import { branchOfficeConverter } from "@food/shared-firebase-converter";
 
 class GetAllBranchOffice {
-  public static exec = async (): Promise<BranchOfficeModelType[]> => {
+  public static exec = async (): Promise<BranchOffice[]> => {
     const db = firebase.firestore();
     const reference = db
       .collection(FirebaseCollectionNames.branchOffice)
       .withConverter(branchOfficeConverter);
 
-    const store: BranchOfficeModelType[] = [];
+    const store: BranchOffice[] = [];
 
     try {
       const firestoreData = await reference.get();

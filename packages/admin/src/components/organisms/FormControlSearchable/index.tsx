@@ -8,11 +8,11 @@ import FormControl from "components/molecules/FormControl";
 
 import useActive from "hooks/useActive";
 
-import { FoodModelType } from "@food-proyect/shared-types";
+import { Food } from "@food/shared-types";
 import FoodSearchbleItem from "components/molecules/FoodSearchableItem";
 
 type SearchableProps = {
-  foods: FoodModelType[];
+  foods: Food[];
   savedFoods: string[];
   onClearFoods(): void;
   onAddItem(_id: string): () => void;

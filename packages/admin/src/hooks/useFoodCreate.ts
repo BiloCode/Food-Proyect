@@ -4,7 +4,7 @@ import { useToasts } from "react-toast-notifications";
 import CreateNewFood from "application/core/CreateNewFood";
 import UploadFoodImage from "application/core/UploadFoodImage";
 
-import { FilesCheckingIsImage } from "@food-proyect/shared-functions";
+import { FilesCheckingIsImage } from "@food/shared-functions";
 
 import { useUpdateAtom } from "jotai/utils";
 import { addNewFood } from "store/foods";

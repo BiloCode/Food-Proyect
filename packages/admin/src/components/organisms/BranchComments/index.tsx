@@ -9,7 +9,7 @@ import ClientsCommentsDetail from "components/molecules/ClientsCommentsDetail";
 
 import { useAtomValue } from "jotai/utils";
 import { currentBranch } from "store/currentBranch";
-import { PuntuactionType } from "@food-proyect/shared-types";
+import { PuntuactionType } from "@food/shared-types";
 import { FaCommentSlash } from "react-icons/fa";
 
 const BranchComments = () => {

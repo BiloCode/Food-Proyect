@@ -2,7 +2,7 @@ import firebase from "firebase";
 
 import { FirebaseCollectionNames } from "config/constants";
 
-import { foodSellConverter } from "@food-proyect/shared-firebase-converter";
+import { foodSellConverter } from "@food/shared-firebase-converter";
 
 class SellFoodDelete {
   public static exec = async (sellFoodId: string) => {

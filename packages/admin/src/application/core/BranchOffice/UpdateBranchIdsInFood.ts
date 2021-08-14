@@ -3,7 +3,7 @@ import firebase from "firebase";
 import { FirebaseCollectionNames } from "config/constants";
 
 import NotRepeatId from "application/utils/NotRepeatId";
-import { foodConverter } from "@food-proyect/shared-firebase-converter";
+import { foodConverter } from "@food/shared-firebase-converter";
 
 class UpdateBranchIdsInFoods {
   public static exec = async (foodsId: string[]) => {

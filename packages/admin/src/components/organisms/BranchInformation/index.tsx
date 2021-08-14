@@ -6,7 +6,7 @@ import BranchDetailContent from "components/molecules/BranchDetailContent";
 import BranchOfficeImageUpdateModal from "components/templates/BranchOfficeImageUpdateModal";
 import BranchOfficeUpdateLocation from "components/templates/BranchOfficeUpdateLocationModal";
 
-import { FilesCheckingIsImage } from "@food-proyect/shared-functions";
+import { FilesCheckingIsImage } from "@food/shared-functions";
 
 import { useAtomValue } from "jotai/utils";
 import { currentBranch } from "store/currentBranch";

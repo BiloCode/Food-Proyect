@@ -1,7 +1,7 @@
 import { FormEvent, useRef, useState } from "react";
 import { useToasts } from "react-toast-notifications";
 
-import { RequestStateType } from "@food-proyect/shared-types";
+import { RequestState } from "@food/shared-types";
 import UpdateBranchLocation from "application/core/BranchOffice/UpdateBranchLocation";
 
 import { useAtom } from "jotai";
@@ -16,7 +16,7 @@ const useUpdateBranchLocation = () => {
   const longitudeRef = useRef<HTMLInputElement>(null);
 
   const [requestStateAddress, setRequestStateAddress] =
-    useState<RequestStateType>("initialize");
+    useState<RequestState>("initialize");
 
   const onUpdateAddress = async (ev: FormEvent) => {
     ev.preventDefault();

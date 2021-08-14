@@ -4,11 +4,11 @@ import { FirebaseCollectionNames } from "config/constants";
 
 import UpdateBranchIdsInFoods from "./UpdateBranchIdsInFood";
 
-import { MenuType } from "@food-proyect/shared-types";
+import { MenuType } from "@food/shared-types";
 import {
   foodSellConverter,
   branchOfficeConverter,
-} from "@food-proyect/shared-firebase-converter";
+} from "@food/shared-firebase-converter";
 
 type MenuProps = {
   name: string;

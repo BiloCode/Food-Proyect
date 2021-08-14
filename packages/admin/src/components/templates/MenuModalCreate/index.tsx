@@ -12,7 +12,7 @@ import MenuModalListSaved from "components/organisms/MenuModalListSaved";
 import FormControlSearchable from "components/organisms/FormControlSearchable";
 
 import useCreateMenuInBranch from "hooks/useCreateMenuInBranch";
-import { FoodPriceSum } from "@food-proyect/shared-functions";
+import { FoodPriceSum } from "@food/shared-functions";
 
 type ModalProps = {
   onClose(): void;

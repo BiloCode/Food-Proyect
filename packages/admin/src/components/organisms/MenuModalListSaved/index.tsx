@@ -3,10 +3,10 @@ import * as S from "./styles";
 import Title from "components/atoms/Title";
 import FoodHorizontalCard from "components/molecules/FoodHorizontalCard";
 
-import { FoodModelType } from "@food-proyect/shared-types";
+import { Food } from "@food/shared-types";
 
 type ListSavedProps = {
-  foods: FoodModelType[];
+  foods: Food[];
   onClickTrash(index: number): () => void;
 };
 

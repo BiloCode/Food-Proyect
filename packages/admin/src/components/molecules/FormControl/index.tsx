@@ -5,7 +5,7 @@ import * as S from "./styles";
 import Label from "components/atoms/Label";
 import Input, { InputProps } from "components/atoms/Input";
 
-import { Icon } from "@food-proyect/shared-components";
+import { Icon } from "@food/components";
 
 type FormControlProps = InputProps & {
   icon: IconType;

@@ -4,7 +4,7 @@ import { FirebaseCollectionNames } from "config/constants";
 
 import UploadBranchImage from "./UploadBranchImage";
 
-import { BranchOfficeModelType, FoodType } from "@food-proyect/shared-types";
+import { BranchOffice, FoodType } from "@food/shared-types";
 
 type TData = {
   image: File;
@@ -34,7 +34,7 @@ class CreateNewBranchOffice {
     image,
     params,
     updatePercentaje,
-  }: TData): Promise<BranchOfficeModelType> => {
+  }: TData): Promise<BranchOffice> => {
     const firestore = firebase.firestore();
     const foodCollection = firestore.collection(
       FirebaseCollectionNames.branchOffice

@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import * as S from "./styles";
 
-import { ClientModelType } from "@food-proyect/shared-types";
+import { Client } from "@food/shared-types";
 
 import ClientsListTable from "../ClientsListTable";
 import SearchBar from "components/molecules/SearchBar";
@@ -15,7 +15,7 @@ import { CLIENTS_LIST_TABLE_ROWS } from "config/constants";
 const ClientsListContainer = () => {
   const client = useAtomValue(clients);
 
-  const [clientsFilter, setClientsFilter] = useState<ClientModelType[]>([]);
+  const [clientsFilter, setClientsFilter] = useState<Client[]>([]);
 
   const onChangeSearch = (ev: ChangeEvent<HTMLInputElement>) => {
     const inputValue = ev.target?.value.toLocaleUpperCase();

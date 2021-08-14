@@ -1,7 +1,7 @@
 import firebase from "firebase";
 
 import { BRANCH_OFFICES_IMAGE_REPOSITORY } from "config/constants";
-import { FirebaseImageType } from "@food-proyect/shared-types";
+import { FirebaseImageType } from "@food/shared-types";
 
 type UploadTask = firebase.storage.UploadTask;
 

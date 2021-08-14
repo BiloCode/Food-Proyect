@@ -1,13 +1,13 @@
 import { atom } from "jotai";
 
-import type { RequestStateType } from "@food-proyect/shared-types";
-import type { ClientModelType } from "@food-proyect/shared-types";
+import type { RequestState } from "@food/shared-types";
+import type { Client } from "@food/shared-types";
 
 import GetAllClient from "application/core/GetAllClient";
 
 type ClientAtom = {
-  data: ClientModelType[];
-  requestState: RequestStateType;
+  data: Client[];
+  requestState: RequestState;
 };
 
 export const clients = atom<ClientAtom>({

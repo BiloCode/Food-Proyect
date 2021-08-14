@@ -1,12 +1,12 @@
 import { memo } from "react";
 import * as S from "./styles";
 
-import { StarsPromedy } from "@food-proyect/shared-functions";
-import { BranchOfficeModelType } from "@food-proyect/shared-types";
+import { StarsPromedy } from "@food/shared-functions";
+import { BranchOffice } from "@food/shared-types";
 
 import BranchOfficeCard from "components/organisms/BranchOfficeCard";
 
-const BranchList = ({ list }: { list: BranchOfficeModelType[] }) => (
+const BranchList = ({ list }: { list: BranchOffice[] }) => (
   <S.BranchOfficeList>
     {list.map((v) => (
       <BranchOfficeCard

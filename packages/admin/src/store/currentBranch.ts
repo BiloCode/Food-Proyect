@@ -1,8 +1,8 @@
-import { BranchOfficeModelType } from "@food-proyect/shared-types";
+import { BranchOffice } from "@food/shared-types";
 import { atom } from "jotai";
 
 type StoreData = {
-  branch?: BranchOfficeModelType;
+  branch?: BranchOffice;
 };
 
 export const currentBranch = atom<StoreData>({});

@@ -7,7 +7,7 @@ import Title from "components/atoms/Title";
 import Description from "components/atoms/Description";
 
 import StarListPuntuaction from "components/molecules/StarListPuntuaction";
-import { PuntuactionType } from "@food-proyect/shared-types";
+import { PuntuactionType } from "@food/shared-types";
 
 type ClientsCommentsType = {
   clientPuntuaction: PuntuactionType;

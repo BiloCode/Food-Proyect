@@ -2,13 +2,13 @@ import { memo } from "react";
 import * as S from "./styles";
 
 import FoodCard from "components/molecules/FoodCard";
-import { FoodModelType } from "@food-proyect/shared-types";
+import { Food } from "@food/shared-types";
 
 import { useAtomValue, useUpdateAtom } from "jotai/utils";
 import { addNewIdSelect, deleteMode, removeId } from "store/foodDeleteMode";
 
 type ListProps = {
-  foods: FoodModelType[];
+  foods: Food[];
 };
 
 const FoodGridList = ({ foods }: ListProps) => {

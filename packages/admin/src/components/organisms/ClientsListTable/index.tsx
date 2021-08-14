@@ -1,7 +1,7 @@
 import { memo } from "react";
 import * as S from "./styles";
 
-import { ClientModelType } from "@food-proyect/shared-types";
+import { Client } from "@food/shared-types";
 import ClientsTableRow from "components/molecules/ClientsTableRow";
 import ClientsTableHeaders from "components/molecules/ClientsTableHeaders";
 
@@ -11,7 +11,7 @@ import { CLIENTS_LIST_TABLE_ROWS } from "config/constants";
 import { currentPageInClient } from "store/currentPageInClient";
 
 type ClientsListProps = {
-  clients: ClientModelType[];
+  clients: Client[];
 };
 
 const ClientsList = ({ clients }: ClientsListProps) => {

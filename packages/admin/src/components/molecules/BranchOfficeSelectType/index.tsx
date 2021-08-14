@@ -7,7 +7,7 @@ import Icon from "components/atoms/Icon";
 
 import useActive from "hooks/useActive";
 
-import { FoodType } from "@food-proyect/shared-types";
+import { FoodType } from "@food/shared-types";
 
 type BranchOfficeSelectTypeProps = {
   onClickOption(option: FoodType): void;

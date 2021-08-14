@@ -1,12 +1,12 @@
 import { atomWithReset } from "jotai/utils";
 import firebase from "firebase";
 
-import { AdminModelType } from "@food-proyect/shared-types";
-import { RequestStateType } from "@food-proyect/shared-types";
+import { Admin } from "@food/shared-types";
+import { RequestState } from "@food/shared-types";
 
 type UserAtomType = {
-  user: AdminModelType;
-  requestState: RequestStateType;
+  user: Admin;
+  requestState: RequestState;
 };
 
 export const userAuth = atomWithReset<UserAtomType>({

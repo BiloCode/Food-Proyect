@@ -4,7 +4,7 @@ import { FirebaseCollectionNames } from "config/constants";
 
 import UploadFoodImage from "application/core/UploadFoodImage";
 
-import { FoodModelType } from "@food-proyect/shared-types";
+import { Food } from "@food/shared-types";
 
 type Food = {
   image: File;
@@ -19,11 +19,7 @@ class CreateNewFood {
     this.uploadFoodImage = uploadImage;
   }
 
-  public __invoke = async ({
-    image,
-    name,
-    price,
-  }: Food): Promise<FoodModelType> => {
+  public __invoke = async ({ image, name, price }: Food): Promise<Food> => {
     const firestore = firebase.firestore();
     const foodCollection = firestore.collection(FirebaseCollectionNames.food);
 

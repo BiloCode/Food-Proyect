@@ -1,6 +1,6 @@
 import * as S from "./styles";
 
-import { PuntuactionType } from "@food-proyect/shared-types";
+import { PuntuactionType } from "@food/shared-types";
 
 import useDeleteComment from "hooks/useDeleteComment";
 

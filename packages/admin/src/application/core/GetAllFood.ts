@@ -2,17 +2,17 @@ import firebase from "firebase";
 
 import { FirebaseCollectionNames } from "config/constants";
 
-import { FoodModelType } from "@food-proyect/shared-types";
-import { foodConverter } from "@food-proyect/shared-firebase-converter";
+import { Food } from "@food/shared-types";
+import { foodConverter } from "@food/shared-firebase-converter";
 
 export default class GetAllFood {
-  public static exec = async (): Promise<FoodModelType[]> => {
+  public static exec = async (): Promise<Food[]> => {
     const db = firebase.firestore();
     const reference = db
       .collection(FirebaseCollectionNames.food)
       .withConverter(foodConverter);
 
-    const store: FoodModelType[] = [];
+    const store: Food[] = [];
 
     try {
       const requestData = await reference.get();

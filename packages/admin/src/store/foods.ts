@@ -2,12 +2,12 @@ import { atom } from "jotai";
 
 import GetAllFood from "application/core/GetAllFood";
 
-import type { FoodModelType } from "@food-proyect/shared-types";
-import type { RequestStateType } from "@food-proyect/shared-types";
+import type { Food } from "@food/shared-types";
+import type { RequestState } from "@food/shared-types";
 
 type FoodAtom = {
-  data: FoodModelType[];
-  requestState: RequestStateType;
+  data: Food[];
+  requestState: RequestState;
 };
 
 export const foods = atom<FoodAtom>({
@@ -25,7 +25,7 @@ foods.onMount = (setAtom) => {
   })();
 };
 
-export const addNewFood = atom(null, (_, set, new_food: FoodModelType) => {
+export const addNewFood = atom(null, (_, set, new_food: Food) => {
   set(foods, (food) => ({
     ...food,
     data: [...food.data, new_food],

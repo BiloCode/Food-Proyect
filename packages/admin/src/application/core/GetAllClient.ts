@@ -1,17 +1,17 @@
 import firebase from "firebase";
 
 import { FirebaseCollectionNames } from "config/constants";
-import { ClientModelType } from "@food-proyect/shared-types";
-import { clientConverter } from "@food-proyect/shared-firebase-converter";
+import { Client } from "@food/shared-types";
+import { clientConverter } from "@food/shared-firebase-converter";
 
 export default class GetAllClient {
-  public static exec = async (): Promise<ClientModelType[]> => {
+  public static exec = async (): Promise<Client[]> => {
     const db = firebase.firestore();
     const reference = db
       .collection(FirebaseCollectionNames.client)
       .withConverter(clientConverter);
 
-    const store: ClientModelType[] = [];
+    const store: Client[] = [];
 
     try {
       const requestData = await reference.get();

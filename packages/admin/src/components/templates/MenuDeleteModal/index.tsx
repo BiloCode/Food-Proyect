@@ -8,7 +8,7 @@ import DarkScreen from "components/atoms/DarkScreen";
 import Description from "components/atoms/Description";
 import FoodHorizontalCard from "components/molecules/FoodHorizontalCard";
 
-import { MenuType } from "@food-proyect/shared-types";
+import { MenuType } from "@food/shared-types";
 import BranchRemoveMenu from "application/core/BranchOffice/BranchRemoveMenu";
 
 import { useAtomValue, useResetAtom, useUpdateAtom } from "jotai/utils";

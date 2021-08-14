@@ -8,7 +8,7 @@ import BranchOfficeDetailHeader from "components/molecules/BranchOfficeDetailHea
 import GetPageTabs from "application/utils/GetPageTabs";
 import MenuModalCreate from "components/templates/MenuModalCreate";
 
-import { DateFormatting, StarsPromedy } from "@food-proyect/shared-functions";
+import { DateFormatting, StarsPromedy } from "@food/shared-functions";
 
 import useBranchDetailInit from "hooks/useBranchDetailInit";
 import useBranchDetailActions from "hooks/useBranchDetailActions";

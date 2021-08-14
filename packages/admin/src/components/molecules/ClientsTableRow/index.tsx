@@ -5,8 +5,8 @@ import Icon from "components/atoms/Icon";
 import { IoLogoGoogle } from "react-icons/io";
 import { IoAtOutline } from "react-icons/io5";
 
-import { DateFormatting } from "@food-proyect/shared-functions";
-import { ClientModelType } from "@food-proyect/shared-types";
+import { DateFormatting } from "@food/shared-functions";
+import { Client } from "@food/shared-types";
 
 import DefaultImage from "assets/images/default-profile-image.png";
 
@@ -15,7 +15,7 @@ import ButtonRounded from "components/atoms/ButtonRounded";
 import ClientRowTableGrid from "components/atoms/ClientRowTableGrid";
 
 type ClientsTableRowProps = {
-  client: ClientModelType;
+  client: Client;
 };
 
 const ClientsTableRow = ({ client }: ClientsTableRowProps) => {

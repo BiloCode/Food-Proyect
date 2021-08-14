@@ -6,11 +6,11 @@ import Button from "components/atoms/Button";
 import RoundedText from "components/atoms/RoundedText";
 import EatableCard from "components/atoms/EatableCard";
 
-import { FoodModelType } from "@food-proyect/shared-types";
-import { DateFormatting } from "@food-proyect/shared-functions";
+import { Food } from "@food/shared-types";
+import { DateFormatting } from "@food/shared-functions";
 
 type FoodCardProps = {
-  foodData: FoodModelType;
+  foodData: Food;
   isSelect?: boolean;
   selectable?: boolean;
   onClickButton(): void;

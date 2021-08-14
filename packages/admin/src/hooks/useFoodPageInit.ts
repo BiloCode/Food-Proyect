@@ -4,13 +4,13 @@ import { useAtomValue, useResetAtom } from "jotai/utils";
 import { foods as foodStore } from "store/foods";
 import { deleteMode } from "store/foodDeleteMode";
 
-import { FoodModelType } from "@food-proyect/shared-types";
+import { Food } from "@food/shared-types";
 
 const useFoodPageInit = () => {
   const foods = useAtomValue(foodStore);
   const resetDeleteMode = useResetAtom(deleteMode);
 
-  const [foodFilter, setFoodFiltered] = useState<FoodModelType[]>([]);
+  const [foodFilter, setFoodFiltered] = useState<Food[]>([]);
 
   const onSearchByName = (ev: ChangeEvent<HTMLInputElement>) => {
     const inputValue = ev.target?.value.toLocaleUpperCase();
